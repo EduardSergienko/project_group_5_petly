@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/project_group_5_petly/static/css/main.7acaea2f.css",
+    "main.js": "/project_group_5_petly/static/js/main.2eb23624.js",
+    "index.html": "/project_group_5_petly/index.html",
+    "main.7acaea2f.css.map": "/project_group_5_petly/static/css/main.7acaea2f.css.map",
+    "main.2eb23624.js.map": "/project_group_5_petly/static/js/main.2eb23624.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.2eb23624.js"
+  ]
+}
