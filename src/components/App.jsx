@@ -1,3 +1,4 @@
+import SharedLayout from './SharedLayout/SharedLayout';
 export const App = () => {
   return (
     <div
@@ -10,6 +11,7 @@ export const App = () => {
         color: '#010101',
       }}
     >
+      <SharedLayout />
       Welcome To Hell
     </div>
   );
