@@ -3,6 +3,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  & + & {
+    margin-top: 15px;
+  }
 }
 
 .title {
@@ -13,6 +17,10 @@
   letter-spacing: 0.04em;
 
   color: $mainTextColor;
+}
+
+.lable {
+  position: relative;
 }
 
 .input {
@@ -37,6 +45,14 @@
 
 .noValidate {
   border-color: rgb(255, 77, 77, 1);
+}
+
+.textError {
+  position: absolute;
+  bottom: -15px;
+  left: 10px;
+  font-size: 15px;
+  color: $errorColor;
 }
 
 .button {
@@ -71,7 +87,14 @@
   line-height: 25px;
   letter-spacing: 0.04em;
 
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   border: 1px solid transparent;
 
   color: $mainTextColor;
+}
+
+.spanDefault {
+  padding: 32px 12px 0px;
 }

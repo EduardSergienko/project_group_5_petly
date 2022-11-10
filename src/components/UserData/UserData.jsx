@@ -110,6 +110,7 @@ function UserData() {
             min={2}
             max={48}
             required={true}
+            example={'Anna Lokerman'}
           />
           <UserDataItem
             title={'Email'}
@@ -117,7 +118,8 @@ function UserData() {
               /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
             }
             type={'email'}
-            placeholder={'example@gmail.com'}
+            placeholder={'Your email'}
+            example={'example@gmail.com'}
           />
           <UserDataItem
             title={'Birthday'}
@@ -125,7 +127,16 @@ function UserData() {
               /(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).((19|20)\d\d)$/
             }
             type={'text'}
-            placeholder={'DD.MM.YYYY'}
+            placeholder={'Your birthday'}
+            example={'DD.MM.YYYY'}
+          />
+          <UserDataItem
+            title={'Phone'}
+            pattern={/^[+]{0,1}380([0-9]{9})$/}
+            type={'phone'}
+            placeholder={'Your phone'}
+            example={'+38000000000'}
+            defaultVaule={'+380'}
           />
         </ul>
       </div>

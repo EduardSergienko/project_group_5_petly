@@ -4,6 +4,7 @@ $prymaryTextColor: #000000;
 $backgroundColor: #fdf7f2;
 $whiteColor: #ffffff;
 $activeInputColor: #fdf7f2;
+$errorColor: #d60202;
 
 :export {
   orangeColor: $orangeColor;
@@ -12,4 +13,5 @@ $activeInputColor: #fdf7f2;
   prymaryTextColor: $prymaryTextColor;
   whiteColor: $whiteColor;
   activeInputColor: $activeInputColor;
+  errorColor: $errorColor;
 }

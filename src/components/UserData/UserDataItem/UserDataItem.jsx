@@ -13,9 +13,11 @@ function UserDataItem({
   min,
   max,
   required,
+  example,
+  defaultVaule,
 }) {
   const [active, setActive] = useState(false);
-  const [inputeValue, setInputeValue] = useState('');
+  const [inputeValue, setInputeValue] = useState(defaultVaule ?? '');
   const [inputActive, setInputActive] = useState(false);
 
   const handleClick = () => {
@@ -38,7 +40,6 @@ function UserDataItem({
     if (value.length > max) {
       setInputActive(false);
     }
-    // console.log(pattern.test(e.target.value));
 
     setInputeValue(e.target.value);
   };
@@ -47,20 +48,33 @@ function UserDataItem({
     <li className={styles.container}>
       <p className={styles.title}>{title}:</p>
       {active ? (
-        <input
-          className={`${styles.input} ${
-            !inputActive && inputeValue.length !== 0 ? styles.noValidate : ''
-          }`}
-          type={type}
-          name={title}
-          value={inputeValue}
-          onChange={onInputeChange}
-          pattern={pattern}
-          placeholder={placeholder}
-          // required={required}
-        />
+        <label className={styles.lable}>
+          <input
+            className={`${styles.input} ${
+              !inputActive && inputeValue.length !== 0 ? styles.noValidate : ''
+            }`}
+            type={type}
+            name={title}
+            value={inputeValue}
+            onChange={onInputeChange}
+            pattern={pattern}
+            placeholder={placeholder}
+          />
+          {!inputActive && inputeValue.length !== 0 && (
+            <p className={styles.textError}>{example}</p>
+          )}
+          {required && inputeValue.length === 0 && (
+            <p className={styles.textError}>Required</p>
+          )}
+        </label>
       ) : (
-        <span className={styles.span}>{inputeValue}</span>
+        <span
+          className={`${styles.span} ${
+            inputeValue.length === 0 && styles.spanDefault
+          }`}
+        >
+          {inputeValue}
+        </span>
       )}
       <button
         className={styles.button}
@@ -70,7 +84,7 @@ function UserDataItem({
         <img
           className={styles.doneVector}
           src={active ? doneVector : edit}
-          alt="doneVector"
+          alt={`${active ? 'doneVector' : 'edit'}`}
         />
       </button>
     </li>
