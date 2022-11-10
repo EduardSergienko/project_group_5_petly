@@ -1,0 +1,26 @@
+@import '../../variables/variables.scss';
+
+.authNavWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+}
+.authNavLink {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.04em;
+  color: $mainTextColor;
+  padding: 6px 26px;
+  border: 2px solid $orangeColor;
+  border-radius: 40px;
+  margin-right: 12px;
+  &:last-child {
+    margin-right: 0;
+  }
+  &:hover {
+    color: $secondaryTextColor;
+    background-color: $orangeColor;
+  }
+}

@@ -1,6 +1,7 @@
 @import '../../variables/variables.scss';
 
 .logo {
+  display: inline;
   color: $mainTextColor;
   font-family: 'Poppins';
   font-style: normal;
@@ -8,6 +9,7 @@
   font-size: 28px;
   line-height: 42px;
   letter-spacing: 0.07em;
+  margin-right: 130px;
   & span {
     color: $orangeColor;
   }
