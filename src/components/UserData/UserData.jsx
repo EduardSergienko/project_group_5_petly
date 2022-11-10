@@ -138,6 +138,15 @@ function UserData() {
             example={'+38000000000'}
             defaultVaule={'+380'}
           />
+          <UserDataItem
+            title={'City'}
+            pattern={/^[а-яА-ЯёЁa-zA-Z]+$/}
+            type={'text'}
+            placeholder={'Your city'}
+            example={'Kyiv'}
+            min={2}
+            max={48}
+          />
         </ul>
       </div>
     </div>

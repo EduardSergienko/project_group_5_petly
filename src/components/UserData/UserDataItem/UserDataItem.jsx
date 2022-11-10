@@ -18,7 +18,7 @@ function UserDataItem({
 }) {
   const [active, setActive] = useState(false);
   const [inputeValue, setInputeValue] = useState(defaultVaule ?? '');
-  const [inputActive, setInputActive] = useState(false);
+  const [inputActive, setInputActive] = useState(true);
 
   const handleClick = () => {
     if (active === true && (inputeValue.length !== 0 || !required)) {
