@@ -14,12 +14,15 @@ export default function Header() {
   return (
     <header>
       <Container>
-        <Logo />
-        <BurgerBtn toggleNav={showNavBar} />
-        <nav className={styles.mainNav} ref={navRef}>
-          <AuthNav />
-          <Nav />
-        </nav>
+        <div className={styles.headerContentWrap}>
+          <Logo />
+
+          <nav className={styles.mainNav} ref={navRef}>
+            <Nav />
+            <AuthNav />
+          </nav>
+          <BurgerBtn toggleNav={showNavBar} />
+        </div>
       </Container>
     </header>
   );
