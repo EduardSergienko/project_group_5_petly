@@ -2,10 +2,12 @@ $orangeColor: #f59256;
 $mainTextColor: #111111;
 $prymaryTextColor: #000000;
 $backgroundColor: #fdf7f2;
+$secondaryTextColor: #ffffff;
 
 :export {
   orangeColor: $orangeColor;
   mainTextColor: $mainTextColor;
   backgroundColor: $backgroundColor;
   prymaryTextColor: $prymaryTextColor;
+  secondaryTextColor: $secondaryTextColor;
 }

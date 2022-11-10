@@ -2,8 +2,8 @@ import { NavLink } from 'react-router-dom';
 import styles from './Nav.module.scss';
 export default function Nav() {
   return (
-    <nav>
-      <ul>
+    <div>
+      <ul className={styles.navList}>
         <NavLink
           className={({ isActive }) =>
             isActive ? styles.active : styles.navLink
@@ -29,6 +29,6 @@ export default function Nav() {
           Our friend
         </NavLink>
       </ul>
-    </nav>
+    </div>
   );
 }
