@@ -1,0 +1,77 @@
+@import '../../../variables/variables.scss';
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  width: 85px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0.04em;
+
+  color: $mainTextColor;
+}
+
+.input {
+  width: 216px;
+  padding: 4px 12px 3px;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0.04em;
+
+  color: $mainTextColor;
+
+  background: $activeInputColor;
+  border: 1px solid rgba(245, 146, 86, 0.5);
+  border-radius: 40px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.noValidate {
+  border-color: rgb(255, 77, 77, 1);
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $activeInputColor;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border: none;
+
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0 4px 0px $orangeColor;
+  }
+}
+
+.doneVector {
+  width: 20px;
+}
+
+.span {
+  width: 216px;
+  padding: 4px 12px 3px;
+
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0.04em;
+
+  border: 1px solid transparent;
+
+  color: $mainTextColor;
+}
