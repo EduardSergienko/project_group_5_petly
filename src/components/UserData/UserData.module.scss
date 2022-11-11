@@ -1,24 +1,28 @@
 @import '../../variables/variables.scss';
 
-.title {
-  font-weight: 500;
-  font-size: 28px;
-  line-height: 38px;
+// .title {
+//   font-weight: 500;
+//   font-size: 28px;
+//   line-height: 38px;
 
-  margin: 0 0 24px 17px;
-  color: $mainTextColor;
-}
+//   margin: 0 0 24px 17px;
+//   color: $mainTextColor;
+// }
 
-.userInformation {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 411px;
-  padding: 20px 16px 40px;
+// .userInformation {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 411px;
+//   padding: 20px 16px 40px;
 
-  box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
-  border-radius: 0px 40px 40px 0px;
-  background-color: $whiteColor;
+//   box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+//   border-radius: 0px 40px 40px 0px;
+//   background-color: $whiteColor;
+// }
+
+.form {
+  width: 100%;
 }
 
 .field__wrapper {
@@ -40,10 +44,10 @@
   display: flex;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  justify-content: center;
 
   &:hover .field__button {
     background-color: #c4c4c4a1;
@@ -88,7 +92,7 @@
   opacity: 0;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 21%;
 
   display: flex;
   align-items: center;
@@ -99,7 +103,7 @@
   line-height: 26px;
   color: #000;
 
-  width: 100%;
+  width: 58%;
   height: 100%;
   border-radius: 50%;
   background-color: rgb(255, 255, 255, 0.8);
@@ -124,7 +128,7 @@
 
 .buttonPhoto {
   position: absolute;
-  right: -90px;
+  right: 0px;
   bottom: 0;
 
   display: flex;
