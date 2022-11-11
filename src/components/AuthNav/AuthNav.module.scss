@@ -4,6 +4,14 @@
   display: flex;
   justify-content: center;
   margin-bottom: 60px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
 }
 .authNavLink {
   font-style: normal;
@@ -22,5 +30,9 @@
   &:hover {
     color: $secondaryTextColor;
     background-color: $orangeColor;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    line-height: 27px;
   }
 }
