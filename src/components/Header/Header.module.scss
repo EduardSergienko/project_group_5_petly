@@ -1,0 +1,26 @@
+@import '../../variables/variables.scss';
+
+.headerContentWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mainNav {
+  background-color: $backgroundColor;
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  // display: none;
+  // margin-top: 46px;
+  transition: 1s;
+  transform: translateY(-100vh);
+  justify-content: flex-end;
+}
+.responsiveNav {
+  transform: none;
+  height: 100vh;
+}

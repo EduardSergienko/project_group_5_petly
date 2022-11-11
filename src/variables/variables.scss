@@ -2,16 +2,16 @@ $orangeColor: #f59256;
 $mainTextColor: #111111;
 $prymaryTextColor: #000000;
 $backgroundColor: #fdf7f2;
-$whiteColor: #ffffff;
 $activeInputColor: #fdf7f2;
 $errorColor: #d60202;
+$secondaryTextColor: #ffffff;
 
 :export {
   orangeColor: $orangeColor;
   mainTextColor: $mainTextColor;
   backgroundColor: $backgroundColor;
   prymaryTextColor: $prymaryTextColor;
-  whiteColor: $whiteColor;
   activeInputColor: $activeInputColor;
   errorColor: $errorColor;
+  secondaryTextColor: $secondaryTextColor;
 }

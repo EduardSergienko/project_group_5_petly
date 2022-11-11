@@ -7,6 +7,7 @@ body {
     'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fdf7f2;
 }
 
 code {
@@ -24,4 +25,9 @@ h2,
 h3 {
   margin: 0;
   padding: 0;
+}
+
+a {
+  text-decoration: none;
+  font-family: 'Manrope';
 }
