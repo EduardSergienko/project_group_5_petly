@@ -1,0 +1,26 @@
+@import '../../variables/variables.scss';
+
+.container {
+  width: 100%;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-start;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+
+  background-color: $secondaryTextColor;
+  color: rgba(17, 17, 17, 0.6);
+  border: none;
+
+  cursor: pointer;
+}
+
+.image {
+  width: 18px;
+  margin-right: 8px;
+}
