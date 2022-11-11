@@ -3,24 +3,60 @@ import Nav from 'components/Nav/Nav';
 import AuthNav from 'components/AuthNav/AuthNav';
 import Container from 'components/Container/Container';
 import BurgerBtn from 'components/BurgerBtn/BurgerBtn';
-import { useRef } from 'react';
 import styles from './Header.module.scss';
+import { useEffect, useState } from 'react';
 export default function Header() {
-  const navRef = useRef();
-  console.log(navRef);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+  const mobileWidth = width < 768;
+  const tabletWidth = width > 767 && width < 1279;
+  const descktopWidth = width > 1279;
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+  }, []);
+
   const showNavBar = () => {
-    navRef.current.classList.toggle(styles.responsiveNav);
+    setIsMenuOpen(!isMenuOpen);
   };
+
   return (
     <header>
       <Container>
         <div className={styles.headerContentWrap}>
           <Logo />
 
-          <nav className={styles.mainNav} ref={navRef}>
-            <Nav />
-            <AuthNav />
-          </nav>
+          {mobileWidth && (
+            <nav
+              className={`${styles.mainNav} ${
+                isMenuOpen && styles.responsiveNav
+              }`}
+            >
+              <AuthNav />
+              <Nav />
+            </nav>
+          )}
+          {tabletWidth && (
+            <>
+              {!isMenuOpen && <AuthNav />}
+
+              <nav
+                className={`${styles.mainNav} ${
+                  isMenuOpen && styles.responsiveNav
+                }`}
+              >
+                <Nav />
+              </nav>
+            </>
+          )}
+          {descktopWidth && (
+            <nav className={styles.mainNav}>
+              <Nav />
+              <AuthNav />
+            </nav>
+          )}
           <BurgerBtn toggleNav={showNavBar} />
         </div>
       </Container>
