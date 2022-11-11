@@ -1,5 +1,6 @@
 import UserData from '../UserData/UserData';
 import Logout from '../Logout/Logout';
+import PetsData from '../PetsData/PetsData';
 
 import styles from './User.module.scss';
 
@@ -13,6 +14,7 @@ function User() {
           <Logout />
         </div>
       </div>
+      <PetsData />
     </div>
   );
 }

@@ -1,1 +1,1 @@
-export * as authOperations from './auth-operations';
+export * as authOperations from './authOperations';
