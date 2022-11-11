@@ -6,7 +6,6 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
-  isFetchingUser: false,
   error: null,
 };
 
