@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 // axios.defaults.baseURL = '';
 
@@ -13,7 +13,7 @@ import axios from 'axios';
 
 async function logOut() {
   try {
-    await axios.post('/users/logout');
+    // await axios.post('/users/logout');
     // token.unset();
   } catch (error) {
     console.log(error);
