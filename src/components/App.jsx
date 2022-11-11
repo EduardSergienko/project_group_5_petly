@@ -7,6 +7,7 @@ import Home from 'pages/Home';
 
 // const LoginPage = lazy(() => import('pages/LoginPage'));
 const UserPage = lazy(() => import('../pages/UserPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 
 export const App = () => {
   return (
@@ -14,6 +15,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
+          <Route path="/register" element={<RegisterPage />} />
           {/* <Route path="/login" element={<LoginPage />} /> */}
         </Route>
 
