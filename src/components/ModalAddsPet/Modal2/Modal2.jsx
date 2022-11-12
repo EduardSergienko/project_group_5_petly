@@ -1,28 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import fotoSelect from '../../../image/svg/fotoSelect.svg';
 
 import styles from './Modal2.module.scss';
 
-function Modal2({ setPage }) {
+function Modal2({ setPage, createPetsPost, setActive, active }) {
   const [inputActiveComments, setInputActiveComments] = useState(true);
   const [commentsValue, setCommentsValue] = useState('');
   const [required, setRequired] = useState(false);
-
   const [fileValue, setFileValue] = useState([]);
   const [picture, setPicture] = useState('');
 
   const handleInputChange = e => {
     const { name, value } = e.target;
-    const valueToLower = value.toLowerCase();
 
     switch (name) {
-      case 'name':
-        const pattern =
-          /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
-
-        setInputActiveComments(pattern.test(valueToLower));
-
+      case 'comments':
         if (value.length < 8) {
           setInputActiveComments(false);
         }
@@ -49,20 +42,23 @@ function Modal2({ setPage }) {
     e.preventDefault();
 
     if (!picture) {
-      return;
-    }
-
-    if (commentsValue.length === 0) {
-      //   setInputActiveName(false);
       setRequired(true);
       return;
     }
 
-    // if (breedValue.length === 0) {
-    //   setInputActiveName(false);
-    //   setRequired(true);
-    //   return;
-    // }
+    if (commentsValue.length < 8 || commentsValue.length > 120) {
+      setInputActiveComments(false);
+      setRequired(true);
+      return;
+    }
+
+    const data = {
+      comments: commentsValue,
+      file: fileValue,
+    };
+
+    createPetsPost(data);
+    setActive(false);
   };
 
   const handleChange = e => {
@@ -78,9 +74,20 @@ function Modal2({ setPage }) {
     }
   };
 
+  useEffect(() => {
+    if (!active) {
+      setRequired(false);
+      setFileValue([]);
+      setPicture('');
+      setCommentsValue('');
+      setPage(1);
+    }
+  }, [active, setPage]);
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Add pet</h2>
+      <p className={styles.text}>Add photo and some comments</p>
 
       <form className={styles.form}>
         <div className={styles.field__wrapper}>
@@ -116,6 +123,9 @@ function Modal2({ setPage }) {
             {picture && (
               <div className={`${styles.anyChoise}`}>Choose another photo</div>
             )}
+            {required && !picture && (
+              <p className={styles.textErrorPicture}>Please select a photo</p>
+            )}
           </label>
         </div>
 
@@ -123,22 +133,38 @@ function Modal2({ setPage }) {
           <span className={styles.span}>Comments</span>
           <textarea
             className={`${styles.input} ${
-              !inputActiveComments && commentsValue.length !== 0
+              !inputActiveComments &&
+              commentsValue.length !== 0 &&
+              commentsValue.length < 8
                 ? styles.noValidate
                 : ''
-            }  ${
+            } 
+            ${
+              !inputActiveComments &&
+              commentsValue.length !== 0 &&
+              commentsValue.length > 120
+                ? styles.noValidate
+                : ''
+            } ${
               required && commentsValue.length === 0 ? styles.noValidate : ''
             }`}
             name="comments"
-            // value={commentsValue}
-            // onChange={handleInputChange}
+            value={commentsValue}
+            onChange={handleInputChange}
             placeholder="Type comments"
             rows="5"
             required
           ></textarea>
-          {!inputActiveComments && commentsValue.length !== 0 && (
-            <p className={styles.textError}>Breed of your pet</p>
-          )}
+          {!inputActiveComments &&
+            commentsValue.length !== 0 &&
+            commentsValue.length < 8 && (
+              <p className={styles.textError}>Must be at least 8 characters</p>
+            )}
+          {!inputActiveComments &&
+            commentsValue.length !== 0 &&
+            commentsValue.length > 120 && (
+              <p className={styles.textError}>No more than 120 characters</p>
+            )}
           {required && commentsValue.length === 0 && (
             <p className={styles.textError}>Required</p>
           )}

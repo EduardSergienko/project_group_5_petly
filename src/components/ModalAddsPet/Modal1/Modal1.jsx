@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 import styles from './Modal1.module.scss';
 
-function Modal1({ setActive, setPage }) {
+function Modal1({ setActive, setPage, createPetsPost, active }) {
   const [inputActiveName, setInputActiveName] = useState(true);
   const [inputActiveBirthday, setInputActiveBirthday] = useState(true);
   const [inputActiveBreed, setInputActiveBreed] = useState(true);
@@ -78,9 +79,13 @@ function Modal1({ setActive, setPage }) {
   const onClickNextBtn = e => {
     e.preventDefault();
 
-    if (nameValue.length === 0) {
+    if (nameValue.length < 2 || nameValue.length > 16) {
       setInputActiveName(false);
       setRequired(true);
+      return;
+    }
+
+    if (!inputActiveName) {
       return;
     }
 
@@ -90,14 +95,38 @@ function Modal1({ setActive, setPage }) {
       return;
     }
 
-    if (breedValue.length === 0) {
+    if (!inputActiveBirthday) {
+      return;
+    }
+
+    if (breedValue.length < 2 || breedValue.length > 16) {
       setInputActiveBreed(false);
       setRequired(true);
       return;
     }
 
+    if (!inputActiveBreed) {
+      return;
+    }
+
+    const data = {
+      name: nameValue,
+      birthday: birthdayValue,
+      breed: breedValue,
+    };
+
+    createPetsPost(data);
     setPage(2);
   };
+
+  useEffect(() => {
+    if (!active) {
+      setRequired(false);
+      setNameValue('');
+      setBirthdayValue('');
+      setBreedValue('');
+    }
+  }, [active]);
 
   return (
     <div className={styles.container}>
@@ -119,9 +148,16 @@ function Modal1({ setActive, setPage }) {
             placeholder="Type name pet"
             required
           />
-          {!inputActiveName && nameValue.length !== 0 && (
-            <p className={styles.textError}>Name pet</p>
-          )}
+          {!inputActiveName &&
+            nameValue.length !== 0 &&
+            nameValue.length < 2 && (
+              <p className={styles.textError}>Must be at least 2 characters</p>
+            )}
+          {!inputActiveName &&
+            nameValue.length !== 0 &&
+            nameValue.length > 16 && (
+              <p className={styles.textError}>No more than 16 characters</p>
+            )}
           {required && nameValue.length === 0 && (
             <p className={styles.textError}>Required</p>
           )}
@@ -167,9 +203,16 @@ function Modal1({ setActive, setPage }) {
             placeholder="Type breed"
             required
           />
-          {!inputActiveBreed && breedValue.length !== 0 && (
-            <p className={styles.textError}>Breed of your pet</p>
-          )}
+          {!inputActiveBreed &&
+            breedValue.length !== 0 &&
+            breedValue.length < 2 && (
+              <p className={styles.textError}>Must be at least 2 characters</p>
+            )}
+          {!inputActiveName &&
+            breedValue.length !== 0 &&
+            breedValue.length > 16 && (
+              <p className={styles.textError}>No more than 16 characters</p>
+            )}
           {required && breedValue.length === 0 && (
             <p className={styles.textError}>Required</p>
           )}
