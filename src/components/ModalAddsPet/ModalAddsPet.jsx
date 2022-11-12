@@ -8,18 +8,18 @@ import styles from './ModalAddsPet.module.scss';
 
 function ModalAddsPet({ active, setActive }) {
   const [page, setPage] = useState(1);
-  const [modal1Values, setModal1Values] = useState({});
+  const [modal1Values, setModal1Values] = useState({
+    name: '',
+    birthday: '',
+    breed: '',
+  });
+  const [modal2Values, setModal2Values] = useState({
+    comments: '',
+    photo: '',
+  });
 
   const takesInputeValues = data => {
-    const { name, birthday, breed } = data;
-
-    const modalDate1 = {
-      name: name,
-      birthday: birthday,
-      breed: breed,
-    };
-
-    setModal1Values(modalDate1);
+    setModal1Values(data);
   };
 
   const createPetsPost = data => {
@@ -30,15 +30,15 @@ function ModalAddsPet({ active, setActive }) {
     formData.append('comments', data.comments);
     formData.append('photo', data.file);
 
-    const nnn = {
-      name: modal1Values.name,
-      birthday: modal1Values.birthday,
-      breed: modal1Values.breed,
-      comments: data.comments,
-      photo: data.file,
-    };
+    // const nnn = {
+    //   name: modal1Values.name,
+    //   birthday: modal1Values.birthday,
+    //   breed: modal1Values.breed,
+    //   comments: data.comments,
+    //   photo: data.file,
+    // };
 
-    console.log(nnn);
+    // console.log(nnn);
   };
 
   return (
@@ -53,6 +53,7 @@ function ModalAddsPet({ active, setActive }) {
             setPage={setPage}
             createPetsPost={takesInputeValues}
             active={active}
+            modalDefaultValues={modal1Values}
           />
         )}
         {page === 2 && (
@@ -61,6 +62,8 @@ function ModalAddsPet({ active, setActive }) {
             createPetsPost={createPetsPost}
             setActive={setActive}
             active={active}
+            setModal2Values={setModal2Values}
+            modalDefaultValues={modal2Values}
           />
         )}
         <button className={styles.button} onClick={() => setActive(false)}>

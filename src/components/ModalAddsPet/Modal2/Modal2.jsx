@@ -4,12 +4,23 @@ import fotoSelect from '../../../image/svg/fotoSelect.svg';
 
 import styles from './Modal2.module.scss';
 
-function Modal2({ setPage, createPetsPost, setActive, active }) {
+function Modal2({
+  setPage,
+  createPetsPost,
+  setActive,
+  active,
+  setModal2Values,
+  modalDefaultValues,
+}) {
   const [inputActiveComments, setInputActiveComments] = useState(true);
-  const [commentsValue, setCommentsValue] = useState('');
+  const [commentsValue, setCommentsValue] = useState(
+    modalDefaultValues ? modalDefaultValues.comments : ''
+  );
   const [required, setRequired] = useState(false);
   const [fileValue, setFileValue] = useState([]);
-  const [picture, setPicture] = useState('');
+  const [picture, setPicture] = useState(
+    modalDefaultValues ? modalDefaultValues.photo : ''
+  );
 
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -24,6 +35,9 @@ function Modal2({ setPage, createPetsPost, setActive, active }) {
           setInputActiveComments(false);
         }
 
+        setModal2Values(prevState => {
+          return { ...prevState, comments: value };
+        });
         setCommentsValue(value);
         break;
 
@@ -70,6 +84,9 @@ function Modal2({ setPage, createPetsPost, setActive, active }) {
       reader.onloadend = () => {
         const base64data = reader.result;
         setPicture(base64data);
+        setModal2Values(prevState => {
+          return { ...prevState, photo: base64data };
+        });
       };
     }
   };
@@ -78,11 +95,11 @@ function Modal2({ setPage, createPetsPost, setActive, active }) {
     if (!active) {
       setRequired(false);
       setFileValue([]);
-      setPicture('');
-      setCommentsValue('');
+
+      setModal2Values({ comments: '', photo: '' });
       setPage(1);
     }
-  }, [active, setPage]);
+  }, [active, setModal2Values, setPage]);
 
   return (
     <div className={styles.container}>

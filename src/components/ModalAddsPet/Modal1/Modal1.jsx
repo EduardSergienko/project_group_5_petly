@@ -2,13 +2,25 @@ import { useState, useEffect } from 'react';
 
 import styles from './Modal1.module.scss';
 
-function Modal1({ setActive, setPage, createPetsPost, active }) {
+function Modal1({
+  setActive,
+  setPage,
+  createPetsPost,
+  active,
+  modalDefaultValues,
+}) {
   const [inputActiveName, setInputActiveName] = useState(true);
   const [inputActiveBirthday, setInputActiveBirthday] = useState(true);
   const [inputActiveBreed, setInputActiveBreed] = useState(true);
-  const [nameValue, setNameValue] = useState('');
-  const [birthdayValue, setBirthdayValue] = useState('');
-  const [breedValue, setBreedValue] = useState('');
+  const [nameValue, setNameValue] = useState(
+    modalDefaultValues ? modalDefaultValues.name : ''
+  );
+  const [birthdayValue, setBirthdayValue] = useState(
+    modalDefaultValues ? modalDefaultValues.birthday : ''
+  );
+  const [breedValue, setBreedValue] = useState(
+    modalDefaultValues ? modalDefaultValues.breed : ''
+  );
   const [required, setRequired] = useState(false);
 
   const handleInputChange = e => {
