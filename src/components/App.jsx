@@ -8,6 +8,7 @@ import Home from 'pages/Home';
 const UserPage = lazy(() => import('../pages/UserPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
+const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
 
 export const App = () => {
   return (
@@ -17,6 +18,7 @@ export const App = () => {
           <Route index element={<Home />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/friends" element={<OurFriendsPage />} />
         </Route>
 
         <Route
