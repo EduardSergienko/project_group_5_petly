@@ -1,28 +1,8 @@
 @import '../../variables/variables.scss';
 
-// .title {
-//   font-weight: 500;
-//   font-size: 28px;
-//   line-height: 38px;
-
-//   margin: 0 0 24px 17px;
-//   color: $mainTextColor;
-// }
-
-// .userInformation {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   width: 411px;
-//   padding: 20px 16px 40px;
-
-//   box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
-//   border-radius: 0px 40px 40px 0px;
-//   background-color: $whiteColor;
-// }
-
 .form {
   width: 100%;
+  margin-bottom: 44px;
 }
 
 .field__wrapper {
@@ -133,6 +113,7 @@
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
   white-space: nowrap;
   font-weight: 400;
@@ -166,7 +147,6 @@
 
 .imageDone {
   width: 20px;
-  margin-right: 20px;
 }
 
 .list {
