@@ -38,8 +38,21 @@ const logIn = createAsyncThunk(
   }
 );
 
+const logOutUser = createAsyncThunk(
+  'user/logOutUser',
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post('/users/logout');
+      token.unset();
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 const operations = {
   register,
   logIn,
+  logOutUser,
 };
 export default operations;
