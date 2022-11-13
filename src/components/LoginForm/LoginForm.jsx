@@ -7,7 +7,6 @@ import { FiEyeOff, FiEye } from 'react-icons/fi';
 import { Dna } from 'react-loader-spinner';
 
 import * as Yup from 'yup';
-
 import { authOperations } from 'redux/auth';
 import styles from './LoginForm.module.scss';
 
