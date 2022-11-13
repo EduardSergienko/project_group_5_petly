@@ -97,9 +97,8 @@ function Modal2({
       setFileValue([]);
 
       setModal2Values({ comments: '', photo: '' });
-      setPage(1);
     }
-  }, [active, setModal2Values, setPage]);
+  }, [active, setModal2Values]);
 
   return (
     <div className={styles.container}>

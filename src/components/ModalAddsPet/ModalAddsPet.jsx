@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useState } from 'react';
 
 import { Modal1, Modal2 } from '.';
@@ -21,6 +22,22 @@ function ModalAddsPet({ active, setActive }) {
   const takesInputeValues = data => {
     setModal1Values(data);
   };
+
+  useEffect(() => {
+    if (active) {
+      setPage(1);
+      setModal1Values({
+        name: '',
+        birthday: '',
+        breed: '',
+      });
+
+      setModal2Values({
+        comments: '',
+        photo: '',
+      });
+    }
+  }, [active]);
 
   const createPetsPost = data => {
     const formData = new FormData();
