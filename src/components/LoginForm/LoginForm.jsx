@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { IconContext } from 'react-icons';
 import { FiEyeOff, FiEye } from 'react-icons/fi';
 import { Dna } from 'react-loader-spinner';
 
@@ -66,10 +67,22 @@ const LoginForm = ({ title }) => {
                 className={styles.input}
                 placeholder="Password"
               />
-              <p className={styles.icon} onClick={() => setShow(!show)}>
-                {show && <FiEye />}
-                {!show && <FiEyeOff />}
-              </p>
+              <span className={styles.icon} onClick={() => setShow(!show)}>
+                {show && (
+                  <IconContext.Provider
+                    value={{ style: { verticalAlign: 'middle' } }}
+                  >
+                    <FiEye />
+                  </IconContext.Provider>
+                )}
+                {!show && (
+                  <IconContext.Provider
+                    value={{ style: { verticalAlign: 'middle' } }}
+                  >
+                    <FiEyeOff />
+                  </IconContext.Provider>
+                )}
+              </span>
               <ErrorMessage
                 name="password"
                 render={msg => <div className={styles.errorMsg}>{msg}</div>}
