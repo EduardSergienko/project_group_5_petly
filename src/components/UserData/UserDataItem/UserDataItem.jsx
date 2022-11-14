@@ -61,7 +61,18 @@ function UserDataItem({
             pattern={pattern}
             placeholder={placeholder}
           />
-          {!inputActive && inputeValue.length !== 0 && (
+          {min &&
+            !inputActive &&
+            inputeValue.length < min &&
+            inputeValue.length !== 0 && (
+              <p className={styles.textError}>
+                Must be at least {min} characters
+              </p>
+            )}
+          {max && !inputActive && inputeValue.length > max && (
+            <p className={styles.textError}> No more than {max} characters</p>
+          )}
+          {!min && !max && !inputActive && inputeValue.length !== 0 && (
             <p className={styles.textError}>{example}</p>
           )}
           {required && inputeValue.length === 0 && (

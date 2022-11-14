@@ -3,9 +3,13 @@ import plus from '../../image/plus.png';
 
 import styles from './AddPetsButton.module.scss';
 
-function AddPetsButton({ onClickBtn }) {
+function AddPetsButton({ onClickBtn, customStyle }) {
   return (
-    <button className={styles.button} onClick={() => onClickBtn(true)}>
+    <button
+      className={styles.button}
+      style={customStyle}
+      onClick={() => onClickBtn(true)}
+    >
       Add pet
       <div className={styles.imageContainer}>
         <img className={styles.imageEllipse} src={ellipse} alt="ellipse" />

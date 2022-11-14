@@ -3,11 +3,32 @@
 .form {
   width: 100%;
   margin-bottom: 44px;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
+
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .field__wrapper {
   position: relative;
   margin-bottom: 32px;
+
+  @media screen and (max-width: 768px) {
+    order: 2;
+    margin-left: 60px;
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 400px) {
+    order: 1;
+    margin-left: 0px;
+    margin-bottom: 70px;
+  }
 }
 
 .field__file {
@@ -95,6 +116,10 @@
     opacity: 1;
     box-shadow: (0px 4px 10px $orangeColor);
   }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .span_file {
@@ -125,6 +150,20 @@
   background-color: $secondaryTextColor;
   color: $mainTextColor;
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    bottom: -30px;
+  }
+
+  @media screen and (max-width: 400px) {
+    bottom: -40px;
+    right: -40px;
+  }
+
+  @media screen and (max-width: 380px) {
+    bottom: -40px;
+    right: 0;
+  }
 }
 
 .buttonDone {
@@ -138,18 +177,39 @@
   &:hover {
     box-shadow: 0 0 4px 0px $orangeColor;
   }
+
+  @media screen and (max-width: 400px) {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .imageCamera {
   width: 20px;
   margin-right: 5px;
+
+  @media screen and (max-width: 400px) {
+    width: 18px;
+  }
 }
 
 .imageDone {
   width: 20px;
+
+  @media screen and (max-width: 400px) {
+    width: 12.5px;
+  }
 }
 
 .list {
   width: 100%;
   list-style: none;
+
+  @media screen and (max-width: 768px) {
+    order: 1;
+  }
+
+  @media screen and (max-width: 400px) {
+    order: 2;
+  }
 }

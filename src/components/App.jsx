@@ -6,6 +6,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 import Home from 'pages/Home';
 import AdaptiveImage from 'components/AdaptiveImage/AdaptiveImage';
+import Loader from './Loader/Loader';
 
 const UserPage = lazy(() => import('../pages/UserPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
@@ -13,7 +14,7 @@ const LoginPage = lazy(() => import('pages/LoginPage'));
 
 export const App = () => {
   return (
-    <Suspense fallback={'Loading...'}>
+    <Suspense fallback={<Loader size={50} />}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />

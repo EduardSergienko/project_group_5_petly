@@ -2,6 +2,14 @@
 
 .container {
   display: flex;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 400px) {
+    // bottom: -10px;
+  }
 }
 
 .title {
@@ -9,8 +17,13 @@
   font-size: 28px;
   line-height: 38px;
 
-  margin: 0 0 24px 17px;
   color: $mainTextColor;
+
+  @media screen and (max-width: 400px) {
+    font-size: 20px;
+    line-height: 27px;
+    letter-spacing: 0.04em;
+  }
 }
 
 .userInformation {
@@ -23,4 +36,41 @@
   box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
   border-radius: 0px 40px 40px 0px;
   background-color: $secondaryTextColor;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding: 24px 40px 24px 32px;
+  }
+
+  @media screen and (max-width: 400px) {
+    padding: 20px 12px 20px 16px;
+    box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
+    border-radius: 20px;
+    width: 100%;
+  }
+}
+
+.containerInformation {
+  @media screen and (max-width: 768px) {
+    margin-right: 32px;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 400px) {
+    margin: 0 20px 47px;
+  }
+}
+
+.titleContainer {
+  margin: 0 0 24px 17px;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 20px 32px;
+  }
+
+  @media screen and (max-width: 400px) {
+    margin: 0 0 18px 20px;
+  }
 }

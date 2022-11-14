@@ -6,15 +6,28 @@
   width: 100%;
 
   padding: 0 16px 0 32px;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 32px;
+  }
+
+  @media screen and (max-width: 400px) {
+    padding: 0 20px;
+  }
 }
 
 .containerBtn {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 40px;
 
   margin-bottom: 24px;
+
+  @media screen and (max-width: 400px) {
+    margin-bottom: 32px;
+  }
 }
 
 .title {
@@ -22,6 +35,12 @@
   font-size: 28px;
   line-height: 38px;
 
-  margin: 0 0 24px 17px;
+  // margin: 0 0 24px 17px;
   color: $mainTextColor;
+
+  @media screen and (max-width: 400px) {
+    font-size: 20px;
+    line-height: 27px;
+    letter-spacing: 0.04em;
+  }
 }

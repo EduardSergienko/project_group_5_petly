@@ -9,7 +9,7 @@ import close from '../../image/svg/closeLine.svg';
 
 import styles from './ModalAddsPet.module.scss';
 
-function ModalAddsPet({ active, setActive }) {
+function ModalAddsPet({ active, setActive, setmodalActivefForTablet }) {
   const [page, setPage] = useState(1);
   const [modal1Values, setModal1Values] = useState({
     name: '',
@@ -66,12 +66,16 @@ function ModalAddsPet({ active, setActive }) {
   return (
     <div
       className={styles.container + ' ' + (active ? styles.active : '')}
-      onClick={() => setActive(false)}
+      onClick={() => {
+        setActive(false);
+        setmodalActivefForTablet(false);
+      }}
     >
       <div className={styles.modal} onClick={e => e.stopPropagation()}>
         {page === 1 && (
           <Modal1
             setActive={setActive}
+            setActiveTablet={setmodalActivefForTablet}
             setPage={setPage}
             createPetsPost={takesInputeValues}
             active={active}
@@ -83,12 +87,19 @@ function ModalAddsPet({ active, setActive }) {
             setPage={setPage}
             createPetsPost={createPetsPost}
             setActive={setActive}
+            setActiveTablet={setmodalActivefForTablet}
             active={active}
             setModal2Values={setModal2Values}
             modalDefaultValues={modal2Values}
           />
         )}
-        <button className={styles.button} onClick={() => setActive(false)}>
+        <button
+          className={styles.button}
+          onClick={() => {
+            setActive(false);
+            setmodalActivefForTablet(false);
+          }}
+        >
           <img className={styles.imgB} src={close} alt="close" />
         </button>
       </div>

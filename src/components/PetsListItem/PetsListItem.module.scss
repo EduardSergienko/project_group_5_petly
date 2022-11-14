@@ -10,8 +10,15 @@
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 40px;
 
+  overflow: hidden;
+
   & + & {
     margin-top: 22px;
+  }
+
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+    padding: 16px 20px 40px;
   }
 }
 
@@ -21,11 +28,23 @@
 
   // border-radius: 40px;
   // overflow: hidden;
+
+  @media screen and (max-width: 400px) {
+    width: 240px;
+    margin-right: 0px;
+
+    margin-bottom: 20px;
+  }
 }
 
 .image {
   width: 161px;
   border-radius: 40px;
+
+  @media screen and (max-width: 400px) {
+    width: 240px;
+    border-radius: 20px;
+  }
 }
 
 .containerText {
@@ -47,6 +66,15 @@
 
   &:last-child {
     margin-top: 16px;
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: 14px;
+    line-height: 19px;
+
+    &:last-child {
+      margin-top: 12px;
+    }
   }
 }
 
@@ -76,10 +104,12 @@
   &:hover {
     background-image: url(../../image/svg/deleteHover.svg);
   }
-}
 
-.imageDel {
-  width: 24px;
+  @media screen and (max-width: 400px) {
+    top: 260px;
+    right: 10px;
+    background-color: transparent;
+  }
 }
 
 .loader {
@@ -91,4 +121,9 @@
   right: 20px;
   width: 44px;
   height: 44px;
+
+  @media screen and (max-width: 400px) {
+    top: 260px;
+    right: 10px;
+  }
 }

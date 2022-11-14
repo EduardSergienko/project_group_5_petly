@@ -8,6 +8,7 @@ function Modal2({
   setPage,
   createPetsPost,
   setActive,
+  setActiveTablet,
   active,
   setModal2Values,
   modalDefaultValues,
@@ -73,6 +74,7 @@ function Modal2({
 
     createPetsPost(data);
     setActive(false);
+    setActiveTablet(false);
   };
 
   const handleChange = e => {
