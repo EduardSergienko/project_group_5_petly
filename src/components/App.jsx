@@ -10,6 +10,7 @@ import AdaptiveImage from 'components/AdaptiveImage/AdaptiveImage';
 const UserPage = lazy(() => import('../pages/UserPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
+const NewsPage = lazy(() => import('pages/NewsPage'));
 
 export const App = () => {
   return (
@@ -35,16 +36,25 @@ export const App = () => {
               </PublicRoute>
             }
           />
-        </Route>
 
-        <Route
-          path="user"
-          element={
-            <PrivateRoute path="/login">
-              <UserPage />
-            </PrivateRoute>
-          }
-        />
+          <Route
+            path="user"
+            element={
+              <PrivateRoute path="/login">
+                <UserPage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="news"
+            element={
+              <PublicRoute>
+                <NewsPage />
+              </PublicRoute>
+            }
+          />
+        </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
