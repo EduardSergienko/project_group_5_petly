@@ -1,16 +1,15 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+
 import FirstStep from './FirstStep';
 import SecondStep from './SecondStep';
 import styles from './AuthForm.module.scss';
 import { authOperations } from 'redux/auth';
 
 const AuthForm = () => {
-  const [page, setPage] = useState(0);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfPassword, setShowConfPassword] = useState(false);
   const dispatch = useDispatch();
+  const [step, setStep] = useState(0);
 
   const [formData, setFormData] = useState({
     email: '',
@@ -21,63 +20,53 @@ const AuthForm = () => {
     phone: '',
   });
 
-  const PageDisplay = () => {
-    if (page === 0) {
-      return (
-        <FirstStep
-          formData={formData}
-          setFormData={setFormData}
-          showPassword={showPassword}
-          setShowPassword={setShowPassword}
-          showConfPassword={showConfPassword}
-          setShowConfPassword={setShowConfPassword}
-        />
-      );
-    }
-
-    if (page === 1) {
-      return <SecondStep formData={formData} setFormData={setFormData} />;
-    }
+  const makeDispatchFormData = formData => {
+    dispatch(authOperations.register(formData));
   };
 
-  const handleFormSubmit = evt => {
-    evt.preventDefault();
-    if (page === 1) {
-      console.log('test');
-      dispatch(authOperations.register(formData));
-    } else {
-      setPage(prevPage => prevPage + 1);
+  const handleNextStep = (newDate, final = false) => {
+    setFormData(prev => ({ ...prev, ...newDate }));
+
+    if (final) {
+      makeDispatchFormData(newDate);
+      return;
+    }
+
+    setStep(prev => prev + 1);
+  };
+
+  const handlePrevStep = newDate => {
+    setFormData(prev => ({ ...prev, ...newDate }));
+    setStep(prev => prev - 1);
+  };
+
+  const PageDisplay = () => {
+    if (step === 0) {
+      return <FirstStep onNextStep={handleNextStep} formData={formData} />;
+    }
+
+    if (step === 1) {
+      return (
+        <SecondStep
+          onNextStep={handleNextStep}
+          onPrevStep={handlePrevStep}
+          formData={formData}
+        />
+      );
     }
   };
 
   return (
     <div className={styles.formWrap}>
       <h1 className={styles.title}>Registration</h1>
+      {PageDisplay()}
 
-      <form className={styles.form} onSubmit={handleFormSubmit}>
-        {PageDisplay()}
-
-        <button className={styles.button} type={'submit'}>
-          {page === 1 ? 'Submit' : 'Next'}
-        </button>
-
-        <button
-          className={page === 0 ? styles.buttonNext : styles.button}
-          disabled={page === 0}
-          onClick={() => {
-            setPage(prevPage => prevPage - 1);
-          }}
-          type="button"
-        >
-          Back
-        </button>
-        <p className={styles.textHint}>
-          Already have an account?&nbsp;
-          <NavLink className={styles.link} to="/login">
-            Login
-          </NavLink>
-        </p>
-      </form>
+      <p className={styles.textHint}>
+        Already have an account?&nbsp;
+        <NavLink className={styles.link} to="/login">
+          Login
+        </NavLink>
+      </p>
     </div>
   );
 };
