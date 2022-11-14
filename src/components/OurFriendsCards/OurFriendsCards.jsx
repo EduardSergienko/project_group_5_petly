@@ -4,10 +4,13 @@ const OurFriendsPage = () => {
   const arr = [
     {
       title: 'ЛКП "ЛЕВ"',
-      time: '8-19',
+      url: "https://lkplev.com/",
+      addressUrl: "https://goo.gl/maps/4xMfxtahHPfXeAYU8",
+      imageUrl: "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_289.png",
       adress: 'Grigorenka Street, 25',
-      email: 'barbos@gmail.com',
+      workDays: null,
       phone: '0664880480',
+      email: 'null',
     },
     {
       title: 'Барбос',
@@ -15,6 +18,48 @@ const OurFriendsPage = () => {
       adress: 'Grigorenka Street, 3',
       email: 'barbos@gmail.com',
       phone: '4880480',
+    },
+    {
+      title: 'ЛКП "ЛЕВ"',
+      time: '',
+      adress: '',
+      email: 'barbos@gmail.com',
+      phone: '0664880480',
+    },
+    {
+      title: 'ЛКП "ЛЕВ"',
+      time: '',
+      adress: '',
+      email: 'barbos@gmail.com',
+      phone: '0664880480',
+    },
+    {
+      title: 'ЛКП "ЛЕВ"',
+      time: '',
+      adress: '',
+      email: 'barbos@gmail.com',
+      phone: '0664880480',
+    },
+    {
+      title: 'ЛКП "ЛЕВ"',
+      time: '',
+      adress: '',
+      email: 'barbos@gmail.com',
+      phone: '0664880480',
+    },
+    {
+      title: 'ЛКП "ЛЕВ"',
+      time: '',
+      adress: '',
+      email: 'barbos@gmail.com',
+      phone: '0664880480',
+    },
+    {
+      title: 'ЛКП "ЛЕВ"',
+      time: '',
+      adress: '',
+      email: 'barbos@gmail.com',
+      phone: '0664880480',
     },
     {
       title: 'ЛКП "ЛЕВ"',
@@ -38,19 +83,19 @@ const OurFriendsPage = () => {
               <h3>{title}</h3>
               <ul>
                 <li>
-                  Time:
+                  Work Hours:<br></br>
                   {time ? <span>{time}</span> : <span>----------</span>}
                 </li>
                 <li>
-                  Adress:
+                  Adress:<br></br>
                   {adress ? <span>{adress}</span> : <span>----------</span>}
                 </li>
                 <li>
-                  Email:
+                  Email:<br></br>
                   {email ? <span>{email}</span> : <span>----------</span>}
                 </li>
                 <li>
-                  Phone:
+                  Phone:<br></br>
                   {phone ? <span>{phone}</span> : <span>----------</span>}
                 </li>
               </ul>
