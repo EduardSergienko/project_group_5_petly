@@ -10,7 +10,13 @@ const userSlice = createSlice({
   initialState,
   extraReducers: {
     [authOperations.userOwnPosts.fulfilled](state, { payload }) {
-      state.userPosts = [...payload];
+      state.userPosts = payload;
+    },
+    [authOperations.createUserOwnPost.fulfilled](state, { payload }) {
+      state.userPosts = [...state.userPosts, payload];
+    },
+    [authOperations.deleteUserOwnPost.fulfilled]: (state, { payload }) => {
+      state.userPosts = state.userPosts.filter(({ id }) => id !== payload);
     },
   },
 });

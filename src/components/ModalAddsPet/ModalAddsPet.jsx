@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { userOperations } from '../../redux/user';
 
 import { Modal1, Modal2 } from '.';
 
@@ -17,6 +20,7 @@ function ModalAddsPet({ active, setActive }) {
     comments: '',
     photo: '',
   });
+  const dispatch = useDispatch();
 
   const takesInputeValues = data => {
     setModal1Values(data);
@@ -46,13 +50,15 @@ function ModalAddsPet({ active, setActive }) {
     formData.append('comments', data.comments);
     formData.append('photo', data.file);
 
-    // const nnn = {
-    //   name: modal1Values.name,
-    //   birthday: modal1Values.birthday,
-    //   breed: modal1Values.breed,
-    //   comments: data.comments,
-    //   photo: data.file,
-    // };
+    const nnn = {
+      name: modal1Values.name,
+      birthday: modal1Values.birthday,
+      breed: modal1Values.breed,
+      comments: data.comments,
+      // photo: data.file,
+    };
+
+    dispatch(userOperations.createUserOwnPost(nnn));
 
     // console.log(nnn);
   };

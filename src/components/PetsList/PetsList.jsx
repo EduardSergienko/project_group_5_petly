@@ -3,20 +3,38 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { userOperations, userSelectors } from '../../redux/user';
 
-// import PetsListItem from '../PetsListItem/PetsListItem';
-
-import styles from './PetsList.module.scss';
+import PetsListItem from '../PetsListItem/PetsListItem';
 
 function PetsList() {
   const dispatch = useDispatch();
   const ownPosts = useSelector(userSelectors.getUserOwnPosts);
-  console.log(ownPosts);
+  const [loader, setLoader] = useState(null);
 
   useEffect(() => {
     dispatch(userOperations.userOwnPosts());
   }, [dispatch]);
 
-  return <ul></ul>;
+  const activeLoader = id => {
+    setLoader(id);
+  };
+
+  return (
+    <ul>
+      {ownPosts?.map(({ id, birthday, breed, comments, name, photo }) => (
+        <PetsListItem
+          key={id}
+          id={id}
+          birthday={birthday}
+          breed={breed}
+          comments={comments}
+          name={name}
+          photo={photo}
+          active={loader === id}
+          activeLoader={activeLoader}
+        />
+      ))}
+    </ul>
+  );
 }
 
 export default PetsList;
