@@ -3,8 +3,7 @@ import * as Yup from 'yup';
 import styles from './AuthForm.module.scss';
 
 const SecondStep = ({ onNextStep, onPrevStep, formData }) => {
-  const phoneRegExp =
-    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+  const phoneRegExp = /(?=.*\+[0-9]{3}\s?[0-9]{2}\s?[0-9]{3}\s?[0-9]{4}$)/;
 
   const validationSecondStepSchema = Yup.object({
     name: Yup.string().min(4, 'Name is too short').required('Required'),
@@ -13,7 +12,7 @@ const SecondStep = ({ onNextStep, onPrevStep, formData }) => {
       .required('required')
       .matches(phoneRegExp, 'Phone number is not valid')
       .min(10, 'too short')
-      .max(10, 'too long'),
+      .max(14, 'too long'),
   });
 
   const handleFormSubmit = values => {
@@ -74,7 +73,6 @@ const SecondStep = ({ onNextStep, onPrevStep, formData }) => {
 
             <button
               onClick={() => {
-                console.log(values);
                 onPrevStep(values);
               }}
               className={styles.button}

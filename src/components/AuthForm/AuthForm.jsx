@@ -21,7 +21,6 @@ const AuthForm = () => {
   });
 
   const makeDispatchFormData = formData => {
-    console.log('submitted', formData);
     dispatch(authOperations.register(formData));
   };
 
