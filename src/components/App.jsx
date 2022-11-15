@@ -8,6 +8,7 @@ import Home from 'pages/Home';
 import AdaptiveImage from 'components/AdaptiveImage/AdaptiveImage';
 
 const UserPage = lazy(() => import('../pages/UserPage'));
+const NoticesPage = lazy(() => import('../pages/NoticesPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 
@@ -35,6 +36,15 @@ export const App = () => {
               </PublicRoute>
             }
           />
+
+          <Route
+            path="notices"
+            element={
+              // <PublicRoute restricted >
+                <NoticesPage />
+              // </PublicRoute>
+            }
+          />
         </Route>
 
         <Route
@@ -45,6 +55,8 @@ export const App = () => {
             </PrivateRoute>
           }
         />
+
+        
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
