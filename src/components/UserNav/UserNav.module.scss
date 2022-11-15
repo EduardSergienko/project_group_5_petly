@@ -1,0 +1,41 @@
+@import '../../variables/variables.scss';
+
+.userNavWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+    margin-right: 20px;
+    margin-left: 386px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 0;
+    margin-right: 0;
+    margin-left: 509px;
+  }
+}
+
+.userNavIcon {
+  margin-right: 13.5px;
+}
+.userNavLink {
+  display: flex;
+  align-items: center;
+  background-color: $orangeColor;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  letter-spacing: 0.04em;
+  color: $secondaryTextColor;
+  padding: 8px 36px;
+  // border: 2px solid $orangeColor;
+  border-radius: 40px;
+
+  // &:hover {
+  //   color: $secondaryTextColor;
+  //   background-color: $orangeColor;
+  // }
+}
