@@ -12,8 +12,6 @@ function User() {
   const [width, setWidth] = useState(window.innerWidth);
   const mobileWidth = width <= 768 && width > 480;
 
-  console.log(width);
-
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
