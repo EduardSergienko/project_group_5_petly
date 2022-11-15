@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import doneVector from '../../../image/doneVector.png';
 import edit from '../../../image/edit.png';
@@ -6,6 +6,8 @@ import edit from '../../../image/edit.png';
 import styles from './UserDataItem.module.scss';
 
 function UserDataItem({
+  id,
+  updateUser,
   title,
   pattern,
   type,
@@ -15,15 +17,23 @@ function UserDataItem({
   required,
   example,
   defaultVaule,
+  name,
 }) {
   const [active, setActive] = useState(false);
   const [inputeValue, setInputeValue] = useState(defaultVaule ?? '');
   const [inputActive, setInputActive] = useState(true);
 
+  useEffect(() => {
+    if (defaultVaule) {
+      setInputeValue(defaultVaule);
+    }
+  }, [defaultVaule]);
+
   const handleClick = e => {
     e.preventDefault();
     if (active === true && (inputeValue.length !== 0 || !required)) {
       setActive(false);
+      updateUser(id, { name: inputeValue });
       return;
     }
 
@@ -55,7 +65,7 @@ function UserDataItem({
               !inputActive && inputeValue.length !== 0 ? styles.noValidate : ''
             }`}
             type={type}
-            name={title}
+            name={name}
             value={inputeValue}
             onChange={onInputeChange}
             pattern={pattern}

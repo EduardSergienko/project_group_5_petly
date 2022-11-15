@@ -1,33 +1,34 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL =
-  'https://63722089025414c63706eb42.mockapi.io/api/user/';
+// axios.defaults.baseURL =
+//   'https://63722089025414c63706eb42.mockapi.io/api/user/';
 
-export const userOwnPosts = createAsyncThunk(
-  'user/userOwnPosts',
+export const userPosts = createAsyncThunk(
+  'user/userPosts',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get('/userOwnPosts');
-      return data;
+      // const { data } = await axios.get('/notices/user/own');
+      // return data;
     } catch (error) {
+      console.log(error);
       return rejectWithValue(error);
     }
   }
 );
 
-export const createUserOwnPost = createAsyncThunk(
-  'user/createUserOwnPost',
-  async ({ birthday, breed, comments, name }, { rejectWithValue }) => {
-    const post = {
-      birthday,
-      breed,
-      comments,
-      name,
-      // photo,
-    };
+export const createUserPost = createAsyncThunk(
+  'user/createUserPost',
+  async (post, { rejectWithValue }) => {
+    // const post = {
+    //   birthDay,
+    //   breed,
+    //   comments,
+    //   name,
+    //   photo,
+    // };
     try {
-      const { data } = await axios.post('/userOwnPosts', post);
+      const { data } = await axios.post('/animals', post);
       return data;
     } catch (error) {
       return rejectWithValue(error);
@@ -35,11 +36,11 @@ export const createUserOwnPost = createAsyncThunk(
   }
 );
 
-export const deleteUserOwnPost = createAsyncThunk(
-  'user/deleteUserOwnPost',
+export const deleteUserPost = createAsyncThunk(
+  'user/deleteUserPost',
   async (id, { rejectWithValue }) => {
     try {
-      await axios.delete(`/userOwnPosts/${id}`);
+      await axios.delete(`/animals/${id}`);
       return id;
     } catch (error) {
       return rejectWithValue(error);
@@ -48,8 +49,8 @@ export const deleteUserOwnPost = createAsyncThunk(
 );
 
 const operations = {
-  userOwnPosts,
-  createUserOwnPost,
-  deleteUserOwnPost,
+  userPosts,
+  createUserPost,
+  deleteUserPost,
 };
 export default operations;

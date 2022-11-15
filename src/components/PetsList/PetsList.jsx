@@ -10,8 +10,10 @@ function PetsList() {
   const ownPosts = useSelector(userSelectors.getUserOwnPosts);
   const [loader, setLoader] = useState(null);
 
+  // console.log(ownPosts);
+
   useEffect(() => {
-    dispatch(userOperations.userOwnPosts());
+    dispatch(userOperations.userPosts());
   }, [dispatch]);
 
   const activeLoader = id => {
@@ -20,16 +22,16 @@ function PetsList() {
 
   return (
     <ul>
-      {ownPosts?.map(({ id, birthday, breed, comments, name, photo }) => (
+      {ownPosts?.map(({ _id, birthday, breed, comments, name, photo }) => (
         <PetsListItem
-          key={id}
-          id={id}
+          key={_id}
+          id={_id}
           birthday={birthday}
           breed={breed}
           comments={comments}
           name={name}
           photo={photo}
-          active={loader === id}
+          active={loader === _id}
           activeLoader={activeLoader}
         />
       ))}

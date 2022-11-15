@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'http://localhost:3000/api/auth';
+axios.defaults.baseURL = 'http://localhost:3001/api'; // 3000
 
 const token = {
   set(token) {
@@ -17,7 +17,7 @@ const register = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     console.log('in redux', credentials);
     try {
-      const { data } = await axios.post('/register', credentials);
+      const { data } = await axios.post('/auth/register', credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -30,7 +30,7 @@ const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/login', credentials);
+      const { data } = await axios.post('/auth/login', credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -43,10 +43,48 @@ const logOutUser = createAsyncThunk(
   'user/logOutUser',
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post('/logout');
+      await axios.get('/auth/logout');
       token.unset();
     } catch (error) {
       return rejectWithValue(error);
+    }
+  }
+);
+
+const getAvatarUser = createAsyncThunk(
+  'auth/getAvatarUser',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      // const { data } = await axios.patch('/auth/user/avatars', credentials);
+      // return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+const updateUserInformation = createAsyncThunk(
+  'auth/updateUserInformation',
+  async (id, credentials, { rejectWithValue }) => {
+    console.log(id, credentials);
+
+    try {
+      const { data } = await axios.get(`/auth/${id}`, credentials);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+const getCurrentUser = createAsyncThunk(
+  'auth/getCurrentUser',
+  async (token, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get(`/auth/current`, token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
     }
   }
 );
@@ -55,5 +93,8 @@ const operations = {
   register,
   logIn,
   logOutUser,
+  getAvatarUser,
+  updateUserInformation,
+  getCurrentUser,
 };
 export default operations;

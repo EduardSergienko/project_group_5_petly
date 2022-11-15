@@ -9,14 +9,15 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   extraReducers: {
-    [authOperations.userOwnPosts.fulfilled](state, { payload }) {
+    [authOperations.userPosts.fulfilled](state, { payload }) {
       state.userPosts = payload;
     },
-    [authOperations.createUserOwnPost.fulfilled](state, { payload }) {
+    [authOperations.createUserPost.fulfilled](state, { payload }) {
       state.userPosts = [...state.userPosts, payload];
     },
-    [authOperations.deleteUserOwnPost.fulfilled]: (state, { payload }) => {
-      state.userPosts = state.userPosts.filter(({ id }) => id !== payload);
+    [authOperations.deleteUserPost.fulfilled]: (state, { payload }) => {
+      console.log(payload);
+      state.userPosts = state.userPosts.filter(({ _id }) => _id !== payload);
     },
   },
 });

@@ -36,7 +36,7 @@ function PetsListItem({
         <button
           className={styles.button}
           onClick={() => {
-            dispatch(userOperations.deleteUserOwnPost(id));
+            dispatch(userOperations.deleteUserPost(id));
             activeLoader(id);
           }}
         ></button>
