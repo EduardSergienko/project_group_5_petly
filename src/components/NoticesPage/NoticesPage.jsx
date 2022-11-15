@@ -1,7 +1,3 @@
-// import UserData from '../UserData/UserData';
-// import Logout from '../Logout/Logout';
-// import PetsData from '../PetsData/PetsData';
-// import Container from 'components/Container/Container';
 import NoticesSearch from './NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from './NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
