@@ -19,6 +19,7 @@ const authSlice = createSlice({
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
+      state.error = null;
       state.isLoggedIn = true;
     },
     [authOperations.register.rejected](state, action) {
@@ -31,6 +32,7 @@ const authSlice = createSlice({
     [authOperations.logIn.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
+      state.error = null;
       state.isLoggedIn = true;
     },
     [authOperations.logIn.rejected](state, action) {
