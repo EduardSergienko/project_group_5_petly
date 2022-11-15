@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Nav.module.scss';
-export default function Nav() {
+export default function Nav({ toggleMenu }) {
   return (
     <>
       <ul className={styles.navList}>
         <NavLink
+          onClick={toggleMenu}
           className={({ isActive }) =>
             isActive ? styles.active : styles.navLink
           }
@@ -13,6 +14,7 @@ export default function Nav() {
           News
         </NavLink>
         <NavLink
+          onClick={toggleMenu}
           className={({ isActive }) =>
             isActive ? styles.active : styles.navLink
           }
@@ -21,6 +23,7 @@ export default function Nav() {
           Find pet
         </NavLink>
         <NavLink
+          onClick={toggleMenu}
           className={({ isActive }) =>
             isActive ? styles.active : styles.navLink
           }

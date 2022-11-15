@@ -7,7 +7,6 @@
     padding-top: 12px;
   }
   @media screen and (max-width: 1279px) {
-    position: relative;
     align-items: center;
     justify-content: space-between;
   }
@@ -21,6 +20,7 @@
     background-color: $backgroundColor;
     position: absolute;
     top: 100px;
+    right: 0;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -37,4 +37,5 @@
 .responsiveNav {
   transform: none;
   height: 100vh;
+  z-index: 100;
 }
