@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './authOperations';
-// import { showError } from 'components/Notification/Notification';
+import notices from 'components/Notification/Notification';
 
 const initialState = {
   user: { name: null, email: null },
@@ -27,7 +27,7 @@ const authSlice = createSlice({
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
-      //   showError('Oops, something wrong, try again');
+      notices.showError('Oops, something wrong, try again');
     },
     [authOperations.logIn.fulfilled](state, action) {
       state.user = action.payload.user;
@@ -40,7 +40,7 @@ const authSlice = createSlice({
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
-      //   showError('Oops, something wrong, try again');
+      notices.showError('Oops, something wrong, try again');
     },
   },
 });
