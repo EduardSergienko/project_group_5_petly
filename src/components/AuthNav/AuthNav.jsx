@@ -1,14 +1,19 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './AuthNav.module.scss';
-export default function AuthNav() {
+
+export default function AuthNav({ toggleMenu }) {
   return (
     <div className={styles.authNavWrap}>
-      <Link className={styles.authNavLink} to="/login">
+      <NavLink onClick={toggleMenu} className={styles.authNavLink} to="login">
         Login
-      </Link>
-      <Link className={styles.authNavLink} to="/register">
+      </NavLink>
+      <NavLink
+        onClick={toggleMenu}
+        className={styles.authNavLink}
+        to="register"
+      >
         Registration
-      </Link>
+      </NavLink>
     </div>
   );
 }

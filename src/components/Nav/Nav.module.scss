@@ -9,7 +9,6 @@
 
   @media screen and (min-width: 1280px) {
     display: block;
-    margin-right: 362px;
   }
 }
 
@@ -23,6 +22,9 @@
   margin-bottom: 40px;
   &:last-child {
     margin-bottom: 0;
+  }
+  &:hover {
+    color: $orangeColor;
   }
   @media screen and (min-width: 1280px) {
     margin-right: 80px;
@@ -39,6 +41,7 @@
   letter-spacing: 0.04em;
   color: $orangeColor;
   margin-bottom: 40px;
+  text-decoration: 1px underline;
   &:last-child {
     margin-bottom: 0;
   }
