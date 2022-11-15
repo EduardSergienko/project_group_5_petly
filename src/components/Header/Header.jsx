@@ -34,8 +34,8 @@ export default function Header() {
                 isMenuOpen && styles.responsiveNav
               }`}
             >
-              <AuthNav />
-              <Nav />
+              <AuthNav toggleMenu={showNavBar} />
+              <Nav toggleMenu={showNavBar} />
             </nav>
           )}
           {tabletWidth && (
@@ -47,7 +47,7 @@ export default function Header() {
                   isMenuOpen && styles.responsiveNav
                 }`}
               >
-                <Nav />
+                <Nav toggleMenu={showNavBar} />
               </nav>
             </>
           )}

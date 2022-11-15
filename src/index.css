@@ -36,3 +36,6 @@ a {
 * {
   box-sizing: border-box;
 }
+img{
+  display: block;
+}
