@@ -5,9 +5,9 @@ export const userPosts = createAsyncThunk(
   'user/userPosts',
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get('/animals');
+      // const { data } = await axios.get('/animals');
       // console.log(data);
-      return data;
+      // return data;
     } catch (error) {
       console.log(error);
       return rejectWithValue(error);
@@ -20,7 +20,6 @@ export const createUserPost = createAsyncThunk(
   async (post, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/animals', post);
-      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error);
