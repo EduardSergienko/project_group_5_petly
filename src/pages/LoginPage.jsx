@@ -1,5 +1,5 @@
-import LoginForm from 'components/LoginForm/LoginForm';
-import AdaptiveImage from 'components/AdaptiveImage/AdaptiveImage';
+import LoginForm from 'components/LoginForm';
+import AdaptiveImage from 'components/AdaptiveImage';
 
 const LoginPage = () => {
   return (
