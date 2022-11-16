@@ -1,14 +1,7 @@
-import PuffLoader from 'react-spinners/PuffLoader';
+import styles from './Loader.module.scss';
 
-function Loader({ size }) {
-  return (
-    <PuffLoader
-      color="#F59256"
-      size={size}
-      aria-label="Loading Spinner"
-      data-testid="loader"
-    />
-  );
-}
+const Loader = () => {
+  return <div className={styles.loader} />;
+};
 
 export default Loader;

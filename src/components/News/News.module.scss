@@ -1,1 +1,130 @@
 @import 'variables/variables.scss';
+
+.newsWrap {
+  padding: 42px 20px 100px;
+
+  //   @media screen and (min-width: 768px) {
+  //     top: 29%;
+  //     // width: 608px;
+  //     // height: 449px;
+  //     padding: 60px 80px 40px 80px;
+
+  //     background-color: $secondaryTextColor;
+  //     box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
+  //     border-radius: 40px;
+  //   }
+
+  //   @media screen and (min-width: 1280px) {
+  //     top: 50%;
+  //     left: 50%;
+
+  //     transform: translate(-50%, -50%);
+  //     // width: 618px;
+  //     // height: 473px;
+  //     padding: 60px 80px;
+  //   }
+}
+
+.title {
+  margin-bottom: 28px;
+  text-align: center;
+
+  font-size: 24px;
+  line-height: 1.37em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: $mainTextColor;
+
+  //   @media screen and (min-width: 768px) {
+  //     font-weight: 500;
+  //     font-size: 36px;
+  //     line-height: 1.36em;
+  //   }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.input {
+  width: 280px;
+  height: 40px;
+  padding: 11px 14px 12px 14px;
+
+  color: #535353;
+  background-color: $secondaryTextColor;
+  border: 1px solid rgba(245, 146, 86, 0.5);
+  border-radius: 20px;
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.37em;
+  letter-spacing: 0.04em;
+  box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+
+  transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.03);
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem rgba(245, 146, 86, 0.5);
+  }
+}
+
+.newsItem {
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    width: 200px;
+    height: 4px;
+    margin-bottom: 4px;
+
+    background: linear-gradient(90deg, #ff634e 0%, #ffdf48 105.44%);
+    border-radius: 40px;
+  }
+}
+
+.articleName {
+  margin-bottom: 16px;
+
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.37em;
+  letter-spacing: -0.01em;
+  color: $mainTextColor;
+}
+.text {
+  margin-bottom: 20px;
+
+  font-size: 16px;
+  line-height: 1.37em;
+  color: #111321;
+}
+
+.additional {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  font-family: 'Manrope';
+  font-size: 16px;
+  line-height: 1.37em;
+  color: rgba(17, 17, 17, 0.6);
+}
+
+.readMore {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.37em;
+  text-decoration-line: underline;
+  color: $orangeColor;
+}

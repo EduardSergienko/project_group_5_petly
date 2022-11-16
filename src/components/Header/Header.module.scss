@@ -7,34 +7,10 @@
     padding-top: 12px;
   }
   @media screen and (max-width: 1279px) {
-    position: relative;
     align-items: center;
     justify-content: space-between;
   }
 
   @media screen and (min-width: 1280px) {
   }
-}
-
-.mainNav {
-  @media screen and (max-width: 1279px) {
-    background-color: $backgroundColor;
-    position: absolute;
-    top: 100px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    transition: 1s;
-    transform: translateY(-100vh);
-    justify-content: flex-start;
-  }
-
-  @media screen and (min-width: 1280px) {
-    display: flex;
-    align-items: center;
-  }
-}
-.responsiveNav {
-  transform: none;
-  height: 100vh;
 }

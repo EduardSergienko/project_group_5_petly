@@ -4,9 +4,24 @@
   font-weight: 700;
   font-size: 32px;
   line-height: 44px;
+  @media screen and (min-width: 768px) {
+    font-size: 68px;
+    line-height: 100px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 588px;
+  }
 }
 .homeSection {
-  background-image: url(../../image/main_page_img.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+  display: block;
+  position: absolute;
+  width: 100%;
+  @media screen and (min-width: 1280px) {
+    top: 85px;
+  }
+}
+.homeImg {
+  display: block;
+
+  width: 100%;
 }
