@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 
 import { userOperations } from '../../redux/user';
 
-import Loader from '../Loader/Loader';
+import Loader2 from '../Loader2/Loader2';
 import { DeleteButton } from '../../helpers';
 
 import styles from './PetsListItem.module.scss';
@@ -37,7 +37,7 @@ function PetsListItem({
       </div>
       {active ? (
         <div className={styles.loader}>
-          <Loader size={44} />
+          <Loader2 size={44} />
         </div>
       ) : (
         <DeleteButton
