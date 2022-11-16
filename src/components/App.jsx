@@ -7,7 +7,7 @@ import SharedLayout from './SharedLayout/SharedLayout';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 import Home from 'pages/Home';
-import AdaptiveImage from 'components/AdaptiveImage/AdaptiveImage';
+import AdaptiveImage from 'components/AdaptiveImage';
 import Loader from 'components/Loader';
 
 const UserPage = lazy(() => import('../pages/UserPage'));

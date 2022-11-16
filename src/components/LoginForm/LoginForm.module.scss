@@ -80,7 +80,7 @@
     box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:focus {
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: rgba(0, 0, 0, 0.02);
     outline: 0;
     box-shadow: 0 0 0 0.1rem rgba(245, 146, 86, 0.5);
   }

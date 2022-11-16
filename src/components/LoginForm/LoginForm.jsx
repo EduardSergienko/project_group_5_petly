@@ -9,6 +9,7 @@ import { Dna } from 'react-loader-spinner';
 import * as Yup from 'yup';
 import { authOperations } from 'redux/auth';
 import styles from './LoginForm.module.scss';
+import notices from 'helpers/Notification';
 
 const LoginForm = ({ title }) => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const LoginForm = ({ title }) => {
       .unwrap()
       .catch(() => {
         setLoading(false);
+        notices.showError('Oops, something wrong, try again');
       });
   };
 
