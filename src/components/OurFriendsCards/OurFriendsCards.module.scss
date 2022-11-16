@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 .div {
     padding: 12px 4px;
     border-radius: 20px;
@@ -37,3 +38,135 @@
     margin-bottom: 40px;
     }
     
+=======
+.ContainerFriendsCards {
+  padding: 12px 4px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+  width: 280px;
+  min-height: 192px;
+  height: auto;
+  margin-bottom: 15px;
+
+  display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    min-height: 246px;
+    margin-bottom: 32px;
+    padding: 0px 16px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 395px;
+    min-height: 287px;
+    padding: 0px 40px;
+  }
+}
+
+.FriendsThumb {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 16px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+  }
+  
+}
+
+.NameFriends {
+  text-align: center;
+  color: #f59256;
+  display: block;
+  font-size: 12px;
+  text-decoration: underline;
+  @media screen and (min-width: 768px) {
+  font-size: 16px;
+  }
+}
+
+.Title {
+  display: block;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: calc(33 / 24);
+  color: black;
+  margin: 47px;
+  text-align: center;
+}
+
+.CardsThumb{
+    display: flex;
+column-gap: 12px;
+margin-top: 12px;
+align-items: flex-start;
+
+@media screen and (min-width: 768px) {
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+
+}
+
+.MainThumb{
+    display: flex;
+justify-content: center;
+align-items: center;
+width: 110px;
+
+@media screen and (min-width: 1280px) {
+    width: auto;
+}
+}
+
+.SecThumb {
+    width: 150px;
+color: black;
+
+@media screen and (min-width: 768px) {
+margin-left: 15px;
+}
+}
+
+.CardItem {
+    font-weight: 500;
+    font-size: 12px;
+    color: #000;
+
+    &:not(:last-child) {
+        margin-bottom: 4px;
+        
+    }
+
+    @media screen and (min-width: 768px) {
+        font-size: 14px;
+}
+}
+
+.CardsImg{
+        display: block;
+        width: 100%;
+    }
+
+.CardLink {
+    color: inherit;
+text-decoration: underline;
+}
+
+.CardAddress {
+    color: #000000;
+    text-decoration: underline;
+}
+>>>>>>> Stashed changes

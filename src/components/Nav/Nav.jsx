@@ -26,7 +26,7 @@ export default function Nav() {
           }
           to="/friends"
         >
-          Our friend
+          Our friends
         </NavLink>
       </ul>
     </>
