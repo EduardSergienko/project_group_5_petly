@@ -5,7 +5,11 @@ const OurFriendsPage = () => {
   const [arr, setArr] = useState([]);
 
     useEffect(() => {
+<<<<<<< Updated upstream
         fetch('http://localho/friends').then(res => res.json()).then(({ data }) => {
+=======
+        fetch('https://team-api-blended2.herokuapp.com/friends').then(res => res.json()).then(({ data }) => {
+>>>>>>> Stashed changes
             console.log(data.friends)
             setArr(data.friends)
         }).catch(err => console.log(err.message))

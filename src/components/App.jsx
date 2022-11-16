@@ -9,7 +9,11 @@ const UserPage = lazy(() => import('../pages/UserPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
+>>>>>>> Stashed changes
 const NewsPage = lazy(() => import('pages/NewsPage'));
 >>>>>>> Stashed changes
 const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
@@ -57,6 +61,11 @@ export const App = () => {
                 <UserPage />
               </PrivateRoute>
             }
+          />
+
+          <Route 
+            path="/friends" 
+            element={<OurFriendsPage />} 
           />
 
           <Route

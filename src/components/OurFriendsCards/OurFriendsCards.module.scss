@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 .div {
     padding: 12px 4px;
     border-radius: 20px;
@@ -39,6 +40,8 @@
     }
     
 =======
+=======
+>>>>>>> Stashed changes
 .ContainerFriendsCards {
   padding: 12px 4px;
   border-radius: 20px;
@@ -50,9 +53,15 @@
   margin-bottom: 15px;
 
   display: flex;
+<<<<<<< Updated upstream
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+=======
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+>>>>>>> Stashed changes
 
   @media screen and (min-width: 768px) {
     width: 336px;
@@ -81,9 +90,13 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
+<<<<<<< Updated upstream
 
   }
   
+=======
+  }
+>>>>>>> Stashed changes
 }
 
 .NameFriends {
@@ -93,7 +106,11 @@
   font-size: 12px;
   text-decoration: underline;
   @media screen and (min-width: 768px) {
+<<<<<<< Updated upstream
   font-size: 16px;
+=======
+    font-size: 16px;
+>>>>>>> Stashed changes
   }
 }
 
@@ -107,6 +124,7 @@
   text-align: center;
 }
 
+<<<<<<< Updated upstream
 .CardsThumb{
     display: flex;
 column-gap: 12px;
@@ -168,5 +186,71 @@ text-decoration: underline;
 .CardAddress {
     color: #000000;
     text-decoration: underline;
+}
+>>>>>>> Stashed changes
+=======
+.CardsThumb {
+  display: flex;
+  column-gap: 12px;
+  margin-top: 12px;
+  align-items: flex-start;
+
+  @media screen and (min-width: 768px) {
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+}
+
+.MainThumb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+
+  @media screen and (min-width: 1280px) {
+    width: auto;
+  }
+}
+
+.SecThumb {
+  width: 150px;
+  color: black;
+
+  @media screen and (min-width: 768px) {
+    margin-left: 15px;
+  }
+}
+
+.CardItem {
+  font-weight: 500;
+  font-size: 12px;
+  color: #000;
+
+  &:not(:last-child) {
+    margin-bottom: 4px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+.CardsImg {
+  display: block;
+  width: 100%;
+}
+
+.CardLink {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.CardAddress {
+  color: #000000;
+  text-decoration: underline;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 >>>>>>> Stashed changes
