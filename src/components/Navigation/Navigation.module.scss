@@ -9,8 +9,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    transition: 1s;
-    transform: translateY(-100vh);
+    transition: 500ms;
+    transform: translateX(-100%);
     justify-content: flex-start;
   }
 
