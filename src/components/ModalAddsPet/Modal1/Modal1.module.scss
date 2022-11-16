@@ -15,6 +15,13 @@
   line-height: 49px;
 
   color: $mainTextColor;
+
+  @media screen and (max-width: 400px) {
+    font-size: 24px;
+    line-height: 33px;
+
+    margin-bottom: 28px;
+  }
 }
 
 .form {
@@ -28,6 +35,10 @@
 
   & + & {
     margin-top: 28px;
+
+    @media screen and (max-width: 400px) {
+      margin-top: 16px;
+    }
   }
 }
 
@@ -38,6 +49,13 @@
   font-size: 24px;
   line-height: 26px;
   color: $mainTextColor;
+
+  @media screen and (max-width: 400px) {
+    font-size: 18px;
+    line-height: 26px;
+
+    margin-bottom: 8px;
+  }
 }
 
 .input {
@@ -58,6 +76,12 @@
   &:focus {
     outline: none;
   }
+
+  @media screen and (max-width: 400px) {
+    width: 240px;
+    font-size: 14px;
+    line-height: 19px;
+  }
 }
 
 .noValidate {
@@ -70,11 +94,22 @@
   left: 10px;
   font-size: 15px;
   color: $errorColor;
+
+  @media screen and (max-width: 400px) {
+    font-size: 14px;
+    line-height: 19px;
+    bottom: -18px;
+  }
 }
 
 .buttonContainer {
   display: flex;
   justify-content: center;
+  margin-top: 40px;
+
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+  }
 }
 
 .cancel {
@@ -85,13 +120,19 @@
   color: $mainTextColor;
   background-color: $secondaryTextColor;
 
-  margin-top: 40px;
   padding: 8.5px 28px;
   width: 180px;
   border: 2px solid $orangeColor;
   border-radius: 40px;
 
   cursor: pointer;
+
+  @media screen and (max-width: 400px) {
+    order: 2;
+    width: 240px;
+    font-size: 16px;
+    line-height: 22px;
+  }
 }
 
 .next {
@@ -102,7 +143,6 @@
   color: $secondaryTextColor;
   background-color: $orangeColor;
 
-  margin-top: 40px;
   margin-left: 24px;
   padding: 8.5px 28px;
   width: 180px;
@@ -110,4 +150,13 @@
   border-radius: 40px;
 
   cursor: pointer;
+
+  @media screen and (max-width: 400px) {
+    order: 1;
+    width: 240px;
+    margin-left: 0px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 22px;
+  }
 }

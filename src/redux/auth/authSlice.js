@@ -30,7 +30,7 @@ const authSlice = createSlice({
       notices.showError('Oops, something wrong, try again');
     },
     [authOperations.logIn.fulfilled](state, action) {
-      state.user = action.payload.user;
+      // state.user = action.payload.user;
       state.token = action.payload.token;
       state.error = null;
       state.isLoggedIn = true;
@@ -40,6 +40,35 @@ const authSlice = createSlice({
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
+    },
+    [authOperations.logOutUser.fulfilled](state, action) {
+      state.error = null;
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+    },
+    [authOperations.getCurrentUser.fulfilled](state, { payload }) {
+      const {
+        _id,
+        name,
+        phone,
+        email,
+        dateOfBirth,
+        location,
+        avatarURL,
+        myFavorite,
+      } = payload.user;
+
+      state.user = {
+        id: _id,
+        name,
+        phone,
+        email,
+        dateOfBirth,
+        location,
+        avatarURL,
+        myFavorite,
+      };
     },
   },
 });

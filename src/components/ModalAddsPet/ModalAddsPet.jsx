@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { userOperations } from '../../redux/user';
 
 import { Modal1, Modal2 } from '.';
 
@@ -6,7 +9,7 @@ import close from '../../image/svg/closeLine.svg';
 
 import styles from './ModalAddsPet.module.scss';
 
-function ModalAddsPet({ active, setActive }) {
+function ModalAddsPet({ active, setActive, setmodalActivefForTablet }) {
   const [page, setPage] = useState(1);
   const [modal1Values, setModal1Values] = useState({
     name: '',
@@ -17,6 +20,7 @@ function ModalAddsPet({ active, setActive }) {
     comments: '',
     photo: '',
   });
+  const dispatch = useDispatch();
 
   const takesInputeValues = data => {
     setModal1Values(data);
@@ -41,31 +45,35 @@ function ModalAddsPet({ active, setActive }) {
   const createPetsPost = data => {
     const formData = new FormData();
     formData.append('name', modal1Values.name);
-    formData.append('birthday', modal1Values.birthday);
+    formData.append('birthDay', modal1Values.birthday);
     formData.append('breed', modal1Values.breed);
     formData.append('comments', data.comments);
-    formData.append('photo', data.file);
+    // formData.append('photo', data.file);
 
-    // const nnn = {
-    //   name: modal1Values.name,
-    //   birthday: modal1Values.birthday,
-    //   breed: modal1Values.breed,
-    //   comments: data.comments,
-    //   photo: data.file,
-    // };
+    const nnn = {
+      name: modal1Values.name,
+      birthDay: modal1Values.birthday,
+      breed: modal1Values.breed,
+      comments: data.comments,
+      // photo: data.file,
+    };
 
-    // console.log(nnn);
+    dispatch(userOperations.createUserPost(nnn));
   };
 
   return (
     <div
       className={styles.container + ' ' + (active ? styles.active : '')}
-      onClick={() => setActive(false)}
+      onClick={() => {
+        setActive(false);
+        setmodalActivefForTablet(false);
+      }}
     >
       <div className={styles.modal} onClick={e => e.stopPropagation()}>
         {page === 1 && (
           <Modal1
             setActive={setActive}
+            setActiveTablet={setmodalActivefForTablet}
             setPage={setPage}
             createPetsPost={takesInputeValues}
             active={active}
@@ -77,12 +85,19 @@ function ModalAddsPet({ active, setActive }) {
             setPage={setPage}
             createPetsPost={createPetsPost}
             setActive={setActive}
+            setActiveTablet={setmodalActivefForTablet}
             active={active}
             setModal2Values={setModal2Values}
             modalDefaultValues={modal2Values}
           />
         )}
-        <button className={styles.button} onClick={() => setActive(false)}>
+        <button
+          className={styles.button}
+          onClick={() => {
+            setActive(false);
+            setmodalActivefForTablet(false);
+          }}
+        >
           <img className={styles.imgB} src={close} alt="close" />
         </button>
       </div>

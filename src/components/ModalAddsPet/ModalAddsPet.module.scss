@@ -37,6 +37,11 @@
 
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 40px;
+
+  @media screen and (max-width: 400px) {
+    padding: 40px 20px;
+    border-radius: 20px;
+  }
 }
 
 // .link {
@@ -64,6 +69,11 @@
   background-color: #fdf7f2;
 
   cursor: pointer;
+
+  @media screen and (max-width: 400px) {
+    top: 20px;
+    right: 20px;
+  }
 }
 
 .imgB {
