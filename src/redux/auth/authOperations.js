@@ -15,10 +15,10 @@ const token = {
 const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectWithValue }) => {
-    console.log('in redux', credentials);
+    // console.log('in redux', credentials);
     try {
       const { data } = await axios.post('/auth/register', credentials);
-      token.set(data.token);
+      token.set(data.result.token);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);

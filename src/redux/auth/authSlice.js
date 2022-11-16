@@ -17,8 +17,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
     },
     [authOperations.register.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.token = action.payload.result.token;
       state.error = null;
       state.isLoggedIn = true;
     },
@@ -30,7 +29,6 @@ const authSlice = createSlice({
       notices.showError('Oops, something wrong, try again');
     },
     [authOperations.logIn.fulfilled](state, action) {
-      // state.user = action.payload.user;
       state.token = action.payload.token;
       state.error = null;
       state.isLoggedIn = true;
