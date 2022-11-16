@@ -65,11 +65,10 @@ const getAvatarUser = createAsyncThunk(
 
 const updateUserInformation = createAsyncThunk(
   'auth/updateUserInformation',
-  async (id, credentials, { rejectWithValue }) => {
-    console.log(id, credentials);
-
+  async ({ data }, { rejectWithValue }) => {
+    const { id, value } = data;
     try {
-      const { data } = await axios.get(`/auth/${id}`, credentials);
+      const { data } = await axios.patch(`/auth/${id}`, value);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);

@@ -16,7 +16,6 @@ const userSlice = createSlice({
       state.userPosts = [...state.userPosts, payload];
     },
     [authOperations.deleteUserPost.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.userPosts = state.userPosts.filter(({ _id }) => _id !== payload);
     },
   },

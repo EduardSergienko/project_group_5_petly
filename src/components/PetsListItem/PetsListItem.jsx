@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { userOperations } from '../../redux/user';
 
 import Loader from '../Loader/Loader';
+import { DeleteButton } from '../../helpers';
 
 import styles from './PetsListItem.module.scss';
 
@@ -17,6 +18,12 @@ function PetsListItem({
   active,
 }) {
   const dispatch = useDispatch();
+
+  const deleteButton = id => {
+    dispatch(userOperations.deleteUserPost(id));
+    activeLoader(id);
+  };
+
   return (
     <li className={styles.container}>
       <div className={styles.containerImg}>
@@ -33,13 +40,11 @@ function PetsListItem({
           <Loader size={44} />
         </div>
       ) : (
-        <button
-          className={styles.button}
-          onClick={() => {
-            dispatch(userOperations.deleteUserPost(id));
-            activeLoader(id);
-          }}
-        ></button>
+        <DeleteButton
+          stylesBtn={styles.button}
+          onClick={deleteButton}
+          id={id}
+        />
       )}
     </li>
   );

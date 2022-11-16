@@ -33,7 +33,10 @@ function UserDataItem({
     e.preventDefault();
     if (active === true && (inputeValue.length !== 0 || !required)) {
       setActive(false);
-      updateUser(id, { name: inputeValue });
+      const data = {
+        [name]: inputeValue,
+      };
+      updateUser(id, data);
       return;
     }
 

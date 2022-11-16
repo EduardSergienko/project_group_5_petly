@@ -56,28 +56,12 @@ function UserData() {
     }
   }, [picture, user]);
 
-  const updateUser = (id, data) => {
-    console.log(id, data);
-    dispatch(authOperations.updateUserInformation(id, data));
-
-    //   const { name, value } = data;
-
-    //   switch (name) {
-    //     case 'name':
-    //       // console.log(name, value);
-    //       // dispatch(
-    //       //   authOperations.updateUserInformation(user?.id, { name: value })
-    //       // );
-    //       // setName(value);
-    //       break;
-
-    //     case 'number':
-    //       // setNumber(value);
-    //       break;
-
-    //     default:
-    //       return;
-    //   }
+  const updateUser = (id, value) => {
+    const data = {
+      id,
+      value,
+    };
+    dispatch(authOperations.updateUserInformation({ data }));
   };
 
   return (
@@ -150,6 +134,8 @@ function UserData() {
           defaultVaule={user?.name}
         />
         <UserDataItem
+          id={user?.id}
+          updateUser={updateUser}
           title={'Email'}
           pattern={
             /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
@@ -161,6 +147,8 @@ function UserData() {
           defaultVaule={user?.email}
         />
         <UserDataItem
+          id={user?.id}
+          updateUser={updateUser}
           title={'Birthday'}
           pattern={/(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).((19|20)\d\d)$/}
           type={'text'}
@@ -170,6 +158,8 @@ function UserData() {
           defaultVaule={user?.dateOfBirth}
         />
         <UserDataItem
+          id={user?.id}
+          updateUser={updateUser}
           title={'Phone'}
           pattern={/^[+]{0,1}380([0-9]{9})$/}
           type={'phone'}
@@ -179,6 +169,8 @@ function UserData() {
           defaultVaule={user?.phone}
         />
         <UserDataItem
+          id={user?.id}
+          updateUser={updateUser}
           title={'City'}
           pattern={/^[а-яА-ЯёЁa-zA-Z]+$/}
           type={'text'}
