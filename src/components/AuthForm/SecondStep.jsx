@@ -1,18 +1,18 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import InputMask from 'react-input-mask';
 import styles from './AuthForm.module.scss';
 
-const SecondStep = ({ onNextStep, onPrevStep, formData }) => {
-  const phoneRegExp = /(?=.*\+[0-9]{3}\s?[0-9]{2}\s?[0-9]{3}\s?[0-9]{4}$)/;
-
+function SecondStep({ onNextStep, onPrevStep, formData }) {
   const validationSecondStepSchema = Yup.object({
     name: Yup.string().min(4, 'Name is too short').required('Required'),
     location: Yup.string().min(4, 'Location is too short').required('Required'),
     phone: Yup.string()
-      .required('required')
-      .matches(phoneRegExp, 'Phone number is not valid')
-      .min(10, 'too short')
-      .max(14, 'too long'),
+      .required('Required')
+      .test('phone', 'Phone is not valid', value => {
+        const valLengthWithoutDashes = value?.replace(/-|_/g, '').length;
+        return valLengthWithoutDashes === 13;
+      }),
   });
 
   const handleFormSubmit = values => {
@@ -55,12 +55,18 @@ const SecondStep = ({ onNextStep, onPrevStep, formData }) => {
             </div>
 
             <div className={styles.formGroup}>
-              <Field
-                className={styles.input}
-                name="phone"
-                type="text"
-                placeholder="Mobile phone"
-              />
+              <Field name="phone">
+                {({ field }) => (
+                  <InputMask
+                    {...field}
+                    className={styles.input}
+                    mask="+380999999999"
+                    id="phone"
+                    placeholder="Mobile phone"
+                  />
+                )}
+              </Field>
+
               <ErrorMessage
                 name="phone"
                 render={msg => <div className={styles.errorMsg}>{msg}</div>}
@@ -85,6 +91,6 @@ const SecondStep = ({ onNextStep, onPrevStep, formData }) => {
       </Formik>
     </>
   );
-};
+}
 
 export default SecondStep;
