@@ -13,7 +13,6 @@ import styles from './UserData.module.scss';
 
 function UserData() {
   const user = useSelector(authSelectors.getUser);
-  const token = useSelector(authSelectors.getUserToken);
   const dispatch = useDispatch();
   const [fileValue, setFileValue] = useState([]);
   const [picture, setPicture] = useState('');
@@ -50,10 +49,6 @@ function UserData() {
     };
     dispatch(userOperations.updateUserInformation({ data }));
   };
-
-  useEffect(() => {
-    // dispatch(authOperations.getCurrentUser(token));
-  }, [dispatch, token]);
 
   useEffect(() => {
     if (!picture && user?.avatarURL) {
