@@ -6,15 +6,15 @@ import { authSelectors } from 'redux/auth';
 import PetsListItem from '../PetsListItem/PetsListItem';
 
 function PetsList() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const ownPosts = useSelector(authSelectors.getUserAnimal);
   const [loader, setLoader] = useState(null);
 
-  // console.log(ownPosts);
+  console.log(ownPosts);
 
-  useEffect(() => {
-    // dispatch(authSelectors.userPosts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   // dispatch(authSelectors.userPosts());
+  // }, [dispatch]);
 
   const activeLoader = id => {
     setLoader(id);
