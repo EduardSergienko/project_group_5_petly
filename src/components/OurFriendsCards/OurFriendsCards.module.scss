@@ -1,3 +1,5 @@
+@import '../../variables/variables.scss';
+
 .ContainerFriendsCards {
   padding: 12px 4px;
   border-radius: 20px;
@@ -10,20 +12,18 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
 
   @media screen and (min-width: 768px) {
     width: 336px;
     min-height: 246px;
     margin-bottom: 32px;
-    padding: 0px 16px;
+    padding: 12px 10px;
   }
 
   @media screen and (min-width: 1280px) {
     width: 395px;
     min-height: 287px;
-    padding: 0px 40px;
+    padding: 16px;
   }
 }
 
@@ -66,20 +66,22 @@
 
 .CardsThumb {
   display: flex;
-  column-gap: 12px;
   margin-top: 12px;
+  // width: 100%;
   align-items: flex-start;
+  justify-content: space-between;
 
   @media screen and (min-width: 768px) {
-    justify-content: space-around;
-    margin-top: 20px;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+  @media screen and (min-width: 1280px) {
+    justify-content: space-between;
+    margin-top: 16px;
   }
 }
 
 .MainThumb {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 110px;
 
   @media screen and (min-width: 1280px) {
@@ -90,23 +92,43 @@
 .SecThumb {
   width: 150px;
   color: black;
-
   @media screen and (min-width: 768px) {
-    margin-left: 15px;
+    width: 170px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 190px;
   }
 }
 
 .CardItem {
+  font-family: 'Manrope';
+  font-style: normal;
+  line-height: 16px;
   font-weight: 500;
-  font-size: 12px;
   color: #000;
-
-  &:not(:last-child) {
-    margin-bottom: 4px;
+  font-size: 12px;
+  &:first-child {
+    cursor: pointer;
+    &:hover {
+      color: $orangeColor;
+    }
   }
-
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+  &:first-child:hover .subMenu {
+    display: block;
+  }
   @media screen and (min-width: 768px) {
     font-size: 14px;
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 16px;
+    line-height: 18px;
   }
 }
 
@@ -123,4 +145,29 @@
 .CardAddress {
   color: #000000;
   text-decoration: underline;
+}
+
+.subMenu {
+  position: absolute;
+  background-color: white;
+  display: none;
+  width: 120px;
+  padding: 12px;
+  border: 1px solid #f59256;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+}
+.subMenuItem {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  margin-bottom: 4px;
+  color: $prymaryTextColor;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
