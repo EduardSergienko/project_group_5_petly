@@ -50,14 +50,6 @@ function ModalAddsPet({ active, setActive, setmodalActivefForTablet }) {
     formData.append('comments', data.comments);
     formData.append('avatar', data.file);
 
-    // const nnn = {
-    //   name: modal1Values.name,
-    //   birthDay: modal1Values.birthday,
-    //   breed: modal1Values.breed,
-    //   comments: data.comments,
-    //   // avatar: data.file,
-    // };
-
     dispatch(userOperations.createUserPost(formData));
   };
 

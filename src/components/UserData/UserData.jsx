@@ -18,8 +18,6 @@ function UserData() {
   const [picture, setPicture] = useState('');
   const [active, setActive] = useState(true);
 
-  console.log(user);
-
   const boolButton = e => {
     e.preventDefault();
 
