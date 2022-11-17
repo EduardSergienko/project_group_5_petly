@@ -9,8 +9,6 @@
 
   @media screen and (min-width: 768px) {
     top: 29%;
-    // width: 608px;
-    // height: 449px;
     padding: 60px 80px 40px 80px;
 
     background-color: $secondaryTextColor;
@@ -23,8 +21,6 @@
     left: 50%;
 
     transform: translate(-50%, -50%);
-    // width: 618px;
-    // height: 473px;
     padding: 60px 80px;
   }
 }
@@ -67,7 +63,7 @@
   height: 40px;
   padding: 11px 60px 12px 14px;
 
-  color: rgba(17, 17, 17, 0.6);
+  color: $mainTextColor;
   background-color: $backgroundColor;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
@@ -83,6 +79,10 @@
     background-color: rgba(0, 0, 0, 0.02);
     outline: 0;
     box-shadow: 0 0 0 0.1rem rgba(245, 146, 86, 0.5);
+  }
+
+  &::placeholder {
+    color: rgba(17, 17, 17, 0.6);
   }
 
   @media screen and (min-width: 768px) {
