@@ -4,7 +4,6 @@
   @media screen and (max-width: 1279px) {
     background-color: $backgroundColor;
     position: absolute;
-    top: 100px;
     right: 0;
     width: 100%;
     display: flex;
@@ -12,6 +11,16 @@
     transition: 500ms;
     transform: translateX(-100%);
     justify-content: flex-start;
+  }
+
+  @media screen and (max-width: 767px) {
+    top: 54px;
+    padding-top: 46px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    top: 70px;
+    padding-top: 88px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -23,4 +32,8 @@
   transform: none;
   height: 100vh;
   z-index: 100;
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {
+    height: 130vh;
+  }
 }

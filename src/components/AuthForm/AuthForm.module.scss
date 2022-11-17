@@ -9,8 +9,6 @@
 
   @media screen and (min-width: 768px) {
     top: 29%;
-    // width: 608px;
-    // height: 449px;
     padding: 60px 80px 40px 80px;
 
     background-color: $secondaryTextColor;
@@ -23,8 +21,6 @@
     left: 50%;
 
     transform: translate(-50%, -50%);
-    // width: 618px;
-    // height: 473px;
     padding: 60px 80px;
   }
 }
@@ -101,11 +97,6 @@
   @media screen and (min-width: 1280px) {
     width: 458px;
   }
-}
-
-.input:-webkit-autofill,
-.input:-webkit-autofill:focus {
-  transition: background-color 600000s 0s, color 600000s 0s;
 }
 
 .icon {
