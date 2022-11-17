@@ -81,7 +81,7 @@ function SecondStep({ onNextStep, onPrevStep, formData }) {
               onClick={() => {
                 onPrevStep(values);
               }}
-              className={styles.button}
+              className={styles.back}
               type="button"
             >
               Back

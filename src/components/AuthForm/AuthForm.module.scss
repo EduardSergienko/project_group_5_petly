@@ -148,12 +148,38 @@
   &:not(:last-of-type) {
     margin-bottom: 16px;
   }
-  &:last-of-type {
-    margin-bottom: 40px;
-    background-color: #fff;
-    color: #000;
-    border: 2px solid #f59256;
-    border-radius: 40px;
+
+  @media screen and (min-width: 768px) {
+    width: 448px;
+    height: 48px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 458px;
+  }
+}
+
+.back {
+  width: 280px;
+  height: 40px;
+  margin-bottom: 40px;
+
+  background-color: #fff;
+  border: 2px solid #f59256;
+  border-radius: 40px;
+
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.36em;
+  letter-spacing: 0.04em;
+  color: $prymaryTextColor;
+  cursor: pointer;
+
+  transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background-color: #e7884d;
+    color: #fff;
   }
 
   @media screen and (min-width: 768px) {
