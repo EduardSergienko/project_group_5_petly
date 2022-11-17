@@ -76,6 +76,23 @@ const SecondStep = ({
           />
         </label>
 
+        <label className={styles.labelTitle} htmlFor="price">
+          Price<span className={styles.require}>*</span>
+          <input
+            className={`${styles.input} ${styles.secStepInput}`}
+            type="text"
+            id="price"
+            placeholder="Type price"
+            value={secondStepValues.price}
+            onChange={evt => {
+              setSecondStepValues({
+                ...secondStepValues,
+                price: evt.target.value,
+              });
+            }}
+          />
+        </label>
+
         <label className={styles.labelTitle}>
           Load the pet's image<span className={styles.require}>*</span>
         </label>

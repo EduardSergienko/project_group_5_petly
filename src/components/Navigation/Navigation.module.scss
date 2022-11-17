@@ -1,0 +1,26 @@
+@import '../../variables/variables.scss';
+
+.mainNav {
+  @media screen and (max-width: 1279px) {
+    background-color: $backgroundColor;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: 500ms;
+    transform: translateX(-100%);
+    justify-content: flex-start;
+  }
+
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    align-items: center;
+  }
+}
+.responsiveNav {
+  transform: none;
+  height: 100vh;
+  z-index: 100;
+}

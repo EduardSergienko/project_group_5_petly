@@ -9,10 +9,12 @@ import { Dna } from 'react-loader-spinner';
 import * as Yup from 'yup';
 import { authOperations } from 'redux/auth';
 import styles from './LoginForm.module.scss';
+import notices from 'helpers/Notification';
 
 const LoginForm = ({ title }) => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const initialValues = {
     email: '',
@@ -30,8 +32,14 @@ const LoginForm = ({ title }) => {
 
   const handleLogin = formValue => {
     const { email, password } = formValue;
+    setLoading(true);
 
-    dispatch(authOperations.logIn({ email, password }));
+    dispatch(authOperations.logIn({ email, password }))
+      .unwrap()
+      .catch(() => {
+        setLoading(false);
+        notices.showError('Oops, something wrong, try again');
+      });
   };
 
   return (
@@ -41,77 +49,72 @@ const LoginForm = ({ title }) => {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleLogin}
-        // onSubmit={(values, { setSubmitting }) => {
-        //   handleLogin(values, setSubmitting);
-        // }}
       >
-        {({ isSubmitting }) => (
-          <Form className={styles.form}>
-            <div className={styles.formGroup}>
-              <Field
-                type="email"
-                name="email"
-                className={styles.input}
-                placeholder="Email"
-              />
-              <ErrorMessage
-                name="email"
-                render={msg => <div className={styles.errorMsg}>{msg}</div>}
-              />
-            </div>
-            <div className={styles.formGroup}>
-              <Field
-                type={show ? 'text' : 'password'}
-                name="password"
-                className={styles.input}
-                placeholder="Password"
-              />
-              <span className={styles.icon} onClick={() => setShow(!show)}>
-                {show && (
-                  <IconContext.Provider
-                    value={{ style: { verticalAlign: 'middle' } }}
-                  >
-                    <FiEye />
-                  </IconContext.Provider>
-                )}
-                {!show && (
-                  <IconContext.Provider
-                    value={{ style: { verticalAlign: 'middle' } }}
-                  >
-                    <FiEyeOff />
-                  </IconContext.Provider>
-                )}
-              </span>
-              <ErrorMessage
-                name="password"
-                render={msg => <div className={styles.errorMsg}>{msg}</div>}
-              />
-            </div>
-            <div>
-              {!isSubmitting && (
-                <button type="submit" className={styles.button}>
-                  Login
-                </button>
+        <Form className={styles.form}>
+          <label className={styles.formGroup}>
+            <Field
+              type="email"
+              name="email"
+              className={styles.input}
+              placeholder="Email"
+            />
+            <ErrorMessage
+              name="email"
+              render={msg => <div className={styles.errorMsg}>{msg}</div>}
+            />
+          </label>
+          <label className={styles.formGroup}>
+            <Field
+              type={show ? 'text' : 'password'}
+              name="password"
+              className={styles.input}
+              placeholder="Password"
+            />
+            <span className={styles.icon} onClick={() => setShow(!show)}>
+              {show && (
+                <IconContext.Provider
+                  value={{ style: { verticalAlign: 'middle' } }}
+                >
+                  <FiEye />
+                </IconContext.Provider>
               )}
-              {isSubmitting && (
+              {!show && (
+                <IconContext.Provider
+                  value={{ style: { verticalAlign: 'middle' } }}
+                >
+                  <FiEyeOff />
+                </IconContext.Provider>
+              )}
+            </span>
+            <ErrorMessage
+              name="password"
+              render={msg => <div className={styles.errorMsg}>{msg}</div>}
+            />
+          </label>
+          <div>
+            <button type="submit" className={styles.button} disabled={loading}>
+              {loading ? (
                 <Dna
                   visible={true}
                   height="40"
                   width="80"
                   ariaLabel="dna-loading"
                   wrapperClass="dna-wrapper"
+                  wrapperStyle={{ verticalAlign: 'middle' }}
                 />
+              ) : (
+                'Login'
               )}
-            </div>
+            </button>
+          </div>
 
-            <p className={styles.textHint}>
-              Don't have an account?&nbsp;
-              <Link className={styles.link} to="/register">
-                Register
-              </Link>
-            </p>
-          </Form>
-        )}
+          <p className={styles.textHint}>
+            Don't have an account?&nbsp;
+            <Link className={styles.link} to="/register">
+              Register
+            </Link>
+          </p>
+        </Form>
       </Formik>
     </div>
   );

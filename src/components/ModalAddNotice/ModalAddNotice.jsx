@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import FirstStep from './FirstStep';
 import SecondStep from './SecondStep';
+import { noticesOperations } from 'redux/notices';
 import styles from './ModalAddNotice.module.scss';
 
 const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
@@ -16,11 +17,12 @@ const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
   const [secondStepValues, setSecondStepValues] = useState({
     sex: '',
     location: '',
+    price: '',
     avatar: [],
     comments: '',
   });
-
   const [fileValue, setFileValue] = useState('');
+  const dispatch = useDispatch();
 
   const handleFirstStepSubmit = evt => {
     evt.preventDefault();
@@ -34,14 +36,16 @@ const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
 
     formData.append('category', firstStepValues.category);
     formData.append('title', firstStepValues.title);
-    formData.append('name', firstStepValues.name);
+    formData.append('petName', firstStepValues.name);
     formData.append('birthDate', firstStepValues.birthDate);
     formData.append('breed', firstStepValues.breed);
     formData.append('sex', secondStepValues.sex);
     formData.append('location', secondStepValues.location);
     formData.append('avatar', secondStepValues.avatar);
     formData.append('comments', secondStepValues.comments);
-    handleModalClose();
+    formData.append('price', Number(secondStepValues.price));
+
+    dispatch(noticesOperations.addNotice(formData));
   };
 
   const handleBackToFirst = evt => {

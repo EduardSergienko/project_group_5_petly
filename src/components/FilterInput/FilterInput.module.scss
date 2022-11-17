@@ -1,0 +1,79 @@
+@import 'variables/variables.scss';
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 60px;
+  }
+}
+
+.label {
+  position: relative;
+}
+
+.input {
+  width: 280px;
+  height: 40px;
+  padding: 9px 45px 9px 12px;
+
+  color: #535353;
+  background-color: $secondaryTextColor;
+  border: 1px solid rgba(245, 146, 86, 0.5);
+  border-radius: 20px;
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.37em;
+  letter-spacing: 0.04em;
+  box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+
+  transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.02);
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem rgba(245, 146, 86, 0.5);
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 608px;
+    height: 44px;
+    padding: 8px 45px 9px 20px;
+
+    border-radius: 40px;
+    font-size: 20px;
+    line-height: 1.35em;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding: 10px 50px 10px 20px;
+
+    border-radius: 20px;
+    font-family: 'Inter';
+  }
+}
+
+.searchIcon {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translate(0, -50%);
+
+  @media screen and (min-width: 768px) {
+    width: 18px;
+    height: 18px;
+    right: 14px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: 16px;
+  }
+}

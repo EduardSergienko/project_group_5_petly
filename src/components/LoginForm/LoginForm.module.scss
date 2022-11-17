@@ -2,7 +2,6 @@
 
 .formWrap {
   position: absolute;
-  // position: fixed;
   top: 30%;
   left: 50%;
 
@@ -68,7 +67,7 @@
   height: 40px;
   padding: 11px 60px 12px 14px;
 
-  color: $mainTextColor;
+  color: rgba(17, 17, 17, 0.6);
   background-color: $backgroundColor;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
@@ -81,13 +80,9 @@
     box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:focus {
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: rgba(0, 0, 0, 0.02);
     outline: 0;
     box-shadow: 0 0 0 0.1rem rgba(245, 146, 86, 0.5);
-  }
-
-  &::placeholder {
-    color: rgba(17, 17, 17, 0.6);
   }
 
   @media screen and (min-width: 768px) {
@@ -102,11 +97,6 @@
   @media screen and (min-width: 1280px) {
     width: 458px;
   }
-}
-
-.input:-webkit-autofill,
-.input:-webkit-autofill:focus {
-  transition: background-color 600000s 0s, color 600000s 0s;
 }
 
 .icon {

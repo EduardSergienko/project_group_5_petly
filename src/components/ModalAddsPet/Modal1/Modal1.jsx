@@ -4,6 +4,7 @@ import styles from './Modal1.module.scss';
 
 function Modal1({
   setActive,
+  setActiveTablet,
   setPage,
   createPetsPost,
   active,
@@ -82,6 +83,7 @@ function Modal1({
     e.preventDefault();
 
     setActive(false);
+    setActiveTablet(false);
     setRequired(false);
     setNameValue('');
     setBirthdayValue('');
