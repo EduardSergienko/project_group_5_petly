@@ -1,20 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// export const userPosts = createAsyncThunk(
-//   'user/userPosts',
-//   async (_, { rejectWithValue }) => {
-//     try {
-//       // const { data } = await axios.get('/animals');
-//       // console.log(data);
-//       // return data;
-//     } catch (error) {
-//       console.log(error);
-//       return rejectWithValue(error);
-//     }
-//   }
-// );
-
 export const createUserPost = createAsyncThunk(
   'user/createUserPost',
   async (post, { rejectWithValue }) => {
@@ -53,23 +39,9 @@ const updateUserInformation = createAsyncThunk(
   }
 );
 
-// const getAvatarUser = createAsyncThunk(
-//   'auth/getAvatarUser',
-//   async (credentials, { rejectWithValue }) => {
-//     try {
-//       // const { data } = await axios.patch('/auth/user/avatars', credentials);
-//       // return data;
-//     } catch (error) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
-
 const operations = {
-  // userPosts,
   createUserPost,
   deleteUserPost,
   updateUserInformation,
-  // getAvatarUser,
 };
 export default operations;

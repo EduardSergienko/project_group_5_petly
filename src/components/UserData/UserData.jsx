@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import UserDataItem from './UserDataItem/UserDataItem';
 
-import { authOperations, authSelectors } from '../../redux/auth';
+import { authSelectors } from '../../redux/auth';
 import { userOperations } from '../../redux/user';
 
 import camera from '../../image/camera.png';
@@ -18,8 +18,6 @@ function UserData() {
   const [fileValue, setFileValue] = useState([]);
   const [picture, setPicture] = useState('');
   const [active, setActive] = useState(true);
-
-  // console.log(user);
 
   const boolButton = e => {
     e.preventDefault();
@@ -54,7 +52,7 @@ function UserData() {
   };
 
   useEffect(() => {
-    dispatch(authOperations.getCurrentUser(token));
+    // dispatch(authOperations.getCurrentUser(token));
   }, [dispatch, token]);
 
   useEffect(() => {

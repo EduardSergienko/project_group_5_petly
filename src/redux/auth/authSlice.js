@@ -22,32 +22,6 @@ const authSlice = createSlice({
       state.token = action.payload.result.token;
       state.error = null;
       state.isLoggedIn = true;
-    },
-    [authOperations.register.rejected](state, action) {
-      state.error = action.payload;
-      state.user = { name: null, email: null };
-      state.token = null;
-      state.isLoggedIn = false;
-      notices.showError('Oops, something wrong, try again');
-    },
-    [authOperations.logIn.fulfilled](state, action) {
-      state.token = action.payload.token;
-      state.error = null;
-      state.isLoggedIn = true;
-    },
-    [authOperations.logIn.rejected](state, action) {
-      state.error = action.payload;
-      state.user = { name: null, email: null };
-      state.token = null;
-      state.isLoggedIn = false;
-    },
-    [authOperations.logOutUser.fulfilled](state, action) {
-      state.error = null;
-      state.user = { name: null, email: null };
-      state.token = null;
-      state.isLoggedIn = false;
-    },
-    [authOperations.getCurrentUser.fulfilled](state, { payload }) {
       const {
         _id,
         name,
@@ -58,7 +32,7 @@ const authSlice = createSlice({
         avatarURL,
         myFavorite,
         myAnimal,
-      } = payload.result[0];
+      } = action.payload.result;
 
       state.user = {
         id: _id,
@@ -72,6 +46,53 @@ const authSlice = createSlice({
         myAnimal,
       };
     },
+    [authOperations.register.rejected](state, action) {
+      state.error = action.payload;
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+      notices.showError('Oops, something wrong, try again');
+    },
+    [authOperations.logIn.fulfilled](state, action) {
+      state.token = action.payload.result.token;
+      state.error = null;
+      state.isLoggedIn = true;
+      const {
+        _id,
+        name,
+        phone,
+        email,
+        dateOfBirth,
+        location,
+        avatarURL,
+        myFavorite,
+        myAnimal,
+      } = action.payload.result;
+
+      state.user = {
+        id: _id,
+        name,
+        phone,
+        email,
+        dateOfBirth,
+        location,
+        avatarURL,
+        myFavorite,
+        myAnimal,
+      };
+    },
+    [authOperations.logIn.rejected](state, action) {
+      state.error = action.payload;
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+    },
+    [authOperations.logOutUser.fulfilled](state, action) {
+      state.error = null;
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+    },
 
     [userOperations.createUserPost.fulfilled](state, { payload }) {
       state.user.myAnimal = [...state.user.myAnimal, payload];
@@ -80,6 +101,31 @@ const authSlice = createSlice({
       state.user.myAnimal = state.user.myAnimal.filter(
         ({ _id }) => _id !== payload
       );
+    },
+    [userOperations.updateUserInformation.fulfilled]: (state, { payload }) => {
+      const {
+        _id,
+        name,
+        phone,
+        email,
+        dateOfBirth,
+        location,
+        avatarURL,
+        myFavorite,
+        myAnimal,
+      } = payload.data;
+
+      state.user = {
+        id: _id,
+        name,
+        phone,
+        email,
+        dateOfBirth,
+        location,
+        avatarURL,
+        myFavorite,
+        myAnimal,
+      };
     },
   },
 });
