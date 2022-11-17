@@ -12,6 +12,8 @@
     transition: 500ms;
     transform: translateX(-100%);
     justify-content: flex-start;
+    z-index: 100;
+    height: 100vh;
   }
 
   @media screen and (max-width: 767px) {
