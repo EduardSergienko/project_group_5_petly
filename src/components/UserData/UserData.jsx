@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import UserDataItem from './UserDataItem/UserDataItem';
 
 import { authOperations, authSelectors } from '../../redux/auth';
+import { userOperations } from '../../redux/user';
 
 import camera from '../../image/camera.png';
 import doneVector from '../../image/doneVector.png';
@@ -17,6 +18,8 @@ function UserData() {
   const [fileValue, setFileValue] = useState([]);
   const [picture, setPicture] = useState('');
   const [active, setActive] = useState(true);
+
+  // console.log(user);
 
   const boolButton = e => {
     e.preventDefault();
@@ -43,7 +46,11 @@ function UserData() {
 
     const formData = new FormData();
     formData.append('avatar', e.target.files[0]);
-    dispatch(authOperations.getAvatarUser(formData));
+    const data = {
+      id: user.id,
+      value: formData,
+    };
+    dispatch(userOperations.updateUserInformation({ data }));
   };
 
   useEffect(() => {
@@ -56,12 +63,12 @@ function UserData() {
     }
   }, [picture, user]);
 
-  const updateUser = (id, value) => {
+  const updateUser = value => {
     const data = {
-      id,
+      id: user.id,
       value,
     };
-    dispatch(authOperations.updateUserInformation({ data }));
+    dispatch(userOperations.updateUserInformation({ data }));
   };
 
   return (
@@ -120,7 +127,6 @@ function UserData() {
 
       <ul className={styles.list}>
         <UserDataItem
-          id={user?.id}
           updateUser={updateUser}
           title={'Name'}
           pattern={/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/}
@@ -134,7 +140,6 @@ function UserData() {
           defaultVaule={user?.name}
         />
         <UserDataItem
-          id={user?.id}
           updateUser={updateUser}
           title={'Email'}
           pattern={
@@ -147,7 +152,6 @@ function UserData() {
           defaultVaule={user?.email}
         />
         <UserDataItem
-          id={user?.id}
           updateUser={updateUser}
           title={'Birthday'}
           pattern={/(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).((19|20)\d\d)$/}
@@ -158,7 +162,6 @@ function UserData() {
           defaultVaule={user?.dateOfBirth}
         />
         <UserDataItem
-          id={user?.id}
           updateUser={updateUser}
           title={'Phone'}
           pattern={/^[+]{0,1}380([0-9]{9})$/}
@@ -169,7 +172,6 @@ function UserData() {
           defaultVaule={user?.phone}
         />
         <UserDataItem
-          id={user?.id}
           updateUser={updateUser}
           title={'City'}
           pattern={/^[а-яА-ЯёЁa-zA-Z]+$/}

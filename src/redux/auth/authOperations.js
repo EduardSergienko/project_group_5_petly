@@ -32,6 +32,7 @@ const logIn = createAsyncThunk(
     try {
       const { data } = await axios.post('/auth/login', credentials);
       token.set(data.token);
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -51,36 +52,11 @@ const logOutUser = createAsyncThunk(
   }
 );
 
-const getAvatarUser = createAsyncThunk(
-  'auth/getAvatarUser',
-  async (credentials, { rejectWithValue }) => {
-    try {
-      // const { data } = await axios.patch('/auth/user/avatars', credentials);
-      // return data;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
-
-const updateUserInformation = createAsyncThunk(
-  'auth/updateUserInformation',
-  async ({ data }, { rejectWithValue }) => {
-    const { id, value } = data;
-    try {
-      const { data } = await axios.patch(`/auth/${id}`, value);
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
-
 const getCurrentUser = createAsyncThunk(
   'auth/getCurrentUser',
   async (token, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`/auth/current`, token);
+      const { data } = await axios.get(`/user/current`, token);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -92,8 +68,6 @@ const operations = {
   register,
   logIn,
   logOutUser,
-  getAvatarUser,
-  updateUserInformation,
   getCurrentUser,
 };
 export default operations;

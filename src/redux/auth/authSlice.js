@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './authOperations';
+import { userOperations } from '../user';
+
 import notices from 'helpers/Notification/Notification';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null, email: null, myAnimal: [] },
   token: null,
   isLoggedIn: false,
   error: null,
@@ -55,7 +57,8 @@ const authSlice = createSlice({
         location,
         avatarURL,
         myFavorite,
-      } = payload.user;
+        myAnimal,
+      } = payload.result[0];
 
       state.user = {
         id: _id,
@@ -66,7 +69,17 @@ const authSlice = createSlice({
         location,
         avatarURL,
         myFavorite,
+        myAnimal,
       };
+    },
+
+    [userOperations.createUserPost.fulfilled](state, { payload }) {
+      state.user.myAnimal = [...state.user.myAnimal, payload];
+    },
+    [userOperations.deleteUserPost.fulfilled]: (state, { payload }) => {
+      state.user.myAnimal = state.user.myAnimal.filter(
+        ({ _id }) => _id !== payload
+      );
     },
   },
 });
