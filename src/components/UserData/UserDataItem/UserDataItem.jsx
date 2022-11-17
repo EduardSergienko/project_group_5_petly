@@ -6,7 +6,6 @@ import edit from '../../../image/edit.png';
 import styles from './UserDataItem.module.scss';
 
 function UserDataItem({
-  id,
   updateUser,
   title,
   pattern,
@@ -36,7 +35,7 @@ function UserDataItem({
       const data = {
         [name]: inputeValue,
       };
-      updateUser(id, data);
+      updateUser(data);
       return;
     }
 
