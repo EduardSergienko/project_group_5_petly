@@ -6,7 +6,6 @@ export const createUserPost = createAsyncThunk(
   async (post, { rejectWithValue }) => {
     try {
       const { data } = await axios.post('/user/animal', post);
-      // console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error);
