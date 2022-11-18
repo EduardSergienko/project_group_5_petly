@@ -1,8 +1,13 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { ToastContainer, Slide } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { authOperations, authSelectors } from '../redux/auth';
+// import { userOperations } from '../redux/user';
+
+import 'react-toastify/dist/ReactToastify.css';
 import SharedLayout from './SharedLayout/SharedLayout';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
@@ -16,6 +21,15 @@ const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
 const NewsPage = lazy(() => import('pages/NewsPage'));
 
 export const App = () => {
+  const token = useSelector(authSelectors.getUserToken);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (token) {
+      dispatch(authOperations.getCurrentUser());
+    }
+  }, [dispatch, token]);
+
   return (
     <Suspense fallback={<Loader />}>
       <Routes>

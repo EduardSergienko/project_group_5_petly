@@ -31,6 +31,7 @@ const updateUserInformation = createAsyncThunk(
     const { id, value } = data;
     try {
       const { data } = await axios.patch(`/user/${id}`, value);
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
