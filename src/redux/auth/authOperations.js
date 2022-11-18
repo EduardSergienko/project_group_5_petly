@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // axios.defaults.baseURL = 'http://localhost:3001/api'; // 3000
-axios.defaults.baseURL = 'http://fetch-friend.herokuapp.com/api'; // 3000
+axios.defaults.baseURL = 'http://fetch-friend.herokuapp.com/api';
 
 const token = {
   set(token) {

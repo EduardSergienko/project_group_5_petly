@@ -5,8 +5,9 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { IconContext } from 'react-icons';
 import { FiEyeOff, FiEye } from 'react-icons/fi';
 import { Dna } from 'react-loader-spinner';
-
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
+
 import { authOperations } from 'redux/auth';
 import styles from './LoginForm.module.scss';
 import notices from 'helpers/Notification';
@@ -36,9 +37,9 @@ const LoginForm = ({ title }) => {
 
     dispatch(authOperations.logIn({ email, password }))
       .unwrap()
-      .catch(() => {
+      .catch(err => {
         setLoading(false);
-        notices.showError('Oops, something wrong, try again');
+        notices.showError(err?.message);
       });
   };
 
@@ -118,6 +119,10 @@ const LoginForm = ({ title }) => {
       </Formik>
     </div>
   );
+};
+
+LoginForm.propTypes = {
+  title: PropTypes.string,
 };
 
 export default LoginForm;
