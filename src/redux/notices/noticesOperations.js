@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// axios.defaults.baseURL = 'http://localhost:3001/api/notices';
+
+axios.defaults.baseURL = 'http://localhost:3001/api/notices';
 
 // const token = {
 //   set(token) {
@@ -14,9 +15,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const getNotices = createAsyncThunk(
   'notices/get',
-  async (_, { rejectWithValue }) => {
+  async (category, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get('/category/sell');
+      const { data } = await axios.get(`/category/${category}`);
     //   token.set(data.token);
       return data;
     } catch (error) {

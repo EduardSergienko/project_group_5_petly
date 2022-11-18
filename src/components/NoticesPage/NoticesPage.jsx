@@ -6,15 +6,23 @@ import AddNoticeButton from './AddNoticeButton/AddNoticeButton';
 
 import styles from './NoticesPage.module.scss';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import {noticesOperations} from '../../redux/notices'
 
 function NoticesPage({ onFilter = () => { } }) {
-  const {categoryName} = useParams()
+  const dispatch = useDispatch()
+  const { categoryName } = useParams()
+  console.log(categoryName)
   const items = useSelector(state => state.notices.items)
   const filter = useSelector(state => state.filter.value)
-  const filteredCategories = items.filter(({ category }) => category.toLowerCase().includes(categoryName))
-  const filteredItems = filter ? filteredCategories.filter(({ title }) => title.toLowerCase().includes(filter)) : filteredCategories
+  // const filteredCategories = items.filter(({ category }) => category.toLowerCase().includes(categoryName))
+  const filteredItems = filter ? items.filter(({ title }) => title.toLowerCase().includes(filter)) : items
   
+  useEffect(() => {
+    dispatch(noticesOperations.getNotices(categoryName))
+  }, [categoryName])
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Find your favorite pet</h2>
