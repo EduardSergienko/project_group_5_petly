@@ -15,7 +15,7 @@ function PetsList() {
 
   return (
     <ul>
-      {ownPosts?.map(({ _id, birthday, breed, comments, name, photo }) => (
+      {ownPosts?.map(({ _id, birthday, breed, comments, name, avatarURL }) => (
         <PetsListItem
           key={_id}
           id={_id}
@@ -23,7 +23,7 @@ function PetsList() {
           breed={breed}
           comments={comments}
           name={name}
-          photo={photo}
+          photo={avatarURL}
           active={loader === _id}
           activeLoader={activeLoader}
         />

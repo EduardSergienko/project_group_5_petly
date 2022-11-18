@@ -14,8 +14,8 @@ import styles from './UserData.module.scss';
 function UserData() {
   const user = useSelector(authSelectors.getUser);
   const dispatch = useDispatch();
-  const [fileValue, setFileValue] = useState([]);
   const [picture, setPicture] = useState('');
+  const [selectPicture, setSelectPicture] = useState('');
   const [active, setActive] = useState(true);
 
   const boolButton = e => {
@@ -30,14 +30,12 @@ function UserData() {
   };
 
   const handleChange = e => {
-    setFileValue(e.target.files[0]);
-
     const reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
       reader.onloadend = () => {
         const base64data = reader.result;
-        setPicture(base64data);
+        setSelectPicture(base64data);
       };
     }
 
@@ -51,10 +49,19 @@ function UserData() {
   };
 
   useEffect(() => {
-    if (!picture && user?.avatarURL) {
+    if (user?.avatarURL.search('gravatar') !== -1 && !selectPicture) {
+      setSelectPicture(user?.avatarURL);
+      return;
+    }
+
+    if (
+      user?.avatarURL.search('gravatar') === -1 &&
+      user?.avatarURL.search('avatars') !== -1
+    ) {
+      // setPicture(user?.avatarURL.split('public')[1]);
       setPicture(user?.avatarURL);
     }
-  }, [picture, user]);
+  }, [selectPicture, user]);
 
   const updateUser = value => {
     const data = {
@@ -80,14 +87,18 @@ function UserData() {
           />
           <div
             className={`${styles.field__fake} ${
-              !active && !picture ? styles.pointer : ''
+              !active && (!picture || !selectPicture) ? styles.pointer : ''
             }`}
           >
-            {picture ? (
+            {picture || selectPicture ? (
               <img
                 className={styles.image}
-                src={picture}
-                alt={fileValue?.name}
+                src={
+                  picture && !selectPicture
+                    ? `https://fetch-friend.herokuapp.com/${picture}`
+                    : selectPicture
+                }
+                alt="avatar"
               />
             ) : active ? (
               'Upload your photo'
@@ -95,7 +106,7 @@ function UserData() {
               'Choise your photo'
             )}
           </div>
-          {picture && !active && (
+          {(picture || selectPicture) && !active && (
             <div className={`${styles.anyChoise}`}>Choise your photo</div>
           )}
         </label>

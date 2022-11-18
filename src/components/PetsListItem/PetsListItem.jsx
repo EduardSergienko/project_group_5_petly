@@ -27,7 +27,11 @@ function PetsListItem({
   return (
     <li className={styles.container}>
       <div className={styles.containerImg}>
-        <img className={styles.image} src={photo} alt="photo_pet" />
+        <img
+          className={styles.image}
+          src={`https://fetch-friend.herokuapp.com/${photo}`}
+          alt="photo_pet"
+        />
       </div>
       <div className={styles.containerText}>
         <p className={styles.text}>Name: {name}</p>

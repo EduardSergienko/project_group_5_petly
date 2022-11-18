@@ -112,7 +112,6 @@ const authSlice = createSlice({
         location,
         avatarURL,
         myFavorite,
-        myAnimal,
       } = payload.data;
 
       state.user = {
@@ -124,7 +123,7 @@ const authSlice = createSlice({
         location,
         avatarURL,
         myFavorite,
-        myAnimal,
+        ...state.user,
       };
     },
   },
