@@ -115,6 +115,7 @@ const authSlice = createSlice({
       } = payload.data;
 
       state.user = {
+        ...state.user,
         id: _id,
         name,
         phone,
@@ -123,7 +124,6 @@ const authSlice = createSlice({
         location,
         avatarURL,
         myFavorite,
-        ...state.user,
       };
     },
   },
