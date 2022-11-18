@@ -7,7 +7,6 @@ import SharedLayout from './SharedLayout/SharedLayout';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
 import Home from 'pages/Home';
-import AdaptiveImage from 'components/AdaptiveImage';
 import Loader from 'components/Loader';
 
 const UserPage = lazy(() => import('../pages/UserPage'));
@@ -27,7 +26,6 @@ export const App = () => {
             element={
               <PublicRoute restricted redirectPath="/user">
                 <RegisterPage />
-                <AdaptiveImage />
               </PublicRoute>
             }
           />
@@ -42,8 +40,11 @@ export const App = () => {
           />
 
           <Route
-            path="/friends" 
-            element={<OurFriendsPage />
+            path="friends"
+            element={
+              <PublicRoute>
+                <OurFriendsPage />
+              </PublicRoute>
             }
           />
 
