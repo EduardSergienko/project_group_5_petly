@@ -5,12 +5,20 @@ import AddNoticeButton from './AddNoticeButton/AddNoticeButton';
 
 
 import styles from './NoticesPage.module.scss';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-function NoticesPage() {
+function NoticesPage({ onFilter = () => { } }) {
+  const {categoryName} = useParams()
+  const items = useSelector(state => state.notices.items)
+  const filter = useSelector(state => state.filter.value)
+  const filteredCategories = items.filter(({ category }) => category.toLowerCase().includes(categoryName))
+  const filteredItems = filter ? filteredCategories.filter(({ title }) => title.toLowerCase().includes(filter)) : filteredCategories
+  
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Find your favorite pet</h2>
-      <NoticesSearch />
+      <NoticesSearch onChange={ onFilter } />
       <div className={styles.navWarpper}>
         <NoticesCategoriesNav />
         <div className={styles.buttonWrapper}>
@@ -18,7 +26,7 @@ function NoticesPage() {
           <AddNoticeButton/>
         </div>
       </div>
-      <NoticesCategoriesList />
+      <NoticesCategoriesList items={filteredItems}/>
     </div>
   );
 }

@@ -37,15 +37,53 @@ export const App = () => {
             }
           />
 
-          <Route
-            path="notices"
+          <Route path="notices/:categoryName"
+            element={
+              // <PublicRoute restricted >
+                <NoticesPage />
+              // </PublicRoute>
+            }
+            />
+          {/* <Route path='notices'>
+            <Route path="sell"
+            element={
+              // <PublicRoute restricted >
+                <NoticesPage />
+              // </PublicRoute>
+            }
+            />
+            <Route path="own"
+            element={
+              // <PublicRoute restricted >
+                <NoticesPage />
+              // </PublicRoute>
+            }
+            />
+            <Route path="lost-found"
+            element={
+              // <PublicRoute restricted >
+                <NoticesPage />
+              // </PublicRoute>
+            }
+            />
+            <Route path="favorite"
+            element={
+              // <PublicRoute restricted >
+                <NoticesPage />
+              // </PublicRoute>
+            }
+            />
+            <Route path="for-free"
             element={
               // <PublicRoute restricted >
                 <NoticesPage />
               // </PublicRoute>
             }
           />
+          </Route> */}
         </Route>
+
+        
 
         <Route
           path="user"
