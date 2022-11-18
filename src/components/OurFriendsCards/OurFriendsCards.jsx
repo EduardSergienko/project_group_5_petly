@@ -48,17 +48,15 @@ const OurFriends = ({ data }) => {
                         <ul className={styles.subMenu}>
                           {workDays ? (
                             workDays.map(({ day, from, to, id }) => (
-                              <>
-                                <li
-                                  key={id.toString()}
-                                  className={styles.subMenuItem}
-                                >
-                                  <p>{day}</p>
-                                  <p>
-                                    {from}-{to}
-                                  </p>
-                                </li>
-                              </>
+                              <li
+                                key={id.toString()}
+                                className={styles.subMenuItem}
+                              >
+                                <p>{day}</p>
+                                <p>
+                                  {from}-{to}
+                                </p>
+                              </li>
                             ))
                           ) : (
                             <span>----------</span>
