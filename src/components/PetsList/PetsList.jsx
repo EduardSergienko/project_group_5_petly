@@ -1,19 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { userOperations, userSelectors } from '../../redux/user';
+import { authSelectors } from 'redux/auth';
 
 import PetsListItem from '../PetsListItem/PetsListItem';
 
 function PetsList() {
   const dispatch = useDispatch();
-  const ownPosts = useSelector(userSelectors.getUserOwnPosts);
+  const ownPosts = useSelector(authSelectors.getUserAnimal);
   const [loader, setLoader] = useState(null);
 
   // console.log(ownPosts);
 
   useEffect(() => {
-    dispatch(userOperations.userPosts());
+    // dispatch(authSelectors.userPosts());
   }, [dispatch]);
 
   const activeLoader = id => {

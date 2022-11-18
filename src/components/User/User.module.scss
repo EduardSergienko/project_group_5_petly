@@ -39,6 +39,9 @@
   border-radius: 0px 40px 40px 0px;
   background-color: $secondaryTextColor;
 
+  position: sticky;
+  top: 10px;
+
   @media screen and (max-width: 768px) {
     width: 100%;
     padding: 24px 40px 24px 32px;

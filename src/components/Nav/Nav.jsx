@@ -29,7 +29,7 @@ export default function Nav({ toggleMenu }) {
           }
           to="/friends"
         >
-          Our friend
+          Our friends
         </NavLink>
       </ul>
     </>

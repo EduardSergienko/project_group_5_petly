@@ -25,7 +25,7 @@ const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
   const dispatch = useDispatch();
 
   const handleFirstStepSubmit = evt => {
-    evt.preventDefault();
+    // evt.preventDefault();
     setPage(prevPage => prevPage + 1);
   };
 

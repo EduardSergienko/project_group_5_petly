@@ -13,6 +13,7 @@ import Loader from 'components/Loader';
 const UserPage = lazy(() => import('../pages/UserPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
+const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
 const NewsPage = lazy(() => import('pages/NewsPage'));
 
 export const App = () => {
@@ -37,6 +38,12 @@ export const App = () => {
               <PublicRoute restricted redirectPath="/user">
                 <LoginPage />
               </PublicRoute>
+            }
+          />
+
+          <Route
+            path="/friends" 
+            element={<OurFriendsPage />
             }
           />
 

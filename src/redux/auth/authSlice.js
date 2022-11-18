@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './authOperations';
+import { userOperations } from '../user';
+
 import notices from 'helpers/Notification/Notification';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null, email: null, myAnimal: [] },
   token: null,
   isLoggedIn: false,
   error: null,
@@ -20,6 +22,29 @@ const authSlice = createSlice({
       state.token = action.payload.result.token;
       state.error = null;
       state.isLoggedIn = true;
+      const {
+        _id,
+        name,
+        phone,
+        email,
+        dateOfBirth,
+        location,
+        avatarURL,
+        myFavorite,
+        myAnimal,
+      } = action.payload.result;
+
+      state.user = {
+        id: _id,
+        name,
+        phone,
+        email,
+        dateOfBirth,
+        location,
+        avatarURL,
+        myFavorite,
+        myAnimal,
+      };
     },
     [authOperations.register.rejected](state, action) {
       state.error = action.payload;
@@ -29,9 +54,32 @@ const authSlice = createSlice({
       notices.showError('Oops, something wrong, try again');
     },
     [authOperations.logIn.fulfilled](state, action) {
-      state.token = action.payload.token;
+      state.token = action.payload.result.token;
       state.error = null;
       state.isLoggedIn = true;
+      const {
+        _id,
+        name,
+        phone,
+        email,
+        dateOfBirth,
+        location,
+        avatarURL,
+        myFavorite,
+        myAnimal,
+      } = action.payload.result;
+
+      state.user = {
+        id: _id,
+        name,
+        phone,
+        email,
+        dateOfBirth,
+        location,
+        avatarURL,
+        myFavorite,
+        myAnimal,
+      };
     },
     [authOperations.logIn.rejected](state, action) {
       state.error = action.payload;
@@ -45,7 +93,16 @@ const authSlice = createSlice({
       state.token = null;
       state.isLoggedIn = false;
     },
-    [authOperations.getCurrentUser.fulfilled](state, { payload }) {
+
+    [userOperations.createUserPost.fulfilled](state, { payload }) {
+      state.user.myAnimal = [...state.user.myAnimal, payload];
+    },
+    [userOperations.deleteUserPost.fulfilled]: (state, { payload }) => {
+      state.user.myAnimal = state.user.myAnimal.filter(
+        ({ _id }) => _id !== payload
+      );
+    },
+    [userOperations.updateUserInformation.fulfilled]: (state, { payload }) => {
       const {
         _id,
         name,
@@ -55,7 +112,8 @@ const authSlice = createSlice({
         location,
         avatarURL,
         myFavorite,
-      } = payload.user;
+        myAnimal,
+      } = payload.data;
 
       state.user = {
         id: _id,
@@ -66,6 +124,7 @@ const authSlice = createSlice({
         location,
         avatarURL,
         myFavorite,
+        myAnimal,
       };
     },
   },

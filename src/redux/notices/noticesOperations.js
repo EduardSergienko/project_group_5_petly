@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'http://localhost:3001/api'; // 3000
+axios.defaults.baseURL = 'https://fetch-friend.herokuapp.com/api';
 
 const token = {
   set(token) {
@@ -25,7 +25,7 @@ const addNotice = createAsyncThunk(
     try {
       const { data } = await axios.post('/notices/', credentials);
 
-      return data;
+      return data.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }

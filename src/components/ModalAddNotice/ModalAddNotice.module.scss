@@ -523,3 +523,16 @@ form label:last-of-type .textArea{
     height: 140px;
   }
 }
+
+.addForm .errorMsg{
+  margin-left: 8px;
+  font-size: 14px;
+  color: $errorColor;
+}
+
+
+
+.errorInput{
+  border-color: rgb(255, 77, 77, 1);
+  margin-bottom: 0px;
+}

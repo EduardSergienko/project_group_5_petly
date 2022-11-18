@@ -1,6 +1,6 @@
-const getUserOwnPosts = state => state.user.userPosts;
+// const getUserOwnPosts = state => state.user.userPosts;
 
-const userSelectors = {
-  getUserOwnPosts,
-};
-export default userSelectors;
+// const userSelectors = {
+//   getUserOwnPosts,
+// };
+// export default userSelectors;

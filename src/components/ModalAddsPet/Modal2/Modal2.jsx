@@ -139,7 +139,7 @@ function Modal2({
               )}
             </div>
             {picture && (
-              <div className={`${styles.anyChoise}`}>Choose another photo</div>
+              <div className={`${styles.anyChoise}`}>Choise another photo</div>
             )}
             {required && !picture && (
               <p className={styles.textErrorPicture}>Please select a photo</p>
