@@ -8,7 +8,7 @@ import styles from './ModalAddNotice.module.scss';
 const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
   const [page, setPage] = useState(0);
   const [firstStepValues, setFirstStepValues] = useState({
-    category: '',
+    category: 'sell',
     title: '',
     name: '',
     birthDate: '',
@@ -24,13 +24,14 @@ const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
   const [fileValue, setFileValue] = useState('');
   const dispatch = useDispatch();
 
-  const handleFirstStepSubmit = evt => {
-    // evt.preventDefault();
+  const handleFirstStepSubmit = values => {
+    setFirstStepValues(values);
     setPage(prevPage => prevPage + 1);
   };
 
-  const handleSecondStepSubmit = evt => {
-    evt.preventDefault();
+  const handleSecondStepSubmit = values => {
+    console.log(values);
+    setSecondStepValues(values);
 
     const formData = new FormData();
 

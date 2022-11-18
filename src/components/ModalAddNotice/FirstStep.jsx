@@ -8,7 +8,7 @@ const FirstStep = ({
   setFirstStepValues,
   handleModalClose,
 }) => {
-  const validationSchema = Yup.object({
+  const firstStepSchema = Yup.object({
     category: Yup.string().required('Required'),
     title: Yup.string()
       .min(2, 'Title is too short')
@@ -30,7 +30,7 @@ const FirstStep = ({
       <Formik
         initialValues={firstStepValues}
         onSubmit={handleFirstStepSubmit}
-        validator={() => ({})}
+        validationSchema={firstStepSchema}
       >
         <Form className={styles.addForm}>
           <p className={styles.text}>
@@ -40,54 +40,34 @@ const FirstStep = ({
 
           <fieldset className={styles.fieldsetWrap}>
             <label className={styles.labelContainer} htmlFor="lost-found">
-              <input
+              <Field
                 className={styles.radio}
                 type="radio"
                 name="category"
                 id="lost-found"
-                defaultChecked={
-                  firstStepValues.category === 'lost-found' && true
-                }
-                onChange={evt => {
-                  setFirstStepValues({
-                    ...firstStepValues,
-                    category: evt.target.id,
-                  });
-                }}
+                value="lost-found"
               />
               <span className={styles.categoryLostFound}></span>
             </label>
 
             <label className={styles.labelContainer} htmlFor="for-free">
-              <input
+              <Field
                 className={styles.radio}
                 type="radio"
                 name="category"
                 id="for-free"
-                defaultChecked={firstStepValues.category === 'for-free' && true}
-                onChange={evt => {
-                  setFirstStepValues({
-                    ...firstStepValues,
-                    category: evt.target.id,
-                  });
-                }}
+                value="for-free"
               />
               <span className={styles.categoryForFree}></span>
             </label>
 
             <label className={styles.labelContainer} htmlFor="sell">
-              <input
+              <Field
                 className={styles.radio}
                 type="radio"
                 name="category"
                 id="sell"
-                defaultChecked
-                onChange={evt => {
-                  setFirstStepValues({
-                    ...firstStepValues,
-                    category: evt.target.id,
-                  });
-                }}
+                value="sell"
               />
               <span className={styles.categorySell}></span>
             </label>
@@ -100,13 +80,10 @@ const FirstStep = ({
               id="title"
               name="title"
               placeholder="Type title"
-              value={firstStepValues.title}
-              onChange={evt => {
-                setFirstStepValues({
-                  ...firstStepValues,
-                  title: evt.target.value,
-                });
-              }}
+            />
+            <ErrorMessage
+              name="title"
+              render={msg => <div className={styles.errorMsg}>{msg}</div>}
             />
           </label>
 
@@ -118,13 +95,10 @@ const FirstStep = ({
               id="name"
               name="name"
               placeholder="Type name"
-              value={firstStepValues.name}
-              onChange={evt => {
-                setFirstStepValues({
-                  ...firstStepValues,
-                  name: evt.target.value,
-                });
-              }}
+            />
+            <ErrorMessage
+              name="name"
+              render={msg => <div className={styles.errorMsg}>{msg}</div>}
             />
           </label>
 
@@ -136,13 +110,10 @@ const FirstStep = ({
               id="birthDate"
               name="birthDate"
               placeholder="Type date of birth"
-              value={firstStepValues.birthDate}
-              onChange={evt => {
-                setFirstStepValues({
-                  ...firstStepValues,
-                  birthDate: evt.target.value,
-                });
-              }}
+            />
+            <ErrorMessage
+              name="birthDate"
+              render={msg => <div className={styles.errorMsg}>{msg}</div>}
             />
           </label>
 
@@ -154,13 +125,10 @@ const FirstStep = ({
               id="breed"
               name="breed"
               placeholder="Type breed"
-              value={firstStepValues.breed}
-              onChange={evt => {
-                setFirstStepValues({
-                  ...firstStepValues,
-                  breed: evt.target.value,
-                });
-              }}
+            />
+            <ErrorMessage
+              name="breed"
+              render={msg => <div className={styles.errorMsg}>{msg}</div>}
             />
           </label>
 
