@@ -49,14 +49,14 @@ function UserData() {
   };
 
   useEffect(() => {
-    if (user?.avatarURL.search('gravatar') !== -1 && !selectPicture) {
+    if (user?.avatarURL?.search('gravatar') !== -1 && !selectPicture) {
       setSelectPicture(user?.avatarURL);
       return;
     }
 
     if (
-      user?.avatarURL.search('gravatar') === -1 &&
-      user?.avatarURL.search('avatars') !== -1
+      user?.avatarURL?.search('gravatar') === -1 &&
+      user?.avatarURL?.search('avatars') !== -1
     ) {
       // setPicture(user?.avatarURL.split('public')[1]);
       setPicture(user?.avatarURL);

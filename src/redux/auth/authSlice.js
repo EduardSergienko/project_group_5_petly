@@ -126,6 +126,33 @@ const authSlice = createSlice({
         myFavorite,
       };
     },
+    [authOperations.getCurrentUser.fulfilled]: (state, { payload }) => {
+      const {
+        _id,
+        name,
+        phone,
+        email,
+        dateOfBirth,
+        location,
+        avatarURL,
+        myFavorite,
+        myAnimal,
+      } = payload.result[0];
+
+      state.user = {
+        id: _id,
+        name,
+        phone,
+        email,
+        dateOfBirth,
+        location,
+        avatarURL,
+        myFavorite,
+        myAnimal,
+      };
+      state.error = null;
+      state.isLoggedIn = true;
+    },
   },
 });
 
