@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { noticesOperations } from '.';
-// import { showError } from 'components/Notification/Notification';
 
 const initialState = {
   items: [

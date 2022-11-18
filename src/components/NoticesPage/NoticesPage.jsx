@@ -16,7 +16,6 @@ function NoticesPage({ onFilter = () => { } }) {
   console.log(categoryName)
   const items = useSelector(state => state.notices.items)
   const filter = useSelector(state => state.filter.value)
-  // const filteredCategories = items.filter(({ category }) => category.toLowerCase().includes(categoryName))
   const filteredItems = filter ? items.filter(({ title }) => title.toLowerCase().includes(filter)) : items
   
   useEffect(() => {

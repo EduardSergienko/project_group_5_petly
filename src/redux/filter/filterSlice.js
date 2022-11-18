@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import authOperations from './authOperations';
-// import { showError } from 'components/Notification/Notification';
 
 const initialState = {
   value: ''

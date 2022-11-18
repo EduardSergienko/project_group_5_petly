@@ -26,48 +26,8 @@ const getNotices = createAsyncThunk(
   }
 );
 
-// const register = createAsyncThunk(
-//   'auth/register',
-//   async (credentials, { rejectWithValue }) => {
-//     try {
-//       const { data } = await axios.post('/register', credentials);
-//       token.set(data.token);
-//       return data;
-//     } catch (error) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
-
-// const logIn = createAsyncThunk(
-//   'auth/login',
-//   async (credentials, { rejectWithValue }) => {
-//     try {
-//       const { data } = await axios.post('/login', credentials);
-//       token.set(data.token);
-//       return data;
-//     } catch (error) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
-
-// const logOutUser = createAsyncThunk(
-//   'user/logOutUser',
-//   async (_, { rejectWithValue }) => {
-//     try {
-//       await axios.post('/logout');
-//       token.unset();
-//     } catch (error) {
-//       return rejectWithValue(error);
-//     }
-//   }
-// );
 
 const operations = {
     getNotices
-//   register,
-//   logIn,
-//   logOutUser,
 };
 export default operations;
