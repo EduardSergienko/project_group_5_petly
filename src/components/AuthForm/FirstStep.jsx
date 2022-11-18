@@ -16,10 +16,9 @@ const FirstStep = ({ onNextStep, formData }) => {
       .min(7, 'Password is too short')
       .max(32, 'Password is too long')
       .required('Required'),
-    confirmPassword: Yup.string().oneOf(
-      [Yup.ref('password'), null],
-      'Passwords must match'
-    ),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'Passwords must match')
+      .required('Required'),
   });
 
   const handleFormSubmit = values => {

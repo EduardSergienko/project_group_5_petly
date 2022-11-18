@@ -10,7 +10,7 @@ import './index.css';
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
   <Provider store={store}>
-    <BrowserRouter basename="project_group_5_petly">
+    <BrowserRouter basename="/">
       <App />
     </BrowserRouter>
   </Provider>

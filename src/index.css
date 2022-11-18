@@ -64,3 +64,14 @@ input[type='search']::-webkit-search-results-decoration {
 img {
   display: block;
 }
+.blackBackground {
+  background-color: aquamarine;
+  width: 500px;
+}
+
+/* for notification by Toastify */
+.Toastify__toast-theme--light {
+  background-color: #fdf7f2;
+  border-radius: 10px;
+  color: #111111;
+}

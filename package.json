@@ -2,7 +2,6 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://EduardSergienko.github.io/project_group_5_petly/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.16.3",
@@ -16,6 +15,7 @@
     "react-debounce-input": "^3.3.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.6.0",
+    "react-input-mask": "^2.0.4",
     "react-loader-spinner": "^5.3.4",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
