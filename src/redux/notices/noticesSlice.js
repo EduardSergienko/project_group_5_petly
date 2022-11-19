@@ -24,6 +24,10 @@ const noticesSlice = createSlice({
       state.error = action.payload;
       state.noticeAdded = false;
     },
+    [noticesOperations.getNotices.fulfilled](state, action) {
+      state.notices = action.payload.data;
+      // state.isLoading = false;
+    },
   },
 });
 

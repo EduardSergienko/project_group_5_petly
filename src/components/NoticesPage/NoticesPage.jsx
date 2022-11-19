@@ -14,7 +14,7 @@ function NoticesPage({ onFilter = () => { } }) {
   const dispatch = useDispatch()
   const { categoryName } = useParams()
   console.log(categoryName)
-  const items = useSelector(state => state.notices.items)
+  const items = useSelector(state => state.notices.notices)
   const filter = useSelector(state => state.filter.value)
   const filteredItems = filter ? items.filter(({ title }) => title.toLowerCase().includes(filter)) : items
   
