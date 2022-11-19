@@ -15,11 +15,11 @@ function PetsList() {
 
   return (
     <ul>
-      {ownPosts?.map(({ _id, birthday, breed, comments, name, avatarURL }) => (
+      {ownPosts?.map(({ _id, birthDay, breed, comments, name, avatarURL }) => (
         <PetsListItem
           key={_id}
           id={_id}
-          birthday={birthday}
+          birthday={birthDay}
           breed={breed}
           comments={comments}
           name={name}

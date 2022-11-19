@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import InputMask from 'react-input-mask';
 
 import doneVector from '../../../image/doneVector.png';
 import edit from '../../../image/edit.png';
@@ -17,6 +18,7 @@ function UserDataItem({
   example,
   defaultVaule,
   name,
+  mask,
 }) {
   const [active, setActive] = useState(false);
   const [inputeValue, setInputeValue] = useState(defaultVaule ?? '');
@@ -62,12 +64,13 @@ function UserDataItem({
       <p className={styles.title}>{title}:</p>
       {active ? (
         <label className={styles.lable}>
-          <input
+          <InputMask
             className={`${styles.input} ${
               !inputActive && inputeValue.length !== 0 ? styles.noValidate : ''
             }`}
             type={type}
             name={name}
+            mask={mask}
             value={inputeValue}
             onChange={onInputeChange}
             pattern={pattern}

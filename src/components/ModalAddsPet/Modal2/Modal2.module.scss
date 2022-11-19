@@ -156,8 +156,11 @@
   font-size: 20px;
   line-height: 27px;
   letter-spacing: 0.04em;
-  color: $secondaryTextColor;
-  background-color: $orangeColor;
+  // color: $secondaryTextColor;
+  // background-color: $orangeColor;
+
+  color: $mainTextColor;
+  background-color: $secondaryTextColor;
 
   margin-left: 24px;
   padding: 8.5px 28px;
@@ -169,9 +172,9 @@
 
   cursor: pointer;
 
-  &:hover {
-    background-color: #e7884d;
-  }
+  // &:hover {
+  //   background-color: #e7884d;
+  // }
 
   @media screen and (max-width: 400px) {
     order: 1;
@@ -180,6 +183,15 @@
     margin-bottom: 12px;
     font-size: 16px;
     line-height: 22px;
+  }
+}
+
+.valueTrue {
+  color: $secondaryTextColor;
+  background-color: $orangeColor;
+
+  &:hover {
+    background-color: #e7884d;
   }
 }
 
