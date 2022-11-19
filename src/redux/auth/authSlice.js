@@ -103,16 +103,8 @@ const authSlice = createSlice({
       );
     },
     [userOperations.updateUserInformation.fulfilled]: (state, { payload }) => {
-      const {
-        _id,
-        name,
-        phone,
-        email,
-        dateOfBirth,
-        location,
-        avatarURL,
-        myFavorite,
-      } = payload.data;
+      const { _id, name, phone, email, dateOfBirth, location, avatarURL } =
+        payload.data;
 
       state.user = {
         ...state.user,
@@ -123,7 +115,6 @@ const authSlice = createSlice({
         dateOfBirth,
         location,
         avatarURL,
-        myFavorite,
       };
     },
     [authOperations.getCurrentUser.fulfilled]: (state, { payload }) => {
