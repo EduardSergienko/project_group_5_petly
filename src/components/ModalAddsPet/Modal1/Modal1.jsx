@@ -26,7 +26,7 @@ function Modal1({
 
   const handleInputChange = e => {
     const { name, value } = e.target;
-    const valueToLower = value.toLowerCase();
+    const valueToLower = value.toLowerCase().trim();
 
     switch (name) {
       case 'name':
@@ -35,15 +35,16 @@ function Modal1({
 
         setInputActiveName(pattern.test(valueToLower));
 
-        if (value.length < 2) {
+        if (valueToLower.length < 2) {
           setInputActiveName(false);
         }
 
-        if (value.length > 16) {
+        if (valueToLower.length > 16) {
           setInputActiveName(false);
         }
 
         setNameValue(value);
+        setRequired(false);
         break;
 
       case 'Date_of_birth':
@@ -54,6 +55,7 @@ function Modal1({
         );
 
         setBirthdayValue(value);
+        setRequired(false);
         break;
 
       case 'breed':
@@ -63,15 +65,16 @@ function Modal1({
           )
         );
 
-        if (value.length < 2) {
+        if (valueToLower.length < 2) {
           setInputActiveBreed(false);
         }
 
-        if (value.length > 16) {
+        if (valueToLower.length > 16) {
           setInputActiveBreed(false);
         }
 
         setBreedValue(value);
+        setRequired(false);
         break;
 
       default:
@@ -172,6 +175,11 @@ function Modal1({
             nameValue.length > 16 && (
               <p className={styles.textError}>No more than 16 characters</p>
             )}
+          {!inputActiveName &&
+            nameValue.length > 2 &&
+            nameValue.length < 16 && (
+              <p className={styles.textError}>Only letters</p>
+            )}
           {required && nameValue.length === 0 && (
             <p className={styles.textError}>Required</p>
           )}
@@ -222,10 +230,15 @@ function Modal1({
             breedValue.length < 2 && (
               <p className={styles.textError}>Must be at least 2 characters</p>
             )}
-          {!inputActiveName &&
+          {!inputActiveBreed &&
             breedValue.length !== 0 &&
             breedValue.length > 16 && (
               <p className={styles.textError}>No more than 16 characters</p>
+            )}
+          {!inputActiveBreed &&
+            breedValue.length > 2 &&
+            breedValue.length < 16 && (
+              <p className={styles.textError}>Only letters</p>
             )}
           {required && breedValue.length === 0 && (
             <p className={styles.textError}>Required</p>
@@ -236,7 +249,20 @@ function Modal1({
           <button className={styles.cancel} onClick={onClickCancelBtn}>
             Cancel
           </button>
-          <button className={styles.next} onClick={onClickNextBtn}>
+          <button
+            className={`${styles.next} ${
+              inputActiveName &&
+              inputActiveBirthday &&
+              inputActiveBreed &&
+              !required &&
+              nameValue.length !== 0 &&
+              birthdayValue.length !== 0 &&
+              breedValue.length !== 0
+                ? styles.valueTrue
+                : ''
+            }`}
+            onClick={onClickNextBtn}
+          >
             Next
           </button>
         </div>

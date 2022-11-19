@@ -53,13 +53,20 @@ function ModalAddsPet({ active, setActive, setmodalActivefForTablet }) {
     dispatch(userOperations.createUserPost(formData));
   };
 
+  const onCloseModal = () => {
+    // eslint-disable-next-line no-restricted-globals
+    const boolPrompt = confirm('Are you sure you want to close the window?');
+    if (boolPrompt) {
+      setActive(false);
+      setmodalActivefForTablet(false);
+    }
+  };
+
   return (
     <div
       className={styles.container + ' ' + (active ? styles.active : '')}
-      onClick={() => {
-        setActive(false);
-        setmodalActivefForTablet(false);
-      }}
+      onClick={onCloseModal}
+      id={'container-modal'}
     >
       <div className={styles.modal} onClick={e => e.stopPropagation()}>
         {page === 1 && (

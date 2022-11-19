@@ -22,6 +22,8 @@ function Modal2({
   const [picture, setPicture] = useState(
     modalDefaultValues ? modalDefaultValues.photo : ''
   );
+  console.log(inputActiveComments);
+  // console.log(required);
 
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -36,10 +38,15 @@ function Modal2({
           setInputActiveComments(false);
         }
 
+        if (value.length >= 8 && value.length <= 120) {
+          setInputActiveComments(true);
+        }
+
         setModal2Values(prevState => {
           return { ...prevState, comments: value };
         });
         setCommentsValue(value);
+        setRequired(false);
         break;
 
       default:
@@ -114,7 +121,7 @@ function Modal2({
               className={styles.field__file}
               type="file"
               name="file"
-              accept="image/*, image/jpeg, image/jpg"
+              accept=".jpg, .jpeg, .png"
               required
               multiple
               onChange={handleChange}
@@ -192,7 +199,17 @@ function Modal2({
           <button className={styles.cancel} onClick={onClickBackBtn}>
             Back
           </button>
-          <button className={styles.next} onClick={onClickDoneBtn}>
+          <button
+            className={`${styles.next} ${
+              inputActiveComments &&
+              picture &&
+              !required &&
+              commentsValue.length !== 0
+                ? styles.valueTrue
+                : ''
+            }`}
+            onClick={onClickDoneBtn}
+          >
             Done
           </button>
         </div>
