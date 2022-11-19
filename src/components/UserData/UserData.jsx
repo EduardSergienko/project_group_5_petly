@@ -79,7 +79,7 @@ function UserData() {
             className={styles.field__file}
             type="file"
             name="file"
-            accept="image/*, image/jpeg, image/jpg"
+            accept=".jpg, .jpeg, .png"
             required
             multiple
             onChange={handleChange}
@@ -163,6 +163,7 @@ function UserData() {
           name={'dateOfBirth'}
           placeholder={'Your birthday'}
           example={'DD.MM.YYYY'}
+          mask={'99.99.9999'}
           defaultVaule={user?.dateOfBirth}
         />
         <UserDataItem
@@ -173,6 +174,7 @@ function UserData() {
           name={'phone'}
           placeholder={'Your phone'}
           example={'+38000000000'}
+          mask={'+380999999999'}
           defaultVaule={user?.phone}
         />
         <UserDataItem

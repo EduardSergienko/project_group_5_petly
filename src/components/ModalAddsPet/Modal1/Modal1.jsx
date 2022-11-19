@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import InputMask from 'react-input-mask';
 
 import styles from './Modal1.module.scss';
 
@@ -187,7 +188,7 @@ function Modal1({
 
         <label className={styles.lable}>
           <span className={styles.span}>Date of birth</span>
-          <input
+          {/* <input
             className={`${styles.input} ${
               !inputActiveBirthday && birthdayValue.length !== 0
                 ? styles.noValidate
@@ -197,6 +198,22 @@ function Modal1({
             }`}
             type="text"
             name="Date_of_birth"
+            value={birthdayValue}
+            onChange={handleInputChange}
+            placeholder="Type date of birth"
+            required
+          /> */}
+          <InputMask
+            className={`${styles.input} ${
+              !inputActiveBirthday && birthdayValue.length !== 0
+                ? styles.noValidate
+                : ''
+            }  ${
+              required && birthdayValue.length === 0 ? styles.noValidate : ''
+            }`}
+            type="text"
+            name="Date_of_birth"
+            mask="99.99.9999"
             value={birthdayValue}
             onChange={handleInputChange}
             placeholder="Type date of birth"
