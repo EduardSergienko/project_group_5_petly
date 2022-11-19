@@ -13,7 +13,6 @@ const noticesSlice = createSlice({
   initialState,
   extraReducers: {
     [noticesOperations.addNotice.pending](state, _) {
-      state.noticeAdded = false;
       state.error = null;
     },
     [noticesOperations.addNotice.fulfilled](state, action) {

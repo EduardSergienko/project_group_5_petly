@@ -18,7 +18,7 @@ const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
     sex: '',
     location: '',
     price: '',
-    avatar: [],
+    avatar: '',
     comments: '',
   });
   const [fileValue, setFileValue] = useState('');
@@ -30,9 +30,7 @@ const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
   };
 
   const handleSecondStepSubmit = values => {
-    console.log(values);
-    setSecondStepValues(values);
-
+    const { comments, avatar, price, location, sex } = values;
     const formData = new FormData();
 
     formData.append('category', firstStepValues.category);
@@ -40,11 +38,11 @@ const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
     formData.append('petName', firstStepValues.name);
     formData.append('birthDate', firstStepValues.birthDate);
     formData.append('breed', firstStepValues.breed);
-    formData.append('sex', secondStepValues.sex);
-    formData.append('location', secondStepValues.location);
-    formData.append('avatar', secondStepValues.avatar);
-    formData.append('comments', secondStepValues.comments);
-    formData.append('price', Number(secondStepValues.price));
+    formData.append('sex', sex);
+    formData.append('location', location);
+    formData.append('avatar', avatar);
+    formData.append('comments', comments);
+    formData.append('price', Number(price));
 
     dispatch(noticesOperations.addNotice(formData));
   };
@@ -54,11 +52,11 @@ const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
     setPage(prevPage => prevPage - 1);
   };
 
-  const handleAddAvatar = evt => {
+  const handleAddAvatar = (evt, setFieldValue) => {
     const [file] = evt.target.files;
-
     const reader = new FileReader();
     if (file) {
+      setFieldValue('avatar', file);
       reader.readAsDataURL(file);
       reader.onloadend = evt => {
         const base64data = reader.result;
@@ -71,7 +69,7 @@ const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
   };
 
   const handleModalClose = () => {
-    setIsModalOpen(false);
+    // setIsModalOpen(false);
   };
 
   return (

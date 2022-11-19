@@ -1,5 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { authReducer } from './auth';
+import { noticesReducer } from './notices';
 import {
   persistStore,
   persistReducer,
@@ -25,7 +26,6 @@ const middleware = [
     },
   }),
 ];
-import { noticesReducer } from './notices';
 
 export const store = configureStore({
   reducer: {
