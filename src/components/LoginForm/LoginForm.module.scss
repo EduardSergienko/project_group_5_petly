@@ -1,14 +1,14 @@
 @import 'variables/variables.scss';
 
 .formWrap {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-
-  transform: translateX(-50%);
+  padding-top: 42px;
 
   @media screen and (min-width: 768px) {
-    top: 29%;
+    top: 27%;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+
     padding: 60px 80px 40px 80px;
 
     background-color: $secondaryTextColor;

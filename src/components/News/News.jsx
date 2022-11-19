@@ -29,6 +29,12 @@ const News = ({ title }) => {
     fetchNews();
   }, []);
 
+  const shortenText = (text, max) => {
+    return text && text.length > max
+      ? `${text.slice(0, max).split(' ').slice(0, -1).join(' ')}...`
+      : text;
+  };
+
   const searchNews = items => {
     const FilteredItems = items.filter(item =>
       searchParam.some(
@@ -44,7 +50,7 @@ const News = ({ title }) => {
   };
 
   if (error) {
-    notices.showError('Oops, something wrong, try again');
+    notices.showError(error?.message || 'Oops, something wrong, try again');
   } else if (!isLoaded) {
     return <Loader />;
   } else {
@@ -54,24 +60,24 @@ const News = ({ title }) => {
         <FilterInput value={query} onChange={setQuery} />
 
         <ul className={styles.box}>
-          {searchNews(items).map(item => {
+          {searchNews(items).map(({ _id, title, description, date, url }) => {
             return (
-              <li key={item._id} className={styles.newsItem}>
+              <li key={_id} className={styles.newsItem}>
                 {query.length > 1 ? (
                   <article>
                     <h2 className={styles.articleName}>
-                      <HighlightText result={item.title} query={query} />
+                      <HighlightText result={title} query={query} />
                     </h2>
                     <p className={styles.text}>
-                      <HighlightText result={item.description} query={query} />
+                      <HighlightText result={description} query={query} />
                     </p>
 
                     <div className={styles.additional}>
                       <span className={styles.date}>
-                        {format(new Date(item.date), 'dd/MM/yyyy')}
+                        {format(new Date(date), 'dd/MM/yyyy')}
                       </span>
                       <a
-                        href={item.url}
+                        href={url}
                         className={styles.readMore}
                         target="_blank"
                         rel="noreferrer"
@@ -82,15 +88,18 @@ const News = ({ title }) => {
                   </article>
                 ) : (
                   <article>
-                    <h2 className={styles.articleName}>{item.title}</h2>
-                    <p className={styles.text}>{item.description}</p>
-
+                    <h2 className={styles.articleName}>
+                      {shortenText(title, 50)}
+                    </h2>
+                    <p className={styles.text}>
+                      {shortenText(description, 225)}
+                    </p>
                     <div className={styles.additional}>
                       <span className={styles.date}>
-                        {format(new Date(item.date), 'dd/MM/yyyy')}
+                        {format(new Date(date), 'dd/MM/yyyy')}
                       </span>
                       <a
-                        href={item.url}
+                        href={url}
                         className={styles.readMore}
                         target="_blank"
                         rel="noreferrer"
