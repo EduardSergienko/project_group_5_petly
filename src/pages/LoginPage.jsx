@@ -1,12 +1,15 @@
 import LoginForm from 'components/LoginForm';
 import AdaptiveImage from 'components/AdaptiveImage';
+import Container from 'components/Container/Container';
 
 const LoginPage = () => {
   return (
-    <div>
-      <LoginForm title="Login" />
+    <main>
+      <Container>
+        <LoginForm title="Login" />
+      </Container>
       <AdaptiveImage />
-    </div>
+    </main>
   );
 };
 

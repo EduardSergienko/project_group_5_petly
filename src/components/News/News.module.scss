@@ -1,14 +1,16 @@
 @import 'variables/variables.scss';
 
 .newsWrap {
-  padding: 42px 20px 100px;
+  padding-top: 42px;
+  padding-bottom: 100px;
 
   @media screen and (min-width: 768px) {
-    padding: 94px 32px 100px 32px;
+    padding-top: 94px;
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 60px 16px 200px 16px;
+    padding-top: 60px;
+    padding-bottom: 200px;
   }
 }
 
