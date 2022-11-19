@@ -3,6 +3,7 @@
 .container {
   position: relative;
   display: flex;
+  align-items: center;
   width: 100%;
   padding: 20px;
 
@@ -23,17 +24,23 @@
 }
 
 .containerImg {
-  width: 161px;
-  margin-right: 32px;
+  display: flex;
+  // align-items: center;
 
-  // border-radius: 40px;
-  // overflow: hidden;
+  width: 161px;
+  height: 161px;
+  margin-right: 32px;
+  overflow: unset;
+  border-radius: 40px;
 
   @media screen and (max-width: 400px) {
     width: 240px;
+    height: 240px;
     margin-right: 0px;
+    border-radius: 20px;
 
     margin-bottom: 20px;
+    justify-content: center;
   }
 }
 
@@ -50,6 +57,7 @@
 .containerText {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .text {
@@ -57,6 +65,8 @@
   font-size: 16px;
   line-height: 22px;
   letter-spacing: 0.04em;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
   color: $mainTextColor;
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import Container from 'components/Container/Container';
 import UserData from '../UserData/UserData';
 import Logout from '../Logout/Logout';
 import PetsData from '../PetsData/PetsData';
@@ -20,25 +20,29 @@ function User() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.containerInformation}>
-        <div className={styles.titleContainer}>
-          <h2 className={styles.title}>My information:</h2>
-          <AddPetsButton
-            onClickBtn={setmodalActivefForTablet}
-            customStyle={!mobileWidth ? { display: 'none' } : { null: 'none' }}
-          />
+    <Container>
+      <div className={styles.container}>
+        <div className={styles.containerInformation}>
+          <div className={styles.titleContainer}>
+            <h2 className={styles.title}>My information:</h2>
+            <AddPetsButton
+              onClickBtn={setmodalActivefForTablet}
+              customStyle={
+                !mobileWidth ? { display: 'none' } : { null: 'none' }
+              }
+            />
+          </div>
+          <div className={styles.userInformation}>
+            <UserData />
+            <Logout />
+          </div>
         </div>
-        <div className={styles.userInformation}>
-          <UserData />
-          <Logout />
-        </div>
+        <PetsData
+          modalActivefForTablet={modalActivefForTablet}
+          setmodalActivefForTablet={setmodalActivefForTablet}
+        />
       </div>
-      <PetsData
-        modalActivefForTablet={modalActivefForTablet}
-        setmodalActivefForTablet={setmodalActivefForTablet}
-      />
-    </div>
+    </Container>
   );
 }
 

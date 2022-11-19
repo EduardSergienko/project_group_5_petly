@@ -1,5 +1,5 @@
 import styles from './OurFriendsCards.module.scss';
-
+import Container from 'components/Container/Container';
 const OurFriends = ({ data }) => {
   const getWorkDays = arr => {
     const { from, to } = arr.find(item => item.isOpen === true);
@@ -7,7 +7,7 @@ const OurFriends = ({ data }) => {
   };
   return (
     <>
-      <div>
+      <Container>
         <h2 className={styles.Title}>Our friends</h2>
         <div className={styles.FriendsThumb}>
           {data.map(
@@ -104,7 +104,7 @@ const OurFriends = ({ data }) => {
             )
           )}
         </div>
-      </div>
+      </Container>
     </>
   );
 };
