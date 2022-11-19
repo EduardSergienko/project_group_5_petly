@@ -22,7 +22,12 @@
     }
 }
 
-
+.item {
+    height: 39px;
+    @media screen and (min-width: 768px) {
+           height: auto;
+        }
+}
 
 .button {
     border: 2px solid $orangeColor;

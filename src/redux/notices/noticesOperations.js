@@ -37,8 +37,6 @@ const getNotices = createAsyncThunk(
   async (category, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(`/notices/category/${category}`);
-      console.log(data)
-    //   token.set(data.token);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
