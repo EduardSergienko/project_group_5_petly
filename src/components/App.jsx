@@ -19,6 +19,7 @@ const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage'));
 const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
 const NewsPage = lazy(() => import('pages/NewsPage'));
+const NoticesPage = lazy(() => import('pages/NoticesPage'));
 
 export const App = () => {
   const token = useSelector(authSelectors.getUserToken);
@@ -79,6 +80,16 @@ export const App = () => {
               </PublicRoute>
             }
           />
+
+          <Route
+            path="notices/:categoryName"
+            element={
+              <PublicRoute>
+                <NoticesPage />
+              </PublicRoute>
+            }
+          />
+
         </Route>
 
         <Route path="*" element={<Navigate to="/" replace />} />
