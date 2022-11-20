@@ -20,29 +20,27 @@ function User() {
   }, []);
 
   return (
-    <Container>
-      <div className={styles.container}>
-        <div className={styles.containerInformation}>
-          <div className={styles.titleContainer}>
-            <h2 className={styles.title}>My information:</h2>
-            <AddPetsButton
-              onClickBtn={setmodalActivefForTablet}
-              customStyle={
-                !mobileWidth ? { display: 'none' } : { null: 'none' }
-              }
-            />
-          </div>
-          <div className={styles.userInformation}>
-            <UserData />
-            <Logout />
-          </div>
+    // <Container>
+    <div className={styles.container}>
+      <div className={styles.containerInformation}>
+        <div className={styles.titleContainer}>
+          <h2 className={styles.title}>My information:</h2>
+          <AddPetsButton
+            onClickBtn={setmodalActivefForTablet}
+            customStyle={!mobileWidth ? { display: 'none' } : { null: 'none' }}
+          />
         </div>
-        <PetsData
-          modalActivefForTablet={modalActivefForTablet}
-          setmodalActivefForTablet={setmodalActivefForTablet}
-        />
+        <div className={styles.userInformation}>
+          <UserData />
+          <Logout />
+        </div>
       </div>
-    </Container>
+      <PetsData
+        modalActivefForTablet={modalActivefForTablet}
+        setmodalActivefForTablet={setmodalActivefForTablet}
+      />
+    </div>
+    // </Container>
   );
 }
 
