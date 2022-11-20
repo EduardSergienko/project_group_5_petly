@@ -42,14 +42,20 @@ const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
     formData.append('location', location);
     formData.append('avatar', avatar);
     formData.append('comments', comments);
-    formData.append('price', Number(price));
+
+    firstStepValues.category === 'sell' &&
+      formData.append('price', Number(price));
 
     dispatch(noticesOperations.addNotice(formData));
   };
 
-  const handleBackToFirst = evt => {
-    evt.preventDefault();
+  const handleBackToFirst = values => {
+    setSecondStepValues(values);
     setPage(prevPage => prevPage - 1);
+  };
+
+  const checkCategory = () => {
+    return firstStepValues.category === 'sell';
   };
 
   const handleAddAvatar = (evt, setFieldValue) => {
@@ -75,9 +81,7 @@ const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
   return (
     <>
       <div className={styles.formWrap}>
-        <h1 className={`${styles.title} ${page === 1 && styles.secStepTitle}`}>
-          Add pet
-        </h1>
+        <h1 className={styles.title}>Add pet</h1>
         {page === 0 ? (
           <FirstStep
             handleFirstStepSubmit={handleFirstStepSubmit}
@@ -89,10 +93,10 @@ const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
           <SecondStep
             handleBackToFirst={handleBackToFirst}
             secondStepValues={secondStepValues}
-            setSecondStepValues={setSecondStepValues}
             handleAddAvatar={handleAddAvatar}
             file={fileValue}
             handleSecondStepSubmit={handleSecondStepSubmit}
+            checkCategory={checkCategory}
           />
         )}
         <button className={styles.closeBtn} onClick={handleModalClose}></button>
