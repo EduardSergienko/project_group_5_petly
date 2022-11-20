@@ -9,17 +9,38 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {noticesOperations} from '../../redux/notices'
+import { useState } from 'react';
 
 function NoticesPage({ onFilter = () => { } }) {
   const dispatch = useDispatch()
   const { categoryName } = useParams()
   const items = useSelector(state => state.notices.notices)
   const filter = useSelector(state => state.filter.value)
-  const filteredItems = filter ? items.filter(({ title }) => title.toLowerCase().includes(filter)) : items
-  
+  const myFavorite = useSelector(state => state.notices.myFavorite)
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
+  const [filteredItems, setFilteredItems] = useState([]);
+
   useEffect(() => {
-    dispatch(noticesOperations.getNotices(categoryName))
-  }, [categoryName, dispatch])
+    if (categoryName === 'sell' || 'for-free' || 'lost-found' || 'own') {
+      const filtered = filter ? items.filter(({ title }) => title.toLowerCase().includes(filter)) : items
+      setFilteredItems(filtered)
+    }
+    if (categoryName === 'favorite') {
+      setFilteredItems(myFavorite)
+    }
+  }, [categoryName, filter, items, setFilteredItems, myFavorite])
+
+  useEffect(() => {
+    if (categoryName === 'sell' || 'for-free' || 'lost-found') {
+      dispatch(noticesOperations.getNotices(categoryName))
+    }
+    if (categoryName === 'own') {
+      dispatch(noticesOperations.getOwn(categoryName))
+    }
+    if (isLoggedIn) {
+      dispatch(noticesOperations.getFavorite())
+    }
+  }, [categoryName, isLoggedIn, dispatch])
 
   return (
     <div className={styles.container}>

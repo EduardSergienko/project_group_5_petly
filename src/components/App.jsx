@@ -5,6 +5,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { authOperations, authSelectors } from '../redux/auth';
+import { ReactNotifications } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 // import { userOperations } from '../redux/user';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -33,6 +35,7 @@ export const App = () => {
 
   return (
     <Suspense fallback={<Loader />}>
+      <ReactNotifications/>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
