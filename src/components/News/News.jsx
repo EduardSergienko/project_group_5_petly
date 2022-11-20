@@ -8,7 +8,7 @@ import notices from 'helpers/Notification';
 import apiServices from 'services/apiServices';
 import HighlightText from 'helpers/HighlightText';
 
-const News = ({ title }) => {
+const News = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -56,7 +56,7 @@ const News = ({ title }) => {
   } else {
     return (
       <div className={styles.newsWrap}>
-        <h1 className={styles.title}>{title}</h1>
+        <h1 className={styles.title}>News</h1>
         <FilterInput value={query} onChange={setQuery} />
 
         <ul className={styles.box}>
