@@ -54,6 +54,22 @@
 }
 
 .buttonWrapper {
- display: flex;
- align-items:flex-start;
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      display: flex;
+      align-items:flex-start;
+    }
+}
+
+.stickyBtnWrapper{
+    position: sticky;
+    top: 59%;
+    z-index: 4;
+    display: flex;
+    justify-content: flex-end;
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
 }

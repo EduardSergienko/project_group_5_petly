@@ -5,7 +5,7 @@ import SecondStep from './SecondStep';
 import { noticesOperations } from 'redux/notices';
 import styles from './ModalAddNotice.module.scss';
 
-const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
+const ModalAddNotice = ({ setIsModalOpen }) => {
   const [page, setPage] = useState(0);
   const [firstStepValues, setFirstStepValues] = useState({
     category: 'sell',
@@ -75,7 +75,7 @@ const ModalAddNotice = ({ isModalOpen, setIsModalOpen }) => {
   };
 
   const handleModalClose = () => {
-    // setIsModalOpen(false);
+    setIsModalOpen(false);
   };
 
   return (

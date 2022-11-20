@@ -1,16 +1,15 @@
-import { ReactComponent as AddNoticeButtonMobile } from '../../../image/svg/addPetMobile.svg';
-import { ReactComponent as AddNoticeButtonTab } from '../../../image/svg/addPet.svg';
-
-
 import styles from './AddNoticeButton.module.scss';
+import plus from '../../../image/svg/plus-button.svg';
 
-function AddNoticeButton() {
-    return (
-      <div>
-            <AddNoticeButtonMobile className={styles.addPetMobile}/>
-            <AddNoticeButtonTab className={styles.addPet}/>
-      </div>
-  )
+function AddNoticeButton({ handleOpenModal }) {
+  return (
+    <>
+      <button className={`${styles.addNoticeButton}`} onClick={handleOpenModal}>
+        <img src={plus} className={styles.addNoticeImage} alt="plus" />
+        <span className={styles.addNoticeSpan}>Add pet</span>
+      </button>
+    </>
+  );
 }
 
 export default AddNoticeButton;

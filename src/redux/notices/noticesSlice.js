@@ -4,8 +4,9 @@ import noticesOperations from './noticesOperations';
 const initialState = {
   notices: [],
   myFavorite: [],
-  noticeAdded: false,
-  noticeRemoved: false,
+  noticeAdded: '',
+  noticeRemoved: '',
+  noticeAddError: '',
   error: null,
 };
 
@@ -22,8 +23,8 @@ const noticesSlice = createSlice({
       state.error = null;
     },
     [noticesOperations.addNotice.rejected](state, action) {
-      state.error = action.payload;
       state.noticeAdded = false;
+      state.noticeAddError = action.payload;
     },
     [noticesOperations.getNotices.pending](state, _) {
       state.error = null;

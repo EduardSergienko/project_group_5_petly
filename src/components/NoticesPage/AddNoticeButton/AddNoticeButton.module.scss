@@ -1,15 +1,47 @@
-.addPetMobile {
-    position: fixed;
-    right: 0px;
-    bottom: 12px;
-    z-index: 1;
-    @media screen and (min-width: 768px) {
-            display: none;
-        }
-}
+@import 'variables/variables.scss';
 
-.addPet {
-    @media screen and (max-width: 767px) {
+.addNoticeImage {
+    width: 22px;
+    height: 22px;
+    @media screen and (min-width: 768px) {
         display: none;
     }
 }
+
+.addNoticeSpan {
+    font-family: 'Manrope';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    @media screen and (min-width: 767px) {
+        display: none;
+    }
+}
+
+.addNoticeButton {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 80px;
+   height: 80px;
+   z-index: 5;
+   border-radius: 50%;
+   color: $secondaryTextColor;
+   border: none;
+   cursor: pointer;
+   background: $orangeColor;
+
+  @media screen and (min-width: 768px) {
+    position: relative;
+    bottom: 0px;
+    width: 44px;
+    height: 44px;
+    background-image: url('../../../image/svg/plus-button.svg');
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+  }
+}
+
