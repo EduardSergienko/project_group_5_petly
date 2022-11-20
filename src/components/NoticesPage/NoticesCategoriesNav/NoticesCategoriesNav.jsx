@@ -1,5 +1,4 @@
 import styles from './NoticesCategoriesNav.module.scss';
-// import Button from './NoticesCategoriesNavButton';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
