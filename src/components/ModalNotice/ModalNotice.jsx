@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 
 import { noticesSelectors, noticesOperations } from '../../redux/notices';
 
@@ -31,6 +32,7 @@ function ModalNotice({ active, setActive }) {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [setActive]);
+
   return (
     <div
       className={styles.container + ' ' + (active ? styles.active : '')}
@@ -144,3 +146,8 @@ function ModalNotice({ active, setActive }) {
 }
 
 export default ModalNotice;
+
+ModalNotice.propTypes = {
+  active: PropTypes.bool.isRequired,
+  setActive: PropTypes.func.isRequired,
+};
