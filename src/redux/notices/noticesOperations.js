@@ -44,9 +44,61 @@ const getNotices = createAsyncThunk(
   }
 );
 
+const addToFavorite = createAsyncThunk(
+  'notices/addToFavorite',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch(`/notices/${credentials}/favorite`);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+const removeFavorite = createAsyncThunk(
+  'notices/removeFavorite',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.delete(`/notices/${credentials}/favorite`);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+const getFavorite = createAsyncThunk(
+  'notices/getFavorite',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get(`/notices/user/favorite`);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
+const getOwn = createAsyncThunk(
+  'notices/getOwn',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get(`/notices/user/own`);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const operations = {
   addNotice,
   getNotices,
+  addToFavorite,
+  getFavorite,
+  removeFavorite,
+  getOwn,
 };
 
 export default operations;
