@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Container from 'components/Container/Container';
+// import Container from 'components/Container/Container';
 import UserData from '../UserData/UserData';
 import Logout from '../Logout/Logout';
 import PetsData from '../PetsData/PetsData';
