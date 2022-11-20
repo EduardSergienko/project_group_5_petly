@@ -2,16 +2,10 @@
 
 .headerContentWrap {
   display: flex;
-  padding-top: 20px;
-  @media screen and (max-width: 767px) {
-    padding-top: 12px;
-  }
-  @media screen and (max-width: 1279px) {
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  @media screen and (min-width: 1280px) {
-    justify-content: space-between;
+  padding-top: 16px;
+  align-items: center;
+  justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    padding-top: 20px;
   }
 }
