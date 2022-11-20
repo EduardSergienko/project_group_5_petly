@@ -1,6 +1,7 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { authReducer } from './auth';
 import { noticesReducer } from './notices';
+import { filterReducer } from './filter';
 import {
   persistStore,
   persistReducer,
@@ -31,6 +32,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
     notices: noticesReducer,
+    filter: filterReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

@@ -18,7 +18,7 @@ export default function Nav({ toggleMenu }) {
           className={({ isActive }) =>
             isActive ? styles.active : styles.navLink
           }
-          to="/notices"
+          to="/notices/sell"
         >
           Find pet
         </NavLink>

@@ -32,8 +32,21 @@ const addNotice = createAsyncThunk(
   }
 );
 
+const getNotices = createAsyncThunk(
+  'notices/get',
+  async (category, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get(`/notices/category/${category}`);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const operations = {
   addNotice,
+  getNotices,
 };
 
 export default operations;

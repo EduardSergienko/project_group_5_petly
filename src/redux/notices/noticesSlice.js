@@ -24,6 +24,15 @@ const noticesSlice = createSlice({
       state.error = action.payload;
       state.noticeAdded = false;
     },
+    [noticesOperations.getNotices.pending](state, _) {
+      state.error = null;
+    },
+    [noticesOperations.getNotices.fulfilled](state, action) {
+      state.notices = action.payload.data;
+    },
+    [noticesOperations.getNotices.rejected](state, action) {
+      state.error = action.payload;
+    },
   },
 });
 
