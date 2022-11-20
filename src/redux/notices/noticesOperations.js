@@ -91,6 +91,18 @@ const getOwn = createAsyncThunk(
     }
   }
 );
+const getOneNotice = createAsyncThunk(
+  'notices/getOneNoties',
+  async (id, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get(`/notices/${id} `);
+      console.log(data);
+      // return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 const operations = {
   addNotice,
@@ -99,6 +111,7 @@ const operations = {
   getFavorite,
   removeFavorite,
   getOwn,
+  getOneNotice,
 };
 
 export default operations;
