@@ -7,6 +7,8 @@ const initialState = {
   noticeAdded: false,
   noticeRemoved: false,
   error: null,
+  noticeInformationMore: null,
+  loading: false,
 };
 
 const noticesSlice = createSlice({
@@ -35,7 +37,7 @@ const noticesSlice = createSlice({
       state.error = action.payload;
     },
     [noticesOperations.addToFavorite.fulfilled](state, action) {
-      // state.myFavorite = action.payload.myFavorite;
+      state.myFavorite = action.payload.myFavorite;
     },
     [noticesOperations.addToFavorite.rejected](state, action) {
       state.error = action.payload;
@@ -58,7 +60,13 @@ const noticesSlice = createSlice({
     [noticesOperations.getOwn.rejected](state, action) {
       state.error = action.payload;
     },
+    [noticesOperations.getOneNotice.fulfilled](state, { payload }) {
+      state.noticeInformationMore = payload.data[0];
+      state.loading = false;
+    },
+    [noticesOperations.getOneNotice.pending](state, { payload }) {
+      state.loading = true;
+    },
   },
 });
-
 export default noticesSlice.reducer;

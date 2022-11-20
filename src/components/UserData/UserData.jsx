@@ -154,6 +154,7 @@ function UserData() {
           placeholder={'Your email'}
           example={'example@gmail.com'}
           defaultVaule={user?.email}
+          required={true}
         />
         <UserDataItem
           updateUser={updateUser}
@@ -176,6 +177,7 @@ function UserData() {
           example={'+38000000000'}
           mask={'+380999999999'}
           defaultVaule={user?.phone}
+          required={true}
         />
         <UserDataItem
           updateUser={updateUser}

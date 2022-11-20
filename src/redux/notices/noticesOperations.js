@@ -96,8 +96,7 @@ const getOneNotice = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(`/notices/${id} `);
-      console.log(data);
-      // return data;
+      return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
