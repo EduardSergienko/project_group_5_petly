@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import InputMask from 'react-input-mask';
+import PropTypes from 'prop-types';
 
 import doneVector from '../../../image/doneVector.png';
 import edit from '../../../image/edit.png';
@@ -119,3 +120,18 @@ function UserDataItem({
 }
 
 export default UserDataItem;
+
+UserDataItem.propTypes = {
+  updateUser: PropTypes.func.isRequired,
+  title: PropTypes.string,
+  pattern: PropTypes.object,
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  required: PropTypes.bool,
+  example: PropTypes.string,
+  defaultVaule: PropTypes.string,
+  name: PropTypes.string,
+  mask: PropTypes.string,
+};

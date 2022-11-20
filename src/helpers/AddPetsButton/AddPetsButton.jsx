@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import ellipse from '../../image/ellipse.png';
 import plus from '../../image/plus.png';
 
@@ -20,3 +22,8 @@ function AddPetsButton({ onClickBtn, customStyle }) {
 }
 
 export { AddPetsButton };
+
+AddPetsButton.propTypes = {
+  onClickBtn: PropTypes.func,
+  customStyle: PropTypes.object,
+};
