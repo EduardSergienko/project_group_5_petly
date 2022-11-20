@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import { AddPetsButton } from '../../helpers';
 import ModalAddsPet from '../ModalAddsPet/ModalAddsPet';
@@ -40,3 +41,8 @@ function PetsData({ modalActivefForTablet, setmodalActivefForTablet }) {
 }
 
 export default PetsData;
+
+PetsData.propTypes = {
+  modalActivefForTablet: PropTypes.bool.isRequired,
+  setmodalActivefForTablet: PropTypes.func.isRequired,
+};
