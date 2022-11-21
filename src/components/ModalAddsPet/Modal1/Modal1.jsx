@@ -55,6 +55,13 @@ function Modal1({
           )
         );
 
+        if (
+          valueToLower.slice(6).length === 4 &&
+          valueToLower.slice(6) > 2022
+        ) {
+          setInputActiveBirthday(false);
+        }
+
         setBirthdayValue(value);
         setRequired(false);
         break;

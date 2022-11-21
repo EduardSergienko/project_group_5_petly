@@ -22,8 +22,6 @@ function Modal2({
   const [picture, setPicture] = useState(
     modalDefaultValues ? modalDefaultValues.photo : ''
   );
-  console.log(inputActiveComments);
-  // console.log(required);
 
   const handleInputChange = e => {
     const { name, value } = e.target;
