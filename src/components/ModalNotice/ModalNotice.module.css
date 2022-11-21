@@ -6,6 +6,9 @@
   activeInputColor: #fdf7f2;
   errorColor: #d60202;
   secondaryTextColor: #ffffff;
+  hoverOrangeColor: #e7884d;
+  primaryGrayColor: rgba(17, 17, 17, 0.6);
+  secondGrayColor: #535353;
 }
 
 .container {
@@ -284,6 +287,38 @@
 
 @media screen and (max-width: 400px) {
   .addTo {
+    width: 100%;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    margin-top: 12px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.removeTo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 30px;
+  background: #ffffff;
+  border: 2px solid #f59256;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: #111111;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 400px) {
+  .removeTo {
     width: 100%;
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;

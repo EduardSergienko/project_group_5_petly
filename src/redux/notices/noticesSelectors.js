@@ -1,4 +1,5 @@
 const getNotices = state => state.notices.notices;
+const myFavorite = state => state.notices.myFavorite;
 
 const getNoticeAdded = state => state.notices.noticeAdded;
 
@@ -13,5 +14,6 @@ const noticesSelectors = {
   getNoticeRemoved,
   getNoticeInformationMore,
   noticeLoading,
+  myFavorite,
 };
 export default noticesSelectors;
