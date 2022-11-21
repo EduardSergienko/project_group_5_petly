@@ -36,6 +36,12 @@
   transition: 0.5s;
 }
 
+@media screen and (max-width: 500px) {
+  .container {
+    overflow: scroll;
+  }
+}
+
 .active {
   opacity: 1;
   pointer-events: all;
@@ -60,9 +66,11 @@
 
 @media screen and (max-width: 400px) {
   .modal {
-    width: 280px;
+    width: 85%;
     padding: 60px 20px 40px;
     border-radius: 20px;
+    overflow: scroll;
+    height: 100%;
   }
 }
 
@@ -122,13 +130,22 @@
 @media screen and (max-width: 400px) {
   .containerImage {
     height: 240px;
-    width: 240px;
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 
 .image {
   width: 100%;
   border-radius: 0px 0px 40px 40px;
+}
+
+@media screen and (max-width: 400px) {
+  .image {
+    width: 240px;
+  }
 }
 
 .categoryNotice {
@@ -183,6 +200,7 @@
 @media screen and (max-width: 400px) {
   .title {
     margin-bottom: 16px;
+    width: 100%;
   }
 }
 
