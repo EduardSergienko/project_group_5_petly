@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import styles from './UserNav.module.scss';
-export default function UserNav() {
+export default function UserNav({ toggleMenu }) {
   return (
     <div className={styles.userNavWrap}>
-      <NavLink className={styles.userNavLink} to="user">
+      <NavLink onClick={toggleMenu} className={styles.userNavLink} to="user">
         <svg
           className={styles.userNavIcon}
           width="20"

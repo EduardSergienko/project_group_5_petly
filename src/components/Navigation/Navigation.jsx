@@ -33,7 +33,8 @@ export default function Navigation() {
         >
           {isLoggedIn ? (
             <>
-              <UserNav /> <Nav toggleMenu={showNavBar} />
+              <UserNav toggleMenu={showNavBar} />
+              <Nav toggleMenu={showNavBar} />
             </>
           ) : (
             <>
