@@ -48,12 +48,28 @@ function NoticesCategoriesItem({ item, setActive }) {
     notices.showSuccess('Notice removed from favorite adds.');
   };
 
+  const normalizeCategoryName = name => {
+    let category;
+
+    if (name === 'sell') {
+      category = 'Sell';
+    } else if (name === 'for-free') {
+      category = 'In good hands';
+    } else {
+      category = 'Lost/found';
+    }
+
+    return category;
+  };
+
   return (
     <div className={styles.item} key={item._id}>
       <div className={styles.imgWrapper}>
         <img src={item.petImageUrl} alt="Pet" className={styles.img} />
       </div>
-      <p className={styles.itemCategory}>In good hands</p>
+      <p className={styles.itemCategory}>
+        {normalizeCategoryName(item.category)}
+      </p>
       {!isFavorite && (
         <AddToFavorite className={styles.addToFavorite} onClick={addFavorite} />
       )}
