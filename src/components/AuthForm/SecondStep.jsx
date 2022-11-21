@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import InputMask from 'react-input-mask';
+import PropTypes from 'prop-types';
 import styles from './AuthForm.module.scss';
 
 function SecondStep({ onNextStep, onPrevStep, formData }) {
@@ -29,32 +30,36 @@ function SecondStep({ onNextStep, onPrevStep, formData }) {
         {({ values }) => (
           <Form className={styles.form}>
             <div className={styles.formGroup}>
+              <ErrorMessage
+                name="name"
+                render={msg => <div className={styles.errorMsg}>{msg}</div>}
+              />
               <Field
                 className={styles.input}
                 name="name"
                 type="text"
                 placeholder="Name"
               />
-              <ErrorMessage
-                name="name"
-                render={msg => <div className={styles.errorMsg}>{msg}</div>}
-              />
             </div>
 
             <div className={styles.formGroup}>
+              <ErrorMessage
+                name="location"
+                render={msg => <div className={styles.errorMsg}>{msg}</div>}
+              />
               <Field
                 className={styles.input}
                 name="location"
                 type="text"
                 placeholder="City, region"
               />
-              <ErrorMessage
-                name="location"
-                render={msg => <div className={styles.errorMsg}>{msg}</div>}
-              />
             </div>
 
             <div className={styles.formGroup}>
+              <ErrorMessage
+                name="phone"
+                render={msg => <div className={styles.errorMsg}>{msg}</div>}
+              />
               <Field name="phone">
                 {({ field }) => (
                   <InputMask
@@ -66,11 +71,6 @@ function SecondStep({ onNextStep, onPrevStep, formData }) {
                   />
                 )}
               </Field>
-
-              <ErrorMessage
-                name="phone"
-                render={msg => <div className={styles.errorMsg}>{msg}</div>}
-              />
             </div>
 
             <button className={styles.button} type="submit">
@@ -81,7 +81,7 @@ function SecondStep({ onNextStep, onPrevStep, formData }) {
               onClick={() => {
                 onPrevStep(values);
               }}
-              className={styles.back}
+              className={styles.backButton}
               type="button"
             >
               Back
@@ -92,5 +92,18 @@ function SecondStep({ onNextStep, onPrevStep, formData }) {
     </>
   );
 }
+
+SecondStep.propTypes = {
+  onNextStep: PropTypes.func.isRequired,
+  onPrevStep: PropTypes.func.isRequired,
+  formData: PropTypes.shape({
+    email: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    confirmPassword: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default SecondStep;

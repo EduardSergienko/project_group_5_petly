@@ -1,11 +1,11 @@
-import News from 'components/News/News';
+import News from 'components/News';
 import Container from 'components/Container/Container';
 
 const NewsPage = () => {
   return (
     <main>
       <Container>
-        <News title="News" />
+        <News />
       </Container>
     </main>
   );

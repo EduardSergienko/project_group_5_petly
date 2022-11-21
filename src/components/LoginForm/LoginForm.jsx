@@ -5,14 +5,13 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { IconContext } from 'react-icons';
 import { FiEyeOff, FiEye } from 'react-icons/fi';
 import { Dna } from 'react-loader-spinner';
-import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 
 import { authOperations } from 'redux/auth';
-import styles from './LoginForm.module.scss';
+import styles from 'components/AuthForm/AuthForm.module.scss';
 import notices from 'helpers/Notification';
 
-const LoginForm = ({ title }) => {
+const LoginForm = () => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -45,7 +44,7 @@ const LoginForm = ({ title }) => {
 
   return (
     <div className={styles.formWrap}>
-      <h1 className={styles.title}>{title}</h1>
+      <h1 className={styles.title}>Login</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -53,18 +52,22 @@ const LoginForm = ({ title }) => {
       >
         <Form className={styles.form}>
           <label className={styles.formGroup}>
+            <ErrorMessage
+              name="email"
+              render={msg => <div className={styles.errorMsg}>{msg}</div>}
+            />
             <Field
               type="email"
               name="email"
               className={styles.input}
               placeholder="Email"
             />
-            <ErrorMessage
-              name="email"
-              render={msg => <div className={styles.errorMsg}>{msg}</div>}
-            />
           </label>
           <label className={styles.formGroup}>
+            <ErrorMessage
+              name="password"
+              render={msg => <div className={styles.errorMsg}>{msg}</div>}
+            />
             <Field
               type={show ? 'text' : 'password'}
               name="password"
@@ -87,10 +90,6 @@ const LoginForm = ({ title }) => {
                 </IconContext.Provider>
               )}
             </span>
-            <ErrorMessage
-              name="password"
-              render={msg => <div className={styles.errorMsg}>{msg}</div>}
-            />
           </label>
           <div>
             <button type="submit" className={styles.button} disabled={loading}>
@@ -108,21 +107,16 @@ const LoginForm = ({ title }) => {
               )}
             </button>
           </div>
-
-          <p className={styles.textHint}>
-            Don't have an account?&nbsp;
-            <Link className={styles.link} to="/register">
-              Register
-            </Link>
-          </p>
         </Form>
       </Formik>
+      <p className={styles.textHint}>
+        Don't have an account?&nbsp;
+        <Link className={styles.link} to="/register">
+          Register
+        </Link>
+      </p>
     </div>
   );
-};
-
-LoginForm.propTypes = {
-  title: PropTypes.string,
 };
 
 export default LoginForm;
