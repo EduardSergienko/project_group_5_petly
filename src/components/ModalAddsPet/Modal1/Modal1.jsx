@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import InputMask from 'react-input-mask';
+import PropTypes from 'prop-types';
 
 import styles from './Modal1.module.scss';
 
@@ -281,3 +282,16 @@ function Modal1({
 }
 
 export default Modal1;
+
+Modal1.propTypes = {
+  setActive: PropTypes.func.isRequired,
+  setActiveTablet: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired,
+  createPetsPost: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired,
+  modalDefaultValues: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired,
+    breed: PropTypes.string.isRequired,
+  }),
+};

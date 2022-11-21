@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { userOperations } from '../../redux/user';
 
@@ -105,3 +106,9 @@ function ModalAddsPet({ active, setActive, setmodalActivefForTablet }) {
 }
 
 export default ModalAddsPet;
+
+ModalAddsPet.propTypes = {
+  active: PropTypes.bool.isRequired,
+  setActive: PropTypes.func.isRequired,
+  setmodalActivefForTablet: PropTypes.func.isRequired,
+};
