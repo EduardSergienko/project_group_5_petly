@@ -6,7 +6,7 @@ const LoginPage = () => {
   return (
     <main>
       <Container>
-        <LoginForm title="Login" />
+        <LoginForm />
       </Container>
       <AdaptiveImage />
     </main>

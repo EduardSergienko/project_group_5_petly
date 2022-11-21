@@ -97,7 +97,7 @@
   font-family: 'Manrope';
   font-size: 16px;
   line-height: 1.37em;
-  color: rgba(17, 17, 17, 0.6);
+  color: $primaryGrayColor;
 }
 
 .readMore {
@@ -106,4 +106,8 @@
   line-height: 1.37em;
   text-decoration-line: underline;
   color: $orangeColor;
+
+  &:hover {
+    color: $hoverOrangeColor;
+  }
 }

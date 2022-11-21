@@ -1,4 +1,4 @@
-import AuthForm from 'components/AuthForm/AuthForm';
+import AuthForm from 'components/AuthForm';
 import AdaptiveImage from 'components/AdaptiveImage';
 
 const RegisterPage = () => {

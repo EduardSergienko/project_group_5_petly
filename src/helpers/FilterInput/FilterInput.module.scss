@@ -20,9 +20,9 @@
   height: 40px;
   padding: 9px 45px 9px 12px;
 
-  color: #535353;
+  color: $primaryGrayColor;
   background-color: $secondaryTextColor;
-  border: 1px solid rgba(245, 146, 86, 0.5);
+  border: $inputBorder;
   border-radius: 20px;
   font-family: 'Manrope';
   font-weight: 500;
@@ -37,7 +37,7 @@
   &:focus {
     background-color: rgba(0, 0, 0, 0.02);
     outline: 0;
-    box-shadow: 0 0 0 0.1rem rgba(245, 146, 86, 0.5);
+    box-shadow: $focusInputShadow;
   }
 
   @media screen and (min-width: 768px) {
@@ -56,6 +56,10 @@
     border-radius: 20px;
     font-family: 'Inter';
   }
+}
+
+.noValidate {
+  border-color: rgb(255, 77, 77, 1);
 }
 
 .searchIcon {
