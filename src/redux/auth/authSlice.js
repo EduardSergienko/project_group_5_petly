@@ -5,7 +5,7 @@ import { userOperations } from '../user';
 import notices from 'helpers/Notification/Notification';
 
 const initialState = {
-  user: { name: null, email: null, myAnimal: [] },
+  user: { name: null, email: null, myAnimal: [], myFavorite: [] },
   token: null,
   isLoggedIn: false,
   error: null,
