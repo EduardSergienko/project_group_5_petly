@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { noticesOperations } from 'redux/notices';
-import { Store } from 'react-notifications-component';
+import { noticesSelectors } from '../../../redux/notices';
+import { authSelectors } from '../../../redux/auth';
+import notices from 'helpers/Notification/Notification';
 
 import { ReactComponent as AddToFavorite } from '../../../image/svg/addToFavorite.svg';
 
@@ -9,8 +11,8 @@ import styles from './NoticesCategoriesList.module.scss';
 
 function NoticesCategoriesItem({ item, setActive }) {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-  const myFavorite = useSelector(state => state.notices.myFavorite);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const myFavorite = useSelector(noticesSelectors.getMyFavoriteNotice);
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
@@ -20,71 +22,30 @@ function NoticesCategoriesItem({ item, setActive }) {
   const addFavorite = e => {
     e.preventDefault();
     if (!isLoggedIn) {
-      Store.addNotification({
-        title: 'Attention!',
-        message: 'You need to authorize before adding notices to favorite.',
-        type: 'warning',
-        insert: 'top',
-        container: 'top-right',
-        animationIn: ['animate__animated', 'animate__fadeIn'],
-        animationOut: ['animate__animated', 'animate__fadeOut'],
-        dismiss: {
-          duration: 5000,
-          onScreen: true,
-        },
-      });
-      return;
+      return notices.showError(
+        'You need to authorize before adding notices to favorite.'
+      );
     }
     e.currentTarget.style.fill = '#f59256';
     dispatch(noticesOperations.addToFavorite(item._id));
-    Store.addNotification({
-      title: '',
-      message: 'Pet added to favorite adds.',
-      type: 'success',
-      insert: 'top',
-      container: 'top-right',
-      animationIn: ['animate__animated', 'animate__fadeIn'],
-      animationOut: ['animate__animated', 'animate__fadeOut'],
-      dismiss: {
-        duration: 5000,
-        onScreen: true,
-      },
-    });
+    setIsFavorite(true);
+
+    notices.showSuccess('Notice added to favorite adds.');
   };
 
   const removeFavorite = e => {
     e.preventDefault();
+
     if (!isLoggedIn) {
-      Store.addNotification({
-        title: 'Attention!',
-        message: 'You need to authorize before adding notices to favorite.',
-        type: 'warning',
-        insert: 'top',
-        container: 'top-right',
-        animationIn: ['animate__animated', 'animate__fadeIn'],
-        animationOut: ['animate__animated', 'animate__fadeOut'],
-        dismiss: {
-          duration: 5000,
-          onScreen: true,
-        },
-      });
-      return;
+      return notices.showError(
+        'You need to authorize before remove notices from favorite.'
+      );
     }
     e.currentTarget.style.fill = 'none';
     dispatch(noticesOperations.removeFavorite(item._id));
-    Store.addNotification({
-      title: '',
-      message: 'Pet removed from favorite adds.',
-      type: 'danger',
-      insert: 'top',
-      container: 'top-right',
-      animationIn: ['animate__animated', 'animate__fadeIn'],
-      animationOut: ['animate__animated', 'animate__fadeOut'],
-      dismiss: {
-        duration: 5000,
-        onScreen: true,
-      },
-    });
+    setIsFavorite(false);
+
+    notices.showSuccess('Notice removed from favorite adds.');
   };
 
   return (

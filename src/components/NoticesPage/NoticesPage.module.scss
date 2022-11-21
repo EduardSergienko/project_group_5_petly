@@ -54,6 +54,34 @@
 }
 
 .buttonWrapper {
- display: flex;
- align-items:flex-start;
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      display: flex;
+      align-items:flex-start;
+    }
+}
+
+.stickyBtnWrapper{
+    position: sticky;
+    top: 64%;
+    z-index: 4;
+    display: flex;
+    justify-content: flex-end;
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+}
+
+.stickyLoginBtnWrapper{
+    position: sticky;
+    top: 71%;
+    z-index: 4;
+    display: flex;
+    justify-content: flex-end;
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
 }

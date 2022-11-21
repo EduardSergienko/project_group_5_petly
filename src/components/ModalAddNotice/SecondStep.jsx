@@ -1,4 +1,4 @@
-import { Formik, Field, Form, ErrorMessage, useFormikContext } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import camera from '../../image/camera.png';
 import styles from './ModalAddNotice.module.scss';
@@ -7,10 +7,10 @@ import add from '../../image/svg/add-image.svg';
 const SecondStep = ({
   handleBackToFirst,
   secondStepValues,
-  setSecondStepValues,
   handleAddAvatar,
   file,
   handleSecondStepSubmit,
+  checkCategory,
 }) => {
   const SUPPORTED_FORMATS = [
     'image/jpg',
@@ -47,9 +47,11 @@ const SecondStep = ({
         onSubmit={handleSecondStepSubmit}
         validationSchema={secondStepSchema}
       >
-        {({ errors, touched, setFieldValue }) => (
+        {({ errors, touched, values, setFieldValue }) => (
           <Form className={styles.addForm}>
-            <fieldset className={styles.fieldsetWrap}>
+            <fieldset
+              className={`${styles.fieldsetWrap} ${styles.secPagefieldsetWrap}`}
+            >
               <legend className={styles.labelTitle}>
                 The sex <span className={styles.require}>*</span>
               </legend>
@@ -103,23 +105,26 @@ const SecondStep = ({
                 render={msg => <div className={styles.secStepError}>{msg}</div>}
               />
             </label>
-
-            <label className={styles.labelTitle} htmlFor="price">
-              Price<span className={styles.require}>*</span>
-              <Field
-                className={`${styles.input} ${
-                  errors.price && touched.price ? styles.errorInput : ''
-                }`}
-                type="number"
-                id="price"
-                placeholder="Type price"
-                name="price"
-              />
-              <ErrorMessage
-                name="price"
-                render={msg => <div className={styles.secStepError}>{msg}</div>}
-              />
-            </label>
+            {checkCategory() && (
+              <label className={styles.labelTitle} htmlFor="price">
+                Price<span className={styles.require}>*</span>
+                <Field
+                  className={`${styles.input} ${
+                    errors.price && touched.price ? styles.errorInput : ''
+                  }`}
+                  type="number"
+                  id="price"
+                  placeholder="Type price"
+                  name="price"
+                />
+                <ErrorMessage
+                  name="price"
+                  render={msg => (
+                    <div className={styles.secStepError}>{msg}</div>
+                  )}
+                />
+              </label>
+            )}
 
             <label className={styles.labelTitle}>
               Load the pet's image<span className={styles.require}>*</span>
@@ -175,7 +180,7 @@ const SecondStep = ({
 
             <div className={styles.buttonWrap}>
               <button
-                onClick={handleBackToFirst}
+                onClick={() => handleBackToFirst(values)}
                 className={styles.button}
                 type="button"
               >

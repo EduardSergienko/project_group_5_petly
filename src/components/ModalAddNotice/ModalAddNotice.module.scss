@@ -1,7 +1,7 @@
 @import 'variables/variables.scss';
 
 .formWrap {
-  position: absolute;
+  position: fixed;
   background-color: $secondaryTextColor;
   top: 50%;
   left: 50%;
@@ -42,9 +42,6 @@
   }
 }
 
-.secStepTitle{
-  margin-bottom: 40px;
-}
 
 .text{
     font-family: 'Manrope';
@@ -91,6 +88,28 @@
   @media screen and (min-width: 768px) {
     width: 448px;
     margin-bottom: 28px;
+  }
+}
+
+.fieldsetWrap{
+ position: relative;
+ width: 240px;
+  border: none;
+  padding: 0px;  
+  display: flex;  
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+
+  @media screen and (min-width: 768px) {
+    width: 448px;
+    margin-bottom: 18px;
+  }
+}
+
+.secPagefieldsetWrap{
+  @media screen and (min-width: 768px) {
+    width: 448px;
+    margin-bottom: 18px;
   }
 }
 
@@ -146,7 +165,7 @@
 .categorySell{
   margin-left: 8px;
   &::after {
-  content: "sell";
+  content: "Sell";
   }
 
   @media screen and (min-width: 768px) {
@@ -164,7 +183,7 @@
   margin-bottom: 12px;
 
   &::after {
-  content: "lost/found";
+  content: "Lost/found";
   }
 
   @media screen and (min-width: 768px) {
@@ -255,7 +274,7 @@
     width: 448px;
     height: 52px;
     padding: 14px 70px 13px 32px;
-    margin: 12px  0px 28px 0px;
+    margin: 12px  0px 18px 0px;
 
     font-size: 18px;
     line-height: 1.39em;
@@ -432,7 +451,7 @@ form label:last-of-type .textArea{
 
 .avatarLabel{
   position: relative;
-    margin: 8px 0px 30px 0px;
+    margin: 8px 0px 28px 0px;
     width: 116px;
     height: 116px;
     display: flex;
@@ -440,7 +459,7 @@ form label:last-of-type .textArea{
     @media screen and (min-width: 768px) {
       width: 140px;
       height: 140px;
-      margin: 12px 0px 28px 0px;
+      margin: 10px 0px 16px 0px;
     }
 }
 
@@ -540,7 +559,7 @@ form label:last-of-type .textArea{
   color: $errorColor;
 
   @media screen and (min-width: 768px) {
-    top: 120%;
+    top: 118%;
   }
 }
 
@@ -550,34 +569,19 @@ form label:last-of-type .textArea{
   margin-left: 8px;
   font-size: 14px;
   color: $errorColor;
-
-  @media screen and (min-width: 768px) {
-    top: 120%;
-  }
 }
 
 form label:last-of-type .secStepError{
     top: 100%;
 
-    @media screen and (min-width: 768px) {
-      top: 104%;
-    }
 }
 
 form fieldset:first-child .secStepError{
     top: 96%;
-
-    @media screen and (min-width: 768px) {
-      top: 98%;
-    }
 }
 
 .avatarLabel .secStepError{
   top: 102%;
-
-  @media screen and (min-width: 768px) {
-      top: 105%;
-    }
 } 
 
 .errorInput{

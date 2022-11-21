@@ -3,6 +3,9 @@ import NoticesCategoriesNav from './NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
 import AddNoticeButton from './AddNoticeButton/AddNoticeButton';
 import ModalNotice from '../ModalNotice/ModalNotice';
+import ModalAddNotice from 'components/ModalAddNotice/ModalAddNotice';
+import { noticesSelectors } from '../../redux/notices';
+import notices from 'helpers/Notification/Notification';
 
 import styles from './NoticesPage.module.scss';
 import { useParams } from 'react-router-dom';
@@ -19,6 +22,9 @@ function NoticesPage({ onFilter = () => {} }) {
   const myFavorite = useSelector(state => state.notices.myFavorite);
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const [filteredItems, setFilteredItems] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isNoticeAdded = useSelector(noticesSelectors.getNoticeAdded);
+  const isNoticeAddedError = useSelector(noticesSelectors.getNoticeAddError);
   const [modalActive, setModalActive] = useState(false);
 
   useEffect(() => {
@@ -34,16 +40,34 @@ function NoticesPage({ onFilter = () => {} }) {
   }, [categoryName, filter, items, setFilteredItems, myFavorite]);
 
   useEffect(() => {
-    if (categoryName === 'sell' || 'for-free' || 'lost-found') {
+    categoryName === 'sell' &&
       dispatch(noticesOperations.getNotices(categoryName));
-    }
-    if (categoryName === 'own') {
-      dispatch(noticesOperations.getOwn(categoryName));
-    }
-    if (isLoggedIn) {
+    categoryName === 'for-free' &&
+      dispatch(noticesOperations.getNotices(categoryName));
+    categoryName === 'lost-found' &&
+      dispatch(noticesOperations.getNotices(categoryName));
+    categoryName === 'own' &&
+      isLoggedIn &&
+      dispatch(noticesOperations.getOwn());
+    categoryName === 'favorite' &&
+      isLoggedIn &&
       dispatch(noticesOperations.getFavorite());
-    }
   }, [categoryName, isLoggedIn, dispatch]);
+
+  useEffect(() => {
+    if (isNoticeAdded) {
+      notices.showSuccess('Notice successfully added');
+      setIsModalOpen(false);
+    }
+
+    isNoticeAddedError && notices.showError('Something went wrong, try again');
+  }, [isNoticeAdded, isNoticeAddedError]);
+
+  const handleOpenModal = () => {
+    isLoggedIn
+      ? setIsModalOpen(true)
+      : notices.showWarning('You need to authorize before adding notices.');
+  };
 
   return (
     <div className={styles.container}>
@@ -53,10 +77,18 @@ function NoticesPage({ onFilter = () => {} }) {
         <NoticesCategoriesNav />
         <div className={styles.buttonWrapper}>
           <p className={styles.buttonText}>Add pet</p>
-          <AddNoticeButton />
+          <AddNoticeButton handleOpenModal={handleOpenModal} />
         </div>
       </div>
+      <div
+        className={`${
+          isLoggedIn ? styles.stickyLoginBtnWrapper : styles.stickyBtnWrapper
+        }`}
+      >
+        <AddNoticeButton handleOpenModal={handleOpenModal} />
+      </div>
       <NoticesCategoriesList items={filteredItems} setActive={setModalActive} />
+      {isModalOpen && <ModalAddNotice setIsModalOpen={setIsModalOpen} />}
       <ModalNotice active={modalActive} setActive={setModalActive} />
     </div>
   );

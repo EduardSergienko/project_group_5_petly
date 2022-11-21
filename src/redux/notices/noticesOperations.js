@@ -15,13 +15,13 @@ const token = {
 const addNotice = createAsyncThunk(
   'notices/addNotice',
   async (credentials, { rejectWithValue, getState }) => {
-    const { user } = getState();
+    const { auth } = getState();
 
-    if (!user.token) {
+    if (!auth.token) {
       return [];
     }
 
-    token.set(user.token);
+    token.set(auth.token);
     try {
       const { data } = await axios.post('/notices/', credentials);
 
