@@ -2,6 +2,7 @@ import NoticesSearch from './NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from './NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
 import AddNoticeButton from './AddNoticeButton/AddNoticeButton';
+import ModalNotice from '../ModalNotice/ModalNotice';
 import ModalAddNotice from 'components/ModalAddNotice/ModalAddNotice';
 import { noticesSelectors } from '../../redux/notices';
 import notices from 'helpers/Notification/Notification';
@@ -24,6 +25,7 @@ function NoticesPage({ onFilter = () => {} }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isNoticeAdded = useSelector(noticesSelectors.getNoticeAdded);
   const isNoticeAddedError = useSelector(noticesSelectors.getNoticeAddError);
+  const [modalActive, setModalActive] = useState(false);
 
   useEffect(() => {
     if (categoryName === 'sell' || 'for-free' || 'lost-found' || 'own') {
@@ -80,8 +82,9 @@ function NoticesPage({ onFilter = () => {} }) {
       <div className={styles.stickyBtnWrapper}>
         <AddNoticeButton handleOpenModal={handleOpenModal} />
       </div>
-      <NoticesCategoriesList items={filteredItems} />
       {isModalOpen && <ModalAddNotice setIsModalOpen={setIsModalOpen} />}
+      <NoticesCategoriesList items={filteredItems} setActive={setModalActive} />
+      <ModalNotice active={modalActive} setActive={setModalActive} />
     </div>
   );
 }

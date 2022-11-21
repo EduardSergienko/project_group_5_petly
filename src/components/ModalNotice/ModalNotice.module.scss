@@ -1,0 +1,286 @@
+@import '../../variables/variables.scss';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  background-color: #00000090;
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+
+  // @media screen and (max-width: 500px) {
+  //   body {
+  //     position: fixed;
+  //   }
+  // }
+}
+
+.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  padding: 32px 20px;
+  background-color: #fff;
+  width: 704px;
+
+  box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
+  border-radius: 40px;
+
+  @media screen and (max-width: 400px) {
+    width: 280px;
+    padding: 60px 20px 40px;
+    border-radius: 20px;
+  }
+}
+
+// .link {
+//   text-decoration: none;
+//   // margin: 5px 0;
+//   font-weight: 700;
+//   font-size: 20px;
+//   color: #2e2e2e;
+//   transition: color 0.3s;
+//   padding: 15px 0;
+
+//   &:hover {
+//     color: #4e91f5;
+//   }
+// }
+
+.button {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  background-color: #fdf7f2;
+
+  cursor: pointer;
+
+  @media screen and (max-width: 400px) {
+    top: 20px;
+    right: 20px;
+  }
+}
+
+.imgB {
+  width: 36px;
+}
+
+.containerCategory {
+  display: flex;
+
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+  }
+}
+
+.containerImage {
+  position: relative;
+  display: flex;
+  height: 328px;
+  width: 288px;
+  //   align-items: center;
+  overflow: hidden;
+  border-radius: 0px 0px 40px 40px;
+
+  @media screen and (max-width: 400px) {
+    height: 240px;
+    width: 240px;
+  }
+}
+
+.image {
+  //   width: 288px;
+  width: 100%;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.categoryNotice {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 158px;
+  padding: 6px 0;
+
+  background: rgba(255, 255, 255, 0.6);
+  //   background-color: red;
+  backdrop-filter: blur(50px);
+  border-radius: 0 40px 40px 0;
+}
+
+.textCategory {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+
+  color: $mainTextColor;
+}
+
+.containerInformationPets {
+  margin-left: 20px;
+
+  @media screen and (max-width: 400px) {
+    margin: 16px 0 0;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 38px;
+  letter-spacing: -0.01em;
+
+  width: 300px;
+  margin-bottom: 20px;
+
+  color: $mainTextColor;
+
+  @media screen and (max-width: 400px) {
+    margin-bottom: 16px;
+  }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  & + & {
+    margin-top: 8px;
+  }
+}
+
+.p {
+  width: 120px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: $mainTextColor;
+
+  @media screen and (max-width: 400px) {
+    width: 100px;
+  }
+}
+
+.span {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: $mainTextColor;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.containerComments {
+  margin: 28px 0 32px;
+
+  @media screen and (max-width: 400px) {
+    margin-bottom: 40px;
+  }
+}
+
+.textComments {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: $mainTextColor;
+}
+.spanComments {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: $mainTextColor;
+  margin-left: 10px;
+}
+
+.containerButton {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+  }
+}
+
+.addTo {
+  display: flex;
+  align-items: center;
+  padding: 10px 52px;
+
+  //   width: 160px;
+  // height: 40px;
+  background: #ffffff;
+  border: 2px solid #f59256;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: $mainTextColor;
+
+  cursor: pointer;
+
+  @media screen and (max-width: 400px) {
+    width: 100%;
+    order: 2;
+    margin-top: 12px;
+    justify-content: center;
+  }
+}
+
+.likeSvg {
+  margin-left: 10px;
+}
+
+.btnContact {
+  padding: 12px 60px;
+  margin: 0 20px 0 12px;
+  background: #f59256;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  border: none;
+
+  color: #ffffff;
+  transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e7884d;
+  }
+
+  @media screen and (max-width: 400px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    order: 1;
+    margin: 0;
+  }
+}

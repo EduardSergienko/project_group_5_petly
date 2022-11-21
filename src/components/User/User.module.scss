@@ -2,15 +2,15 @@
 
 .container {
   display: flex;
-  margin-top: 60px;
+  margin: 60px -15px 0;
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    margin-top: 90px;
+    margin: 90px -30px 0;
   }
 
   @media screen and (max-width: 400px) {
-    margin-top: 61px;
+    margin: 61px -20px 0;
   }
 }
 
