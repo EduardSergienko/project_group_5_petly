@@ -195,22 +195,6 @@ function Modal1({
         </label>
 
         <label className={styles.lable}>
-          <span className={styles.span}>Date of birth</span>
-          {/* <input
-            className={`${styles.input} ${
-              !inputActiveBirthday && birthdayValue.length !== 0
-                ? styles.noValidate
-                : ''
-            }  ${
-              required && birthdayValue.length === 0 ? styles.noValidate : ''
-            }`}
-            type="text"
-            name="Date_of_birth"
-            value={birthdayValue}
-            onChange={handleInputChange}
-            placeholder="Type date of birth"
-            required
-          /> */}
           <InputMask
             className={`${styles.input} ${
               !inputActiveBirthday && birthdayValue.length !== 0
