@@ -25,7 +25,11 @@ const SecondStep = ({
       .min(2, 'Location is too short')
       .max(48, 'Location is too long')
       .required('Required'),
-    price: Yup.number().min(1).required('Required'),
+    price: Yup.number().when([], {
+      is: () => checkCategory(),
+      then: Yup.number().min(1).required('Price is required'),
+      otherwise: Yup.number().notRequired(),
+    }),
     avatar: Yup.mixed()
       .required('Required')
       .test(

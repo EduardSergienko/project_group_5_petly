@@ -95,30 +95,15 @@
   }
 }
 
-.fieldsetWrap{
- position: relative;
- width: 240px;
-  border: none;
-  padding: 0px;  
-  display: flex;  
-  flex-wrap: wrap;
-  margin-bottom: 32px;
-
+.secPagefieldsetWrap{
   @media screen and (min-width: 768px) {
     width: 448px;
     margin-bottom: 18px;
   }
 }
 
-.secPagefieldsetWrap{
-  @media screen and (min-width: 768px) {
-    width: 448px;
-    margin-bottom: 28px;
-  }
-}
-
 .fieldsetWrap legend{
-  margin-bottom: 28px;
+  margin-bottom: 18px;
 }
 
 .categorySell,
@@ -276,12 +261,12 @@
 
   @media screen and (min-width: 768px) {
     width: 448px;
-    height: 52px;
-    padding: 14px 70px 13px 32px;
-    margin: 12px  0px 28px 0px;
+    height: 48px;
+    padding: 14px 70px 13px 16px;
+    margin: 10px  0px 18px 0px;
 
-    font-size: 18px;
-    line-height: 1.39em;
+    font-size: 16px;
+    line-height: 1.62;
   }
 }
 
@@ -363,7 +348,7 @@ input[type=number] {
   @media screen and (min-width: 768px) {
     width: 60px;
     height: 60px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 }
 
@@ -463,7 +448,7 @@ form label:last-of-type .textArea{
     @media screen and (min-width: 768px) {
       width: 140px;
       height: 140px;
-      margin: 12px 0px 28px 0px;
+      margin: 8px 0px 18px 0px;
     }
 }
 
@@ -537,7 +522,7 @@ form label:last-of-type .textArea{
     width: 448px;
     height: 113px;
     padding: 16px 18px;
-    margin: 12px  0px 28px 0px;
+    margin: 8px  0px 28px 0px;
 
     font-size: 18px;
     line-height: 1.39em;
