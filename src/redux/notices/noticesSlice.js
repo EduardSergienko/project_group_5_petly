@@ -50,7 +50,7 @@ const noticesSlice = createSlice({
       state.error = action.payload;
     },
     [noticesOperations.removeFavorite.fulfilled](state, action) {
-      // state.myFavorite = action.payload.myFavorite;
+      state.myFavorite = action.payload.myFavorite;
     },
     [noticesOperations.removeFavorite.rejected](state, action) {
       state.error = action.payload;

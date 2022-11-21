@@ -64,7 +64,19 @@
 
 .stickyBtnWrapper{
     position: sticky;
-    top: 59%;
+    top: 64%;
+    z-index: 4;
+    display: flex;
+    justify-content: flex-end;
+
+    @media screen and (min-width: 768px) {
+      display: none;
+    }
+}
+
+.stickyLoginBtnWrapper{
+    position: sticky;
+    top: 71%;
     z-index: 4;
     display: flex;
     justify-content: flex-end;
