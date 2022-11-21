@@ -66,6 +66,15 @@ function NoticesCategoriesItem({ item, setActive }) {
 
     return category;
   };
+
+  const cutFilmTitle = title => {
+    if (title.length > 17) {
+      return title.slice(0, 17) + '...';
+    } else {
+      return title;
+    }
+  };
+  
   return (
     <div className={styles.item} key={item._id}>
       <div className={styles.imgWrapper}>
