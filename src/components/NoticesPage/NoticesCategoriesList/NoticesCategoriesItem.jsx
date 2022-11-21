@@ -13,11 +13,16 @@ function NoticesCategoriesItem({ item, setActive }) {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const myFavorite = useSelector(noticesSelectors.getMyFavoriteNotice);
+  const myFavoriteIds = useSelector(authSelectors.getUserFavorite)
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    setIsFavorite(myFavorite.some(i => i._id === item._id));
-  }, [myFavorite, item._id, isFavorite]);
+    if (myFavorite.length > 0) {
+      setIsFavorite(myFavorite.some(i => i._id === item._id));
+    } else {
+      setIsFavorite(myFavoriteIds.some(i => i === item._id));
+    }
+  }, [myFavorite, item._id, isFavorite, myFavoriteIds]);
 
   const addFavorite = e => {
     e.preventDefault();
@@ -61,17 +66,18 @@ function NoticesCategoriesItem({ item, setActive }) {
 
     return category;
   };
+
   const cutFilmTitle = title => {
     if (title.length > 17) {
       return title.slice(0, 17) + '...';
     } else {
       return title;
     }
-  };
+    
   return (
     <div className={styles.item} key={item._id}>
       <div className={styles.imgWrapper}>
-        <img src={item.petImageUrl} alt="Pet" className={styles.img} />
+        <img src={`https://fetch-friend.herokuapp.com/${item.petImageUrl}`} alt="Pet" className={styles.img} />
       </div>
       <p className={styles.itemCategory}>
         {normalizeCategoryName(item.category)}

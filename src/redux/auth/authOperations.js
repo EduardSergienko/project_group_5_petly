@@ -66,6 +66,8 @@ const getCurrentUser = createAsyncThunk(
 
     try {
       const { data } = await axios.get(`/user/current`, persistedToken);
+
+    console.log('current', data)
       return data;
     } catch (error) {
       console.log(error);

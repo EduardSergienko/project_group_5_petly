@@ -16,7 +16,6 @@ const addNotice = createAsyncThunk(
   'notices/addNotice',
   async (credentials, { rejectWithValue, getState }) => {
     const { auth } = getState();
-
     if (!auth.token) {
       return [];
     }
@@ -24,7 +23,6 @@ const addNotice = createAsyncThunk(
     token.set(auth.token);
     try {
       const { data } = await axios.post('/notices/', credentials);
-
       return data.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -48,7 +46,8 @@ const addToFavorite = createAsyncThunk(
   'notices/addToFavorite',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.patch(`/notices/${credentials}/favorite`);
+      await axios.patch(`/notices/${credentials}/favorite`);
+      const { data } = await axios.get(`/notices/user/favorite`);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -60,7 +59,8 @@ const removeFavorite = createAsyncThunk(
   'notices/removeFavorite',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.delete(`/notices/${credentials}/favorite`);
+      await axios.delete(`/notices/${credentials}/favorite`);
+      const { data } = await axios.get(`/notices/user/favorite`);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);

@@ -13,31 +13,40 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { noticesOperations } from '../../redux/notices';
 import { useState } from 'react';
+import Loader from 'components/Loader';
 
-function NoticesPage({ onFilter = () => {} }) {
+function NoticesPage({ onFilter = () => { } }) {
   const dispatch = useDispatch();
   const { categoryName } = useParams();
-  const items = useSelector(state => state.notices.notices);
+  const items = useSelector(noticesSelectors.getNotices);
+  const ownAdds = useSelector(noticesSelectors.getOwnAdds);
   const filter = useSelector(state => state.filter.value);
-  const myFavorite = useSelector(state => state.notices.myFavorite);
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const myFavorite = useSelector(noticesSelectors.myFavorite);
+  const isLoggedIn = useSelector(noticesSelectors.getIsLoggedIn);
+  const error = useSelector(noticesSelectors.getNoticeError);
+  const loading = useSelector(noticesSelectors.noticeLoading);
   const [filteredItems, setFilteredItems] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isNoticeAdded = useSelector(noticesSelectors.getNoticeAdded);
   const isNoticeAddedError = useSelector(noticesSelectors.getNoticeAddError);
   const [modalActive, setModalActive] = useState(false);
-
+  
   useEffect(() => {
-    if (categoryName === 'sell' || 'for-free' || 'lost-found' || 'own') {
-      const filtered = filter
-        ? items.filter(({ title }) => title.toLowerCase().includes(filter))
-        : items;
-      setFilteredItems(filtered);
+    const filterItems = (arr) => {
+    return filter
+        ? arr.filter(({ title }) => title.toLowerCase().includes(filter))
+        : arr;
+    }
+    if (categoryName === 'sell' || 'for-free' || 'lost-found') {
+      setFilteredItems(filterItems(items));
     }
     if (categoryName === 'favorite') {
-      setFilteredItems(myFavorite);
+      setFilteredItems(filterItems(myFavorite));
     }
-  }, [categoryName, filter, items, setFilteredItems, myFavorite]);
+    if (categoryName === 'own') {
+      setFilteredItems(filterItems(ownAdds));
+    }
+  }, [categoryName, filter, items, setFilteredItems, myFavorite, ownAdds]);
 
   useEffect(() => {
     categoryName === 'sell' &&
@@ -69,30 +78,34 @@ function NoticesPage({ onFilter = () => {} }) {
       : notices.showWarning('You need to authorize before adding notices.');
   };
 
-  return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>Find your favorite pet</h2>
-      <NoticesSearch onChange={onFilter} />
-      <div className={styles.navWarpper}>
-        <NoticesCategoriesNav />
-        <div className={styles.buttonWrapper}>
-          <p className={styles.buttonText}>Add pet</p>
+  if (error) {
+    notices.showError(error?.message || 'Oops, something wrong, try again');
+  } else  {
+    return (
+      <div className={styles.container}>
+        <h2 className={styles.title}>Find your favorite pet</h2>
+        <NoticesSearch onChange={onFilter} />
+        <div className={styles.navWarpper}>
+          <NoticesCategoriesNav />
+          <div className={styles.buttonWrapper}>
+            <p className={styles.buttonText}>Add pet</p>
+            <AddNoticeButton handleOpenModal={handleOpenModal} />
+          </div>
+        </div>
+          {!loading ?
+            <NoticesCategoriesList items={filteredItems} setActive={setModalActive} />
+            :<Loader/>}
+        <div
+          className={`${isLoggedIn ? styles.stickyLoginBtnWrapper : styles.stickyBtnWrapper
+            }`}
+        >
           <AddNoticeButton handleOpenModal={handleOpenModal} />
         </div>
+        {isModalOpen && <ModalAddNotice setIsModalOpen={setIsModalOpen} />}
+        <ModalNotice active={modalActive} setActive={setModalActive} />
       </div>
-
-      <NoticesCategoriesList items={filteredItems} setActive={setModalActive} />
-      <div
-        className={`${
-          isLoggedIn ? styles.stickyLoginBtnWrapper : styles.stickyBtnWrapper
-        }`}
-      >
-        <AddNoticeButton handleOpenModal={handleOpenModal} />
-      </div>
-      {isModalOpen && <ModalAddNotice setIsModalOpen={setIsModalOpen} />}
-      <ModalNotice active={modalActive} setActive={setModalActive} />
-    </div>
-  );
+    );
+  }
 }
 
 export default NoticesPage;
