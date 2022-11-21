@@ -81,9 +81,7 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
   return (
     <>
       <div className={styles.formWrap}>
-        <h1 className={`${styles.title} ${page === 1 && styles.secStepTitle}`}>
-          Add pet
-        </h1>
+        <h1 className={`${styles.title}`}>Add pet</h1>
         {page === 0 ? (
           <FirstStep
             handleFirstStepSubmit={handleFirstStepSubmit}

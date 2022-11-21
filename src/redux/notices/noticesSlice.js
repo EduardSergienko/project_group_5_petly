@@ -18,9 +18,11 @@ const noticesSlice = createSlice({
   extraReducers: {
     [noticesOperations.addNotice.pending](state, _) {
       state.error = null;
+      state.noticeAdded = false;
+      state.noticeAddError = null;
     },
     [noticesOperations.addNotice.fulfilled](state, action) {
-      state.notices = [...state.notices, action.payload];
+      state.notices = [action.payload, ...state.notices];
       state.noticeAdded = true;
       state.error = null;
     },
