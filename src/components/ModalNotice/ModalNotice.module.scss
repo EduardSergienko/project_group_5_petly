@@ -251,6 +251,32 @@
   }
 }
 
+.removeTo {
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+
+  //   width: 160px;
+  // height: 40px;
+  background: #ffffff;
+  border: 2px solid #f59256;
+  border-radius: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: $mainTextColor;
+
+  cursor: pointer;
+
+  @media screen and (max-width: 400px) {
+    width: 100%;
+    order: 2;
+    margin-top: 12px;
+    justify-content: center;
+  }
+}
+
 .likeSvg {
   margin-left: 10px;
 }

@@ -16,6 +16,14 @@ function ModalNotice({ active, setActive }) {
   const dispatch = useDispatch();
   const more = useSelector(noticesSelectors.getNoticeInformationMore);
   const loading = useSelector(noticesSelectors.noticeLoading);
+  const myFavorite = useSelector(noticesSelectors.myFavorite);
+
+  const findFavorite = myFavorite.find(item => {
+    if (item?._id) {
+      return more?._id === item?._id;
+    }
+    return more?._id === item;
+  });
 
   useEffect(() => {
     const handleKeyDown = e => {
@@ -107,24 +115,47 @@ function ModalNotice({ active, setActive }) {
             </p>
           </div>
           <div className={styles.containerButton}>
-            <button
-              className={styles.addTo}
-              onClick={() => {
-                dispatch(noticesOperations.addToFavorite(more._id));
-                toast.success('Add to favorite', {
-                  position: 'top-right',
-                  autoClose: 600,
-                  hideProgressBar: true,
-                  closeOnClick: true,
-                  pauseOnHover: false,
-                  draggable: true,
-                  progress: undefined,
-                  theme: 'colored',
-                });
-              }}
-            >
-              Add to <img className={styles.likeSvg} src={like} alt="like" />
-            </button>
+            {findFavorite ? (
+              <button
+                className={styles.removeTo}
+                onClick={() => {
+                  dispatch(noticesOperations.removeFavorite(more._id));
+                  toast.success(' Remove from favorite', {
+                    position: 'top-right',
+                    autoClose: 600,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'colored',
+                  });
+                }}
+              >
+                Remove from
+                <img className={styles.likeSvg} src={like} alt="like" />
+              </button>
+            ) : (
+              <button
+                className={styles.addTo}
+                onClick={() => {
+                  dispatch(noticesOperations.addToFavorite(more._id));
+                  toast.success('Add to favorite', {
+                    position: 'top-right',
+                    autoClose: 600,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'colored',
+                  });
+                }}
+              >
+                Add to <img className={styles.likeSvg} src={like} alt="like" />
+              </button>
+            )}
+
             <a className={styles.btnContact} href={`tel:${more?.owner?.phone}`}>
               Contact
             </a>
