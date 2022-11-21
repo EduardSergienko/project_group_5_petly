@@ -42,6 +42,10 @@
   }
 }
 
+.secStepTitle{
+  margin-bottom: 40px;
+}
+
 
 .text{
     font-family: 'Manrope';
@@ -109,12 +113,12 @@
 .secPagefieldsetWrap{
   @media screen and (min-width: 768px) {
     width: 448px;
-    margin-bottom: 18px;
+    margin-bottom: 28px;
   }
 }
 
 .fieldsetWrap legend{
-  margin-bottom: 18px;
+  margin-bottom: 28px;
 }
 
 .categorySell,
@@ -274,7 +278,7 @@
     width: 448px;
     height: 52px;
     padding: 14px 70px 13px 32px;
-    margin: 12px  0px 18px 0px;
+    margin: 12px  0px 28px 0px;
 
     font-size: 18px;
     line-height: 1.39em;
@@ -459,7 +463,7 @@ form label:last-of-type .textArea{
     @media screen and (min-width: 768px) {
       width: 140px;
       height: 140px;
-      margin: 10px 0px 16px 0px;
+      margin: 12px 0px 28px 0px;
     }
 }
 
