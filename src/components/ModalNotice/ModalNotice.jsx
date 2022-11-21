@@ -147,7 +147,6 @@ function ModalNotice({ active, setActive }) {
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    // theme: 'colored',
                     theme: 'light',
                   });
                 }}

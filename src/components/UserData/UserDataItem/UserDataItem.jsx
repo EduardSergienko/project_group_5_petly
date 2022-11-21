@@ -47,9 +47,10 @@ function UserDataItem({
 
   const onInputeChange = e => {
     const value = e.target.value.toLowerCase();
+    const yearNow = new Date().getFullYear();
     setInputActive(pattern.test(value));
 
-    if (value.slice(6).length === 4 && value.slice(6) > 2022) {
+    if (value.slice(6).length === 4 && value.slice(6) > yearNow) {
       setInputActive(false);
     }
 

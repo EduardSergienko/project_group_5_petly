@@ -28,6 +28,7 @@ function Modal1({
   const handleInputChange = e => {
     const { name, value } = e.target;
     const valueToLower = value.toLowerCase().trim();
+    const yearNow = new Date().getFullYear();
 
     switch (name) {
       case 'name':
@@ -57,7 +58,7 @@ function Modal1({
 
         if (
           valueToLower.slice(6).length === 4 &&
-          valueToLower.slice(6) > 2022
+          valueToLower.slice(6) > yearNow
         ) {
           setInputActiveBirthday(false);
         }
