@@ -4,6 +4,7 @@ import noticesOperations from './noticesOperations';
 const initialState = {
   notices: [],
   myFavorite: [],
+  ownAdds: [],
   noticeAdded: '',
   noticeRemoved: '',
   noticeAddError: '',
@@ -32,12 +33,18 @@ const noticesSlice = createSlice({
     },
     [noticesOperations.getNotices.pending](state, _) {
       state.error = null;
+      state.loading = true;
     },
     [noticesOperations.getNotices.fulfilled](state, action) {
+      state.loading = false;
       state.notices = action.payload.data;
     },
     [noticesOperations.getNotices.rejected](state, action) {
+      state.loading = false;
       state.error = action.payload;
+    },
+    [noticesOperations.addToFavorite.pending](state, _) {
+      state.error = null;
     },
     [noticesOperations.addToFavorite.fulfilled](state, action) {
       state.myFavorite = action.payload.myFavorite;
@@ -45,11 +52,20 @@ const noticesSlice = createSlice({
     [noticesOperations.addToFavorite.rejected](state, action) {
       state.error = action.payload;
     },
+    [noticesOperations.getFavorite.pending](state, _) {
+      state.error = null;
+      state.loading = true;
+    },
     [noticesOperations.getFavorite.fulfilled](state, action) {
       state.myFavorite = action.payload.myFavorite;
+      state.loading = false;
     },
     [noticesOperations.getFavorite.rejected](state, action) {
       state.error = action.payload;
+      state.loading = false;
+    },
+    [noticesOperations.removeFavorite.pending](state, _) {
+      state.error = null;
     },
     [noticesOperations.removeFavorite.fulfilled](state, action) {
       state.myFavorite = action.payload.myFavorite;
@@ -57,11 +73,17 @@ const noticesSlice = createSlice({
     [noticesOperations.removeFavorite.rejected](state, action) {
       state.error = action.payload;
     },
+    [noticesOperations.getOwn.pending](state, _) {
+      state.error = null;
+      state.loading = true;
+    },
     [noticesOperations.getOwn.fulfilled](state, action) {
-      state.notices = action.payload.data;
+      state.ownAdds = action.payload.data;
+      state.loading = false;
     },
     [noticesOperations.getOwn.rejected](state, action) {
       state.error = action.payload;
+      state.loading = false;
     },
     [noticesOperations.getOneNotice.fulfilled](state, { payload }) {
       state.noticeInformationMore = payload.data[0];

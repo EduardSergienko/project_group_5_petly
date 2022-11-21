@@ -14,6 +14,9 @@ const getMyFavoriteNotice = state => state.notices.myFavorite;
 
 const getNoticeError = state => state.notices.error;
 
+const getOwnAdds = state => state.notices.ownAdds;
+const getIsLoggedIn = state => state.auth.isLoggedIn;
+
 const noticesSelectors = {
   getNotices,
   getNoticeAdded,
@@ -24,5 +27,7 @@ const noticesSelectors = {
   getNoticeError,
   getNoticeAddError,
   getMyFavoriteNotice,
+  getOwnAdds,
+  getIsLoggedIn,
 };
 export default noticesSelectors;

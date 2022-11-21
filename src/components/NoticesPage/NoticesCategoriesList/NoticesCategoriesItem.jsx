@@ -62,10 +62,16 @@ function NoticesCategoriesItem({ item, setActive }) {
     return category;
   };
 
+  const shortenText = (text, max) => {
+    return text && text.length > max
+      ? `${text.slice(0, max).split(' ').slice(0, -1).join(' ')}...`
+      : text;
+  };
+
   return (
     <div className={styles.item} key={item._id}>
       <div className={styles.imgWrapper}>
-        <img src={item.petImageUrl} alt="Pet" className={styles.img} />
+        <img src={`https://fetch-friend.herokuapp.com/${item.petImageUrl}`} alt="Pet" className={styles.img} />
       </div>
       <p className={styles.itemCategory}>
         {normalizeCategoryName(item.category)}
@@ -79,7 +85,7 @@ function NoticesCategoriesItem({ item, setActive }) {
           onClick={removeFavorite}
         />
       )}
-      <h3 className={styles.itemHeader}>{item.title}</h3>
+      <h3 className={styles.itemHeader}>{shortenText(item.title, 16)}</h3>
       <div className={styles.itemDescriptionWrapper}>
         <div className={styles.itemDescriptionConteiner}>
           <p className={styles.itemDescription}>Breed:</p>
@@ -87,8 +93,8 @@ function NoticesCategoriesItem({ item, setActive }) {
           <p className={styles.itemDescription}>Birth Date:</p>
         </div>
         <div className={styles.itemDescriptionConteiner}>
-          <p className={styles.itemDescription}>{item.breed}</p>
-          <p className={styles.itemDescription}>{item.location}</p>
+          <p className={styles.itemDescription}>{shortenText(item.breed, 14)}</p>
+          <p className={styles.itemDescription}>{shortenText(item.location, 14)}</p>
           <p className={styles.itemDescription}>{item.birthDate}</p>
         </div>
       </div>
