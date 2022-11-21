@@ -13,11 +13,16 @@ function NoticesCategoriesItem({ item, setActive }) {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const myFavorite = useSelector(noticesSelectors.getMyFavoriteNotice);
+  const myFavoriteIds = useSelector(authSelectors.getUserFavorite)
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    setIsFavorite(myFavorite.some(i => i._id === item._id));
-  }, [myFavorite, item._id, isFavorite]);
+    if (myFavorite.length > 0) {
+      setIsFavorite(myFavorite.some(i => i._id === item._id));
+    } else {
+      setIsFavorite(myFavoriteIds.some(i => i === item._id));
+    }
+  }, [myFavorite, item._id, isFavorite, myFavoriteIds]);
 
   const addFavorite = e => {
     e.preventDefault();
@@ -62,11 +67,6 @@ function NoticesCategoriesItem({ item, setActive }) {
     return category;
   };
 
-  const shortenText = (text, max) => {
-    return text && text.length > max
-      ? `${text.slice(0, max).split(' ').slice(0, -1).join(' ')}...`
-      : text;
-  };
 
   return (
     <div className={styles.item} key={item._id}>
@@ -85,7 +85,7 @@ function NoticesCategoriesItem({ item, setActive }) {
           onClick={removeFavorite}
         />
       )}
-      <h3 className={styles.itemHeader}>{shortenText(item.title, 16)}</h3>
+      <h3 className={styles.itemHeader}>{item.title}</h3>
       <div className={styles.itemDescriptionWrapper}>
         <div className={styles.itemDescriptionConteiner}>
           <p className={styles.itemDescription}>Breed:</p>
@@ -93,8 +93,8 @@ function NoticesCategoriesItem({ item, setActive }) {
           <p className={styles.itemDescription}>Birth Date:</p>
         </div>
         <div className={styles.itemDescriptionConteiner}>
-          <p className={styles.itemDescription}>{shortenText(item.breed, 14)}</p>
-          <p className={styles.itemDescription}>{shortenText(item.location, 14)}</p>
+          <p className={styles.itemDescription}>{item.breed}</p>
+          <p className={styles.itemDescription}>{item.location}</p>
           <p className={styles.itemDescription}>{item.birthDate}</p>
         </div>
       </div>
