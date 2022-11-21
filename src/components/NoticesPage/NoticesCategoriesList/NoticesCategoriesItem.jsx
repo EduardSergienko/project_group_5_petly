@@ -66,8 +66,6 @@ function NoticesCategoriesItem({ item, setActive }) {
 
     return category;
   };
-
-
   return (
     <div className={styles.item} key={item._id}>
       <div className={styles.imgWrapper}>
