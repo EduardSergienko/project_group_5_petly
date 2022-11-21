@@ -73,8 +73,7 @@ function NoticesCategoriesItem({ item, setActive }) {
     } else {
       return title;
     }
-  };
-  
+    
   return (
     <div className={styles.item} key={item._id}>
       <div className={styles.imgWrapper}>
@@ -92,28 +91,30 @@ function NoticesCategoriesItem({ item, setActive }) {
           onClick={removeFavorite}
         />
       )}
-      <h3 className={styles.itemHeader}>{item.title}</h3>
-      <div className={styles.itemDescriptionWrapper}>
-        <div className={styles.itemDescriptionConteiner}>
-          <p className={styles.itemDescription}>Breed:</p>
-          <p className={styles.itemDescription}>Place:</p>
-          <p className={styles.itemDescription}>Birth Date:</p>
+      <div className={styles.itemInfoWrap}>
+        <h3 className={styles.itemHeader}>{item.title}</h3>
+        <div className={styles.itemDescriptionWrapper}>
+          <div className={styles.itemDescriptionConteiner}>
+            <p className={styles.itemDescription}>Breed:</p>
+            <p className={styles.itemDescription}>Place:</p>
+            <p className={styles.itemDescription}>Birth Date:</p>
+          </div>
+          <div className={styles.itemDescriptionConteiner}>
+            <p className={styles.itemDescription}>{cutFilmTitle(item.breed)}</p>
+            <p className={styles.itemDescription}>{item.location}</p>
+            <p className={styles.itemDescription}>{item.birthDate}</p>
+          </div>
         </div>
-        <div className={styles.itemDescriptionConteiner}>
-          <p className={styles.itemDescription}>{item.breed}</p>
-          <p className={styles.itemDescription}>{item.location}</p>
-          <p className={styles.itemDescription}>{item.birthDate}</p>
-        </div>
+        <button
+          className={styles.itemButton}
+          onClick={() => {
+            setActive(true);
+            dispatch(noticesOperations.getOneNotice(item._id));
+          }}
+        >
+          Learn more
+        </button>
       </div>
-      <button
-        className={styles.itemButton}
-        onClick={() => {
-          setActive(true);
-          dispatch(noticesOperations.getOneNotice(item._id));
-        }}
-      >
-        Learn more
-      </button>
     </div>
   );
 }
