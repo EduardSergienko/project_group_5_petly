@@ -60,12 +60,13 @@ function NoticesPage({ onFilter = () => {} }) {
       setIsModalOpen(false);
     }
 
-    isNoticeAddedError &&
-      notices.showWarning('Something went wrong, try again');
+    isNoticeAddedError && notices.showError('Something went wrong, try again');
   }, [isNoticeAdded, isNoticeAddedError]);
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
+    isLoggedIn
+      ? setIsModalOpen(true)
+      : notices.showWarning('You need to authorize before adding notices.');
   };
 
   return (
