@@ -9,6 +9,7 @@ import Loader from '../Loader/Loader';
 
 import close from '../../image/svg/closeLine.svg';
 import like from '../../image/svg/like.svg';
+import noPhoto from '../../image/noPhoto.png';
 
 import styles from './ModalNotice.module.scss';
 
@@ -57,6 +58,9 @@ function ModalNotice({ active, setActive }) {
                 src={`https://fetch-friend.herokuapp.com/${more?.petImageUrl}`}
                 // src={more?.petImageUrl}
                 alt={`photo_${more?.petName}`}
+                onError={e => {
+                  e.target.src = noPhoto;
+                }}
               />
               <div className={styles.categoryNotice}>
                 <p className={styles.textCategory}>{more?.category}</p>

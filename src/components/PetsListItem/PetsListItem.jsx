@@ -5,6 +5,8 @@ import { userOperations } from '../../redux/user';
 import Loader2 from '../Loader2/Loader2';
 import { DeleteButton } from '../../helpers';
 
+import noPhoto from '../../image/noPhoto.png';
+
 import styles from './PetsListItem.module.scss';
 
 function PetsListItem({
@@ -31,6 +33,9 @@ function PetsListItem({
           className={styles.image}
           src={`https://fetch-friend.herokuapp.com/${photo}`}
           alt="photo_pet"
+          onError={e => {
+            e.target.src = noPhoto;
+          }}
         />
       </div>
       <div className={styles.containerText}>
