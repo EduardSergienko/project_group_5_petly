@@ -142,12 +142,12 @@ function ModalNotice({ active, setActive }) {
                   toast.success(' Remove from favorite', {
                     position: 'top-right',
                     autoClose: 600,
-                    hideProgressBar: true,
+                    hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: 'colored',
+                    theme: 'light',
                   });
                 }}
               >
@@ -162,12 +162,12 @@ function ModalNotice({ active, setActive }) {
                   toast.success('Add to favorite', {
                     position: 'top-right',
                     autoClose: 600,
-                    hideProgressBar: true,
+                    hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: false,
                     draggable: true,
                     progress: undefined,
-                    theme: 'colored',
+                    theme: 'light',
                   });
                 }}
               >
