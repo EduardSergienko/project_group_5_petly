@@ -47,7 +47,12 @@ function UserDataItem({
 
   const onInputeChange = e => {
     const value = e.target.value.toLowerCase();
+    const yearNow = new Date().getFullYear();
     setInputActive(pattern.test(value));
+
+    if (value.slice(6).length === 4 && value.slice(6) > yearNow) {
+      setInputActive(false);
+    }
 
     if (value.length < min) {
       setInputActive(false);
@@ -91,6 +96,11 @@ function UserDataItem({
           {!min && !max && !inputActive && inputeValue.length !== 0 && (
             <p className={styles.textError}>{example}</p>
           )}
+          {!inputActive &&
+            inputeValue.length < max &&
+            inputeValue.length > min && (
+              <p className={styles.textError}>Only letters</p>
+            )}
           {required && inputeValue.length === 0 && (
             <p className={styles.textError}>Required</p>
           )}

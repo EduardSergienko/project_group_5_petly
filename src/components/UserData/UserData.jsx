@@ -8,6 +8,7 @@ import { userOperations } from '../../redux/user';
 
 import camera from '../../image/camera.png';
 import doneVector from '../../image/doneVector.png';
+import noUser from '../../image/noUser.png';
 
 import styles from './UserData.module.scss';
 
@@ -99,6 +100,9 @@ function UserData() {
                     : selectPicture
                 }
                 alt="avatar"
+                onError={e => {
+                  e.target.src = noUser;
+                }}
               />
             ) : active ? (
               'Upload your photo'

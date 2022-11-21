@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import fotoSelect from '../../../image/svg/fotoSelect.svg';
 
@@ -22,8 +23,6 @@ function Modal2({
   const [picture, setPicture] = useState(
     modalDefaultValues ? modalDefaultValues.photo : ''
   );
-  console.log(inputActiveComments);
-  // console.log(required);
 
   const handleInputChange = e => {
     const { name, value } = e.target;
@@ -219,3 +218,16 @@ function Modal2({
 }
 
 export default Modal2;
+
+Modal2.propTypes = {
+  setActive: PropTypes.func.isRequired,
+  setActiveTablet: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired,
+  createPetsPost: PropTypes.func.isRequired,
+  setModal2Values: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired,
+  modalDefaultValues: PropTypes.shape({
+    comments: PropTypes.string.isRequired,
+    photo: PropTypes.string.isRequired,
+  }),
+};

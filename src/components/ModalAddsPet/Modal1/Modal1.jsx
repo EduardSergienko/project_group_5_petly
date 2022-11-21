@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import InputMask from 'react-input-mask';
+import PropTypes from 'prop-types';
 
 import styles from './Modal1.module.scss';
 
@@ -28,6 +29,7 @@ function Modal1({
   const handleInputChange = e => {
     const { name, value } = e.target;
     const valueToLower = value.toLowerCase().trim();
+    const yearNow = new Date().getFullYear();
 
     switch (name) {
       case 'name':
@@ -54,6 +56,13 @@ function Modal1({
             valueToLower
           )
         );
+
+        if (
+          valueToLower.slice(6).length === 4 &&
+          valueToLower.slice(6) > yearNow
+        ) {
+          setInputActiveBirthday(false);
+        }
 
         setBirthdayValue(value);
         setRequired(false);
@@ -187,22 +196,6 @@ function Modal1({
         </label>
 
         <label className={styles.lable}>
-          <span className={styles.span}>Date of birth</span>
-          {/* <input
-            className={`${styles.input} ${
-              !inputActiveBirthday && birthdayValue.length !== 0
-                ? styles.noValidate
-                : ''
-            }  ${
-              required && birthdayValue.length === 0 ? styles.noValidate : ''
-            }`}
-            type="text"
-            name="Date_of_birth"
-            value={birthdayValue}
-            onChange={handleInputChange}
-            placeholder="Type date of birth"
-            required
-          /> */}
           <InputMask
             className={`${styles.input} ${
               !inputActiveBirthday && birthdayValue.length !== 0
@@ -289,3 +282,16 @@ function Modal1({
 }
 
 export default Modal1;
+
+Modal1.propTypes = {
+  setActive: PropTypes.func.isRequired,
+  setActiveTablet: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired,
+  createPetsPost: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired,
+  modalDefaultValues: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired,
+    breed: PropTypes.string.isRequired,
+  }),
+};

@@ -80,6 +80,8 @@ function NoticesPage({ onFilter = () => {} }) {
           <AddNoticeButton handleOpenModal={handleOpenModal} />
         </div>
       </div>
+
+      <NoticesCategoriesList items={filteredItems} setActive={setModalActive} />
       <div
         className={`${
           isLoggedIn ? styles.stickyLoginBtnWrapper : styles.stickyBtnWrapper
@@ -87,7 +89,6 @@ function NoticesPage({ onFilter = () => {} }) {
       >
         <AddNoticeButton handleOpenModal={handleOpenModal} />
       </div>
-      <NoticesCategoriesList items={filteredItems} setActive={setModalActive} />
       {isModalOpen && <ModalAddNotice setIsModalOpen={setIsModalOpen} />}
       <ModalNotice active={modalActive} setActive={setModalActive} />
     </div>

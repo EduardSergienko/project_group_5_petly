@@ -1,87 +1,88 @@
 @import '../../variables/variables.scss';
 
 .container {
-    width: 320px;
-    padding: 40px 20px;
-    margin: 0 auto;
+  width: 320px;
+  padding: 40px 20px;
+  margin: 0 auto;
+  position: relative;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    width: 768px;
+    padding: 0 32px 100px;
+  }
 
-    @media screen and (min-width: 768px) {
-        display: flex;
-        flex-direction: column;
-        width: 768px;
-        padding: 0 32px 100px;
-    }
-
-    @media screen and (min-width: 1280px) {
-        width: 1280px;
-        padding: 0 16px 200px;
-    }
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+    padding: 0 16px 200px;
+  }
 }
 
 .title {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 33px;
-    text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+  text-align: center;
 
-    color: $mainTextColor;
+  color: $mainTextColor;
 
-    @media screen and (min-width: 768px) {
-            margin: 90px 0px 0px;
-            font-size: 48px;
-            line-height: 66px;
-        }
+  @media screen and (min-width: 768px) {
+    margin: 90px 0px 0px;
+    font-size: 48px;
+    line-height: 66px;
+  }
 }
 
 .navWarpper {
-    margin: 28px 0px 0px;
-    @media screen and (min-width: 768px) {
-            display: flex;
-            justify-content: space-between;
-            margin: 40px 0px 0px;
-        }
+  margin: 28px 0px 0px;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0px 0px;
+  }
 }
 
 .buttonText {
-    @media screen and (max-width: 767px) {
-            display: none;
-        }
-    margin: 8px 12px 0px 0px;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 27px;
-    color: $mainTextColor;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  margin: 8px 12px 0px 0px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+  color: $mainTextColor;
 }
 
 .buttonWrapper {
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.stickyBtnWrapper {
+  position: sticky;
+  top: 64%;
+  z-index: 4;
+  display: flex;
+  justify-content: flex-end;
+
+  @media screen and (min-width: 768px) {
     display: none;
-
-    @media screen and (min-width: 768px) {
-      display: flex;
-      align-items:flex-start;
-    }
+  }
 }
 
-.stickyBtnWrapper{
-    position: sticky;
-    top: 64%;
-    z-index: 4;
-    display: flex;
-    justify-content: flex-end;
+.stickyLoginBtnWrapper {
+  position: absolute;
+  top: 420px;
+  right: 20px;
+  z-index: 4;
+  display: flex;
+  justify-content: flex-end;
 
-    @media screen and (min-width: 768px) {
-      display: none;
-    }
-}
-
-.stickyLoginBtnWrapper{
-    position: sticky;
-    top: 71%;
-    z-index: 4;
-    display: flex;
-    justify-content: flex-end;
-
-    @media screen and (min-width: 768px) {
-      display: none;
-    }
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 }
