@@ -62,9 +62,6 @@ function ModalNotice({ active, setActive }) {
       className={styles.container + ' ' + (active ? styles.active : '')}
       onClick={() => {
         setActive(false);
-        // window.addEventListener('scroll', e => {
-        //   window.scrollTo(0, 0);
-        // });
       }}
     >
       {!loading ? (
