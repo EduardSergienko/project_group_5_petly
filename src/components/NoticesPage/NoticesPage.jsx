@@ -79,7 +79,20 @@ function NoticesPage({ onFilter = () => {} }) {
   };
 
   if (error) {
-    notices.showError(error?.message || 'Oops, something wrong, try again');
+    return (
+      <div className={styles.container}>
+        <h2 className={styles.title}>Find your favorite pet</h2>
+        <NoticesSearch onChange={onFilter} />
+        <div className={styles.navWarpper}>
+          <NoticesCategoriesNav />
+          <div className={styles.buttonWrapper}>
+            <p className={styles.buttonText}>Add pet</p>
+            <AddNoticeButton handleOpenModal={handleOpenModal} />
+          </div>
+        </div>
+        <p className={styles.notification}>Sorry, there is no pets in sellected category.</p>
+      </div>
+    )
   } else {
     return (
       <div className={styles.container}>
