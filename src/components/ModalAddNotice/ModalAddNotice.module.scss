@@ -1,18 +1,19 @@
 @import 'variables/variables.scss';
 
 .formWrap {
-  position: fixed;
+  height: max-content;
   background-color: $secondaryTextColor;
-  top: 50%;
+  position: absolute;
+  top: 20px;
   left: 50%;
-  z-index: 12;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   border-radius: 20px;
   padding: 40px 20px;
 
   @media screen and (min-width: 768px) {
     padding: 40px 80px ;
     border-radius: 40px;
+    top: unset;
   }
 }
 
@@ -35,10 +36,14 @@
   font-weight: 500;
   color: $mainTextColor;
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
     font-weight: 500;
-    font-size: 36px;
+    font-size: 32px;
     line-height: 1.36em;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 36px;
   }
 }
 
@@ -58,8 +63,13 @@
     color: $mainTextColor;
 
     @media screen and (min-width: 768px) {
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: -0.01em;
+    margin-bottom: 20px;
+   }
+
+   @media screen and (min-width: 1280px) {
+    font-size: 20px;
     margin-bottom: 28px;
    }
 }
@@ -78,6 +88,7 @@
   left: 0;
   z-index: 10;
   transition: 0.5s;
+  overflow: scroll;
 }
 
 .fieldsetWrap{
@@ -91,19 +102,30 @@
 
   @media screen and (min-width: 768px) {
     width: 448px;
+    margin-bottom: 18px;
+  }
+
+  @media screen and (min-width: 1280px) {
     margin-bottom: 28px;
   }
 }
 
 .secPagefieldsetWrap{
   @media screen and (min-width: 768px) {
-    width: 448px;
+    margin-bottom: 16px;
+  }
+
+  @media screen and (min-width: 1280px) {
     margin-bottom: 18px;
   }
 }
 
 .fieldsetWrap legend{
   margin-bottom: 18px;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    margin-bottom: 10px;
+  }
 }
 
 .categorySell,
@@ -221,6 +243,11 @@
   color: $mainTextColor;
 
    @media screen and (min-width: 768px) {
+    font-size: 22px;
+    line-height: 1.1;
+  }
+
+  @media screen and (min-width: 1280px) {
     font-size: 24px;
     line-height: 1.1;
   }
@@ -263,10 +290,14 @@
     width: 448px;
     height: 48px;
     padding: 14px 70px 13px 16px;
-    margin: 10px  0px 18px 0px;
+    margin: 10px  0px 16px 0px;
 
     font-size: 16px;
     line-height: 1.62;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin: 10px  0px 18px 0px;
   }
 }
 
@@ -448,6 +479,10 @@ form label:last-of-type .textArea{
     @media screen and (min-width: 768px) {
       width: 140px;
       height: 140px;
+      margin: 8px 0px 16px 0px;
+    }
+
+    @media screen and (min-width: 1280px) {
       margin: 8px 0px 18px 0px;
     }
 }
@@ -542,10 +577,14 @@ form label:last-of-type .textArea{
 
 .errorMsg{
   position: absolute;
-   top: 115%;
+  top: 115%;
   margin-left: 8px;
   font-size: 14px;
   color: $errorColor;
+
+  @media screen and (min-width: 768px) {
+    top: 116%;
+  }
 
   @media screen and (min-width: 768px) {
     top: 118%;
@@ -571,6 +610,7 @@ form fieldset:first-child .secStepError{
 
 .avatarLabel .secStepError{
   top: 102%;
+  max-width: 152px;
 } 
 
 .errorInput{

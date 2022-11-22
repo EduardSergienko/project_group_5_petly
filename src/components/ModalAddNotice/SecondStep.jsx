@@ -35,8 +35,7 @@ const SecondStep = ({
       .test(
         'fileFormat',
         'Unsupported file type',
-        value =>
-          value === null || (value && SUPPORTED_FORMATS.includes(value.type))
+        value => value && SUPPORTED_FORMATS.includes(value.type)
       ),
     comments: Yup.string()
       .min(8, 'Comments is too short')

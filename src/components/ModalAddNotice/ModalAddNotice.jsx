@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import FirstStep from './FirstStep';
 import SecondStep from './SecondStep';
@@ -23,6 +23,17 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
   });
   const [fileValue, setFileValue] = useState('');
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.code === 'Escape') {
+        setIsModalOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [setIsModalOpen]);
 
   const handleFirstStepSubmit = values => {
     setFirstStepValues(values);
@@ -74,34 +85,40 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
     }
   };
 
-  const handleModalClose = () => {
-    setIsModalOpen(false);
+  const handleModalClose = evt => {
+    if (evt.currentTarget === evt.target) {
+      setIsModalOpen(false);
+    }
   };
 
   return (
     <>
-      <div className={styles.formWrap}>
-        <h1 className={`${styles.title}`}>Add pet</h1>
-        {page === 0 ? (
-          <FirstStep
-            handleFirstStepSubmit={handleFirstStepSubmit}
-            firstStepValues={firstStepValues}
-            setFirstStepValues={setFirstStepValues}
-            handleModalClose={handleModalClose}
-          />
-        ) : (
-          <SecondStep
-            handleBackToFirst={handleBackToFirst}
-            secondStepValues={secondStepValues}
-            handleAddAvatar={handleAddAvatar}
-            file={fileValue}
-            handleSecondStepSubmit={handleSecondStepSubmit}
-            checkCategory={checkCategory}
-          />
-        )}
-        <button className={styles.closeBtn} onClick={handleModalClose}></button>
+      <div className={styles.container} onClick={handleModalClose}>
+        <div className={styles.formWrap}>
+          <h1 className={`${styles.title}`}>Add pet</h1>
+          {page === 0 ? (
+            <FirstStep
+              handleFirstStepSubmit={handleFirstStepSubmit}
+              firstStepValues={firstStepValues}
+              setFirstStepValues={setFirstStepValues}
+              handleModalClose={handleModalClose}
+            />
+          ) : (
+            <SecondStep
+              handleBackToFirst={handleBackToFirst}
+              secondStepValues={secondStepValues}
+              handleAddAvatar={handleAddAvatar}
+              file={fileValue}
+              handleSecondStepSubmit={handleSecondStepSubmit}
+              checkCategory={checkCategory}
+            />
+          )}
+          <button
+            className={styles.closeBtn}
+            onClick={handleModalClose}
+          ></button>
+        </div>
       </div>
-      <div className={styles.container} onClick={handleModalClose}></div>
     </>
   );
 };
