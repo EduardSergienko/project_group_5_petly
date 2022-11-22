@@ -45,9 +45,9 @@ const OurFriends = ({ data }) => {
                         ) : (
                           <span>-------------</span>
                         )}
-                        <ul className={styles.subMenu}>
-                          {workDays ? (
-                            workDays.map(({ day, from, to, id }) => (
+                        {workDays && (
+                          <ul className={styles.subMenu}>
+                            {workDays.map(({ day, from, to, id }) => (
                               <li
                                 key={id.toString()}
                                 className={styles.subMenuItem}
@@ -57,11 +57,9 @@ const OurFriends = ({ data }) => {
                                   {from}-{to}
                                 </p>
                               </li>
-                            ))
-                          ) : (
-                            <span>----------</span>
-                          )}
-                        </ul>
+                            ))}
+                          </ul>
+                        )}
                       </li>
                       <li className={styles.CardItem}>
                         Address: <br />
