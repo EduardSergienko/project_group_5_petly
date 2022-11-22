@@ -15,7 +15,7 @@ import { noticesOperations } from '../../redux/notices';
 import { useState } from 'react';
 import Loader from 'components/Loader';
 
-function NoticesPage({ onFilter = () => { } }) {
+function NoticesPage({ onFilter = () => {} }) {
   const dispatch = useDispatch();
   const { categoryName } = useParams();
   const items = useSelector(noticesSelectors.getNotices);
@@ -30,13 +30,13 @@ function NoticesPage({ onFilter = () => { } }) {
   const isNoticeAdded = useSelector(noticesSelectors.getNoticeAdded);
   const isNoticeAddedError = useSelector(noticesSelectors.getNoticeAddError);
   const [modalActive, setModalActive] = useState(false);
-  
+
   useEffect(() => {
-    const filterItems = (arr) => {
-    return filter
-        ? arr.filter(({ title }) => title.toLowerCase().includes(filter))
+    const filterItems = arr => {
+      return filter
+        ? arr?.filter(({ title }) => title?.toLowerCase().includes(filter))
         : arr;
-    }
+    };
     if (categoryName === 'sell' || 'for-free' || 'lost-found') {
       setFilteredItems(filterItems(items));
     }
@@ -80,7 +80,7 @@ function NoticesPage({ onFilter = () => { } }) {
 
   if (error) {
     notices.showError(error?.message || 'Oops, something wrong, try again');
-  } else  {
+  } else {
     return (
       <div className={styles.container}>
         <h2 className={styles.title}>Find your favorite pet</h2>
@@ -92,12 +92,18 @@ function NoticesPage({ onFilter = () => { } }) {
             <AddNoticeButton handleOpenModal={handleOpenModal} />
           </div>
         </div>
-          {!loading ?
-            <NoticesCategoriesList items={filteredItems} setActive={setModalActive} />
-            :<Loader/>}
+        {!loading ? (
+          <NoticesCategoriesList
+            items={filteredItems}
+            setActive={setModalActive}
+          />
+        ) : (
+          !modalActive && <Loader />
+        )}
         <div
-          className={`${isLoggedIn ? styles.stickyLoginBtnWrapper : styles.stickyBtnWrapper
-            }`}
+          className={`${
+            isLoggedIn ? styles.stickyLoginBtnWrapper : styles.stickyBtnWrapper
+          }`}
         >
           <AddNoticeButton handleOpenModal={handleOpenModal} />
         </div>

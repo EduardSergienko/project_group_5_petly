@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// axios.defaults.baseURL = 'http://localhost:3001/api'; // 3000
+// axios.defaults.baseURL = 'http://localhost:3001/api';
 axios.defaults.baseURL = 'https://fetch-friend.herokuapp.com/api';
 
 const token = {
@@ -16,7 +16,6 @@ const token = {
 const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectWithValue }) => {
-    // console.log('in redux', credentials);
     try {
       const { data } = await axios.post('/auth/register', credentials);
       token.set(data.result.token);
@@ -66,8 +65,6 @@ const getCurrentUser = createAsyncThunk(
 
     try {
       const { data } = await axios.get(`/user/current`, persistedToken);
-
-    console.log('current', data)
       return data;
     } catch (error) {
       console.log(error);

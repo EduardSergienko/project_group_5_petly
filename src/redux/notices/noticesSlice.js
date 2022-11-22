@@ -57,7 +57,7 @@ const noticesSlice = createSlice({
       state.loading = true;
     },
     [noticesOperations.getFavorite.fulfilled](state, action) {
-      state.myFavorite = action.payload.myFavorite;
+      state.myFavorite = action.payload?.myFavorite;
       state.loading = false;
     },
     [noticesOperations.getFavorite.rejected](state, action) {

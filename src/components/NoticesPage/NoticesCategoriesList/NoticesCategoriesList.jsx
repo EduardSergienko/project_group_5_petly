@@ -5,8 +5,8 @@ function NoticesCategoriesList({ items, setActive }) {
   return (
     <>
       <ul className={styles.list}>
-        {items.map(item => (
-          <li key={item._id}>
+        {items?.map(item => (
+          <li key={item?._id}>
             <NoticesCategoriesItem item={item} setActive={setActive} />
           </li>
         ))}

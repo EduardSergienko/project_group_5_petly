@@ -21,7 +21,7 @@ function ModalNotice({ active, setActive }) {
   const [width, setWidth] = useState(window.innerWidth);
   const mobileWidth = width < 480;
 
-  const findFavorite = myFavorite.find(item => {
+  const findFavorite = myFavorite?.find(item => {
     if (item?._id) {
       return more?._id === item?._id;
     }
