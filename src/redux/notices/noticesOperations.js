@@ -91,11 +91,12 @@ const getOwn = createAsyncThunk(
     }
   }
 );
+
 const getOneNotice = createAsyncThunk(
   'notices/getOneNoties',
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get(`/notices/${id} `);
+      const { data } = await axios.get(`/notices/${id}`);
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
