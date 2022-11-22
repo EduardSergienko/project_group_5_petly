@@ -6,6 +6,7 @@ import { authSelectors } from '../../../redux/auth';
 import notices from 'helpers/Notification/Notification';
 
 import { ReactComponent as AddToFavorite } from '../../../image/svg/addToFavorite.svg';
+import noPhoto from '../../../image/noPhoto.png';
 
 import styles from './NoticesCategoriesList.module.scss';
 
@@ -18,11 +19,11 @@ function NoticesCategoriesItem({ item, setActive }) {
 
   useEffect(() => {
     if (myFavorite.length > 0) {
-      setIsFavorite(myFavorite.some(i => i._id === item._id));
+      setIsFavorite(myFavorite.some(i => i?._id === item?._id));
     } else {
-      setIsFavorite(myFavoriteIds.some(i => i === item._id));
+      setIsFavorite(myFavoriteIds.some(i => i === item?._id));
     }
-  }, [myFavorite, item._id, isFavorite, myFavoriteIds]);
+  }, [myFavorite, item, isFavorite, myFavoriteIds]);
 
   const addFavorite = e => {
     e.preventDefault();
@@ -32,7 +33,7 @@ function NoticesCategoriesItem({ item, setActive }) {
       );
     }
     e.currentTarget.style.fill = '#f59256';
-    dispatch(noticesOperations.addToFavorite(item._id));
+    dispatch(noticesOperations.addToFavorite(item?._id));
     setIsFavorite(true);
 
     notices.showSuccess('Notice added to favorite adds.');
@@ -47,7 +48,7 @@ function NoticesCategoriesItem({ item, setActive }) {
       );
     }
     e.currentTarget.style.fill = 'none';
-    dispatch(noticesOperations.removeFavorite(item._id));
+    dispatch(noticesOperations.removeFavorite(item?._id));
     setIsFavorite(false);
 
     notices.showSuccess('Notice removed from favorite adds.');
@@ -75,16 +76,19 @@ function NoticesCategoriesItem({ item, setActive }) {
     }
   };
   return (
-    <div className={styles.item} key={item._id}>
+    <div className={styles.item} key={item?._id}>
       <div className={styles.imgWrapper}>
         <img
-          src={`https://fetch-friend.herokuapp.com/${item.petImageUrl}`}
+          src={`https://fetch-friend.herokuapp.com/${item?.petImageUrl}`}
           alt="Pet"
           className={styles.img}
+          onError={e => {
+            e.target.src = noPhoto;
+          }}
         />
       </div>
       <p className={styles.itemCategory}>
-        {normalizeCategoryName(item.category)}
+        {normalizeCategoryName(item?.category)}
       </p>
       {!isFavorite && (
         <AddToFavorite className={styles.addToFavorite} onClick={addFavorite} />
@@ -96,7 +100,7 @@ function NoticesCategoriesItem({ item, setActive }) {
         />
       )}
       <div className={styles.itemInfoWrap}>
-        <h3 className={styles.itemHeader}>{item.title}</h3>
+        <h3 className={styles.itemHeader}>{item?.title}</h3>
         <div className={styles.itemDescriptionWrapper}>
           <div className={styles.itemDescriptionConteiner}>
             <p className={styles.itemDescription}>Breed:</p>
@@ -104,16 +108,17 @@ function NoticesCategoriesItem({ item, setActive }) {
             <p className={styles.itemDescription}>Birth Date:</p>
           </div>
           <div className={styles.itemDescriptionConteiner}>
-            <p className={styles.itemDescription}>{cutTitle(item.breed)}</p>
-            <p className={styles.itemDescription}>{item.location}</p>
-            <p className={styles.itemDescription}>{item.birthDate}</p>
+            <p className={styles.itemDescription}>{cutTitle(item?.breed)}</p>
+            <p className={styles.itemDescription}>{item?.location}</p>
+            <p className={styles.itemDescription}>{item?.birthDate}</p>
           </div>
         </div>
         <button
           className={styles.itemButton}
-          onClick={() => {
+          onClick={e => {
+            e.preventDefault();
             setActive(true);
-            dispatch(noticesOperations.getOneNotice(item._id));
+            dispatch(noticesOperations.getOneNotice(item?._id));
           }}
         >
           Learn more

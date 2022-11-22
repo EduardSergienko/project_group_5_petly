@@ -23,7 +23,7 @@ const OurFriends = ({ data }) => {
               workDays,
             }) => (
               <div className={styles.ContainerFriendsCards} key={_id}>
-                <a href={url}>
+                <a href={url} target="blank">
                   <h3 className={styles.NameFriends}>{title}</h3>
                 </a>
 
