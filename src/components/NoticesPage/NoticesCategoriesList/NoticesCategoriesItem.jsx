@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { noticesOperations } from 'redux/notices';
 import { noticesSelectors } from '../../../redux/notices';
-import { authSelectors } from '../../../redux/auth';
+import { authOperations, authSelectors } from '../../../redux/auth';
 import notices from 'helpers/Notification/Notification';
 
 import { ReactComponent as AddToFavorite } from '../../../image/svg/addToFavorite.svg';
@@ -18,12 +18,16 @@ function NoticesCategoriesItem({ item, setActive }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    if (myFavorite.length > 0) {
-      setIsFavorite(myFavorite.some(i => i?._id === item?._id));
-    } else {
-      setIsFavorite(myFavoriteIds.some(i => i === item?._id));
+    if (isLoggedIn) {
+      if (myFavorite.length > 0) {
+        console.log(myFavorite)
+        setIsFavorite(myFavorite.some(i => i?._id === item?._id));
+      } else {
+        console.log(myFavoriteIds)
+        setIsFavorite(myFavoriteIds.some(i => i === item?._id));
+      }
     }
-  }, [myFavorite, item, isFavorite, myFavoriteIds]);
+  }, [myFavorite, item, isFavorite, myFavoriteIds, isLoggedIn]);
 
   const addFavorite = e => {
     e.preventDefault();
@@ -49,6 +53,9 @@ function NoticesCategoriesItem({ item, setActive }) {
     }
     e.currentTarget.style.fill = 'none';
     dispatch(noticesOperations.removeFavorite(item?._id));
+    setTimeout(() => {
+      dispatch(authOperations.getCurrentUser());
+    }, 300)
     setIsFavorite(false);
 
     notices.showSuccess('Notice removed from favorite adds.');
