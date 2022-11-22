@@ -2,8 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './authOperations';
 import { userOperations } from '../user';
 
-import notices from 'helpers/Notification/Notification';
-
 const initialState = {
   user: { name: null, email: null, myAnimal: [], myFavorite: [] },
   token: null,
