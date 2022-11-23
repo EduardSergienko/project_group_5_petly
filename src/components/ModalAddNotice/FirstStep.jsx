@@ -5,8 +5,8 @@ import styles from './ModalAddNotice.module.scss';
 const FirstStep = ({
   handleFirstStepSubmit,
   firstStepValues,
-  setFirstStepValues,
   handleModalClose,
+  handeDateValidation,
 }) => {
   const firstStepSchema = Yup.object({
     category: Yup.string().required('Required'),
@@ -23,6 +23,7 @@ const FirstStep = ({
         /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|20)\d{2})\s*$/,
         'Date format should be DD.MM.YYYY'
       )
+      .test('dateFormat', 'Provide a valid date of birth', handeDateValidation)
       .required('Required'),
     breed: Yup.string()
       .min(2, 'Breed is too short')
