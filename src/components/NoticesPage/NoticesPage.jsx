@@ -1,3 +1,6 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import NoticesSearch from './NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from './NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
@@ -6,14 +9,11 @@ import ModalNotice from '../ModalNotice/ModalNotice';
 import ModalAddNotice from 'components/ModalAddNotice/ModalAddNotice';
 import { noticesSelectors } from '../../redux/notices';
 import notices from 'helpers/Notification/Notification';
+import { useDispatch, useSelector } from 'react-redux';
+import { noticesOperations } from '../../redux/notices';
+import Loader from 'components/Loader';
 
 import styles from './NoticesPage.module.scss';
-import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { noticesOperations } from '../../redux/notices';
-import { useState } from 'react';
-import Loader from 'components/Loader';
 
 function NoticesPage({ onFilter = () => {} }) {
   const dispatch = useDispatch();
