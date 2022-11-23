@@ -27,7 +27,7 @@ const SecondStep = ({
       .required('Required'),
     price: Yup.number().when([], {
       is: () => checkCategory(),
-      then: Yup.number().min(1).required('Price is required'),
+      then: Yup.number().min(1).required('Required'),
       otherwise: Yup.number().notRequired(),
     }),
     avatar: Yup.mixed()
@@ -142,7 +142,9 @@ const SecondStep = ({
                 {file ? (
                   <img
                     id="petAvatar"
-                    className={styles.selectedAvatar}
+                    className={`${styles.selectedAvatar} ${
+                      errors.avatar && styles.avatarErrorType
+                    }`}
                     src={file}
                     alt={secondStepValues.avatar.name}
                   />
@@ -155,12 +157,12 @@ const SecondStep = ({
                 type="file"
                 id="avatar"
                 name="avatar"
+                accept="image/png, image/jpeg, image/jpg"
                 onChange={e => handleAddAvatar(e, setFieldValue)}
               />
-              <ErrorMessage
-                name="avatar"
-                render={msg => <div className={styles.secStepError}>{msg}</div>}
-              />
+              {touched.avatar && errors.avatar && (
+                <div className={styles.secStepError}>{errors.avatar}</div>
+              )}
             </label>
 
             <label className={styles.labelTitle} htmlFor="comments">

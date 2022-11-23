@@ -1,10 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import InputMask from 'react-input-mask';
+import { Dna } from 'react-loader-spinner';
 import PropTypes from 'prop-types';
 import styles from './AuthForm.module.scss';
 
-function SecondStep({ onNextStep, onPrevStep, formData }) {
+function SecondStep({ onNextStep, onPrevStep, formData, loading }) {
   const validationSecondStepSchema = Yup.object({
     name: Yup.string().min(4, 'Name is too short').required('Required'),
     location: Yup.string().min(4, 'Location is too short').required('Required'),
@@ -73,8 +74,19 @@ function SecondStep({ onNextStep, onPrevStep, formData }) {
               </Field>
             </div>
 
-            <button className={styles.button} type="submit">
-              Register
+            <button type="submit" className={styles.button} disabled={loading}>
+              {loading ? (
+                <Dna
+                  visible={true}
+                  height="40"
+                  width="80"
+                  ariaLabel="dna-loading"
+                  wrapperClass="dna-wrapper"
+                  wrapperStyle={{ verticalAlign: 'middle' }}
+                />
+              ) : (
+                'Register'
+              )}
             </button>
 
             <button
