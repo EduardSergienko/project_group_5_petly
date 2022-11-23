@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
@@ -18,8 +18,6 @@ function ModalNotice({ active, setActive }) {
   const more = useSelector(noticesSelectors.getNoticeInformationMore);
   const loading = useSelector(noticesSelectors.noticeLoading);
   const myFavorite = useSelector(noticesSelectors.myFavorite);
-  const [width, setWidth] = useState(window.innerWidth);
-  const mobileWidth = width < 480;
 
   const findFavorite = myFavorite?.find(item => {
     if (item?._id) {
@@ -29,33 +27,24 @@ function ModalNotice({ active, setActive }) {
   });
 
   useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
         setActive(false);
       }
     };
 
-    const winScroll = e => {
-      window.scrollTo(0, 0);
-    };
-
     window.addEventListener('keydown', handleKeyDown);
-    if (active && mobileWidth) {
-      window.addEventListener('scroll', winScroll);
+
+    if (active) {
+      document.body.classList.add(styles.bodyScroll);
+      return;
     }
+    document.body.classList.remove(styles.bodyScroll);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('scroll', winScroll);
     };
-  }, [active, mobileWidth, setActive]);
+  }, [active, setActive]);
 
   return (
     <div

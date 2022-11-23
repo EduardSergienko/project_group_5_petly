@@ -63,6 +63,14 @@ function ModalAddsPet({ active, setActive, setmodalActivefForTablet }) {
     }
   };
 
+  useEffect(() => {
+    if (active) {
+      document.body.classList.add(styles.bodyScroll);
+      return;
+    }
+    document.body.classList.remove(styles.bodyScroll);
+  }, [active]);
+
   return (
     <div
       className={styles.container + ' ' + (active ? styles.active : '')}

@@ -17,7 +17,7 @@
     margin-top: 22px;
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     flex-direction: column;
     padding: 16px 20px 40px;
   }
@@ -33,7 +33,7 @@
   overflow: unset;
   border-radius: 40px;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     width: 240px;
     height: 240px;
     margin-right: 0px;
@@ -48,7 +48,7 @@
   width: 161px;
   border-radius: 40px;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     width: 240px;
     border-radius: 20px;
   }
@@ -78,7 +78,7 @@
     margin-top: 16px;
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     font-size: 14px;
     line-height: 19px;
 
@@ -115,7 +115,7 @@
     background-image: url(../../image/svg/deleteHover.svg);
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     top: 260px;
     right: 10px;
     background-color: transparent;
@@ -132,7 +132,7 @@
   width: 44px;
   height: 44px;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     top: 260px;
     right: 10px;
   }
