@@ -10,7 +10,7 @@
     @media screen and (max-width: 768px) {
       margin-top: 12px;
     }
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 500px) {
       margin-top: 12px;
       justify-content: flex-start;
     }
@@ -26,14 +26,25 @@
 
   color: $mainTextColor;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     font-size: 12px;
     line-height: 16px;
+    width: 70px;
   }
 }
 
 .lable {
   position: relative;
+
+  @media screen and (max-width: 500px) {
+    width: 170px;
+    margin-right: 9px;
+  }
+
+  @media screen and (max-width: 350px) {
+    width: 150px;
+    margin-right: 9px;
+  }
 }
 
 .input {
@@ -55,18 +66,11 @@
     outline: none;
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     font-size: 12px;
     line-height: 16px;
-    width: 180px;
-    margin-right: 9px;
-  }
-
-  @media screen and (max-width: 350px) {
-    font-size: 12px;
-    line-height: 16px;
-    width: 159px;
-    margin-right: 9px;
+    width: 100%;
+    // margin-right: 9px;
   }
 }
 
@@ -87,12 +91,17 @@
     bottom: -13px;
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     font-size: 12px;
     line-height: 16px;
+    width: 180px;
     left: 0px;
-    bottom: -13px;
+    width: 180px;
   }
+
+  // @media screen and (max-width: 350px) {
+  //   width: 150px;
+  // }
 }
 
 .button {
@@ -113,22 +122,17 @@
     box-shadow: 0 0 4px 0px $orangeColor;
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     width: 25px;
     height: 25px;
     margin-left: auto;
-  }
-
-  @media screen and (max-width: 320px) {
-    width: 25px;
-    height: 20px;
   }
 }
 
 .doneVector {
   width: 20px;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     width: 12.5px;
   }
 }
@@ -149,18 +153,57 @@
 
   color: $mainTextColor;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     font-size: 12px;
     line-height: 16px;
     left: 0px;
     padding: 4px 12px 3px;
+    width: 165px;
+    // margin-right: 9px;
+  }
+
+  @media screen and (max-width: 350px) {
+    width: 150px;
   }
 }
 
 .spanDefault {
   padding: 32px 12px 0px;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     padding: 23px 12px 0px;
   }
+}
+
+.styleLi {
+  width: 216px;
+  padding: 4px 12px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0.04em;
+  color: $mainTextColor;
+
+  background: $activeInputColor;
+  border-bottom: 1px solid rgba(245, 146, 86, 0.5);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.styleUl {
+  display: flex;
+  flex-direction: column;
+}
+
+.spanStyles {
+  font-weight: 500;
+}
+
+.stylesDiv {
+  position: absolute;
+  left: 0;
+  height: 100px;
+  overflow: scroll;
 }

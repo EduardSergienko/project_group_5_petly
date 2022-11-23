@@ -196,6 +196,7 @@ function Modal1({
         </label>
 
         <label className={styles.lable}>
+          <span className={styles.span}>Date of birth</span>
           <InputMask
             className={`${styles.input} ${
               !inputActiveBirthday && birthdayValue.length !== 0

@@ -90,9 +90,11 @@ function NoticesPage({ onFilter = () => {} }) {
             <AddNoticeButton handleOpenModal={handleOpenModal} />
           </div>
         </div>
-        <p className={styles.notification}>Sorry, there is no pets in sellected category.</p>
+        <p className={styles.notification}>
+          Sorry, there is no pets in sellected category.
+        </p>
       </div>
-    )
+    );
   } else {
     return (
       <div className={styles.container}>
