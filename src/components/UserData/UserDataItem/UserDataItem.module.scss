@@ -190,6 +190,20 @@
   &:focus {
     outline: none;
   }
+
+  @media screen and (max-width: 500px) {
+    font-size: 12px;
+    width: 160px;
+    padding: 0 12px;
+    line-height: 22px;
+  }
+
+  @media screen and (max-width: 350px) {
+    font-size: 12px;
+    width: 150px;
+    padding: 0 12px;
+    line-height: 22px;
+  }
 }
 
 .styleUl {
@@ -206,4 +220,12 @@
   left: 0;
   height: 100px;
   overflow: scroll;
+
+  @media screen and (max-width: 800px) {
+    height: 105px;
+  }
+
+  @media screen and (max-width: 500px) {
+    height: 85px;
+  }
 }

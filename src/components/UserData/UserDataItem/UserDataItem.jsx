@@ -80,7 +80,6 @@ function UserDataItem({
               stylesDiv={styles.stylesDiv}
               span={styles.spanStyles}
               setInputActive={setInputActive}
-              pattern={pattern}
               min={min}
               max={max}
               inputeValue={inputeValue}

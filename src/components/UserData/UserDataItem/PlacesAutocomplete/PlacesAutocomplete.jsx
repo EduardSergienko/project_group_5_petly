@@ -1,7 +1,6 @@
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from 'use-places-autocomplete';
+import usePlacesAutocomplete from //   getGeocode,
+//   getLatLng,
+'use-places-autocomplete';
 import useOnclickOutside from 'react-cool-onclickoutside';
 
 const PlacesAutocomplete = ({
@@ -12,7 +11,7 @@ const PlacesAutocomplete = ({
   stylesDiv,
   span,
   setInputActive,
-  pattern,
+  //   pattern,
   min,
   max,
   setInputeValue,
@@ -39,36 +38,44 @@ const PlacesAutocomplete = ({
 
   const handleInput = e => {
     const value = e.target.value.toLowerCase().trim();
-    setInputActive(pattern.test(value));
+    // setInputActive(pattern.test(value));
+
+    setValue(e.target.value);
+    setInputeValue(e.target.value);
 
     if (value.length < min) {
       setInputActive(false);
+      return;
     }
 
     if (value.length > max) {
       setInputActive(false);
+      return;
     }
-    setValue(e.target.value);
-    setInputeValue(e.target.value);
+
+    setInputActive(true);
   };
 
   const handleSelect =
     ({ structured_formatting: { main_text } }) =>
     () => {
       const value = main_text.toLowerCase().trim();
-      setInputActive(pattern.test(value));
+      //   setInputActive(pattern.test(value));
+      setValue(main_text, false);
+      setInputeValue(main_text);
+      clearSuggestions();
 
       if (value.length < min) {
         setInputActive(false);
+        return;
       }
 
       if (value.length > max) {
         setInputActive(false);
+        return;
       }
 
-      setValue(main_text, false);
-      setInputeValue(main_text);
-      clearSuggestions();
+      setInputActive(true);
 
       // Get latitude and longitude via utility functions
       //   getGeocode({ address: description }).then(results => {
@@ -109,8 +116,6 @@ const PlacesAutocomplete = ({
         value={inputeValue}
         onChange={handleInput}
         disabled={!ready}
-        title={'City'}
-        // pattern={/^[а-яА-ЯёЁa-zA-Z]+$/}
         type={'text'}
         name={'location'}
         placeholder={'Your city'}

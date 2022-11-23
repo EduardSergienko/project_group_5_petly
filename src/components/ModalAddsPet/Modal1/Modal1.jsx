@@ -34,7 +34,7 @@ function Modal1({
     switch (name) {
       case 'name':
         const pattern =
-          /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
+          /^[a-zA-Zа-яА-ЯЁёЇїІіЄєҐґ]+(([' -][a-zA-Zа-яА-ЯЁёЇїІіЄєҐґ ])?[a-zA-Zа-яА-ЯЁёЇїІіЄєҐґ]*)*$/;
 
         setInputActiveName(pattern.test(valueToLower));
 
@@ -70,7 +70,7 @@ function Modal1({
 
       case 'breed':
         setInputActiveBreed(
-          /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/.test(
+          /^[a-zA-Zа-яА-ЯЁёЇїІіЄєҐґ]+(([' -][a-zA-Zа-яА-ЯЁёЇїІіЄєҐґ ])?[a-zA-Zа-яА-ЯЁёЇїІіЄєҐґ]*)*$/.test(
             valueToLower
           )
         );
