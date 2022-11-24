@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import InputMask from 'react-input-mask';
 import PropTypes from 'prop-types';
+
 import PlacesAutocomplete from './PlacesAutocomplete/PlacesAutocomplete';
 
 import doneVector from '../../../image/doneVector.png';
