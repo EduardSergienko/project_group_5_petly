@@ -1,7 +1,6 @@
-import usePlacesAutocomplete from //   getGeocode,
-//   getLatLng,
-'use-places-autocomplete';
+import usePlacesAutocomplete from 'use-places-autocomplete';
 import useOnclickOutside from 'react-cool-onclickoutside';
+import PropTypes from 'prop-types';
 
 const PlacesAutocomplete = ({
   style,
@@ -11,7 +10,6 @@ const PlacesAutocomplete = ({
   stylesDiv,
   span,
   setInputActive,
-  //   pattern,
   min,
   max,
   setInputeValue,
@@ -25,10 +23,6 @@ const PlacesAutocomplete = ({
     setValue,
     clearSuggestions,
   } = usePlacesAutocomplete({
-    requestOptions: {
-      /* Define search scope here */
-    },
-
     debounce: 200,
   });
 
@@ -76,12 +70,6 @@ const PlacesAutocomplete = ({
       }
 
       setInputActive(true);
-
-      // Get latitude and longitude via utility functions
-      //   getGeocode({ address: description }).then(results => {
-      //     const { lat, lng } = getLatLng(results[0]);
-      //     console.log('📍 Coordinates: ', { lat, lng });
-      //   });
     };
 
   const renderSuggestions = () => {
@@ -130,3 +118,18 @@ const PlacesAutocomplete = ({
 };
 
 export default PlacesAutocomplete;
+
+PlacesAutocomplete.propTypes = {
+  style: PropTypes.string,
+  noValidate: PropTypes.string,
+  styleLi: PropTypes.string,
+  styleUl: PropTypes.string,
+  stylesDiv: PropTypes.string,
+  span: PropTypes.string,
+  inputeValue: PropTypes.string.isRequired,
+  inputActive: PropTypes.bool.isRequired,
+  setInputActive: PropTypes.func.isRequired,
+  setInputeValue: PropTypes.func.isRequired,
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+};
