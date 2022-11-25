@@ -124,50 +124,71 @@ function ModalNotice({ active, setActive }) {
             </p>
           </div>
           <div className={styles.containerButton}>
-            {token && (
-              <>
-                {findFavorite ? (
-                  <button
-                    className={styles.removeTo}
-                    onClick={() => {
-                      dispatch(noticesOperations.removeFavorite(more._id));
-                      toast.success(' Remove from favorite', {
-                        position: 'top-right',
-                        autoClose: 600,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: false,
-                        draggable: true,
-                        progress: undefined,
-                        theme: 'light',
-                      });
-                    }}
-                  >
-                    Remove from
-                    <img className={styles.likeSvg} src={like} alt="like" />
-                  </button>
-                ) : (
-                  <button
-                    className={styles.addTo}
-                    onClick={() => {
-                      dispatch(noticesOperations.addToFavorite(more._id));
-                      toast.success('Add to favorite', {
-                        position: 'top-right',
-                        autoClose: 600,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: false,
-                        draggable: true,
-                        progress: undefined,
-                        theme: 'light',
-                      });
-                    }}
-                  >
-                    Add to{' '}
-                    <img className={styles.likeSvg} src={like} alt="like" />
-                  </button>
-                )}
-              </>
+            {findFavorite ? (
+              <button
+                className={styles.removeTo}
+                onClick={() => {
+                  if (token) {
+                    dispatch(noticesOperations.removeFavorite(more._id));
+                    toast.success(' Remove from favorite', {
+                      position: 'top-right',
+                      autoClose: 600,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: false,
+                      draggable: true,
+                      progress: undefined,
+                      theme: 'light',
+                    });
+                    return;
+                  }
+                  toast.error('Your are not logged in', {
+                    position: 'top-right',
+                    autoClose: 600,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                  });
+                }}
+              >
+                Remove from
+                <img className={styles.likeSvg} src={like} alt="like" />
+              </button>
+            ) : (
+              <button
+                className={styles.addTo}
+                onClick={() => {
+                  if (token) {
+                    dispatch(noticesOperations.addToFavorite(more._id));
+                    toast.success('Add to favorite', {
+                      position: 'top-right',
+                      autoClose: 600,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: false,
+                      draggable: true,
+                      progress: undefined,
+                      theme: 'light',
+                    });
+                    return;
+                  }
+                  toast.error('Your are not logged in', {
+                    position: 'top-right',
+                    autoClose: 600,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                  });
+                }}
+              >
+                Add to <img className={styles.likeSvg} src={like} alt="like" />
+              </button>
             )}
             <a className={styles.btnContact} href={`tel:${more?.owner?.phone}`}>
               Contact
