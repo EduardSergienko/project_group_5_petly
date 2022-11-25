@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
 import { noticesSelectors, noticesOperations } from '../../redux/notices';
+import { authSelectors } from '../../redux/auth';
 
 import Loader from '../Loader/Loader';
 
@@ -18,6 +19,7 @@ function ModalNotice({ active, setActive }) {
   const more = useSelector(noticesSelectors.getNoticeInformationMore);
   const loading = useSelector(noticesSelectors.noticeLoading);
   const myFavorite = useSelector(noticesSelectors.myFavorite);
+  const token = useSelector(authSelectors.getUserToken);
 
   const findFavorite = myFavorite?.find(item => {
     if (item?._id) {
@@ -123,47 +125,51 @@ function ModalNotice({ active, setActive }) {
             </p>
           </div>
           <div className={styles.containerButton}>
-            {findFavorite ? (
-              <button
-                className={styles.removeTo}
-                onClick={() => {
-                  dispatch(noticesOperations.removeFavorite(more._id));
-                  toast.success(' Remove from favorite', {
-                    position: 'top-right',
-                    autoClose: 600,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: true,
-                    progress: undefined,
-                    theme: 'light',
-                  });
-                }}
-              >
-                Remove from
-                <img className={styles.likeSvg} src={like} alt="like" />
-              </button>
-            ) : (
-              <button
-                className={styles.addTo}
-                onClick={() => {
-                  dispatch(noticesOperations.addToFavorite(more._id));
-                  toast.success('Add to favorite', {
-                    position: 'top-right',
-                    autoClose: 600,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: true,
-                    progress: undefined,
-                    theme: 'light',
-                  });
-                }}
-              >
-                Add to <img className={styles.likeSvg} src={like} alt="like" />
-              </button>
+            {token && (
+              <>
+                {findFavorite ? (
+                  <button
+                    className={styles.removeTo}
+                    onClick={() => {
+                      dispatch(noticesOperations.removeFavorite(more._id));
+                      toast.success(' Remove from favorite', {
+                        position: 'top-right',
+                        autoClose: 600,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: false,
+                        draggable: true,
+                        progress: undefined,
+                        theme: 'light',
+                      });
+                    }}
+                  >
+                    Remove from
+                    <img className={styles.likeSvg} src={like} alt="like" />
+                  </button>
+                ) : (
+                  <button
+                    className={styles.addTo}
+                    onClick={() => {
+                      dispatch(noticesOperations.addToFavorite(more._id));
+                      toast.success('Add to favorite', {
+                        position: 'top-right',
+                        autoClose: 600,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: false,
+                        draggable: true,
+                        progress: undefined,
+                        theme: 'light',
+                      });
+                    }}
+                  >
+                    Add to{' '}
+                    <img className={styles.likeSvg} src={like} alt="like" />
+                  </button>
+                )}
+              </>
             )}
-
             <a className={styles.btnContact} href={`tel:${more?.owner?.phone}`}>
               Contact
             </a>
