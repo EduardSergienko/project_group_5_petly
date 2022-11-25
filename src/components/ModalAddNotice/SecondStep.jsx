@@ -101,7 +101,7 @@ const SecondStep = ({
 
             <label className={styles.labelTitle} htmlFor="location">
               Location<span className={styles.require}>*</span>
-              <PlacesAutocomplete
+              {/* <PlacesAutocomplete
                 style={`${styles.input}`}
                 noValidate={styles.noValidate}
                 styleLi={styles.styleLi}
@@ -112,8 +112,8 @@ const SecondStep = ({
                 inputeValue={inputeValue}
                 setInputeValue={setInputeValue}
                 inputActive={inputActive}
-              />
-              {/* <Field
+              /> */}
+              <Field
                 className={`${styles.input} ${
                   errors.location && touched.location ? styles.errorInput : ''
                 }`}
@@ -121,7 +121,7 @@ const SecondStep = ({
                 id="location"
                 placeholder="Type location"
                 name="location"
-              /> */}
+              />
               <ErrorMessage
                 name="location"
                 render={msg => <div className={styles.secStepError}>{msg}</div>}
