@@ -107,7 +107,6 @@ function ModalNotice({ active, setActive }) {
                     {more?.owner?.phone ? more?.owner?.phone : '-'}
                   </span>
                 </li>
-                {/* по условию  */}
                 {more?.category === 'sell' && (
                   <li className={styles.item}>
                     <p className={styles.p}>Sell:</p>
