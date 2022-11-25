@@ -1,12 +1,13 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import styles from './ModalAddNotice.module.scss';
 
 const FirstStep = ({
   handleFirstStepSubmit,
   firstStepValues,
   handleModalClose,
-  handeDateValidation,
+  handleDateValidation,
 }) => {
   const firstStepSchema = Yup.object({
     category: Yup.string().required('Required'),
@@ -23,7 +24,7 @@ const FirstStep = ({
         /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|20)\d{2})\s*$/,
         'Date format should be DD.MM.YYYY'
       )
-      .test('dateFormat', 'Provide a valid date of birth', handeDateValidation)
+      .test('dateFormat', 'Provide a valid date of birth', handleDateValidation)
       .required('Required'),
     breed: Yup.string()
       .min(2, 'Breed is too short')
@@ -164,6 +165,19 @@ const FirstStep = ({
       </Formik>
     </>
   );
+};
+
+FirstStep.propTypes = {
+  handleFirstStepSubmit: PropTypes.func.isRequired,
+  firstStepValues: PropTypes.shape({
+    category: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    birthDate: PropTypes.string.isRequired,
+    breed: PropTypes.string.isRequired,
+  }).isRequired,
+  handleModalClose: PropTypes.func.isRequired,
+  handleDateValidation: PropTypes.func.isRequired,
 };
 
 export default FirstStep;
