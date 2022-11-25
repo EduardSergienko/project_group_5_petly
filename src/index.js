@@ -9,6 +9,7 @@ import store, { persistor } from './redux/store';
 
 import Loader from './components/Loader';
 import './index.css';
+import './services/i18n';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
