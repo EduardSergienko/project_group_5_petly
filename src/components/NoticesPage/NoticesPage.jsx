@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
 import NoticesSearch from './NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from './NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
@@ -9,7 +9,6 @@ import ModalNotice from '../ModalNotice/ModalNotice';
 import ModalAddNotice from 'components/ModalAddNotice/ModalAddNotice';
 import { noticesSelectors } from '../../redux/notices';
 import notices from 'helpers/Notification/Notification';
-import { useDispatch, useSelector } from 'react-redux';
 import { noticesOperations } from '../../redux/notices';
 import Loader from 'components/Loader';
 
@@ -23,7 +22,6 @@ function NoticesPage({ onFilter = () => {} }) {
   const filter = useSelector(state => state.filter.value);
   const myFavorite = useSelector(noticesSelectors.myFavorite);
   const isLoggedIn = useSelector(noticesSelectors.getIsLoggedIn);
-  const error = useSelector(noticesSelectors.getNoticeError);
   const loading = useSelector(noticesSelectors.noticeLoading);
   const [filteredItems, setFilteredItems] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -99,16 +97,16 @@ function NoticesPage({ onFilter = () => {} }) {
           <AddNoticeButton handleOpenModal={handleOpenModal} />
         </div>
       </div>
-      {error && (
-        <p className={styles.notification}>
-          Sorry, there is no pets in sellected category.
-        </p>
+      {!filteredItems.length && (
+        <p className={styles.notification}>Sorry, there is no ads.</p>
       )}
 
       {!loading ? (
         <NoticesCategoriesList
           items={filteredItems}
           setActive={setModalActive}
+          categoryName={categoryName}
+          setIsModalOpen={setIsModalOpen}
         />
       ) : (
         !modalActive && <Loader />

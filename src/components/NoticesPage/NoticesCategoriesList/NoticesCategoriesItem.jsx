@@ -4,30 +4,37 @@ import { noticesOperations } from 'redux/notices';
 import { noticesSelectors } from '../../../redux/notices';
 import { authOperations, authSelectors } from '../../../redux/auth';
 import notices from 'helpers/Notification/Notification';
+import { DeleteButton } from '../../../helpers';
 
 import { ReactComponent as AddToFavorite } from '../../../image/svg/addToFavorite.svg';
 import noPhoto from '../../../image/noPhoto.png';
 
 import styles from './NoticesCategoriesList.module.scss';
 
-function NoticesCategoriesItem({ item, setActive }) {
+function NoticesCategoriesItem({ item, setActive, categoryName }) {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const myFavorite = useSelector(noticesSelectors.getMyFavoriteNotice);
   const myFavoriteIds = useSelector(authSelectors.getUserFavorite);
+  const error = useSelector(noticesSelectors.getNoticeError);
+  const noticeRemoved = useSelector(noticesSelectors.getNoticeRemoved);
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     if (isLoggedIn) {
       if (myFavorite.length > 0) {
-        // console.log(myFavorite)
         setIsFavorite(myFavorite.some(i => i?._id === item?._id));
       } else {
-        // console.log(myFavoriteIds)
         setIsFavorite(myFavoriteIds.some(i => i === item?._id));
       }
     }
   }, [myFavorite, item, isFavorite, myFavoriteIds, isLoggedIn]);
+
+  useEffect(() => {
+    noticeRemoved && notices.showSuccess('Notice removed');
+
+    error && notices.showError('Something went wrong, try again');
+  }, [noticeRemoved, error]);
 
   const addFavorite = e => {
     e.preventDefault();
@@ -75,9 +82,13 @@ function NoticesCategoriesItem({ item, setActive }) {
     return category;
   };
 
+  const handleDeleteItem = id => {
+    dispatch(noticesOperations.deleteUserNotice(id));
+  };
+
   const cutTitle = title => {
     if (title.length > 17) {
-      return title.slice(0, 17) + '...';
+      return title.slice(0, 15) + '...';
     } else {
       return title;
     }
@@ -106,18 +117,43 @@ function NoticesCategoriesItem({ item, setActive }) {
           onClick={removeFavorite}
         />
       )}
+      {categoryName === 'own' && (
+        <DeleteButton
+          stylesBtn={styles.deleteButton}
+          onClick={handleDeleteItem}
+          id={item?._id}
+        />
+      )}
+
       <div className={styles.itemInfoWrap}>
-        <h3 className={styles.itemHeader}>{item?.title}</h3>
-        <div className={styles.itemDescriptionWrapper}>
+        <h3
+          className={styles.itemHeader}
+          onClick={e => {
+            e.preventDefault();
+            setActive(true);
+            dispatch(noticesOperations.getOneNotice(item?._id));
+          }}
+        >
+          {item?.title}
+        </h3>
+        <div
+          className={`${styles.itemDescriptionWrapper} ${
+            item?.price && styles.priceItemDescriptionWrapper
+          }`}
+        >
           <div className={styles.itemDescriptionConteiner}>
             <p className={styles.itemDescription}>Breed:</p>
             <p className={styles.itemDescription}>Place:</p>
-            <p className={styles.itemDescription}>Birth Date:</p>
+            <p className={styles.itemDescription}>Birth date:</p>
+            {item?.price && <p className={styles.itemDescription}>Price:</p>}
           </div>
           <div className={styles.itemDescriptionConteiner}>
             <p className={styles.itemDescription}>{cutTitle(item?.breed)}</p>
             <p className={styles.itemDescription}>{item?.location}</p>
             <p className={styles.itemDescription}>{item?.birthDate}</p>
+            {item?.price && (
+              <p className={styles.itemDescription}>{`${item?.price}$`}</p>
+            )}
           </div>
         </div>
         <button

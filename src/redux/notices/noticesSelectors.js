@@ -8,6 +8,8 @@ const getNoticeRemoved = state => state.notices.noticeRemoved;
 const getNoticeInformationMore = state => state.notices.noticeInformationMore;
 const noticeLoading = state => state.notices.loading;
 
+const noticeLoadingOnOpen = state => state.notices.onOpenLoading;
+
 const getNoticeAddError = state => state.notices.getNoticeAddError;
 
 const getMyFavoriteNotice = state => state.notices.myFavorite;
@@ -29,5 +31,6 @@ const noticesSelectors = {
   getMyFavoriteNotice,
   getOwnAdds,
   getIsLoggedIn,
+  noticeLoadingOnOpen,
 };
 export default noticesSelectors;
