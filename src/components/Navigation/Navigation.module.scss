@@ -27,8 +27,11 @@
   }
 
   @media screen and (min-width: 1280px) {
+    position: relative;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
   }
 }
 .responsiveNav {

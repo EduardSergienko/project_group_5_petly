@@ -184,23 +184,13 @@
 
 .errorMsg {
   position: absolute;
-  margin-top: 41px;
+  margin-top: 1px;
   margin-left: 16px;
 
   font-size: 11px;
   color: $errorColor;
 
   @media screen and (min-width: 768px) {
-    margin-top: 53px;
     margin-left: 32px;
-  }
-}
-
-.errorMsg + .input {
-  border: 1px solid #eb4242;
-
-  &:focus {
-    box-shadow: none;
-    background-color: none;
   }
 }
