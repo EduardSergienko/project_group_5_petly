@@ -10,6 +10,7 @@
     "next": "Next",
     "registerSuccess": "Congratulations, {{user}}! You have successfully registered",
     "hint": "Already have an account? ",
+    "loginHint": "Don't have an account? ",
     "invlidEmail": "Invalid email address",
     "requiredValue": "Required",
     "notWhitespace": "Whitespace is not allowed",
