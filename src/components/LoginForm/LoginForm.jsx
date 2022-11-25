@@ -48,7 +48,7 @@ const LoginForm = () => {
 
   return (
     <div className={styles.formWrap}>
-      <h1 className={styles.title}>Login</h1>
+      <h1 className={styles.title}> {t('auth.login')}</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -110,7 +110,7 @@ const LoginForm = () => {
                     wrapperStyle={{ verticalAlign: 'middle' }}
                   />
                 ) : (
-                  'Login'
+                  t('auth.login')
                 )}
               </button>
             </div>
@@ -118,9 +118,9 @@ const LoginForm = () => {
         )}
       </Formik>
       <p className={styles.textHint}>
-        Don't have an account?&nbsp;
+        {t('auth.loginHint')}
         <Link className={styles.link} to="/register">
-          Register
+          {t('auth.register')}
         </Link>
       </p>
     </div>

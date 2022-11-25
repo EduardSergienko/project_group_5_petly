@@ -1,0 +1,32 @@
+{
+  "nav": {
+    "news": "News",
+    "findpet": "Find pet",
+    "ourfriends": "Our friends"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Registration",
+    "next": "Next",
+    "registerSuccess": "Congratulations, {{user}}! You have successfully registered",
+    "hint": "Already have an account? ",
+    "invlidEmail": "Invalid email address",
+    "requiredValue": "Required",
+    "notWhitespace": "Whitespace is not allowed",
+    "tooShort": "Password is too short",
+    "tooLong": "Password is too long",
+    "passwordsMatch": "Passwords must match"
+  },
+  "user": {
+    "myTitle": "My information",
+    "myPets": "My pets",
+    "name": "Name",
+    "email": "Email",
+    "birthday": "Birthday",
+    "phone": "Phone",
+    "city": "City",
+    "uploadFoto": "Upload your photo",
+    "choisePhoto": "Choise your photo",
+    "editPhoto": "Edit photo"
+  }
+}

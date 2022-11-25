@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './LanguageSwitcher.module.scss';
 
+const lngs = {
+  en: { nativeName: 'English' },
+  ua: { nativeName: 'Українська' },
+};
+
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
-  const [lngs, setLngs] = useState({ en: { nativeName: 'English' } });
-
   const [width, setWidth] = useState(window.innerWidth);
   const descktopWidth = width > 1279;
 
@@ -15,13 +18,6 @@ const LanguageSwitcher = () => {
     };
     window.addEventListener('resize', handleResize);
   }, []);
-
-  useEffect(() => {
-    i18n.services.backendConnector.backend.getLanguages((err, ret) => {
-      if (err) return; // TODO: handle err...
-      setLngs(ret);
-    });
-  }, [i18n.services.backendConnector.backend]);
 
   const onOptionChange = e => {
     i18n.changeLanguage(e.target.value);
