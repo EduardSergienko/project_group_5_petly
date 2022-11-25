@@ -1,5 +1,4 @@
-import usePlacesAutocomplete from //   getGeocode,
-//   getLatLng,
+import usePlacesAutocomplete from //   getLatLng, //   getGeocode,
 'use-places-autocomplete';
 import useOnclickOutside from 'react-cool-onclickoutside';
 

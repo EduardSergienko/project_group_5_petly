@@ -1,5 +1,10 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { useState } from 'react';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
+import usePlacesAutocomplete from 'use-places-autocomplete';
+import useOnclickOutside from 'react-cool-onclickoutside';
+import PlacesAutocomplete from '../UserData/UserDataItem/PlacesAutocomplete/PlacesAutocomplete';
 import camera from '../../image/camera.png';
 import styles from './ModalAddNotice.module.scss';
 import add from '../../image/svg/add-image.svg';
@@ -12,6 +17,8 @@ const SecondStep = ({
   handleSecondStepSubmit,
   checkCategory,
 }) => {
+  const [inputeValue, setInputeValue] = useState('');
+  const [inputActive, setInputActive] = useState(true);
   const SUPPORTED_FORMATS = [
     'image/jpg',
     'image/jpeg',
@@ -94,7 +101,19 @@ const SecondStep = ({
 
             <label className={styles.labelTitle} htmlFor="location">
               Location<span className={styles.require}>*</span>
-              <Field
+              <PlacesAutocomplete
+                style={`${styles.input}`}
+                noValidate={styles.noValidate}
+                styleLi={styles.styleLi}
+                styleUl={styles.styleUl}
+                stylesDiv={styles.stylesDiv}
+                span={styles.spanStyles}
+                setInputActive={setInputActive}
+                inputeValue={inputeValue}
+                setInputeValue={setInputeValue}
+                inputActive={inputActive}
+              />
+              {/* <Field
                 className={`${styles.input} ${
                   errors.location && touched.location ? styles.errorInput : ''
                 }`}
@@ -102,7 +121,7 @@ const SecondStep = ({
                 id="location"
                 placeholder="Type location"
                 name="location"
-              />
+              /> */}
               <ErrorMessage
                 name="location"
                 render={msg => <div className={styles.secStepError}>{msg}</div>}
@@ -157,7 +176,7 @@ const SecondStep = ({
                 type="file"
                 id="avatar"
                 name="avatar"
-                accept="image/png, image/jpeg, image/jpg"
+                accept="image/png, image/jpeg, image/jpg, image/gif"
                 onChange={e => handleAddAvatar(e, setFieldValue)}
               />
               {touched.avatar && errors.avatar && (
@@ -200,6 +219,21 @@ const SecondStep = ({
       </Formik>
     </>
   );
+};
+
+SecondStep.propTypes = {
+  handleBackToFirst: PropTypes.func.isRequired,
+  secondStepValues: PropTypes.shape({
+    sex: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    comments: PropTypes.string.isRequired,
+  }).isRequired,
+  file: PropTypes.string,
+  handleAddAvatar: PropTypes.func.isRequired,
+  handleSecondStepSubmit: PropTypes.func.isRequired,
+  checkCategory: PropTypes.func.isRequired,
 };
 
 export default SecondStep;

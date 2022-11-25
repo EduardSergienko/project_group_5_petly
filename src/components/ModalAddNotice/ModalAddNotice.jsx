@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import FirstStep from './FirstStep';
 import SecondStep from './SecondStep';
 import { noticesOperations } from 'redux/notices';
@@ -91,7 +92,7 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
     }
   };
 
-  const handeDateValidation = value => {
+  const handleDateValidation = value => {
     if (!value) {
       return;
     }
@@ -126,7 +127,7 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
                 firstStepValues={firstStepValues}
                 setFirstStepValues={setFirstStepValues}
                 handleModalClose={handleModalClose}
-                handeDateValidation={handeDateValidation}
+                handleDateValidation={handleDateValidation}
               />
             ) : (
               <SecondStep
@@ -147,6 +148,10 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
       </div>
     </>
   );
+};
+
+ModalAddNotice.propTypes = {
+  setIsModalOpen: PropTypes.func.isRequired,
 };
 
 export default ModalAddNotice;
