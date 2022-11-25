@@ -137,12 +137,14 @@ function UserData() {
         <UserDataItem
           updateUser={updateUser}
           title={'Name'}
-          pattern={/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/}
+          pattern={
+            /^[a-zA-Zа-яА-ЯА-ЯЁёЇїІіЄєҐґ]+(([' -][a-zA-Zа-яА-ЯЁёЇїІіЄєҐґ ])?[a-zA-Zа-яА-ЯЁёЇїІіЄєҐґ]*)*$/
+          }
           type={'text'}
           name={'name'}
           placeholder={'Name'}
           min={2}
-          max={48}
+          max={16}
           required={true}
           example={'Anna Lokerman'}
           defaultVaule={user?.name}
@@ -186,7 +188,8 @@ function UserData() {
         <UserDataItem
           updateUser={updateUser}
           title={'City'}
-          pattern={/^[а-яА-ЯёЁa-zA-Z]+$/}
+          // pattern={/^[а-яА-ЯёЁa-zA-Z]+$/}
+          // pattern={/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/}
           type={'text'}
           name={'location'}
           placeholder={'Your city'}

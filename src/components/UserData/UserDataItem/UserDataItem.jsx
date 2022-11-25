@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import InputMask from 'react-input-mask';
 import PropTypes from 'prop-types';
 
+import PlacesAutocomplete from './PlacesAutocomplete/PlacesAutocomplete';
+
 import doneVector from '../../../image/doneVector.png';
 import edit from '../../../image/edit.png';
 
@@ -46,7 +48,7 @@ function UserDataItem({
   };
 
   const onInputeChange = e => {
-    const value = e.target.value.toLowerCase();
+    const value = e.target.value.toLowerCase().trim();
     const yearNow = new Date().getFullYear();
     setInputActive(pattern.test(value));
 
@@ -70,18 +72,38 @@ function UserDataItem({
       <p className={styles.title}>{title}:</p>
       {active ? (
         <label className={styles.lable}>
-          <InputMask
-            className={`${styles.input} ${
-              !inputActive && inputeValue.length !== 0 ? styles.noValidate : ''
-            }`}
-            type={type}
-            name={name}
-            mask={mask}
-            value={inputeValue}
-            onChange={onInputeChange}
-            pattern={pattern}
-            placeholder={placeholder}
-          />
+          {name === 'location' ? (
+            <PlacesAutocomplete
+              style={styles.input}
+              noValidate={styles.noValidate}
+              styleLi={styles.styleLi}
+              styleUl={styles.styleUl}
+              stylesDiv={styles.stylesDiv}
+              span={styles.spanStyles}
+              setInputActive={setInputActive}
+              min={min}
+              max={max}
+              inputeValue={inputeValue}
+              setInputeValue={setInputeValue}
+              inputActive={inputActive}
+            />
+          ) : (
+            <InputMask
+              className={`${styles.input} ${
+                !inputActive && inputeValue.length !== 0
+                  ? styles.noValidate
+                  : ''
+              }`}
+              type={type}
+              name={name}
+              mask={mask}
+              value={inputeValue}
+              onChange={onInputeChange}
+              pattern={pattern}
+              placeholder={placeholder}
+            />
+          )}
+
           {min &&
             !inputActive &&
             inputeValue.length < min &&

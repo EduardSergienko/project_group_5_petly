@@ -20,10 +20,10 @@ function NoticesCategoriesItem({ item, setActive }) {
   useEffect(() => {
     if (isLoggedIn) {
       if (myFavorite.length > 0) {
-        console.log(myFavorite)
+        // console.log(myFavorite)
         setIsFavorite(myFavorite.some(i => i?._id === item?._id));
       } else {
-        console.log(myFavoriteIds)
+        // console.log(myFavoriteIds)
         setIsFavorite(myFavoriteIds.some(i => i === item?._id));
       }
     }
@@ -55,7 +55,7 @@ function NoticesCategoriesItem({ item, setActive }) {
     dispatch(noticesOperations.removeFavorite(item?._id));
     setTimeout(() => {
       dispatch(authOperations.getCurrentUser());
-    }, 300)
+    }, 300);
     setIsFavorite(false);
 
     notices.showSuccess('Notice removed from favorite adds.');

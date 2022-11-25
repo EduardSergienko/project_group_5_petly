@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import FirstStep from './FirstStep';
 import SecondStep from './SecondStep';
 import { noticesOperations } from 'redux/notices';
@@ -91,36 +92,66 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
     }
   };
 
+  const handleDateValidation = value => {
+    if (!value) {
+      return;
+    }
+    let result;
+    const [day, month, year] = value.split('.');
+
+    if (day) {
+      result = Number(day) > 31 ? false : true;
+    }
+    if (month) {
+      result = Number(month) > 12 ? false : true;
+    }
+
+    if (year) {
+      result =
+        new Date(`${month}-${day}-${year}`).getTime() > Date.now()
+          ? false
+          : true;
+    }
+    return result;
+  };
+
   return (
     <>
       <div className={styles.container} onClick={handleModalClose}>
-        <div className={styles.formWrap}>
-          <h1 className={`${styles.title}`}>Add pet</h1>
-          {page === 0 ? (
-            <FirstStep
-              handleFirstStepSubmit={handleFirstStepSubmit}
-              firstStepValues={firstStepValues}
-              setFirstStepValues={setFirstStepValues}
-              handleModalClose={handleModalClose}
-            />
-          ) : (
-            <SecondStep
-              handleBackToFirst={handleBackToFirst}
-              secondStepValues={secondStepValues}
-              handleAddAvatar={handleAddAvatar}
-              file={fileValue}
-              handleSecondStepSubmit={handleSecondStepSubmit}
-              checkCategory={checkCategory}
-            />
-          )}
-          <button
-            className={styles.closeBtn}
-            onClick={handleModalClose}
-          ></button>
+        <div className={styles.modalWrapper}>
+          <div className={styles.formWrap}>
+            <h1 className={`${styles.title}`}>Add pet</h1>
+            {page === 0 ? (
+              <FirstStep
+                handleFirstStepSubmit={handleFirstStepSubmit}
+                firstStepValues={firstStepValues}
+                setFirstStepValues={setFirstStepValues}
+                handleModalClose={handleModalClose}
+                handleDateValidation={handleDateValidation}
+              />
+            ) : (
+              <SecondStep
+                handleBackToFirst={handleBackToFirst}
+                secondStepValues={secondStepValues}
+                handleAddAvatar={handleAddAvatar}
+                file={fileValue}
+                handleSecondStepSubmit={handleSecondStepSubmit}
+                checkCategory={checkCategory}
+              />
+            )}
+            <button
+              className={styles.closeBtn}
+              onClick={handleModalClose}
+            ></button>
+          </div>
         </div>
       </div>
     </>
   );
+};
+
+ModalAddNotice.propTypes = {
+  setIsModalOpen: PropTypes.func.isRequired,
 };
 
 export default ModalAddNotice;

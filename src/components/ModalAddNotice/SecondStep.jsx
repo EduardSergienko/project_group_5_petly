@@ -1,5 +1,10 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
+// import { useState } from 'react';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
+// import usePlacesAutocomplete from 'use-places-autocomplete';
+// import useOnclickOutside from 'react-cool-onclickoutside';
+// import PlacesAutocomplete from '../UserData/UserDataItem/PlacesAutocomplete/PlacesAutocomplete';
 import camera from '../../image/camera.png';
 import styles from './ModalAddNotice.module.scss';
 import add from '../../image/svg/add-image.svg';
@@ -12,6 +17,8 @@ const SecondStep = ({
   handleSecondStepSubmit,
   checkCategory,
 }) => {
+  // const [inputeValue, setInputeValue] = useState('');
+  // const [inputActive, setInputActive] = useState(true);
   const SUPPORTED_FORMATS = [
     'image/jpg',
     'image/jpeg',
@@ -27,7 +34,7 @@ const SecondStep = ({
       .required('Required'),
     price: Yup.number().when([], {
       is: () => checkCategory(),
-      then: Yup.number().min(1).required('Price is required'),
+      then: Yup.number().min(1).required('Required'),
       otherwise: Yup.number().notRequired(),
     }),
     avatar: Yup.mixed()
@@ -94,6 +101,18 @@ const SecondStep = ({
 
             <label className={styles.labelTitle} htmlFor="location">
               Location<span className={styles.require}>*</span>
+              {/* <PlacesAutocomplete
+                style={`${styles.input}`}
+                noValidate={styles.noValidate}
+                styleLi={styles.styleLi}
+                styleUl={styles.styleUl}
+                stylesDiv={styles.stylesDiv}
+                span={styles.spanStyles}
+                setInputActive={setInputActive}
+                inputeValue={inputeValue}
+                setInputeValue={setInputeValue}
+                inputActive={inputActive}
+              /> */}
               <Field
                 className={`${styles.input} ${
                   errors.location && touched.location ? styles.errorInput : ''
@@ -142,7 +161,9 @@ const SecondStep = ({
                 {file ? (
                   <img
                     id="petAvatar"
-                    className={styles.selectedAvatar}
+                    className={`${styles.selectedAvatar} ${
+                      errors.avatar && styles.avatarErrorType
+                    }`}
                     src={file}
                     alt={secondStepValues.avatar.name}
                   />
@@ -155,12 +176,12 @@ const SecondStep = ({
                 type="file"
                 id="avatar"
                 name="avatar"
+                accept="image/png, image/jpeg, image/jpg, image/gif"
                 onChange={e => handleAddAvatar(e, setFieldValue)}
               />
-              <ErrorMessage
-                name="avatar"
-                render={msg => <div className={styles.secStepError}>{msg}</div>}
-              />
+              {touched.avatar && errors.avatar && (
+                <div className={styles.secStepError}>{errors.avatar}</div>
+              )}
             </label>
 
             <label className={styles.labelTitle} htmlFor="comments">
@@ -198,6 +219,21 @@ const SecondStep = ({
       </Formik>
     </>
   );
+};
+
+SecondStep.propTypes = {
+  handleBackToFirst: PropTypes.func.isRequired,
+  secondStepValues: PropTypes.shape({
+    sex: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    comments: PropTypes.string.isRequired,
+  }).isRequired,
+  file: PropTypes.string,
+  handleAddAvatar: PropTypes.func.isRequired,
+  handleSecondStepSubmit: PropTypes.func.isRequired,
+  checkCategory: PropTypes.func.isRequired,
 };
 
 export default SecondStep;

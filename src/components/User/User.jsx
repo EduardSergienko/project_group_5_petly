@@ -10,7 +10,7 @@ import styles from './User.module.scss';
 function User() {
   const [modalActivefForTablet, setmodalActivefForTablet] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
-  const mobileWidth = width <= 768 && width > 480;
+  const mobileWidth = width <= 768 && width > 500;
 
   useEffect(() => {
     const handleResize = () => {

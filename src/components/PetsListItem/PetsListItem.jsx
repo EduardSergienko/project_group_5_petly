@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { userOperations } from '../../redux/user';
 
@@ -60,3 +61,14 @@ function PetsListItem({
 }
 
 export default PetsListItem;
+
+PetsListItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  birthday: PropTypes.string.isRequired,
+  breed: PropTypes.string.isRequired,
+  comments: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
+  activeLoader: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired,
+};
