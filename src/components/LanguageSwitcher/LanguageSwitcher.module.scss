@@ -1,0 +1,94 @@
+// language variables
+$language-width: 55px;
+$language-height: 30px;
+$language-focus: rgba(245, 146, 86, 0.5);
+$language-border: rgba(245, 146, 86, 0.5);
+$language-hover: #fdf7f2;
+$language-checked: #fdf7f2;
+
+// language styles
+.languageWrap {
+  width: $language-width * 2;
+  height: $language-height;
+  display: flex;
+
+  font-size: 14px;
+  line-height: 1;
+
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    right: 335px;
+  }
+}
+
+.languageLeft,
+.languageRight {
+  position: relative;
+  width: $language-width;
+  height: $language-height;
+  padding: 5px;
+}
+
+.languageLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $language-width;
+  height: $language-height;
+  padding: 7px 8px 5px 0;
+
+  border: 1px solid $language-border;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 24px;
+  text-align: right;
+  text-transform: uppercase;
+
+  @media screen and (min-width: 1280px) {
+    background-size: 14px;
+    background-position: 7px 7px;
+  }
+}
+
+.languageLeft .languageLabel {
+  border-radius: 20px 0 0 20px;
+  cursor: pointer;
+}
+
+.languageRight .languageLabel {
+  border-left: 0;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+}
+
+.languageControl:hover + .languageLabel,
+.languageControl:focus + .languageLabel {
+  background-color: $language-hover;
+}
+
+.languageControl:checked + .languageLabel {
+  background-color: $language-checked;
+}
+
+.languageControl:focus + .languageLabel,
+.languageControl:checked:focus + .languageLabel {
+  z-index: 2;
+}
+
+// country flags
+.languageRight .languageLabel {
+  background-image: url('../../image/flags/UA_flag_album.jpg');
+
+  @media screen and (min-width: 1280px) {
+    background-image: url('../../image/flags/UA_flag.jpg');
+  }
+}
+
+.languageLeft .languageLabel {
+  background-image: url('../../image/flags/UK_flag_album.jpg');
+
+  @media screen and (min-width: 1280px) {
+    background-image: url('../../image/flags/UK_flag.jpg');
+  }
+}
