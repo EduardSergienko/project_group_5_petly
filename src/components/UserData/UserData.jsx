@@ -138,7 +138,7 @@ function UserData() {
       <ul className={styles.list}>
         <UserDataItem
           updateUser={updateUser}
-          title={'Name'}
+          title={t('user.name')}
           pattern={
             /^[a-zA-Zа-яА-ЯА-ЯЁёЇїІіЄєҐґ]+(([' -][a-zA-Zа-яА-ЯЁёЇїІіЄєҐґ ])?[a-zA-Zа-яА-ЯЁёЇїІіЄєҐґ]*)*$/
           }
@@ -153,7 +153,7 @@ function UserData() {
         />
         <UserDataItem
           updateUser={updateUser}
-          title={'Email'}
+          title={t('user.email')}
           pattern={
             /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
           }
@@ -166,7 +166,7 @@ function UserData() {
         />
         <UserDataItem
           updateUser={updateUser}
-          title={'Birthday'}
+          title={t('user.birthday')}
           pattern={/(0?[1-9]|[12][0-9]|3[01]).(0?[1-9]|1[012]).((19|20)\d\d)$/}
           type={'text'}
           name={'dateOfBirth'}
@@ -177,7 +177,7 @@ function UserData() {
         />
         <UserDataItem
           updateUser={updateUser}
-          title={'Phone'}
+          title={t('user.phone')}
           pattern={/^[+]{0,1}380([0-9]{9})$/}
           type={'phone'}
           name={'phone'}
@@ -189,7 +189,7 @@ function UserData() {
         />
         <UserDataItem
           updateUser={updateUser}
-          title={'City'}
+          title={t('user.city')}
           // pattern={/^[а-яА-ЯёЁa-zA-Z]+$/}
           // pattern={/^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/}
           type={'text'}
