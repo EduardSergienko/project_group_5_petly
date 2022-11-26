@@ -65,19 +65,20 @@
 .searchIcon {
   width: 15px;
   height: 15px;
-  display: flex;
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translate(0, -50%);
-
+  display: block;
   @media screen and (min-width: 768px) {
     width: 18px;
     height: 18px;
-    right: 14px;
   }
 
   @media screen and (min-width: 1280px) {
-    right: 16px;
   }
+}
+.searchBtn {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right: 15px;
+  top: 30%;
 }
