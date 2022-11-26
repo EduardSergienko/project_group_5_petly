@@ -17,7 +17,7 @@ import styles from './ModalNotice.module.scss';
 function ModalNotice({ active, setActive }) {
   const dispatch = useDispatch();
   const more = useSelector(noticesSelectors.getNoticeInformationMore);
-  const loading = useSelector(noticesSelectors.noticeLoading);
+  const loadingOnOpen = useSelector(noticesSelectors.noticeLoadingOnOpen);
   const myFavorite = useSelector(noticesSelectors.myFavorite);
   const token = useSelector(authSelectors.getUserToken);
 
@@ -55,7 +55,7 @@ function ModalNotice({ active, setActive }) {
         setActive(false);
       }}
     >
-      {!loading ? (
+      {!loadingOnOpen ? (
         <div className={styles.modal} onClick={e => e.stopPropagation()}>
           <div className={styles.containerCategory}>
             <div className={styles.containerImage}>

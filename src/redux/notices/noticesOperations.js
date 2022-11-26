@@ -104,6 +104,18 @@ const getOneNotice = createAsyncThunk(
   }
 );
 
+export const deleteUserNotice = createAsyncThunk(
+  'user/deleteUserNotice',
+  async (id, { rejectWithValue }) => {
+    try {
+      await axios.delete(`/notices/${id}`);
+      return id;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 const operations = {
   addNotice,
   getNotices,
@@ -112,6 +124,7 @@ const operations = {
   removeFavorite,
   getOwn,
   getOneNotice,
+  deleteUserNotice,
 };
 
 export default operations;

@@ -1,10 +1,6 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-// import { useState } from 'react';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
-// import usePlacesAutocomplete from 'use-places-autocomplete';
-// import useOnclickOutside from 'react-cool-onclickoutside';
-// import PlacesAutocomplete from '../UserData/UserDataItem/PlacesAutocomplete/PlacesAutocomplete';
 import camera from '../../image/camera.png';
 import styles from './ModalAddNotice.module.scss';
 import add from '../../image/svg/add-image.svg';
@@ -17,8 +13,6 @@ const SecondStep = ({
   handleSecondStepSubmit,
   checkCategory,
 }) => {
-  // const [inputeValue, setInputeValue] = useState('');
-  // const [inputActive, setInputActive] = useState(true);
   const SUPPORTED_FORMATS = [
     'image/jpg',
     'image/jpeg',
@@ -101,18 +95,6 @@ const SecondStep = ({
 
             <label className={styles.labelTitle} htmlFor="location">
               Location<span className={styles.require}>*</span>
-              {/* <PlacesAutocomplete
-                style={`${styles.input}`}
-                noValidate={styles.noValidate}
-                styleLi={styles.styleLi}
-                styleUl={styles.styleUl}
-                stylesDiv={styles.stylesDiv}
-                span={styles.spanStyles}
-                setInputActive={setInputActive}
-                inputeValue={inputeValue}
-                setInputeValue={setInputeValue}
-                inputActive={inputActive}
-              /> */}
               <Field
                 className={`${styles.input} ${
                   errors.location && touched.location ? styles.errorInput : ''
