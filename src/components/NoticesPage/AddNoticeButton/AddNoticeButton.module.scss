@@ -34,6 +34,11 @@
   cursor: pointer;
   background: $orangeColor;
 
+
+  @media screen and (min-width: 340px) {
+    bottom: unset;
+  }
+
   @media screen and (min-width: 768px) {
     position: relative;
     bottom: 0px;
@@ -43,5 +48,13 @@
     background-repeat: no-repeat;
     background-position-x: center;
     background-position-y: center;
+  }
+}
+
+.noAuthBtnPosition{
+    top: 390px;
+
+    @media screen and (min-width: 768px) {
+    top: 0px;
   }
 }
