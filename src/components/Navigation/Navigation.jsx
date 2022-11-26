@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
 import BurgerBtn from 'components/BurgerBtn/BurgerBtn';
+import LanguageSwitcher from 'components/LanguageSwitcher';
 
 export default function Navigation() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -28,26 +29,32 @@ export default function Navigation() {
   return (
     <>
       {mobileWidth && (
-        <nav
-          className={`${styles.mainNav} ${isMenuOpen && styles.responsiveNav}`}
-        >
-          {isLoggedIn ? (
-            <>
-              <UserNav toggleMenu={showNavBar} />
-              <Nav toggleMenu={showNavBar} />
-            </>
-          ) : (
-            <>
-              <AuthNav toggleMenu={showNavBar} />
-              <Nav toggleMenu={showNavBar} />
-            </>
-          )}
-        </nav>
+        <>
+          <LanguageSwitcher />
+          <nav
+            className={`${styles.mainNav} ${
+              isMenuOpen && styles.responsiveNav
+            }`}
+          >
+            {isLoggedIn ? (
+              <>
+                <UserNav toggleMenu={showNavBar} />
+                <Nav toggleMenu={showNavBar} />
+              </>
+            ) : (
+              <>
+                <AuthNav toggleMenu={showNavBar} />
+                <Nav toggleMenu={showNavBar} />
+              </>
+            )}
+          </nav>
+        </>
       )}
       {tabletWidth && (
         <>
           {!isMenuOpen && !isLoggedIn && <AuthNav />}
           {!isMenuOpen && isLoggedIn && <UserNav />}
+          {!isMenuOpen && <LanguageSwitcher />}
           <nav
             className={`${styles.mainNav} ${
               isMenuOpen && styles.responsiveNav
@@ -60,6 +67,7 @@ export default function Navigation() {
       {descktopWidth && (
         <nav className={styles.mainNav}>
           <Nav />
+          <LanguageSwitcher />
           {isLoggedIn ? <UserNav /> : <AuthNav />}
         </nav>
       )}

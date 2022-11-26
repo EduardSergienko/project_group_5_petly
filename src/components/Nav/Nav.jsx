@@ -1,6 +1,9 @@
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import styles from './Nav.module.scss';
+
 export default function Nav({ toggleMenu }) {
+  const { t } = useTranslation();
   return (
     <>
       <ul className={styles.navList}>
@@ -11,7 +14,7 @@ export default function Nav({ toggleMenu }) {
           }
           to="/news"
         >
-          News
+          {t('nav.news')}
         </NavLink>
         <NavLink
           onClick={toggleMenu}
@@ -20,7 +23,7 @@ export default function Nav({ toggleMenu }) {
           }
           to="/notices/sell"
         >
-          Find pet
+          {t('nav.findpet')}
         </NavLink>
         <NavLink
           onClick={toggleMenu}
@@ -29,7 +32,7 @@ export default function Nav({ toggleMenu }) {
           }
           to="/friends"
         >
-          Our friends
+          {t('nav.ourfriends')}
         </NavLink>
       </ul>
     </>

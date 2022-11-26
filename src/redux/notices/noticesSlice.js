@@ -11,6 +11,7 @@ const initialState = {
   error: null,
   noticeInformationMore: null,
   loading: false,
+  onOpenLoading: false,
 };
 
 const noticesSlice = createSlice({
@@ -21,9 +22,11 @@ const noticesSlice = createSlice({
       state.error = null;
       state.noticeAdded = false;
       state.noticeAddError = null;
+      state.noticeRemoved = false;
     },
     [noticesOperations.addNotice.fulfilled](state, action) {
       state.notices = [action.payload, ...state.notices];
+      state.ownAdds = [action.payload, ...state.ownAdds];
       state.noticeAdded = true;
       state.error = null;
     },
@@ -34,6 +37,7 @@ const noticesSlice = createSlice({
     [noticesOperations.getNotices.pending](state, _) {
       state.error = null;
       state.loading = true;
+      state.noticeRemoved = false;
     },
     [noticesOperations.getNotices.fulfilled](state, action) {
       state.loading = false;
@@ -45,6 +49,7 @@ const noticesSlice = createSlice({
     },
     [noticesOperations.addToFavorite.pending](state, _) {
       state.error = null;
+      state.noticeRemoved = false;
     },
     [noticesOperations.addToFavorite.fulfilled](state, action) {
       state.myFavorite = action.payload.myFavorite;
@@ -55,6 +60,7 @@ const noticesSlice = createSlice({
     [noticesOperations.getFavorite.pending](state, _) {
       state.error = null;
       state.loading = true;
+      state.noticeRemoved = false;
     },
     [noticesOperations.getFavorite.fulfilled](state, action) {
       state.myFavorite = action.payload?.myFavorite;
@@ -66,6 +72,7 @@ const noticesSlice = createSlice({
     },
     [noticesOperations.removeFavorite.pending](state, _) {
       state.error = null;
+      state.noticeRemoved = false;
     },
     [noticesOperations.removeFavorite.fulfilled](state, action) {
       state.myFavorite = action.payload.myFavorite;
@@ -76,6 +83,7 @@ const noticesSlice = createSlice({
     [noticesOperations.getOwn.pending](state, _) {
       state.error = null;
       state.loading = true;
+      state.noticeRemoved = false;
     },
     [noticesOperations.getOwn.fulfilled](state, action) {
       state.ownAdds = action.payload.data;
@@ -87,10 +95,27 @@ const noticesSlice = createSlice({
     },
     [noticesOperations.getOneNotice.fulfilled](state, { payload }) {
       state.noticeInformationMore = payload.data[0];
-      state.loading = false;
+      state.onOpenLoading = false;
     },
     [noticesOperations.getOneNotice.pending](state, { payload }) {
+      state.onOpenLoading = true;
+      state.noticeRemoved = false;
+    },
+    [noticesOperations.deleteUserNotice.pending](state, _) {
+      state.noticeRemoved = false;
       state.loading = true;
+      state.error = null;
+    },
+    [noticesOperations.deleteUserNotice.fulfilled]: (state, { payload }) => {
+      state.ownAdds = state.ownAdds.filter(({ _id }) => _id !== payload);
+      state.noticeRemoved = true;
+      state.loading = false;
+      state.error = null;
+    },
+    [noticesOperations.deleteUserNotice.rejected]: (state, { payload }) => {
+      state.noticeRemoved = false;
+      state.loading = false;
+      state.error = payload;
     },
   },
 });

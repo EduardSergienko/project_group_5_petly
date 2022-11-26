@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
 import { noticesSelectors, noticesOperations } from '../../redux/notices';
+import { authSelectors } from '../../redux/auth';
 
 import Loader from '../Loader/Loader';
 
@@ -16,8 +17,9 @@ import styles from './ModalNotice.module.scss';
 function ModalNotice({ active, setActive }) {
   const dispatch = useDispatch();
   const more = useSelector(noticesSelectors.getNoticeInformationMore);
-  const loading = useSelector(noticesSelectors.noticeLoading);
+  const loadingOnOpen = useSelector(noticesSelectors.noticeLoadingOnOpen);
   const myFavorite = useSelector(noticesSelectors.myFavorite);
+  const token = useSelector(authSelectors.getUserToken);
 
   const findFavorite = myFavorite?.find(item => {
     if (item?._id) {
@@ -53,7 +55,7 @@ function ModalNotice({ active, setActive }) {
         setActive(false);
       }}
     >
-      {!loading ? (
+      {!loadingOnOpen ? (
         <div className={styles.modal} onClick={e => e.stopPropagation()}>
           <div className={styles.containerCategory}>
             <div className={styles.containerImage}>
@@ -105,7 +107,6 @@ function ModalNotice({ active, setActive }) {
                     {more?.owner?.phone ? more?.owner?.phone : '-'}
                   </span>
                 </li>
-                {/* по условию  */}
                 {more?.category === 'sell' && (
                   <li className={styles.item}>
                     <p className={styles.p}>Sell:</p>
@@ -127,8 +128,21 @@ function ModalNotice({ active, setActive }) {
               <button
                 className={styles.removeTo}
                 onClick={() => {
-                  dispatch(noticesOperations.removeFavorite(more._id));
-                  toast.success(' Remove from favorite', {
+                  if (token) {
+                    dispatch(noticesOperations.removeFavorite(more._id));
+                    toast.success(' Remove from favorite', {
+                      position: 'top-right',
+                      autoClose: 600,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: false,
+                      draggable: true,
+                      progress: undefined,
+                      theme: 'light',
+                    });
+                    return;
+                  }
+                  toast.error('Your are not logged in', {
                     position: 'top-right',
                     autoClose: 600,
                     hideProgressBar: false,
@@ -147,8 +161,21 @@ function ModalNotice({ active, setActive }) {
               <button
                 className={styles.addTo}
                 onClick={() => {
-                  dispatch(noticesOperations.addToFavorite(more._id));
-                  toast.success('Add to favorite', {
+                  if (token) {
+                    dispatch(noticesOperations.addToFavorite(more._id));
+                    toast.success('Add to favorite', {
+                      position: 'top-right',
+                      autoClose: 600,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: false,
+                      draggable: true,
+                      progress: undefined,
+                      theme: 'light',
+                    });
+                    return;
+                  }
+                  toast.error('Your are not logged in', {
                     position: 'top-right',
                     autoClose: 600,
                     hideProgressBar: false,
@@ -163,7 +190,6 @@ function ModalNotice({ active, setActive }) {
                 Add to <img className={styles.likeSvg} src={like} alt="like" />
               </button>
             )}
-
             <a className={styles.btnContact} href={`tel:${more?.owner?.phone}`}>
               Contact
             </a>

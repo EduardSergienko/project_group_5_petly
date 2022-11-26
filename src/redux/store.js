@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './auth';
 import { noticesReducer } from './notices';
 import { filterReducer } from './filter';
@@ -20,13 +20,12 @@ const persistConfig = {
   whitelist: ['token', 'isLoggedIn'],
 };
 
-const middleware = [
-  ...getDefaultMiddleware({
+const middleware = getDefaultMiddleware =>
+  getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
-  }),
-];
+  });
 
 export const store = configureStore({
   reducer: {

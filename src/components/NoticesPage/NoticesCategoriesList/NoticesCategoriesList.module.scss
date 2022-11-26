@@ -88,6 +88,8 @@
   line-height: 38px;
   letter-spacing: -0.01em;
   margin-bottom: 15px;
+  cursor: pointer;
+  height: 76px;
 }
 
 .itemDescription {
@@ -104,8 +106,7 @@
 }
 
 .itemDescriptionConteiner {
-  display: flex;
-  flex-direction: column;
+  max-width: 148px;
   &:first-child {
     margin-right: 15px;
   }
@@ -114,7 +115,13 @@
 .itemDescriptionWrapper {
   display: flex;
   align-self: flex-start;
+  margin-bottom: 50px;
 }
+
+.priceItemDescriptionWrapper{
+  margin-bottom: 20px;
+}
+
 
 .itemButton {
   border: 2px solid $orangeColor;
@@ -136,6 +143,7 @@
 
   @media screen and (min-width: 768px) {
     height: 38px;
+    margin: 0px auto;
 
     font-size: 16px;
     line-height: 22px;
@@ -147,11 +155,42 @@
 .itemInfoWrap {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
   height: 298px;
   padding-left: 16px;
   padding-right: 16px;
   padding-bottom: 32px;
   margin-top: 20px;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 20px;
+  padding-right: 20px;
+  }
+}
+
+.deleteButton {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 12px;
+  top: 62px;
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(2px);
+
+  background-image: url('../../../image/svg/delete.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  cursor: pointer;
+
+  &:hover {
+    background-image: url('../../../image/svg/deleteHover.svg');
+  }
 }

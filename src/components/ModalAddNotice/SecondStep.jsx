@@ -1,5 +1,6 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import PropTypes from 'prop-types';
 import camera from '../../image/camera.png';
 import styles from './ModalAddNotice.module.scss';
 import add from '../../image/svg/add-image.svg';
@@ -157,7 +158,7 @@ const SecondStep = ({
                 type="file"
                 id="avatar"
                 name="avatar"
-                accept="image/png, image/jpeg, image/jpg"
+                accept="image/png, image/jpeg, image/jpg, image/gif"
                 onChange={e => handleAddAvatar(e, setFieldValue)}
               />
               {touched.avatar && errors.avatar && (
@@ -200,6 +201,21 @@ const SecondStep = ({
       </Formik>
     </>
   );
+};
+
+SecondStep.propTypes = {
+  handleBackToFirst: PropTypes.func.isRequired,
+  secondStepValues: PropTypes.shape({
+    sex: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    comments: PropTypes.string.isRequired,
+  }).isRequired,
+  file: PropTypes.string,
+  handleAddAvatar: PropTypes.func.isRequired,
+  handleSecondStepSubmit: PropTypes.func.isRequired,
+  checkCategory: PropTypes.func.isRequired,
 };
 
 export default SecondStep;

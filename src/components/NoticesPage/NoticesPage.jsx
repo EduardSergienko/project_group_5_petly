@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
 import NoticesSearch from './NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from './NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
@@ -9,7 +9,6 @@ import ModalNotice from '../ModalNotice/ModalNotice';
 import ModalAddNotice from 'components/ModalAddNotice/ModalAddNotice';
 import { noticesSelectors } from '../../redux/notices';
 import notices from 'helpers/Notification/Notification';
-import { useDispatch, useSelector } from 'react-redux';
 import { noticesOperations } from '../../redux/notices';
 import Loader from 'components/Loader';
 
@@ -23,7 +22,6 @@ function NoticesPage({ onFilter = () => {} }) {
   const filter = useSelector(state => state.filter.value);
   const myFavorite = useSelector(noticesSelectors.myFavorite);
   const isLoggedIn = useSelector(noticesSelectors.getIsLoggedIn);
-  const error = useSelector(noticesSelectors.getNoticeError);
   const loading = useSelector(noticesSelectors.noticeLoading);
   const [filteredItems, setFilteredItems] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -88,48 +86,6 @@ function NoticesPage({ onFilter = () => {} }) {
       : notices.showWarning('You need to authorize before adding notices.');
   };
 
-  // if (error) {
-  //   return (
-  //     <div className={styles.container}>
-  //       <h2 className={styles.title}>Find your favorite pet</h2>
-  //       <NoticesSearch onChange={onFilter} />
-  //       <div className={styles.navWarpper}>
-  //         <NoticesCategoriesNav />
-  //         <div className={styles.buttonWrapper}>
-  //           <p className={styles.buttonText}>Add pet</p>
-  //           <AddNoticeButton handleOpenModal={handleOpenModal} />
-  //         </div>
-  //       </div>
-  //       <p className={styles.notification}>
-  //         Sorry, there is no pets in sellected category.
-  //       </p>
-  //     </div>
-  //   );
-  // } else {
-  //   return (
-  //     <div className={styles.container}>
-  //       <h2 className={styles.title}>Find your favorite pet</h2>
-  //       <NoticesSearch onChange={onFilter} />
-  //       <div className={styles.navWarpper}>
-  //         <NoticesCategoriesNav />
-  //         <div className={styles.buttonWrapper}>
-  //           <p className={styles.buttonText}>Add pet</p>
-  //           <AddNoticeButton handleOpenModal={handleOpenModal} />
-  //         </div>
-  //       </div>
-  //       {!loading ? (
-  //         <NoticesCategoriesList
-  //           items={filteredItems}
-  //           setActive={setModalActive}
-  //         />
-  //       ) : (
-  //         !modalActive && <Loader />
-  //       )}
-  //       <div
-  //         className={`${
-  //           isLoggedIn ? styles.stickyLoginBtnWrapper : styles.stickyBtnWrapper
-  //         }`}
-  //       >
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Find your favorite pet</h2>
@@ -141,16 +97,16 @@ function NoticesPage({ onFilter = () => {} }) {
           <AddNoticeButton handleOpenModal={handleOpenModal} />
         </div>
       </div>
-      {error && (
-        <p className={styles.notification}>
-          Sorry, there is no pets in sellected category.
-        </p>
+      {!filteredItems.length && (
+        <p className={styles.notification}>Sorry, there is no ads.</p>
       )}
 
       {!loading ? (
         <NoticesCategoriesList
           items={filteredItems}
           setActive={setModalActive}
+          categoryName={categoryName}
+          setIsModalOpen={setIsModalOpen}
         />
       ) : (
         !modalActive && <Loader />

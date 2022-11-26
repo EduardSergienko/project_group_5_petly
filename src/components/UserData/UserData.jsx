@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import UserDataItem from './UserDataItem/UserDataItem';
 
@@ -13,6 +14,7 @@ import noUser from '../../image/noUser.png';
 import styles from './UserData.module.scss';
 
 function UserData() {
+  const { t } = useTranslation();
   const user = useSelector(authSelectors.getUser);
   const dispatch = useDispatch();
   const [picture, setPicture] = useState('');
@@ -105,13 +107,13 @@ function UserData() {
                 }}
               />
             ) : active ? (
-              'Upload your photo'
+              t('user.uploadFoto')
             ) : (
-              'Choise your photo'
+              t('user.choisePhoto')
             )}
           </div>
           {(picture || selectPicture) && !active && (
-            <div className={`${styles.anyChoise}`}>Choise your photo</div>
+            <div className={`${styles.anyChoise}`}>{t('user.choisePhoto')}</div>
           )}
         </label>
         <button
@@ -121,7 +123,7 @@ function UserData() {
           {active ? (
             <>
               <img className={styles.imageCamera} src={camera} alt="camera" />
-              Edit photo
+              {t('user.editPhoto')}
             </>
           ) : (
             <img

@@ -1,25 +1,30 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { FiEyeOff, FiEye } from 'react-icons/fi';
 import { IconContext } from 'react-icons';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import styles from './AuthForm.module.scss';
 
 const FirstStep = ({ onNextStep, formData }) => {
+  const { t } = useTranslation();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfPassword, setShowConfPassword] = useState(false);
 
   const validationFirstStepSchema = Yup.object({
-    email: Yup.string().email('Invalid email address').required('Required'),
+    email: Yup.string()
+      .email('auth.invlidEmail')
+      .required('auth.requiredValue'),
     password: Yup.string()
-      .matches(/^\S*$/, 'Whitespace is not allowed')
-      .min(7, 'Password is too short')
-      .max(32, 'Password is too long')
-      .required('Required'),
+      .matches(/^\S*$/, 'auth.notWhitespace')
+      .min(7, 'auth.tooShort')
+      .max(32, 'auth.tooLong')
+      .required('auth.requiredValue'),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
-      .required('Required'),
+      .oneOf([Yup.ref('password'), null], 'auth.passwordsMatch')
+      .required('auth.requiredValue'),
   });
 
   const handleFormSubmit = values => {
@@ -27,98 +32,93 @@ const FirstStep = ({ onNextStep, formData }) => {
   };
 
   return (
-    <>
-      <Formik
-        initialValues={formData}
-        validationSchema={validationFirstStepSchema}
-        onSubmit={handleFormSubmit}
-      >
-        {() => (
-          <Form className={styles.form}>
-            <div className={styles.formGroup}>
-              <ErrorMessage
-                name="email"
-                render={msg => <div className={styles.errorMsg}>{msg}</div>}
-              />
-              <Field
-                className={styles.input}
-                name="email"
-                type="text"
-                placeholder="Email"
-              />
-            </div>
+    <Formik
+      initialValues={formData}
+      validationSchema={validationFirstStepSchema}
+      onSubmit={handleFormSubmit}
+    >
+      {({ errors, touched }) => (
+        <Form className={styles.form}>
+          <label className={styles.formGroup}>
+            <Field
+              className={styles.input}
+              name="email"
+              type="text"
+              placeholder="Email"
+            />
+            {errors.email && touched.email && (
+              <div className={styles.errorMsg}>{t(errors.email)}</div>
+            )}
+          </label>
 
-            <div className={styles.formGroup}>
-              <ErrorMessage
-                name="password"
-                render={msg => <div className={styles.errorMsg}>{msg}</div>}
-              />
-              <Field
-                className={styles.input}
-                name="password"
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Password"
-              />
-              <span
-                className={styles.icon}
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword && (
-                  <IconContext.Provider
-                    value={{ style: { verticalAlign: 'middle' } }}
-                  >
-                    <FiEye />
-                  </IconContext.Provider>
-                )}
-                {!showPassword && (
-                  <IconContext.Provider
-                    value={{ style: { verticalAlign: 'middle' } }}
-                  >
-                    <FiEyeOff />
-                  </IconContext.Provider>
-                )}
-              </span>
-            </div>
+          <label className={styles.formGroup}>
+            <Field
+              className={styles.input}
+              name="password"
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+            />
+            <span
+              className={styles.icon}
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword && (
+                <IconContext.Provider
+                  value={{ style: { verticalAlign: 'middle' } }}
+                >
+                  <FiEye />
+                </IconContext.Provider>
+              )}
+              {!showPassword && (
+                <IconContext.Provider
+                  value={{ style: { verticalAlign: 'middle' } }}
+                >
+                  <FiEyeOff />
+                </IconContext.Provider>
+              )}
+            </span>
+            {errors.password && touched.password && (
+              <div className={styles.errorMsg}>{t(errors.password)}</div>
+            )}
+          </label>
 
-            <div className={styles.formGroup}>
-              <ErrorMessage
-                name="confirmPassword"
-                render={msg => <div className={styles.errorMsg}>{msg}</div>}
-              />
-              <Field
-                className={styles.input}
-                name="confirmPassword"
-                type={showConfPassword ? 'text' : 'password'}
-                placeholder="Confirm Password"
-              />
-              <span
-                className={styles.icon}
-                onClick={() => setShowConfPassword(!showConfPassword)}
-              >
-                {showConfPassword && (
-                  <IconContext.Provider
-                    value={{ style: { verticalAlign: 'middle' } }}
-                  >
-                    <FiEye />
-                  </IconContext.Provider>
-                )}
-                {!showConfPassword && (
-                  <IconContext.Provider
-                    value={{ style: { verticalAlign: 'middle' } }}
-                  >
-                    <FiEyeOff />
-                  </IconContext.Provider>
-                )}
-              </span>
-            </div>
+          <label className={styles.formGroup}>
+            <Field
+              className={styles.input}
+              name="confirmPassword"
+              type={showConfPassword ? 'text' : 'password'}
+              placeholder="Confirm Password"
+            />
+            <span
+              className={styles.icon}
+              onClick={() => setShowConfPassword(!showConfPassword)}
+            >
+              {showConfPassword && (
+                <IconContext.Provider
+                  value={{ style: { verticalAlign: 'middle' } }}
+                >
+                  <FiEye />
+                </IconContext.Provider>
+              )}
+              {!showConfPassword && (
+                <IconContext.Provider
+                  value={{ style: { verticalAlign: 'middle' } }}
+                >
+                  <FiEyeOff />
+                </IconContext.Provider>
+              )}
+            </span>
+            {errors.confirmPassword && touched.confirmPassword && (
+              <div className={styles.errorMsg}>{t(errors.confirmPassword)}</div>
+            )}
+          </label>
 
-            <button className={styles.button} type={'submit'}>
-              Next
-            </button>
-          </Form>
-        )}
-      </Formik>
-    </>
+          <button className={styles.button} type={'submit'}>
+            {t('auth.next')}
+          </button>
+        </Form>
+      )}
+    </Formik>
   );
 };
 

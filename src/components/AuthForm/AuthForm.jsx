@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import FirstStep from './FirstStep';
 import SecondStep from './SecondStep';
@@ -9,6 +10,7 @@ import { authOperations } from 'redux/auth';
 import notices from 'helpers/Notification';
 
 const AuthForm = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [step, setStep] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -29,7 +31,7 @@ const AuthForm = () => {
       .unwrap()
       .then(() => {
         notices.showSuccess(
-          `Вітаємо, ${formData?.name}! Ви успішно зареєструвалися`
+          <>{t('auth.registerSuccess', { user: `${formData.name}` })}</>
         );
       })
       .catch(err => {
@@ -74,13 +76,13 @@ const AuthForm = () => {
 
   return (
     <div className={styles.formWrap}>
-      <h1 className={styles.title}>Registration</h1>
+      <h1 className={styles.title}>{t('auth.register')}</h1>
       {PageDisplay()}
 
       <p className={styles.textHint}>
-        Already have an account?&nbsp;
+        {t('auth.hint')}
         <NavLink className={styles.link} to="/login">
-          Login
+          {t('auth.login')}
         </NavLink>
       </p>
     </div>
