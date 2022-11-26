@@ -4,11 +4,11 @@
   width: 100%;
   margin-bottom: 44px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279px) {
     display: flex;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     flex-direction: column;
     align-items: center;
   }
@@ -18,13 +18,13 @@
   position: relative;
   margin-bottom: 32px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279px) {
     order: 2;
     margin-left: 60px;
     margin-bottom: 0;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     order: 1;
     margin-left: 0px;
     margin-bottom: 70px;
@@ -117,7 +117,7 @@
     box-shadow: (0px 4px 10px $orangeColor);
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279px) {
     // display: none;
     width: 100%;
     left: 0;
@@ -153,11 +153,11 @@
   color: $mainTextColor;
   cursor: pointer;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279px) {
     bottom: -30px;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     bottom: -40px;
     right: -10px;
   }
@@ -180,7 +180,7 @@
     box-shadow: 0 0 4px 0px $orangeColor;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     width: 25px;
     height: 25px;
   }
@@ -190,7 +190,7 @@
   width: 20px;
   margin-right: 5px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     width: 18px;
   }
 }
@@ -198,7 +198,7 @@
 .imageDone {
   width: 20px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     width: 12.5px;
   }
 }
@@ -207,11 +207,11 @@
   width: 100%;
   list-style: none;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279px) {
     order: 1;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     order: 2;
   }
 }

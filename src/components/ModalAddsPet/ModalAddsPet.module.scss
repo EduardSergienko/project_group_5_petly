@@ -42,7 +42,7 @@
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 40px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     padding: 40px 20px;
     border-radius: 20px;
   }
@@ -74,7 +74,7 @@
 
   cursor: pointer;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     top: 20px;
     right: 20px;
   }

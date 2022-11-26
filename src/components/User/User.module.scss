@@ -4,12 +4,12 @@
   display: flex;
   margin: 60px -15px 0;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279px) {
     flex-direction: column;
     margin: 90px -30px 0;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     margin: 61px -20px 0;
   }
 }
@@ -21,7 +21,7 @@
 
   color: $mainTextColor;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     font-size: 20px;
     line-height: 27px;
     letter-spacing: 0.04em;
@@ -42,12 +42,12 @@
   position: sticky;
   top: 10px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279px) {
     width: 100%;
     padding: 24px 40px 24px 32px;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     padding: 20px 12px 20px 16px;
     box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
     border-radius: 20px;
@@ -56,12 +56,12 @@
 }
 
 .containerInformation {
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279px) {
     margin-right: 32px;
     margin-bottom: 20px;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     margin: 0 20px 47px;
   }
 }
@@ -69,13 +69,13 @@
 .titleContainer {
   margin: 0 0 24px 17px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279px) {
     display: flex;
     justify-content: space-between;
     margin: 0 0 20px 32px;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     margin: 0 0 18px 20px;
   }
 }

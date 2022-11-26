@@ -17,7 +17,7 @@
   pointer-events: none;
   transition: 0.5s;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     overflow: scroll;
   }
 }
@@ -40,8 +40,8 @@
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 40px;
 
-  @media screen and (max-width: 500px) {
-    width: 85%;
+  @media screen and (max-width: 767px) {
+    width: 280px;
     padding: 60px 20px 40px;
     border-radius: 20px;
     overflow: scroll;
@@ -75,7 +75,7 @@
 
   cursor: pointer;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     top: 20px;
     right: 20px;
   }
@@ -88,7 +88,7 @@
 .containerCategory {
   display: flex;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     flex-direction: column;
   }
 }
@@ -102,7 +102,7 @@
   overflow: hidden;
   border-radius: 0px 0px 40px 40px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     height: 240px;
     width: 100%;
     justify-content: center;
@@ -115,7 +115,7 @@
   width: 100%;
   border-radius: 0px 0px 40px 40px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     width: 240px;
   }
 }
@@ -148,7 +148,7 @@
 .containerInformationPets {
   margin-left: 20px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     margin: 16px 0 0;
   }
 }
@@ -164,7 +164,7 @@
 
   color: $mainTextColor;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     margin-bottom: 16px;
     width: 100%;
   }
@@ -185,7 +185,7 @@
   line-height: 22px;
   color: $mainTextColor;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     width: 100px;
   }
 }
@@ -203,7 +203,7 @@
 .containerComments {
   margin: 28px 0 32px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     margin-bottom: 40px;
   }
 }
@@ -227,7 +227,7 @@
   width: 100%;
   justify-content: flex-end;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     flex-direction: column;
   }
 }
@@ -250,7 +250,7 @@
 
   cursor: pointer;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     width: 100%;
     order: 2;
     margin-top: 12px;
@@ -276,7 +276,7 @@
 
   cursor: pointer;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     width: 100%;
     order: 2;
     margin-top: 12px;
@@ -308,7 +308,7 @@
     background-color: #e7884d;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     display: flex;
     align-items: center;
     justify-content: center;
