@@ -164,7 +164,16 @@ function NoticesPage({ onFilter = () => {} }) {
       {!filteredItems.length && (
         <p className={styles.notification}>Sorry, there is no ads.</p>
       )}
-
+      <div
+        className={`${
+          isLoggedIn ? styles.stickyLoginBtnWrapper : styles.stickyBtnWrapper
+        }`}
+      >
+        <AddNoticeButton
+          handleOpenModal={handleOpenModal}
+          isLoggedIn={isLoggedIn}
+        />
+      </div>
       {!loading ? (
         <NoticesCategoriesList
           items={filteredItems}
@@ -175,13 +184,6 @@ function NoticesPage({ onFilter = () => {} }) {
       ) : (
         !modalActive && <Loader />
       )}
-      <div
-        className={`${
-          isLoggedIn ? styles.stickyLoginBtnWrapper : styles.stickyBtnWrapper
-        }`}
-      >
-        <AddNoticeButton handleOpenModal={handleOpenModal} />
-      </div>
       {isModalOpen && <ModalAddNotice setIsModalOpen={setIsModalOpen} />}
       <ModalNotice active={modalActive} setActive={setModalActive} />
     </div>
