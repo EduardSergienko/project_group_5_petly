@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import NoticesSearch from './NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from './NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
 import AddNoticeButton from './AddNoticeButton/AddNoticeButton';
 import ModalNotice from '../ModalNotice/ModalNotice';
 import ModalAddNotice from 'components/ModalAddNotice/ModalAddNotice';
+import FilterInput from '../../helpers/FilterInput';
 import { noticesSelectors } from '../../redux/notices';
 import notices from 'helpers/Notification/Notification';
 import { noticesOperations } from '../../redux/notices';
@@ -14,7 +14,7 @@ import Loader from 'components/Loader';
 
 import styles from './NoticesPage.module.scss';
 
-function NoticesPage({ onFilter = () => {} }) {
+function NoticesPage() {
   const dispatch = useDispatch();
   const { categoryName } = useParams();
   const items = useSelector(noticesSelectors.getNotices);
@@ -86,10 +86,48 @@ function NoticesPage({ onFilter = () => {} }) {
       : notices.showWarning('You need to authorize before adding notices.');
   };
 
+  function handleNoticeCategory() {
+    categoryName === 'sell' &&
+      dispatch(noticesOperations.getNotices(categoryName));
+    categoryName === 'for-free' &&
+      dispatch(noticesOperations.getNotices(categoryName));
+    categoryName === 'lost-found' &&
+      dispatch(noticesOperations.getNotices(categoryName));
+    categoryName === 'own' &&
+      isLoggedIn &&
+      dispatch(noticesOperations.getOwn());
+    categoryName === 'favorite' &&
+      isLoggedIn &&
+      dispatch(noticesOperations.getFavorite());
+  }
+
+  const searchNews = evt => {
+    evt.preventDefault();
+    const { search } = evt.target.elements;
+
+    if (search.value.trim() === '') {
+      handleNoticeCategory();
+      return;
+    }
+
+    if (
+      categoryName === 'sell' ||
+      categoryName === 'for-free' ||
+      categoryName === 'lost-found'
+    ) {
+      dispatch(
+        noticesOperations.searchNotice({
+          category: categoryName,
+          title: search.value,
+        })
+      );
+    }
+  };
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Find your favorite pet</h2>
-      <NoticesSearch onChange={onFilter} />
+      <FilterInput onSubmit={searchNews} />
       <div className={styles.navWarpper}>
         <NoticesCategoriesNav />
         <div className={styles.buttonWrapper}>

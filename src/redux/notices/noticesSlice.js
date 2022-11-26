@@ -133,6 +133,22 @@ const noticesSlice = createSlice({
       state.loading = false;
       state.noticeRemovedError = payload;
     },
+    [noticesOperations.searchNotice.pending]: (state, { payload }) => {
+      state.error = null;
+      state.loading = true;
+      state.noticeRemoved = false;
+      state.noticeAddError = null;
+      state.noticeRemovedError = false;
+    },
+    [noticesOperations.searchNotice.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.notices = payload;
+    },
+    [noticesOperations.searchNotice.rejected]: (state, { payload }) => {
+      state.loading = false;
+      state.error = payload;
+      state.notices = [];
+    },
   },
 });
 export default noticesSlice.reducer;
