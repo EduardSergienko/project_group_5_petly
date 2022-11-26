@@ -54,6 +54,13 @@ const News = () => {
     }
   }
 
+  const handleInputChange = evt => {
+    if (evt.target.value.trim()) {
+      return;
+    }
+    setSearchingNewsData(null);
+  };
+
   const shortenText = (text, max) => {
     return text && text.length > max
       ? `${text.slice(0, max).split(' ').slice(0, -1).join(' ')}...`
@@ -67,7 +74,7 @@ const News = () => {
     <div className={styles.newsWrap}>
       <h1 className={styles.title}>News</h1>
       {isLoaded && <Loader />}
-      <FilterInput onSubmit={searchNews} />
+      <FilterInput onSubmit={searchNews} onChange={handleInputChange} />
       {searchingNewsData ? (
         <ul className={styles.box}>
           {searchingNewsData.map(({ _id, title, description, date, url }) => {
