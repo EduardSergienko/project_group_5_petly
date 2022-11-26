@@ -10,13 +10,17 @@ function SecondStep({ onNextStep, onPrevStep, formData, loading }) {
   const { t } = useTranslation();
 
   const validationSecondStepSchema = Yup.object({
-    name: Yup.string().min(4, 'auth.nameShort').required('auth.requiredValue'),
+    name: Yup.string()
+      .min(2, 'auth.nameShort')
+      .matches(/^[a-zA-ZА-ЩЬЮЯҐЄІЇа-щьюяґєії'\s]+$/, 'auth.nameAlpabets')
+      .required('auth.requiredValue'),
     location: Yup.string()
       .min(4, 'auth.locationShort')
+      .matches(/^[a-zA-ZА-ЩЬЮЯҐЄІЇа-щьюяґєії'\s(,)]+$/, 'auth.nameAlpabets')
       .required('auth.requiredValue'),
     phone: Yup.string()
       .required('auth.requiredValue')
-      .test('phone', 'auth.phoneNotValid', value => {
+      .test('phone', 'auth.invlidPhone', value => {
         const valLengthWithoutDashes = value?.replace(/-|_/g, '').length;
         return valLengthWithoutDashes === 13;
       }),

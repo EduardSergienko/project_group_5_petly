@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 import { userOperations } from '../../redux/user';
@@ -20,6 +21,7 @@ function PetsListItem({
   activeLoader,
   active,
 }) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const deleteButton = id => {
@@ -40,10 +42,18 @@ function PetsListItem({
         />
       </div>
       <div className={styles.containerText}>
-        <p className={styles.text}>Name: {name}</p>
-        <p className={styles.text}>Date of birth: {birthday}</p>
-        <p className={styles.text}>Breed: {breed}</p>
-        <p className={styles.text}>Comments: {comments}</p>
+        <p className={styles.text}>
+          {t('pet.namePet')}: {name}
+        </p>
+        <p className={styles.text}>
+          {t('pet.birthDatePet')}: {birthday}
+        </p>
+        <p className={styles.text}>
+          {t('pet.breed')}: {breed}
+        </p>
+        <p className={styles.text}>
+          {t('pet.comments')}: {comments}
+        </p>
       </div>
       {active ? (
         <div className={styles.loader}>

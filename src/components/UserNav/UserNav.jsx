@@ -1,6 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import styles from './UserNav.module.scss';
+
 export default function UserNav({ toggleMenu }) {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.userNavWrap}>
       <NavLink onClick={toggleMenu} className={styles.userNavLink} to="user">
@@ -17,7 +21,7 @@ export default function UserNav({ toggleMenu }) {
             fill="white"
           />
         </svg>
-        Account
+        {t('auth.account')}
       </NavLink>
     </div>
   );

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import InputMask from 'react-input-mask';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 import styles from './Modal1.module.scss';
@@ -12,6 +13,7 @@ function Modal1({
   active,
   modalDefaultValues,
 }) {
+  const { t } = useTranslation();
   const [inputActiveName, setInputActiveName] = useState(true);
   const [inputActiveBirthday, setInputActiveBirthday] = useState(true);
   const [inputActiveBreed, setInputActiveBreed] = useState(true);
@@ -157,11 +159,11 @@ function Modal1({
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Add pet</h2>
+      <h2 className={styles.title}>{t('pet.addPet')}</h2>
 
       <form className={styles.form}>
         <label className={styles.lable}>
-          <span className={styles.span}>Name pet</span>
+          <span className={styles.span}>{t('pet.namePet')}</span>
           <input
             className={`${styles.input} ${
               !inputActiveName && nameValue.length !== 0
@@ -178,25 +180,25 @@ function Modal1({
           {!inputActiveName &&
             nameValue.length !== 0 &&
             nameValue.length < 2 && (
-              <p className={styles.textError}>Must be at least 2 characters</p>
+              <p className={styles.textError}>{t('pet.atLeast2')}</p>
             )}
           {!inputActiveName &&
             nameValue.length !== 0 &&
             nameValue.length > 16 && (
-              <p className={styles.textError}>No more than 16 characters</p>
+              <p className={styles.textError}>{t('pet.noMore16')}</p>
             )}
           {!inputActiveName &&
             nameValue.length > 2 &&
             nameValue.length < 16 && (
-              <p className={styles.textError}>Only letters</p>
+              <p className={styles.textError}>{t('pet.letters')}</p>
             )}
           {required && nameValue.length === 0 && (
-            <p className={styles.textError}>Required</p>
+            <p className={styles.textError}>{t('pet.required')}</p>
           )}
         </label>
 
         <label className={styles.lable}>
-          <span className={styles.span}>Date of birth</span>
+          <span className={styles.span}>{t('pet.birthDatePet')}</span>
           <InputMask
             className={`${styles.input} ${
               !inputActiveBirthday && birthdayValue.length !== 0
@@ -214,15 +216,15 @@ function Modal1({
             required
           />
           {!inputActiveBirthday && birthdayValue.length !== 0 && (
-            <p className={styles.textError}>DD.MM.YYYY</p>
+            <p className={styles.textError}>{t('pet.data')}</p>
           )}
           {required && birthdayValue.length === 0 && (
-            <p className={styles.textError}>Required</p>
+            <p className={styles.textError}>{t('pet.required')}</p>
           )}
         </label>
 
         <label className={styles.lable}>
-          <span className={styles.span}>Breed</span>
+          <span className={styles.span}>{t('pet.breed')}</span>
           <input
             className={`${styles.input} ${
               !inputActiveBreed && breedValue.length !== 0
@@ -239,26 +241,26 @@ function Modal1({
           {!inputActiveBreed &&
             breedValue.length !== 0 &&
             breedValue.length < 2 && (
-              <p className={styles.textError}>Must be at least 2 characters</p>
+              <p className={styles.textError}>{t('pet.atLeast2')}</p>
             )}
           {!inputActiveBreed &&
             breedValue.length !== 0 &&
             breedValue.length > 16 && (
-              <p className={styles.textError}>No more than 16 characters</p>
+              <p className={styles.textError}>{t('pet.noMore16')}</p>
             )}
           {!inputActiveBreed &&
             breedValue.length > 2 &&
             breedValue.length < 16 && (
-              <p className={styles.textError}>Only letters</p>
+              <p className={styles.textError}>{t('pet.letters')}</p>
             )}
           {required && breedValue.length === 0 && (
-            <p className={styles.textError}>Required</p>
+            <p className={styles.textError}>{t('pet.required')}</p>
           )}
         </label>
 
         <div className={styles.buttonContainer}>
           <button className={styles.cancel} onClick={onClickCancelBtn}>
-            Cancel
+            {t('pet.cancel')}
           </button>
           <button
             className={`${styles.next} ${
@@ -274,7 +276,7 @@ function Modal1({
             }`}
             onClick={onClickNextBtn}
           >
-            Next
+            {t('pet.next')}
           </button>
         </div>
       </form>

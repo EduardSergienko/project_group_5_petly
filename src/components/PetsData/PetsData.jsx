@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 import { AddPetsButton } from '../../helpers';
@@ -8,6 +9,7 @@ import PetsList from '../PetsList/PetsList';
 import styles from './PetsData.module.scss';
 
 function PetsData({ modalActivefForTablet, setmodalActivefForTablet }) {
+  const { t } = useTranslation();
   const [modalActive, setModalActive] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
   const mobileWidth = width <= 768 && width > 500;
@@ -22,7 +24,7 @@ function PetsData({ modalActivefForTablet, setmodalActivefForTablet }) {
   return (
     <div className={styles.container}>
       <div className={styles.containerBtn}>
-        <h2 className={styles.title}>My pets:</h2>
+        <h2 className={styles.title}>{t('user.myPets')}:</h2>
         <AddPetsButton
           onClickBtn={setModalActive}
           customStyle={mobileWidth ? { display: 'none' } : { null: 'none' }}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 import fotoSelect from '../../../image/svg/fotoSelect.svg';
@@ -14,6 +15,7 @@ function Modal2({
   setModal2Values,
   modalDefaultValues,
 }) {
+  const { t } = useTranslation();
   const [inputActiveComments, setInputActiveComments] = useState(true);
   const [commentsValue, setCommentsValue] = useState(
     modalDefaultValues ? modalDefaultValues.comments : ''
@@ -110,8 +112,8 @@ function Modal2({
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Add pet</h2>
-      <p className={styles.text}>Add photo and some comments</p>
+      <h2 className={styles.title}>{t('pet.addPet')}</h2>
+      <p className={styles.text}>{t('pet.addPhotoComments')}</p>
 
       <form className={styles.form}>
         <div className={styles.field__wrapper}>
@@ -145,16 +147,18 @@ function Modal2({
               )}
             </div>
             {picture && (
-              <div className={`${styles.anyChoise}`}>Choise another photo</div>
+              <div className={`${styles.anyChoise}`}>
+                {t('pet.choisePhoto')}
+              </div>
             )}
             {required && !picture && (
-              <p className={styles.textErrorPicture}>Please select a photo</p>
+              <p className={styles.textErrorPicture}> {t('pet.selectPhoto')}</p>
             )}
           </label>
         </div>
 
         <label className={styles.lable}>
-          <span className={styles.span}>Comments</span>
+          <span className={styles.span}>{t('pet.comments')}</span>
           <textarea
             className={`${styles.input} ${
               !inputActiveComments &&
@@ -182,15 +186,15 @@ function Modal2({
           {!inputActiveComments &&
             commentsValue.length !== 0 &&
             commentsValue.length < 8 && (
-              <p className={styles.textError}>Must be at least 8 characters</p>
+              <p className={styles.textError}>{t('pet.atLeast2')}</p>
             )}
           {!inputActiveComments &&
             commentsValue.length !== 0 &&
             commentsValue.length > 120 && (
-              <p className={styles.textError}>No more than 120 characters</p>
+              <p className={styles.textError}>{t('pet.noMore120')}</p>
             )}
           {required && commentsValue.length === 0 && (
-            <p className={styles.textError}>Required</p>
+            <p className={styles.textError}>{t('pet.required')}</p>
           )}
         </label>
 
