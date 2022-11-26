@@ -209,7 +209,8 @@ SecondStep.propTypes = {
     sex: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
+    avatar: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+      .isRequired,
     comments: PropTypes.string.isRequired,
   }).isRequired,
   file: PropTypes.string,
