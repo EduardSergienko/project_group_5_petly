@@ -104,14 +104,29 @@ const getOneNotice = createAsyncThunk(
   }
 );
 
-export const deleteUserNotice = createAsyncThunk(
-  'user/deleteUserNotice',
+const deleteUserNotice = createAsyncThunk(
+  'notices/deleteUserNotice',
   async (id, { rejectWithValue }) => {
     try {
       await axios.delete(`/notices/${id}`);
       return id;
     } catch (error) {
       return rejectWithValue(error);
+    }
+  }
+);
+
+const searchNotice = createAsyncThunk(
+  'notices/searchNotice',
+  async ({ category, title }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get(
+        `/notices/category/search?category=${category}&title=${title}`
+      );
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -125,6 +140,7 @@ const operations = {
   getOwn,
   getOneNotice,
   deleteUserNotice,
+  searchNotice,
 };
 
 export default operations;

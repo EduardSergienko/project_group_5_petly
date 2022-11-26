@@ -10,7 +10,6 @@ import apiServices from 'services/apiServices';
 const News = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [searchingNewsData, setSearchingNewsData] = useState(null);
@@ -38,9 +37,15 @@ const News = () => {
 
   async function searchNews(e) {
     e.preventDefault();
+    const { search } = e.target.elements;
+
+    if (search.value.trim() === '') {
+      setSearchingNewsData(null);
+      return;
+    }
     try {
       setIsLoaded(true);
-      const { data: searchData } = await apiServices.searchNews(query);
+      const { data: searchData } = await apiServices.searchNews(search.value);
       setSearchingNewsData(searchData);
       setIsLoaded(false);
     } catch (error) {
@@ -57,22 +62,12 @@ const News = () => {
   function handleShowMore() {
     setPage(page + 1);
   }
-  const handleInputType = e => {
-    setQuery(e.target.value);
-    if (e.target.value.trim() === '') {
-      setSearchingNewsData(null);
-      return;
-    }
-  };
+
   return (
     <div className={styles.newsWrap}>
       <h1 className={styles.title}>News</h1>
       {isLoaded && <Loader />}
-      <FilterInput
-        onSubmit={searchNews}
-        value={query}
-        onChange={handleInputType}
-      />
+      <FilterInput onSubmit={searchNews} />
       {searchingNewsData ? (
         <ul className={styles.box}>
           {searchingNewsData.map(({ _id, title, description, date, url }) => {

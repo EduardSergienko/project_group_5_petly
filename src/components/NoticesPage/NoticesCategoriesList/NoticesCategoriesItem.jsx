@@ -117,6 +117,7 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
           onClick={removeFavorite}
         />
       )}
+
       {categoryName === 'own' && (
         <DeleteButton
           stylesBtn={styles.deleteButton}
