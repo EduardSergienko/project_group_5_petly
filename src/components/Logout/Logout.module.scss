@@ -3,7 +3,7 @@
 .container {
   width: 100%;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     display: flex;
     justify-content: flex-end;
   }

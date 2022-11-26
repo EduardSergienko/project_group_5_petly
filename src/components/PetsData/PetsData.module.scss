@@ -7,11 +7,11 @@
 
   padding: 0 16px 0 32px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1279px) {
     padding: 0 32px;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     padding: 0 20px;
   }
 }
@@ -25,7 +25,7 @@
 
   margin-bottom: 24px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     margin-bottom: 32px;
   }
 }
@@ -38,7 +38,7 @@
   // margin: 0 0 24px 17px;
   color: $mainTextColor;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 767px) {
     font-size: 20px;
     line-height: 27px;
     letter-spacing: 0.04em;

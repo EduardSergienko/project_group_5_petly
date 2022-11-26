@@ -12,7 +12,7 @@ function User() {
   const { t } = useTranslation();
   const [modalActivefForTablet, setmodalActivefForTablet] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
-  const mobileWidth = width <= 768 && width > 500;
+  const mobileWidth = width < 1280 && width >= 768;
 
   useEffect(() => {
     const handleResize = () => {

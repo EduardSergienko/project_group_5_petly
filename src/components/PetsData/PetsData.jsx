@@ -12,7 +12,7 @@ function PetsData({ modalActivefForTablet, setmodalActivefForTablet }) {
   const { t } = useTranslation();
   const [modalActive, setModalActive] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
-  const mobileWidth = width <= 768 && width > 500;
+  const desctopWidth = width < 768 || width >= 1280;
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,7 +27,7 @@ function PetsData({ modalActivefForTablet, setmodalActivefForTablet }) {
         <h2 className={styles.title}>{t('user.myPets')}:</h2>
         <AddPetsButton
           onClickBtn={setModalActive}
-          customStyle={mobileWidth ? { display: 'none' } : { null: 'none' }}
+          customStyle={!desctopWidth ? { display: 'none' } : { null: 'none' }}
         />
       </div>
       <div>
