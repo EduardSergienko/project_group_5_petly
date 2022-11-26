@@ -16,7 +16,7 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const myFavorite = useSelector(noticesSelectors.getMyFavoriteNotice);
   const myFavoriteIds = useSelector(authSelectors.getUserFavorite);
-  const error = useSelector(noticesSelectors.getNoticeError);
+  const removeError = useSelector(noticesSelectors.getNoticeRemoveError);
   const noticeRemoved = useSelector(noticesSelectors.getNoticeRemoved);
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -33,8 +33,8 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
   useEffect(() => {
     noticeRemoved && notices.showSuccess('Notice removed');
 
-    error && notices.showError('Something went wrong, try again');
-  }, [noticeRemoved, error]);
+    removeError && notices.showError('Something went wrong, try again');
+  }, [noticeRemoved, removeError]);
 
   const addFavorite = e => {
     e.preventDefault();
