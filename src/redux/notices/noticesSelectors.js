@@ -10,7 +10,9 @@ const noticeLoading = state => state.notices.loading;
 
 const noticeLoadingOnOpen = state => state.notices.onOpenLoading;
 
-const getNoticeAddError = state => state.notices.getNoticeAddError;
+const getNoticeAddError = state => state.notices.noticeAddError;
+
+const getNoticeRemoveError = state => state.notices.noticeRemovedError;
 
 const getMyFavoriteNotice = state => state.notices.myFavorite;
 
@@ -32,5 +34,6 @@ const noticesSelectors = {
   getOwnAdds,
   getIsLoggedIn,
   noticeLoadingOnOpen,
+  getNoticeRemoveError,
 };
 export default noticesSelectors;

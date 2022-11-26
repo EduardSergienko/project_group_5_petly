@@ -7,6 +7,7 @@ const initialState = {
   ownAdds: [],
   noticeAdded: '',
   noticeRemoved: '',
+  noticeRemovedError: '',
   noticeAddError: '',
   error: null,
   noticeInformationMore: null,
@@ -23,6 +24,7 @@ const noticesSlice = createSlice({
       state.noticeAdded = false;
       state.noticeAddError = null;
       state.noticeRemoved = false;
+      state.noticeRemovedError = false;
     },
     [noticesOperations.addNotice.fulfilled](state, action) {
       state.notices = [action.payload, ...state.notices];
@@ -38,6 +40,8 @@ const noticesSlice = createSlice({
       state.error = null;
       state.loading = true;
       state.noticeRemoved = false;
+      state.noticeAddError = null;
+      state.noticeRemovedError = false;
     },
     [noticesOperations.getNotices.fulfilled](state, action) {
       state.loading = false;
@@ -46,10 +50,13 @@ const noticesSlice = createSlice({
     [noticesOperations.getNotices.rejected](state, action) {
       state.loading = false;
       state.error = action.payload;
+      state.notices = [];
     },
     [noticesOperations.addToFavorite.pending](state, _) {
       state.error = null;
       state.noticeRemoved = false;
+      state.noticeAddError = null;
+      state.noticeRemovedError = false;
     },
     [noticesOperations.addToFavorite.fulfilled](state, action) {
       state.myFavorite = action.payload.myFavorite;
@@ -61,6 +68,8 @@ const noticesSlice = createSlice({
       state.error = null;
       state.loading = true;
       state.noticeRemoved = false;
+      state.noticeAddError = null;
+      state.noticeRemovedError = false;
     },
     [noticesOperations.getFavorite.fulfilled](state, action) {
       state.myFavorite = action.payload?.myFavorite;
@@ -73,6 +82,8 @@ const noticesSlice = createSlice({
     [noticesOperations.removeFavorite.pending](state, _) {
       state.error = null;
       state.noticeRemoved = false;
+      state.noticeAddError = null;
+      state.noticeRemovedError = false;
     },
     [noticesOperations.removeFavorite.fulfilled](state, action) {
       state.myFavorite = action.payload.myFavorite;
@@ -84,6 +95,8 @@ const noticesSlice = createSlice({
       state.error = null;
       state.loading = true;
       state.noticeRemoved = false;
+      state.noticeAddError = null;
+      state.noticeRemovedError = false;
     },
     [noticesOperations.getOwn.fulfilled](state, action) {
       state.ownAdds = action.payload.data;
@@ -100,22 +113,25 @@ const noticesSlice = createSlice({
     [noticesOperations.getOneNotice.pending](state, { payload }) {
       state.onOpenLoading = true;
       state.noticeRemoved = false;
+      state.noticeAddError = null;
+      state.noticeRemovedError = false;
     },
     [noticesOperations.deleteUserNotice.pending](state, _) {
       state.noticeRemoved = false;
       state.loading = true;
-      state.error = null;
+      state.noticeAddError = null;
+      state.noticeRemovedError = false;
     },
     [noticesOperations.deleteUserNotice.fulfilled]: (state, { payload }) => {
       state.ownAdds = state.ownAdds.filter(({ _id }) => _id !== payload);
       state.noticeRemoved = true;
       state.loading = false;
-      state.error = null;
+      state.noticeRemovedError = false;
     },
     [noticesOperations.deleteUserNotice.rejected]: (state, { payload }) => {
       state.noticeRemoved = false;
       state.loading = false;
-      state.error = payload;
+      state.noticeRemovedError = payload;
     },
   },
 });
