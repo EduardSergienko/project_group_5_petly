@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import NoticesSearch from './NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from './NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
 import AddNoticeButton from './AddNoticeButton/AddNoticeButton';
@@ -14,7 +15,7 @@ import Loader from 'components/Loader';
 
 import styles from './NoticesPage.module.scss';
 
-function NoticesPage() {
+function NoticesPage({ onFilter = () => {} }) {
   const dispatch = useDispatch();
   const { categoryName } = useParams();
   const items = useSelector(noticesSelectors.getNotices);
@@ -86,7 +87,7 @@ function NoticesPage() {
       : notices.showWarning('You need to authorize before adding notices.');
   };
 
-  function handleNoticeCategory() {
+  const handleNoticeCategoryItems = () => {
     categoryName === 'sell' &&
       dispatch(noticesOperations.getNotices(categoryName));
     categoryName === 'for-free' &&
@@ -99,14 +100,14 @@ function NoticesPage() {
     categoryName === 'favorite' &&
       isLoggedIn &&
       dispatch(noticesOperations.getFavorite());
-  }
+  };
 
   const searchNews = evt => {
     evt.preventDefault();
     const { search } = evt.target.elements;
 
     if (search.value.trim() === '') {
-      handleNoticeCategory();
+      handleNoticeCategoryItems();
       return;
     }
 
@@ -124,10 +125,35 @@ function NoticesPage() {
     }
   };
 
+  const handleNoticeCategory = () => {
+    if (
+      categoryName === 'sell' ||
+      categoryName === 'for-free' ||
+      categoryName === 'lost-found'
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleSearchInputChange = evt => {
+    if (evt.target.value.trim()) {
+      return;
+    }
+    handleNoticeCategoryItems();
+  };
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Find your favorite pet</h2>
-      <FilterInput onSubmit={searchNews} />
+      {handleNoticeCategory() && (
+        <FilterInput
+          onSubmit={searchNews}
+          onChange={handleSearchInputChange}
+          cssClass={styles.noticesInput}
+        />
+      )}
+      {!handleNoticeCategory() && <NoticesSearch onChange={onFilter} />}
       <div className={styles.navWarpper}>
         <NoticesCategoriesNav />
         <div className={styles.buttonWrapper}>
