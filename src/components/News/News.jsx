@@ -14,9 +14,7 @@ const News = () => {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [searchingNewsData, setSearchingNewsData] = useState(null);
-  console.log(items);
-  console.log(searchingNewsData);
-  console.log(query);
+
   useEffect(() => {
     async function fetchNews() {
       try {
