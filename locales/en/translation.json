@@ -1,4 +1,7 @@
 {
+  "home": {
+    "title": "Take good care of your small pets"
+  },
   "nav": {
     "news": "News",
     "findpet": "Find pet",
@@ -34,7 +37,8 @@
     "city": "City",
     "uploadFoto": "Upload your photo",
     "choisePhoto": "Choise your photo",
-    "editPhoto": "Edit photo"
+    "editPhoto": "Edit photo",
+    "logOut": "Log Out"
   },
   "pet": {
     "addPet": "Add pet",
@@ -53,6 +57,27 @@
     "required": "Required",
     "atLeast8": "Must be at least 8 characters",
     "noMore120": "No more than 120 characters",
-    "data": "DD.MM.YYYY"
+    "data": "DD.MM.YYYY",
+    "back": "Back",
+    "done": "Done"
+  },
+  "findpet": {
+    "success": "Notice successfully added",
+    "error": "Something went wrong, try again",
+    "warning": "You need to authorize before adding notices",
+    "title": "Find your favorite pet",
+    "noAds": "Sorry, there is no ads.",
+    "lostFound": "Lost/Found",
+    "goodHands": "In good hands",
+    "sell": "Sell",
+    "favorite": "Favorite ads",
+    "myAds": "My ads",
+    "more": "Learn more"
+  },
+  "ourFriends": {
+    "title": "Our friends"
+  },
+  "news": {
+    "title": "News"
   }
 }
