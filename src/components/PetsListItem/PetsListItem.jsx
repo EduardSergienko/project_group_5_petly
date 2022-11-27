@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux';
-// import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 import { userOperations } from '../../redux/user';
@@ -21,7 +20,6 @@ function PetsListItem({
   activeLoader,
   active,
 }) {
-  // const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const deleteButton = id => {
