@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'https://fetch-friend.herokuapp.com/api';
+axios.defaults.baseURL = 'https://fetch-friends.onrender.com/api';
 
 const getAllFriends = async () => {
   return await axios.get('/friends');
