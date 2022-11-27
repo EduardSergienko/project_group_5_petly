@@ -3,15 +3,16 @@ import { format } from 'date-fns';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useTranslation } from 'react-i18next';
 import styles from 'components/News/News.module.scss';
-import Loader from 'components/Loader';
+
 import FilterInput from 'helpers/FilterInput';
 import notices from 'helpers/Notification';
 import apiServices from 'services/apiServices';
 import ScrollToTop from 'react-scroll-to-top';
 import ScrollToTopBtn from 'components/ScrollToTopBtn/ScrollToTopBtn';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 const News = () => {
   const { t } = useTranslation();
-  const [isLoaded, setIsLoaded] = useState(false);
+
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -20,7 +21,10 @@ const News = () => {
   useEffect(() => {
     async function fetchNews() {
       try {
-        setIsLoaded(true);
+        Loading.arrows({
+          svgColor: '#f59256',
+        });
+
         const { data } = await apiServices.getNews(page);
 
         setItems(prewState => [...prewState, ...data.data]);
@@ -28,9 +32,9 @@ const News = () => {
           setHasMore(false);
           notices.showSuccess('Thats all News');
         }
-        setIsLoaded(false);
+        Loading.remove();
       } catch (error) {
-        setIsLoaded(false);
+        Loading.remove();
         return notices.showError('Oops, try again');
       }
     }
@@ -47,12 +51,14 @@ const News = () => {
       return;
     }
     try {
-      setIsLoaded(true);
+      Loading.arrows({
+        svgColor: '#f59256',
+      });
       const { data: searchData } = await apiServices.searchNews(search.value);
       setSearchingNewsData(searchData);
-      setIsLoaded(false);
+      Loading.remove();
     } catch (error) {
-      setIsLoaded(false);
+      Loading.remove();
 
       return notices.showError('Sorry, no news found, try again');
     }
@@ -78,7 +84,7 @@ const News = () => {
     <div className={styles.newsWrap}>
       <h1 className={styles.title}>{t('news.title')}</h1>
       <FilterInput onSubmit={searchNews} onChange={handleInputChange} />
-      {isLoaded && <Loader />}
+      {/* {isLoaded && <Loader />} */}
       {searchingNewsData ? (
         <ul className={styles.box}>
           {searchingNewsData.map(({ _id, title, description, date, url }) => {

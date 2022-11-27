@@ -12,7 +12,7 @@ import FilterInput from '../../helpers/FilterInput';
 import { noticesSelectors } from '../../redux/notices';
 import notices from 'helpers/Notification/Notification';
 import { noticesOperations } from '../../redux/notices';
-import Loader from 'components/Loader';
+// import Loader from 'components/Loader';
 
 import styles from './NoticesPage.module.scss';
 
@@ -177,15 +177,13 @@ function NoticesPage({ onFilter = () => {} }) {
           isLoggedIn={isLoggedIn}
         />
       </div>
-      {!loading ? (
+      {!loading && (
         <NoticesCategoriesList
           items={filteredItems}
           setActive={setModalActive}
           categoryName={categoryName}
           setIsModalOpen={setIsModalOpen}
         />
-      ) : (
-        !modalActive && <Loader />
       )}
       {isModalOpen && <ModalAddNotice setIsModalOpen={setIsModalOpen} />}
       <ModalNotice active={modalActive} setActive={setModalActive} />
