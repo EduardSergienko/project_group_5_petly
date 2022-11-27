@@ -4,6 +4,7 @@ import InputMask from 'react-input-mask';
 import { Dna } from 'react-loader-spinner';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
+import { cityInputValidation } from 'helpers/CityValidation';
 import styles from './AuthForm.module.scss';
 
 function SecondStep({ onNextStep, onPrevStep, formData, loading }) {
@@ -17,6 +18,11 @@ function SecondStep({ onNextStep, onPrevStep, formData, loading }) {
     location: Yup.string()
       .min(4, 'auth.locationShort')
       .matches(/^[a-zA-ZА-ЩЬЮЯҐЄІЇа-щьюяґєії'\s(,)]+$/, 'auth.nameAlpabets')
+      .test(
+        'locationFormat',
+        'Format should be "city, region"',
+        cityInputValidation
+      )
       .required('auth.requiredValue'),
     phone: Yup.string()
       .required('auth.requiredValue')
