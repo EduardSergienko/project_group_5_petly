@@ -34,7 +34,7 @@ function PetsListItem({
       <div className={styles.containerImg}>
         <img
           className={styles.image}
-          src={`https://fetch-friend.herokuapp.com/${photo}`}
+          src={photo}
           alt="photo_pet"
           onError={e => {
             e.target.src = noPhoto;
