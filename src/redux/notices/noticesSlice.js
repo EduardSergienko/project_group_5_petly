@@ -27,6 +27,7 @@ const noticesSlice = createSlice({
       state.noticeRemovedError = false;
       Loading.arrows({
         svgColor: '#f59256',
+        backgroundColor: 'rgba(0,0,0,0.1)',
       });
     },
     [noticesOperations.addNotice.fulfilled](state, action) {
@@ -49,6 +50,7 @@ const noticesSlice = createSlice({
       state.noticeRemovedError = false;
       Loading.arrows({
         svgColor: '#f59256',
+        backgroundColor: 'rgba(0,0,0,0.1)',
       });
     },
     [noticesOperations.getNotices.fulfilled](state, action) {
@@ -69,6 +71,7 @@ const noticesSlice = createSlice({
       state.noticeRemovedError = false;
       Loading.arrows({
         svgColor: '#f59256',
+        backgroundColor: 'rgba(0,0,0,0.1)',
       });
     },
     [noticesOperations.addToFavorite.fulfilled](state, action) {
@@ -87,6 +90,7 @@ const noticesSlice = createSlice({
       state.noticeRemovedError = false;
       Loading.arrows({
         svgColor: '#f59256',
+        backgroundColor: 'rgba(0,0,0,0.1)',
       });
     },
     [noticesOperations.getFavorite.fulfilled](state, action) {
@@ -106,6 +110,7 @@ const noticesSlice = createSlice({
       state.noticeRemovedError = false;
       Loading.arrows({
         svgColor: '#f59256',
+        backgroundColor: 'rgba(0,0,0,0.1)',
       });
     },
     [noticesOperations.removeFavorite.fulfilled](state, action) {
@@ -124,6 +129,7 @@ const noticesSlice = createSlice({
       state.noticeRemovedError = false;
       Loading.arrows({
         svgColor: '#f59256',
+        backgroundColor: 'rgba(0,0,0,0.1)',
       });
     },
     [noticesOperations.getOwn.fulfilled](state, action) {
@@ -148,6 +154,7 @@ const noticesSlice = createSlice({
       state.noticeRemovedError = false;
       Loading.arrows({
         svgColor: '#f59256',
+        backgroundColor: 'rgba(0,0,0,0.1)',
       });
     },
     [noticesOperations.deleteUserNotice.pending](state, _) {
@@ -157,6 +164,7 @@ const noticesSlice = createSlice({
       state.noticeRemovedError = false;
       Loading.arrows({
         svgColor: '#f59256',
+        backgroundColor: 'rgba(0,0,0,0.1)',
       });
     },
     [noticesOperations.deleteUserNotice.fulfilled]: (state, { payload }) => {
@@ -180,6 +188,7 @@ const noticesSlice = createSlice({
       state.noticeRemovedError = false;
       Loading.arrows({
         svgColor: '#f59256',
+        backgroundColor: 'rgba(0,0,0,0.1)',
       });
     },
     [noticesOperations.searchNotice.fulfilled]: (state, { payload }) => {

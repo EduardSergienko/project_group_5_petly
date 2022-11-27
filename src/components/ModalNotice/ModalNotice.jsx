@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import { noticesSelectors, noticesOperations } from '../../redux/notices';
 import { authSelectors } from '../../redux/auth';
 
-import Loader from '../Loader/Loader';
-
 import close from '../../image/svg/closeLine.svg';
 import like from '../../image/svg/like.svg';
 import noPhoto from '../../image/noPhoto.png';
@@ -55,7 +53,7 @@ function ModalNotice({ active, setActive }) {
         setActive(false);
       }}
     >
-      {!loadingOnOpen ? (
+      {!loadingOnOpen && (
         <div className={styles.modal} onClick={e => e.stopPropagation()}>
           <div className={styles.containerCategory}>
             <div className={styles.containerImage}>
@@ -202,8 +200,6 @@ function ModalNotice({ active, setActive }) {
             <img className={styles.imgB} src={close} alt="close" />
           </button>
         </div>
-      ) : (
-        <Loader />
       )}
     </div>
   );
