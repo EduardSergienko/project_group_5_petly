@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import styles from './HomeContent.module.scss';
 import mainImg from '../../image/main_page_img.png';
 import mainImgTab from '../../image/main_page_img_tab.png';
@@ -5,10 +6,12 @@ import mainImgDescktop from '../../image/main_page_img_descktop.png';
 import Container from 'components/Container/Container';
 
 export default function HomeContent() {
+  const { t } = useTranslation();
+
   return (
     <section>
       <Container>
-        <h1 className={styles.homeTitle}>Take good care of your small pets</h1>
+        <h1 className={styles.homeTitle}>{t('home.title')}</h1>
       </Container>
       <picture className={styles.homeSection}>
         <source

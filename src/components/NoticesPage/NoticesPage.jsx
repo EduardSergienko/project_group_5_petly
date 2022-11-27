@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import NoticesSearch from './NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from './NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
@@ -16,6 +17,7 @@ import Loader from 'components/Loader';
 import styles from './NoticesPage.module.scss';
 
 function NoticesPage({ onFilter = () => {} }) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { categoryName } = useParams();
   const items = useSelector(noticesSelectors.getNotices);
@@ -84,7 +86,7 @@ function NoticesPage({ onFilter = () => {} }) {
   const handleOpenModal = () => {
     isLoggedIn
       ? setIsModalOpen(true)
-      : notices.showWarning('You need to authorize before adding notices.');
+      : notices.showWarning(t('findpet.warning'));
   };
 
   const handleNoticeCategoryItems = () => {
@@ -145,7 +147,7 @@ function NoticesPage({ onFilter = () => {} }) {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Find your favorite pet</h2>
+      <h2 className={styles.title}>{t('findpet.title')}</h2>
       {handleNoticeCategory() && (
         <FilterInput
           onSubmit={searchNews}
@@ -157,12 +159,12 @@ function NoticesPage({ onFilter = () => {} }) {
       <div className={styles.navWarpper}>
         <NoticesCategoriesNav />
         <div className={styles.buttonWrapper}>
-          <p className={styles.buttonText}>Add pet</p>
+          <p className={styles.buttonText}>{t('pet.addPet')}</p>
           <AddNoticeButton handleOpenModal={handleOpenModal} />
         </div>
       </div>
       {!filteredItems.length && (
-        <p className={styles.notification}>Sorry, there is no ads.</p>
+        <p className={styles.notification}>{t('findpet.noAds')}</p>
       )}
       <div
         className={`${

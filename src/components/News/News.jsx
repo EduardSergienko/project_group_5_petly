@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { useTranslation } from 'react-i18next';
 import styles from 'components/News/News.module.scss';
 import Loader from 'components/Loader';
 import FilterInput from 'helpers/FilterInput';
@@ -8,6 +9,7 @@ import notices from 'helpers/Notification';
 import apiServices from 'services/apiServices';
 
 const News = () => {
+  const { t } = useTranslation();
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
@@ -72,7 +74,7 @@ const News = () => {
 
   return (
     <div className={styles.newsWrap}>
-      <h1 className={styles.title}>News</h1>
+      <h1 className={styles.title}>{t('news.title')}</h1>
       {isLoaded && <Loader />}
       <FilterInput onSubmit={searchNews} onChange={handleInputChange} />
       {searchingNewsData ? (

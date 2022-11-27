@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { noticesOperations } from 'redux/notices';
+import { useTranslation } from 'react-i18next';
 import { noticesSelectors } from '../../../redux/notices';
 import { authOperations, authSelectors } from '../../../redux/auth';
 import notices from 'helpers/Notification/Notification';
@@ -12,6 +13,7 @@ import noPhoto from '../../../image/noPhoto.png';
 import styles from './NoticesCategoriesList.module.scss';
 
 function NoticesCategoriesItem({ item, setActive, categoryName }) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const myFavorite = useSelector(noticesSelectors.getMyFavoriteNotice);
@@ -165,7 +167,7 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
             dispatch(noticesOperations.getOneNotice(item?._id));
           }}
         >
-          Learn more
+          {t('findpet.more')}
         </button>
       </div>
     </div>
