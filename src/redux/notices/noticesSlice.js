@@ -25,6 +25,7 @@ const noticesSlice = createSlice({
       state.noticeAddError = null;
       state.noticeRemoved = false;
       state.noticeRemovedError = false;
+      state.loading = true;
       Loading.arrows({
         svgColor: '#f59256',
         backgroundColor: 'rgba(0,0,0,0.1)',
@@ -35,11 +36,13 @@ const noticesSlice = createSlice({
       state.ownAdds = [action.payload, ...state.ownAdds];
       state.noticeAdded = true;
       state.error = null;
+      state.loading = false;
       Loading.remove();
     },
     [noticesOperations.addNotice.rejected](state, action) {
       state.noticeAdded = false;
       state.noticeAddError = action.payload;
+      state.loading = false;
       Loading.remove();
     },
     [noticesOperations.getNotices.pending](state, _) {
@@ -48,6 +51,7 @@ const noticesSlice = createSlice({
       state.noticeRemoved = false;
       state.noticeAddError = null;
       state.noticeRemovedError = false;
+      state.noticeAdded = false;
       Loading.arrows({
         svgColor: '#f59256',
         backgroundColor: 'rgba(0,0,0,0.1)',
@@ -69,6 +73,7 @@ const noticesSlice = createSlice({
       state.noticeRemoved = false;
       state.noticeAddError = null;
       state.noticeRemovedError = false;
+      state.noticeAdded = false;
       Loading.arrows({
         svgColor: '#f59256',
         backgroundColor: 'rgba(0,0,0,0.1)',
@@ -108,6 +113,7 @@ const noticesSlice = createSlice({
       state.noticeRemoved = false;
       state.noticeAddError = null;
       state.noticeRemovedError = false;
+      state.noticeAdded = false;
       Loading.arrows({
         svgColor: '#f59256',
         backgroundColor: 'rgba(0,0,0,0.1)',
@@ -127,6 +133,7 @@ const noticesSlice = createSlice({
       state.noticeRemoved = false;
       state.noticeAddError = null;
       state.noticeRemovedError = false;
+      state.noticeAdded = false;
       Loading.arrows({
         svgColor: '#f59256',
         backgroundColor: 'rgba(0,0,0,0.1)',
@@ -152,6 +159,7 @@ const noticesSlice = createSlice({
       state.noticeRemoved = false;
       state.noticeAddError = null;
       state.noticeRemovedError = false;
+      state.noticeAdded = false;
       Loading.arrows({
         svgColor: '#f59256',
         backgroundColor: 'rgba(0,0,0,0.1)',
@@ -162,6 +170,7 @@ const noticesSlice = createSlice({
       state.loading = true;
       state.noticeAddError = null;
       state.noticeRemovedError = false;
+      state.noticeAdded = false;
       Loading.arrows({
         svgColor: '#f59256',
         backgroundColor: 'rgba(0,0,0,0.1)',
@@ -186,6 +195,7 @@ const noticesSlice = createSlice({
       state.noticeRemoved = false;
       state.noticeAddError = null;
       state.noticeRemovedError = false;
+      state.noticeAdded = false;
       Loading.arrows({
         svgColor: '#f59256',
         backgroundColor: 'rgba(0,0,0,0.1)',

@@ -47,6 +47,7 @@ function NoticesPage({ onFilter = () => {} }) {
     if (categoryName === 'own') {
       setFilteredItems(filterItems(ownAdds));
     }
+    console.log('test');
   }, [categoryName, filter, items, setFilteredItems, myFavorite, ownAdds]);
 
   useEffect(() => {
@@ -176,18 +177,14 @@ function NoticesPage({ onFilter = () => {} }) {
           isLoggedIn={isLoggedIn}
         />
       </div>
-      {
-        !loading && (
-          <NoticesCategoriesList
-            items={filteredItems}
-            setActive={setModalActive}
-            categoryName={categoryName}
-            setIsModalOpen={setIsModalOpen}
-          />
-        )
-
-        // !modalActive && <Loader />
-      }
+      {!loading && (
+        <NoticesCategoriesList
+          items={filteredItems}
+          setActive={setModalActive}
+          categoryName={categoryName}
+          setIsModalOpen={setIsModalOpen}
+        />
+      )}
       {isModalOpen && <ModalAddNotice setIsModalOpen={setIsModalOpen} />}
       <ModalNotice active={modalActive} setActive={setModalActive} />
     </div>

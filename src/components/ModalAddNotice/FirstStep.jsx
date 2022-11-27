@@ -21,7 +21,7 @@ const FirstStep = ({
       .required('Required'),
     birthDate: Yup.string()
       .matches(
-        /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:19|20)\d{2})\s*$/,
+        /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:20)\d{2})\s*$/,
         'Date format should be DD.MM.YYYY'
       )
       .test('dateFormat', 'Provide a valid date of birth', handleDateValidation)
