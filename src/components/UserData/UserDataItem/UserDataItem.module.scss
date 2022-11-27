@@ -30,6 +30,8 @@
   @media screen and (max-width: 767px) {
     font-size: 12px;
     line-height: 16px;
+
+    width: 55px;
   }
 }
 
@@ -37,14 +39,14 @@
   position: relative;
 
   @media screen and (max-width: 767px) {
-    width: 170px;
+    width: 132px;
     margin-right: 9px;
   }
 
-  @media screen and (max-width: 350px) {
-    width: 150px;
-    margin-right: 9px;
-  }
+  // @media screen and (max-width: 350px) {
+  //   width: 150px;
+  //   margin-right: 9px;
+  // }
 }
 
 .input {
@@ -113,6 +115,7 @@
   width: 32px;
   height: 32px;
   border: none;
+  margin-left: 24px;
 
   transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -158,12 +161,12 @@
     line-height: 16px;
     left: 0px;
     padding: 4px 12px 3px;
-    width: 165px;
+    width: 132px;
     // margin-right: 9px;
   }
 
   @media screen and (max-width: 350px) {
-    width: 150px;
+    // width: 150px;
   }
 }
 

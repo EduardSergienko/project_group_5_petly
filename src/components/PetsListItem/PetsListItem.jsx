@@ -42,18 +42,10 @@ function PetsListItem({
         />
       </div>
       <div className={styles.containerText}>
-        <p className={styles.text}>
-          {t('pet.namePet')}: {name}
-        </p>
-        <p className={styles.text}>
-          {t('pet.birthDatePet')}: {birthday}
-        </p>
-        <p className={styles.text}>
-          {t('pet.breed')}: {breed}
-        </p>
-        <p className={styles.text}>
-          {t('pet.comments')}: {comments}
-        </p>
+        <p className={styles.text}>Name: {name}</p>
+        <p className={styles.text}>Date of birth: {birthday}</p>
+        <p className={styles.text}>Breed: {breed}</p>
+        <p className={styles.text}>Comments: {comments}</p>
       </div>
       {active ? (
         <div className={styles.loader}>

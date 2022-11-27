@@ -17,7 +17,7 @@ function AddPetsButton({ onClickBtn, customStyle }) {
     >
       {t('pet.addPet')}
       <div className={styles.imageContainer}>
-        <img className={styles.imageEllipse} src={ellipse} alt="ellipse" />
+        {/* <img className={styles.imageEllipse} src={ellipse} alt="ellipse" /> */}
         <img className={styles.imagePlus} src={plus} alt="plus" />
       </div>
     </button>
