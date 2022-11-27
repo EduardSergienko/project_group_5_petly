@@ -61,8 +61,7 @@ function NoticesPage({ onFilter = () => {} }) {
       setFilteredItems(handleAddItems(items, categoryName));
     categoryName === 'lost-found' &&
       setFilteredItems(handleAddItems(items, categoryName));
-    categoryName === 'own' ||
-      (categoryName === 'favorite' && setFilteredItems(items));
+    categoryName === 'own' && setFilteredItems(items);
   }, [categoryName, filter, items]);
 
   useEffect(() => {
