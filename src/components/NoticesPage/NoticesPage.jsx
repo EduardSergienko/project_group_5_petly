@@ -47,6 +47,7 @@ function NoticesPage({ onFilter = () => {} }) {
     if (categoryName === 'own') {
       setFilteredItems(filterItems(ownAdds));
     }
+    console.log('test');
   }, [categoryName, filter, items, setFilteredItems, myFavorite, ownAdds]);
 
   useEffect(() => {

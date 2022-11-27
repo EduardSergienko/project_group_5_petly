@@ -1,24 +1,13 @@
 @import 'variables/variables.scss';
 
 .formWrap {
-  height: max-content;
   background-color: $secondaryTextColor;
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translate(-50%);
   border-radius: 20px;
   padding: 40px 20px;
-  z-index: 9999;
 
   @media screen and (min-width: 768px) {
     padding: 40px 80px ;
     border-radius: 40px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    top: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 
@@ -96,11 +85,13 @@
 }
 
 .modalWrapper{
-
-  @media (min-width: 768px) and (max-width: 1279px) {
-    margin: 50px 0px;
-    height: 100%;
-   }
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 99;
+    padding-bottom: 20px;
+    height: max-content;
 }
 
 .fieldsetWrap{
@@ -636,73 +627,3 @@ form fieldset:first-child .secStepError{
 .errorInput{
   border: 1px solid rgb(255, 77, 77, 1);
 }
-
-// location input 
-
-// .noValidate {
-//   border-color: rgb(255, 77, 77, 1);
-// }
-
-
-// .styleLi {
-//   width: 240px;
-//   padding: 4px 12px;
-//   font-weight: 400;
-//   font-size: 18px;
-//   line-height: 25px;
-//   letter-spacing: 0.04em;
-//   color: $mainTextColor;
-//   z-index: 999;
-
-//   background: $activeInputColor;
-//   border-bottom: 1px solid rgba(245, 146, 86, 0.5);
-
-//   &:focus {
-//     outline: none;
-//   }
-
-
-//   @media screen and (min-width: 768px) {
-//     font-size: 22px;
-//     width: 448px;
-//     padding: 0 12px;
-//     line-height: 22px;
-//   }
-// }
-
-// .styleUl {
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// .stylesDiv {
-//   position: absolute;
-//   left: 0;
-//   height: 100px;
-//   overflow: scroll;
-
-//   -ms-overflow-style: none;
-//   scrollbar-width: none;
-
-//   &::-webkit-scrollbar {
-//     width: 0;
-//     height: 0;
-//   }
-
-//   @media screen and (max-width: 800px) {
-//     height: 105px;
-//   }
-
-//   @media screen and (max-width: 500px) {
-//     height: 85px;
-//   }
-// }
-
-// .spanStyles {
-//   font-weight: 500;
-// }
-
-
-// .locInpunActive{
-//   margin-bottom: 0px;
-// }

@@ -1,7 +1,9 @@
+import { useSelector } from 'react-redux';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import { cityInputValidation } from 'helpers/CityValidation';
+import { noticesSelectors } from '../../redux/notices';
 import camera from '../../image/camera.png';
 import styles from './ModalAddNotice.module.scss';
 import add from '../../image/svg/add-image.svg';
@@ -14,6 +16,8 @@ const SecondStep = ({
   handleSecondStepSubmit,
   checkCategory,
 }) => {
+  const loading = useSelector(noticesSelectors.noticeLoading);
+
   const SUPPORTED_FORMATS = [
     'image/jpg',
     'image/jpeg',
@@ -198,7 +202,11 @@ const SecondStep = ({
               >
                 Back
               </button>
-              <button className={styles.button} type="submit">
+              <button
+                className={styles.button}
+                type="submit"
+                disabled={loading ? true : false}
+              >
                 Done
               </button>
             </div>
