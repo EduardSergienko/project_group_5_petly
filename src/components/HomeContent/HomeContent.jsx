@@ -14,21 +14,12 @@ export default function HomeContent() {
         <h1 className={styles.homeTitle}>{t('home.title')}</h1>
       </Container>
       <picture className={styles.homeSection}>
-        <source
-          media="(max-width: 767px)"
-          srcSet={mainImg}
-          // sizes="100vw"
-        />
+        <source media="(max-width: 767px)" srcSet={mainImg} />
         <source
           media="(min-width: 768px) and (max-width:1279px)"
           srcSet={mainImgTab}
-          // sizes="100vw"
         />
-        <source
-          media="(min-width: 1280px)"
-          srcSet={mainImgDescktop}
-          // sizes="100vw"
-        />
+        <source media="(min-width: 1280px)" srcSet={mainImgDescktop} />
         <img className={styles.homeImg} src={`${mainImgTab}`} alt="formImage" />
       </picture>
     </section>

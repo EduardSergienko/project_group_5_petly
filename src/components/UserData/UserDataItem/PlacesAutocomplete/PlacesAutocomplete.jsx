@@ -18,7 +18,7 @@ const PlacesAutocomplete = ({
 }) => {
   const {
     ready,
-    // value,
+
     suggestions: { status, data },
     setValue,
     clearSuggestions,
@@ -32,7 +32,6 @@ const PlacesAutocomplete = ({
 
   const handleInput = e => {
     const value = e.target.value.toLowerCase().trim();
-    // setInputActive(pattern.test(value));
 
     setValue(e.target.value);
     setInputeValue(e.target.value);
@@ -54,7 +53,7 @@ const PlacesAutocomplete = ({
     ({ structured_formatting: { main_text } }) =>
     () => {
       const value = main_text.toLowerCase().trim();
-      //   setInputActive(pattern.test(value));
+
       setValue(main_text, false);
       setInputeValue(main_text);
       clearSuggestions();
@@ -73,7 +72,6 @@ const PlacesAutocomplete = ({
     };
 
   const renderSuggestions = () => {
-    // const sliceData = data.slice(0, 3);
     return data.map(suggestion => {
       const {
         place_id,
@@ -88,7 +86,6 @@ const PlacesAutocomplete = ({
             onClick={handleSelect(suggestion)}
           >
             <span className={span}>{main_text}</span>
-            {/* <small>{secondary_text}</small> */}
           </li>
         )
       );
