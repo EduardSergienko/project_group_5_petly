@@ -59,9 +59,8 @@ function UserData() {
 
     if (
       user?.avatarURL?.search('gravatar') === -1 &&
-      user?.avatarURL?.search('avatars') !== -1
+      user?.avatarURL?.search('image') !== -1
     ) {
-      // setPicture(user?.avatarURL.split('public')[1]);
       setPicture(user?.avatarURL);
     }
   }, [selectPicture, user]);
