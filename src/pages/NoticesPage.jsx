@@ -8,7 +8,7 @@ export default function NoticesPage() {
       <ScrollToTop
         smooth
         component={<ScrollToTopBtn />}
-        style={{ boxShadow: 'none' }}
+        style={{ boxShadow: 'none', backgroundColor: 'transparent' }}
       />
     </main>
   );
