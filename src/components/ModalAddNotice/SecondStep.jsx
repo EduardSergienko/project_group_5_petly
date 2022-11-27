@@ -1,6 +1,7 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
+import { cityInputValidation } from 'helpers/CityValidation';
 import camera from '../../image/camera.png';
 import styles from './ModalAddNotice.module.scss';
 import add from '../../image/svg/add-image.svg';
@@ -25,6 +26,11 @@ const SecondStep = ({
     location: Yup.string()
       .min(2, 'Location is too short')
       .max(48, 'Location is too long')
+      .test(
+        'locationFormat',
+        'Format should be "city, region"',
+        cityInputValidation
+      )
       .required('Required'),
     price: Yup.number().when([], {
       is: () => checkCategory(),
