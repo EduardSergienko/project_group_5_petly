@@ -52,6 +52,7 @@ const News = () => {
       setIsLoaded(false);
     } catch (error) {
       setIsLoaded(false);
+
       return notices.showError('Sorry, no news found, try again');
     }
   }
@@ -75,8 +76,8 @@ const News = () => {
   return (
     <div className={styles.newsWrap}>
       <h1 className={styles.title}>{t('news.title')}</h1>
-      {isLoaded && <Loader />}
       <FilterInput onSubmit={searchNews} onChange={handleInputChange} />
+      {isLoaded && <Loader />}
       {searchingNewsData ? (
         <ul className={styles.box}>
           {searchingNewsData.map(({ _id, title, description, date, url }) => {
@@ -111,6 +112,7 @@ const News = () => {
           dataLength={items.length}
           next={handleShowMore}
           hasMore={hasMore}
+          scrollThreshold={1}
         >
           {items.map(({ _id, title, description, date, url }) => {
             return (
