@@ -12,7 +12,6 @@ import FilterInput from '../../helpers/FilterInput';
 import { noticesSelectors } from '../../redux/notices';
 import notices from 'helpers/Notification/Notification';
 import { noticesOperations } from '../../redux/notices';
-// import Loader from 'components/Loader';
 
 import styles from './NoticesPage.module.scss';
 
@@ -28,9 +27,11 @@ function NoticesPage({ onFilter = () => {} }) {
   const loading = useSelector(noticesSelectors.noticeLoading);
   const [filteredItems, setFilteredItems] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalActive, setModalActive] = useState(false);
   const isNoticeAdded = useSelector(noticesSelectors.getNoticeAdded);
   const isNoticeAddedError = useSelector(noticesSelectors.getNoticeAddError);
-  const [modalActive, setModalActive] = useState(false);
+  const noticeRemoved = useSelector(noticesSelectors.getNoticeRemoved);
+  const removeError = useSelector(noticesSelectors.getNoticeRemoveError);
 
   useEffect(() => {
     const filterItems = arr => {
@@ -47,8 +48,21 @@ function NoticesPage({ onFilter = () => {} }) {
     if (categoryName === 'own') {
       setFilteredItems(filterItems(ownAdds));
     }
-    console.log('test');
   }, [categoryName, filter, items, setFilteredItems, myFavorite, ownAdds]);
+
+  useEffect(() => {
+    const handleAddItems = (arr, category) => {
+      return arr?.filter(item => item.category === category && item);
+    };
+
+    categoryName === 'sell' &&
+      setFilteredItems(handleAddItems(items, categoryName));
+    categoryName === 'for-free' &&
+      setFilteredItems(handleAddItems(items, categoryName));
+    categoryName === 'lost-found' &&
+      setFilteredItems(handleAddItems(items, categoryName));
+    categoryName === 'own' && setFilteredItems(items);
+  }, [categoryName, filter, items]);
 
   useEffect(() => {
     categoryName === 'sell' &&
@@ -83,6 +97,12 @@ function NoticesPage({ onFilter = () => {} }) {
     };
     handleBodyOverflow();
   }, [isModalOpen]);
+
+  useEffect(() => {
+    noticeRemoved && notices.showSuccess('Notice removed');
+
+    removeError && notices.showError('Something went wrong, try again');
+  }, [noticeRemoved, removeError]);
 
   const handleOpenModal = () => {
     isLoggedIn

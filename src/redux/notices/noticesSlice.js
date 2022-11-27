@@ -92,6 +92,7 @@ const noticesSlice = createSlice({
       state.loading = true;
       state.noticeRemoved = false;
       state.noticeAddError = null;
+      state.noticeAdded = false;
       state.noticeRemovedError = false;
       Loading.arrows({
         svgColor: '#f59256',
