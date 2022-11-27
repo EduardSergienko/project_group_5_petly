@@ -61,8 +61,7 @@ function ModalNotice({ active, setActive }) {
             <div className={styles.containerImage}>
               <img
                 className={styles.image}
-                src={`https://fetch-friend.herokuapp.com/${more?.petImageUrl}`}
-                // src={more?.petImageUrl}
+                src={more?.petImageUrl}
                 alt={`photo_${more?.petName}`}
                 onError={e => {
                   e.target.src = noPhoto;

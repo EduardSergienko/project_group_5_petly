@@ -99,7 +99,7 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
     <div className={styles.item} key={item?._id}>
       <div className={styles.imgWrapper}>
         <img
-          src={`https://fetch-friend.herokuapp.com/${item?.petImageUrl}`}
+          src={item?.petImageUrl}
           alt="Pet"
           className={styles.img}
           onError={e => {

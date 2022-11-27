@@ -96,11 +96,7 @@ function UserData() {
             {picture || selectPicture ? (
               <img
                 className={styles.image}
-                src={
-                  picture && !selectPicture
-                    ? `https://fetch-friend.herokuapp.com/${picture}`
-                    : selectPicture
-                }
+                src={picture && !selectPicture ? picture : selectPicture}
                 alt="avatar"
                 onError={e => {
                   e.target.src = noUser;
