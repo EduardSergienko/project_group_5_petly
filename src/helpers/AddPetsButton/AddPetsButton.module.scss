@@ -18,6 +18,10 @@
   // @media screen and (max-width: 768px) {
   //   display: none;
   // }
+
+  &:hover .imageContainer {
+    background-color: $hoverOrangeColor;
+  }
 }
 
 .imageContainer {
@@ -25,11 +29,17 @@
   margin-left: 12px;
   display: flex;
   align-items: center;
+
+  background-color: $orangeColor;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.imageEllipse {
-  width: 40px;
-}
+// .imageEllipse {
+//   width: 40px;
+// }
 
 .imagePlus {
   position: absolute;

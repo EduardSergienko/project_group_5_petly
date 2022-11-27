@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
-import ellipse from '../../image/ellipse.png';
+// import ellipse from '../../image/ellipse.png';
 import plus from '../../image/plus.png';
 
 import styles from './AddPetsButton.module.scss';
@@ -17,7 +17,7 @@ function AddPetsButton({ onClickBtn, customStyle }) {
     >
       {t('pet.addPet')}
       <div className={styles.imageContainer}>
-        <img className={styles.imageEllipse} src={ellipse} alt="ellipse" />
+        {/* <img className={styles.imageEllipse} src={ellipse} alt="ellipse" /> */}
         <img className={styles.imagePlus} src={plus} alt="plus" />
       </div>
     </button>

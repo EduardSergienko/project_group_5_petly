@@ -23,6 +23,7 @@ const News = () => {
       try {
         Loading.arrows({
           svgColor: '#f59256',
+          backgroundColor: 'rgba(0,0,0,0.1)',
         });
 
         const { data } = await apiServices.getNews(page);
@@ -53,6 +54,7 @@ const News = () => {
     try {
       Loading.arrows({
         svgColor: '#f59256',
+        backgroundColor: 'rgba(0,0,0,0.1)',
       });
       const { data: searchData } = await apiServices.searchNews(search.value);
       setSearchingNewsData(searchData);
