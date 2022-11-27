@@ -19,7 +19,7 @@ function PetsList() {
 
   return ownPosts.length === 0 ? (
     <div className={styles.containerImg}>
-      <h2 className={styles.title}>Your sheet and pets are empty</h2>
+      <h2 className={styles.title}>You have no ads created</h2>
       <img className={styles.img} src={leaf} alt="leaf" />
     </div>
   ) : (
