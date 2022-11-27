@@ -38,7 +38,8 @@
     "uploadFoto": "Upload your photo",
     "choisePhoto": "Choise your photo",
     "editPhoto": "Edit photo",
-    "logOut": "Log Out"
+    "logOut": "Log Out",
+    "noPets": "You have no ads created"
   },
   "pet": {
     "addPet": "Add pet",
