@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
 import BurgerBtn from 'components/BurgerBtn/BurgerBtn';
+import CloseMenuBtn from 'components/CloseMenuBtn/CloseMenuBtn';
 import LanguageSwitcher from 'components/LanguageSwitcher';
 
 export default function Navigation() {
@@ -71,7 +72,11 @@ export default function Navigation() {
           {isLoggedIn ? <UserNav /> : <AuthNav />}
         </nav>
       )}
-      <BurgerBtn toggleNav={showNavBar} />
+      {isMenuOpen ? (
+        <CloseMenuBtn toggleNav={showNavBar} />
+      ) : (
+        <BurgerBtn toggleNav={showNavBar} />
+      )}
     </>
   );
 }
