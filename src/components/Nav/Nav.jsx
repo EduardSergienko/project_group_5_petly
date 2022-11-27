@@ -28,6 +28,7 @@ export default function Nav({ toggleMenu }) {
           {t('nav.news')}
         </NavLink>
         <NavLink
+          onClick={toggleMenu}
           className={pageActive ? styles.active : styles.navLink}
           to="/notices/sell"
         >
