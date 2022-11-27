@@ -186,7 +186,7 @@ function Modal2({
           {!inputActiveComments &&
             commentsValue.length !== 0 &&
             commentsValue.length < 8 && (
-              <p className={styles.textError}>{t('pet.atLeast2')}</p>
+              <p className={styles.textError}>{t('pet.atLeast8')}</p>
             )}
           {!inputActiveComments &&
             commentsValue.length !== 0 &&
@@ -200,7 +200,7 @@ function Modal2({
 
         <div className={styles.buttonContainer}>
           <button className={styles.cancel} onClick={onClickBackBtn}>
-            Back
+            {t('pet.back')}
           </button>
           <button
             className={`${styles.next} ${
@@ -213,7 +213,7 @@ function Modal2({
             }`}
             onClick={onClickDoneBtn}
           >
-            Done
+            {t('pet.done')}
           </button>
         </div>
       </form>

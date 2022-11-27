@@ -1,9 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import styles from './NoticesCategoriesNav.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 function NoticesCategoriesNav() {
+  const { t } = useTranslation();
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+
   return (
     <ul className={styles.list}>
       <li className={styles.item}>
@@ -13,7 +16,7 @@ function NoticesCategoriesNav() {
           }
           to="/notices/lost-found"
         >
-          Lost/Found
+          {t('findpet.lostFound')}
         </NavLink>
       </li>
       <li className={styles.item}>
@@ -23,7 +26,7 @@ function NoticesCategoriesNav() {
           }
           to="/notices/for-free"
         >
-          In good hands
+          {t('findpet.goodHands')}
         </NavLink>
       </li>
       <li className={styles.item}>
@@ -33,7 +36,7 @@ function NoticesCategoriesNav() {
           }
           to="/notices/sell"
         >
-          Sell
+          {t('findpet.sell')}
         </NavLink>
       </li>
       {isLoggedIn && (
@@ -44,7 +47,7 @@ function NoticesCategoriesNav() {
             }
             to="/notices/favorite"
           >
-            Favorite ads
+            {t('findpet.favorite')}
           </NavLink>
         </li>
       )}
@@ -56,7 +59,7 @@ function NoticesCategoriesNav() {
             }
             to="/notices/own"
           >
-            My ads
+            {t('findpet.myAds')}
           </NavLink>
         </li>
       )}
