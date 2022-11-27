@@ -1,7 +1,8 @@
 import OurFriends from 'components/OurFriendsCards/OurFriendsCards';
 import apiServices from 'services/apiServices';
 import { useEffect, useState } from 'react';
-
+import ScrollToTop from 'react-scroll-to-top';
+import ScrollToTopBtn from 'components/ScrollToTopBtn/ScrollToTopBtn';
 const OurFriendsPage = () => {
   const [arr, setArr] = useState([]);
 
@@ -14,7 +15,16 @@ const OurFriendsPage = () => {
     }
     showFriends();
   }, []);
-  return <OurFriends data={arr} />;
+  return (
+    <main>
+      <OurFriends data={arr} />
+      <ScrollToTop
+        smooth
+        component={<ScrollToTopBtn />}
+        style={{ boxShadow: 'none' }}
+      />
+    </main>
+  );
 };
 
 export default OurFriendsPage;

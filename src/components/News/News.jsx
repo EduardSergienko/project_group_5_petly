@@ -7,7 +7,8 @@ import Loader from 'components/Loader';
 import FilterInput from 'helpers/FilterInput';
 import notices from 'helpers/Notification';
 import apiServices from 'services/apiServices';
-
+import ScrollToTop from 'react-scroll-to-top';
+import ScrollToTopBtn from 'components/ScrollToTopBtn/ScrollToTopBtn';
 const News = () => {
   const { t } = useTranslation();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -141,6 +142,11 @@ const News = () => {
           })}
         </InfiniteScroll>
       )}
+      <ScrollToTop
+        smooth
+        component={<ScrollToTopBtn />}
+        style={{ boxShadow: 'none' }}
+      />
     </div>
   );
 };
