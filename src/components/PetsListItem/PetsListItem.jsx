@@ -21,7 +21,7 @@ function PetsListItem({
   activeLoader,
   active,
 }) {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const deleteButton = id => {

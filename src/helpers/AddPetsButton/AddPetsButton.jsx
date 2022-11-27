@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
-import ellipse from '../../image/ellipse.png';
+// import ellipse from '../../image/ellipse.png';
 import plus from '../../image/plus.png';
 
 import styles from './AddPetsButton.module.scss';
