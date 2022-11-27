@@ -30,7 +30,7 @@ function PetsData({ modalActivefForTablet, setmodalActivefForTablet }) {
           customStyle={!desctopWidth ? { display: 'none' } : { null: 'none' }}
         />
       </div>
-      <div>
+      <div className={styles.containerList}>
         <PetsList />
       </div>
       <ModalAddsPet
