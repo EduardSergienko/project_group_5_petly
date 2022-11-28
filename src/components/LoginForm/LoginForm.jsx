@@ -25,12 +25,12 @@ const LoginForm = () => {
 
   const validationSchema = Yup.object({
     email: Yup.string()
-      .email('auth.invlidEmail')
+      .email('auth.invalidEmail')
       .required('auth.requiredValue'),
     password: Yup.string()
       .matches(/^\S*$/, 'auth.notWhitespace')
-      .min(7, 'auth.tooShort')
-      .max(32, 'auth.tooLong')
+      .min(7, 'auth.passwordShort')
+      .max(32, 'auth.passwordLong')
       .required('auth.requiredValue'),
   });
 
@@ -61,7 +61,7 @@ const LoginForm = () => {
                 type="email"
                 name="email"
                 className={styles.input}
-                placeholder="Email"
+                placeholder={t('auth.emailPlaceholder')}
               />
               {errors.email && touched.email && (
                 <div className={styles.errorMsg}>{t(errors.email)}</div>
@@ -72,7 +72,7 @@ const LoginForm = () => {
                 type={show ? 'text' : 'password'}
                 name="password"
                 className={styles.input}
-                placeholder="Password"
+                placeholder={t('auth.passwordPlaceholder')}
               />
               <span className={styles.icon} onClick={() => setShow(!show)}>
                 {show && (

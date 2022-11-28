@@ -174,7 +174,7 @@ function Modal1({
             name="name"
             value={nameValue}
             onChange={handleInputChange}
-            placeholder="Type name pet"
+            placeholder={t('pet.namePlaceholder')}
             required
           />
           {!inputActiveName &&
@@ -212,7 +212,7 @@ function Modal1({
             mask="99.99.9999"
             value={birthdayValue}
             onChange={handleInputChange}
-            placeholder="Type date of birth"
+            placeholder={t('pet.birthPlaceholder')}
             required
           />
           {!inputActiveBirthday && birthdayValue.length !== 0 && (

@@ -16,6 +16,10 @@ $inputBorder: 1px solid rgba(245, 146, 86, 0.5);
 // shadows
 $focusInputShadow: 0 0 0 0.1rem rgba(245, 146, 86, 0.5);
 
+// header height
+$mobileHeaderHeight: 54px;
+$tabletHeaderHeight: 68px;
+
 :export {
   orangeColor: $orangeColor;
   mainTextColor: $mainTextColor;

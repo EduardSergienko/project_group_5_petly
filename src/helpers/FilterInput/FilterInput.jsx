@@ -1,9 +1,12 @@
 import { IoMdSearch } from 'react-icons/io';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 
 import styles from './FilterInput.module.scss';
 
 const FilterInput = ({ onSubmit, onChange, cssClass }) => {
+  const { t } = useTranslation();
+
   return (
     <form onSubmit={onSubmit} className={`${styles.search} ${cssClass}`}>
       <label htmlFor="search" className={styles.label}>
@@ -11,7 +14,7 @@ const FilterInput = ({ onSubmit, onChange, cssClass }) => {
           type="text"
           name="search"
           id="search"
-          placeholder="Search"
+          placeholder={t('news.search')}
           className={styles.input}
           onChange={onChange}
         />

@@ -1,7 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import styles from './AddNoticeButton.module.scss';
 import plus from '../../../image/svg/plus-button.svg';
 
 function AddNoticeButton({ handleOpenModal, isLoggedIn }) {
+  const { t } = useTranslation();
+
   return (
     <>
       <button
@@ -11,7 +14,7 @@ function AddNoticeButton({ handleOpenModal, isLoggedIn }) {
         onClick={handleOpenModal}
       >
         <img src={plus} className={styles.addNoticeImage} alt="plus" />
-        <span className={styles.addNoticeSpan}>Add pet</span>
+        <span className={styles.addNoticeSpan}>{t('pet.addPet')}</span>
       </button>
     </>
   );

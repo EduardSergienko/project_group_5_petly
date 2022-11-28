@@ -15,12 +15,12 @@ const FirstStep = ({ onNextStep, formData }) => {
 
   const validationFirstStepSchema = Yup.object({
     email: Yup.string()
-      .email('auth.invlidEmail')
+      .email('auth.invalidEmail')
       .required('auth.requiredValue'),
     password: Yup.string()
       .matches(/^\S*$/, 'auth.notWhitespace')
-      .min(7, 'auth.tooShort')
-      .max(32, 'auth.tooLong')
+      .min(7, 'auth.passwordShort')
+      .max(32, 'auth.passwordLong')
       .required('auth.requiredValue'),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], 'auth.passwordsMatch')
@@ -44,7 +44,7 @@ const FirstStep = ({ onNextStep, formData }) => {
               className={styles.input}
               name="email"
               type="text"
-              placeholder="Email"
+              placeholder={t('auth.emailPlaceholder')}
             />
             {errors.email && touched.email && (
               <div className={styles.errorMsg}>{t(errors.email)}</div>
@@ -56,7 +56,7 @@ const FirstStep = ({ onNextStep, formData }) => {
               className={styles.input}
               name="password"
               type={showPassword ? 'text' : 'password'}
-              placeholder="Password"
+              placeholder={t('auth.passwordPlaceholder')}
             />
             <span
               className={styles.icon}
@@ -87,7 +87,7 @@ const FirstStep = ({ onNextStep, formData }) => {
               className={styles.input}
               name="confirmPassword"
               type={showConfPassword ? 'text' : 'password'}
-              placeholder="Confirm Password"
+              placeholder={t('auth.confirmPlaceholder')}
             />
             <span
               className={styles.icon}

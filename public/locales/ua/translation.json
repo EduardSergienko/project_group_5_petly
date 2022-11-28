@@ -16,7 +16,7 @@
     "registerSuccess": "Вітаємо, {{user}}! Ви успішно зареєструвалися",
     "hint": "Реєструвалися раніше? ",
     "loginHint": "Ще не зареєстровані? ",
-    "invlidEmail": "Неправильний формат електронної пошти",
+    "invalidEmail": "Неправильний формат електронної пошти",
     "requiredValue": "Треба заповнити",
     "notWhitespace": "Пробіли не допускаються",
     "passwordShort": "Пароль занадто короткий",
@@ -25,7 +25,14 @@
     "nameShort": "Ім'я занадто коротке",
     "nameAlpabets": "Тільки літери",
     "locationShort": "Місцеположення занадто коротке",
-    "invlidPhone": "Неправильний формат номера"
+    "invalidPhone": "Неправильний формат номера",
+    "cityFormat": "Формат має бути: місто, область",
+    "emailPlaceholder": "Електронна пошта",
+    "passwordPlaceholder": "Пароль",
+    "confirmPlaceholder": "Підтвердження пароля",
+    "namePlaceholder": "Ім'я",
+    "cityPlaceholder": "Місто, область",
+    "phonePlaceholder": "Мобільний телефон"
   },
   "user": {
     "myTitle": "Особиста інформація",
@@ -60,7 +67,11 @@
     "noMore120": "Не більше 120 символів",
     "data": "ДД.ММ.РРРР",
     "back": "Назад",
-    "done": "Прийняти"
+    "done": "Прийняти",
+    "namePlaceholder": "Введіть ім'я домашньої тварини",
+    "birthPlaceholder": "Введіть дату народження",
+    "breedPlaceholder": "Введіть породу",
+    "commentsPlaceholder": "Напишіть коментар"
   },
   "findpet": {
     "success": "Оголошення успішно додано",
@@ -79,6 +90,7 @@
     "title": "Наші партнери"
   },
   "news": {
-    "title": "Новини"
+    "title": "Новини",
+    "search": "Пошук"
   }
 }
