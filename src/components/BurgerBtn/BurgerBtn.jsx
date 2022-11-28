@@ -2,7 +2,13 @@ import styles from './BurgerBtn.module.scss';
 
 export default function BurgerBtn({ toggleNav }) {
   return (
-    <button onClick={toggleNav} className={styles.burgerBtn} type="button">
+    <button
+      onClick={toggleNav}
+      className={styles.burgerBtn}
+      type="button"
+      id="burger"
+      aria-label="burger"
+    >
       <svg
         width="40"
         height="40"

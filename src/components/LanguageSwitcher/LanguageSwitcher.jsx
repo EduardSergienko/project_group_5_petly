@@ -46,6 +46,7 @@ const LanguageSwitcher = () => {
             name="language-switch"
             value={lng}
             onChange={onOptionChange}
+            aria-label="language-switch"
           />
           <label
             className={styles.languageLabel}
