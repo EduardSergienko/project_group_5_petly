@@ -4,7 +4,7 @@
   padding-top: 42px;
 
   @media screen and (min-width: 768px) {
-    top: 27%;
+    top: 18%;
     left: 50%;
     position: absolute;
     transform: translateX(-50%);
@@ -14,14 +14,28 @@
     background-color: $secondaryTextColor;
     box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
     border-radius: 40px;
+
+    @media screen and (orientation: landscape) {
+      margin-top: 25px;
+    }
   }
 
   @media screen and (min-width: 1280px) {
-    top: 50%;
+    top: 17%;
     left: 50%;
 
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     padding: 60px 80px;
+  }
+}
+
+.formWrap::after {
+  @media screen and (min-width: 768px) and (orientation: landscape) {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    height: 1px;
+    width: 1px;
   }
 }
 
