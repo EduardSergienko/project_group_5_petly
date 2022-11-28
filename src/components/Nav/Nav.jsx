@@ -16,34 +16,32 @@ export default function Nav({ toggleMenu }) {
   }, [toggleMenu, location.pathname]);
 
   return (
-    <>
-      <ul className={styles.navList}>
-        <NavLink
-          onClick={toggleMenu}
-          className={({ isActive }) =>
-            isActive ? styles.active : styles.navLink
-          }
-          to="/news"
-        >
-          {t('nav.news')}
-        </NavLink>
-        <NavLink
-          onClick={toggleMenu}
-          className={pageActive ? styles.active : styles.navLink}
-          to="/notices/sell"
-        >
-          {t('nav.findpet')}
-        </NavLink>
-        <NavLink
-          onClick={toggleMenu}
-          className={({ isActive }) =>
-            isActive ? styles.active : styles.navLink
-          }
-          to="/friends"
-        >
-          {t('nav.ourfriends')}
-        </NavLink>
-      </ul>
-    </>
+    <div className={styles.navList}>
+      <NavLink
+        onClick={toggleMenu}
+        className={({ isActive }) =>
+          isActive ? styles.active : styles.navLink
+        }
+        to="/news"
+      >
+        {t('nav.news')}
+      </NavLink>
+      <NavLink
+        onClick={toggleMenu}
+        className={pageActive ? styles.active : styles.navLink}
+        to="/notices/sell"
+      >
+        {t('nav.findpet')}
+      </NavLink>
+      <NavLink
+        onClick={toggleMenu}
+        className={({ isActive }) =>
+          isActive ? styles.active : styles.navLink
+        }
+        to="/friends"
+      >
+        {t('nav.ourfriends')}
+      </NavLink>
+    </div>
   );
 }
