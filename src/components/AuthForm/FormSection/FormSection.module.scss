@@ -39,7 +39,6 @@
   }
 
   @media screen and (max-width: 1023px) and (orientation: landscape) {
-    height: calc(100vh + 100px);
-    background-size: 100% 100%;
+    height: calc(100vh + 160px);
   }
 }
