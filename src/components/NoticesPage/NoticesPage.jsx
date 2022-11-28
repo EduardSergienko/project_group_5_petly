@@ -129,7 +129,6 @@ function NoticesPage({ onFilter = () => {} }) {
     const { search } = evt.target.elements;
 
     if (search.value.trim() === '') {
-      handleNoticeCategoryItems();
       return;
     }
 
