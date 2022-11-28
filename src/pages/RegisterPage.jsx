@@ -1,14 +1,15 @@
 import AuthForm from 'components/AuthForm';
-import AdaptiveImage from 'components/AdaptiveImage';
+import FormSection from 'components/AuthForm/FormSection';
 import Container from 'components/Container/Container';
 
 const RegisterPage = () => {
   return (
     <main>
-      <Container>
-        <AuthForm />
-      </Container>
-      <AdaptiveImage />
+      <FormSection>
+        <Container> 
+          <AuthForm />
+        </Container>
+       </FormSection>
     </main>
   );
 };

@@ -16,7 +16,7 @@
     "registerSuccess": "Congratulations, {{user}}! You have successfully registered",
     "hint": "Already have an account? ",
     "loginHint": "Don't have an account? ",
-    "invlidEmail": "Invalid email address",
+    "invalidEmail": "Invalid email address",
     "requiredValue": "Required",
     "notWhitespace": "Whitespace is not allowed",
     "passwordShort": "Password is too short",
@@ -25,7 +25,14 @@
     "nameShort": "Name is too short",
     "nameAlpabets": "Only alphabets are allowed",
     "locationShort": "Location is too short",
-    "invlidPhone": "Phone is not valid"
+    "invalidPhone": "Phone is not valid",
+    "cityFormat": "Format should be: city, region",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "confirmPlaceholder": "Confirm Password",
+    "namePlaceholder": "Name",
+    "cityPlaceholder": "City, region",
+    "phonePlaceholder": "Mobile phone"
   },
   "user": {
     "myTitle": "My information",
@@ -60,7 +67,11 @@
     "noMore120": "No more than 120 characters",
     "data": "DD.MM.YYYY",
     "back": "Back",
-    "done": "Done"
+    "done": "Done",
+    "namePlaceholder": "Type name pet",
+    "birthPlaceholder": "Type date of birth",
+    "breedPlaceholder": "Type breed",
+    "commentsPlaceholder": "Type comments"
   },
   "findpet": {
     "success": "Notice successfully added",
@@ -79,6 +90,7 @@
     "title": "Our friends"
   },
   "news": {
-    "title": "News"
+    "title": "News",
+    "search": "Search"
   }
 }
