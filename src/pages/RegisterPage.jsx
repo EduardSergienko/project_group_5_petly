@@ -1,11 +1,16 @@
 import AuthForm from 'components/AuthForm';
 import FormSection from 'components/AuthForm/FormSection';
+import Container from 'components/Container/Container';
 
 const RegisterPage = () => {
   return (
-    <FormSection>
-      <AuthForm />
-    </FormSection>
+    <main>
+      <FormSection>
+        <Container> 
+          <AuthForm />
+        </Container>
+       </FormSection>
+    </main>
   );
 };
 
