@@ -1,0 +1,45 @@
+@import 'variables/variables.scss';
+
+.background {
+  height: calc(100vh - $mobileHeaderHeight);
+  background-image: url('../../../image/formsPictures/formImg.png');
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url('../../../image/formsPictures/formImg@2x.png');
+  }
+
+  @media screen and (min-width: 768px) {
+    height: calc(100vh - $tabletHeaderHeight);
+    background-image: url('../../../image/formsPictures/groupMedium.png');
+  }
+
+  @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
+    screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+    screen and (min-width: 768px) and (min-resolution: 192dpi),
+    screen and (min-width: 768px) and (min-resolution: 2dppx) {
+    background-image: url('../../../image/formsPictures/groupMedium@2x.png');
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-image: url('../../../image/formsPictures/groupLarge.png');
+  }
+
+  @media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
+    screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2),
+    screen and (min-width: 1280px) and (min-resolution: 192dpi),
+    screen and (min-width: 1280px) and (min-resolution: 2dppx) {
+    background-image: url('../../../image/formsPictures/groupLarge@2x.png');
+  }
+
+  @media screen and (max-width: 1023px) and (orientation: landscape) {
+    height: calc(100vh + 100px);
+    background-size: 100% 100%;
+  }
+}

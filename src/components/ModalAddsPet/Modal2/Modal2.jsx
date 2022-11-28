@@ -179,7 +179,7 @@ function Modal2({
             name="comments"
             value={commentsValue}
             onChange={handleInputChange}
-            placeholder="Type comments"
+            placeholder={t('pet.commentsPlaceholder')}
             rows="5"
             required
           ></textarea>

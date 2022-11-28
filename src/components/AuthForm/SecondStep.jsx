@@ -18,15 +18,11 @@ function SecondStep({ onNextStep, onPrevStep, formData, loading }) {
     location: Yup.string()
       .min(4, 'auth.locationShort')
       .matches(/^[a-zA-ZА-ЩЬЮЯҐЄІЇа-щьюяґєії'\s(,)]+$/, 'auth.nameAlpabets')
-      .test(
-        'locationFormat',
-        'Format should be "city, region"',
-        cityInputValidation
-      )
+      .test('locationFormat', 'auth.cityFormat', cityInputValidation)
       .required('auth.requiredValue'),
     phone: Yup.string()
       .required('auth.requiredValue')
-      .test('phone', 'auth.invlidPhone', value => {
+      .test('phone', 'auth.invalidPhone', value => {
         const valLengthWithoutDashes = value?.replace(/-|_/g, '').length;
         return valLengthWithoutDashes === 13;
       }),
@@ -49,7 +45,7 @@ function SecondStep({ onNextStep, onPrevStep, formData, loading }) {
               className={styles.input}
               name="name"
               type="text"
-              placeholder="Name"
+              placeholder={t('auth.namePlaceholder')}
             />
             {errors.name && touched.name && (
               <div className={styles.errorMsg}>{t(errors.name)}</div>
@@ -61,7 +57,7 @@ function SecondStep({ onNextStep, onPrevStep, formData, loading }) {
               className={styles.input}
               name="location"
               type="text"
-              placeholder="City, region"
+              placeholder={t('auth.cityPlaceholder')}
             />
             {errors.location && touched.location && (
               <div className={styles.errorMsg}>{t(errors.location)}</div>
@@ -76,7 +72,7 @@ function SecondStep({ onNextStep, onPrevStep, formData, loading }) {
                   className={styles.input}
                   mask="+380999999999"
                   id="phone"
-                  placeholder="Mobile phone"
+                  placeholder={t('auth.phonePlaceholder')}
                 />
               )}
             </Field>

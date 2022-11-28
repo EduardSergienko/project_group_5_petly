@@ -24,6 +24,11 @@ export default function Navigation() {
     window.addEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    if (isMenuOpen) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'visible';
+  }, [isMenuOpen]);
+
   const showNavBar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
