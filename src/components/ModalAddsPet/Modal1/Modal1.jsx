@@ -235,7 +235,7 @@ function Modal1({
             name="breed"
             value={breedValue}
             onChange={handleInputChange}
-            placeholder="Type breed"
+            placeholder={t('pet.breedPlaceholder')}
             required
           />
           {!inputActiveBreed &&
