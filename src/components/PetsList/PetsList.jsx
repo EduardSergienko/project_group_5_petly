@@ -20,7 +20,7 @@ function PetsList() {
     setLoader(id);
   };
 
-  return ownPosts.length === 0 ? (
+  return ownPosts?.length === 0 ? (
     <div className={styles.containerImg}>
       <h2 className={styles.title}>{t('user.noPets')}</h2>
       <img className={styles.img} src={leaf} alt="leaf" />
