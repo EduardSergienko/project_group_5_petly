@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useTranslation } from 'react-i18next';
 import styles from 'components/News/News.module.scss';
-
+import Container from 'components/Container';
 import FilterInput from 'helpers/FilterInput';
 import notices from 'helpers/Notification';
 import apiServices from 'services/apiServices';
@@ -84,77 +84,82 @@ const News = () => {
 
   return (
     <div className={styles.newsWrap}>
-      <h1 className={styles.title}>{t('news.title')}</h1>
-      <FilterInput onSubmit={searchNews} onChange={handleInputChange} />
-      {/* {isLoaded && <Loader />} */}
-      {searchingNewsData ? (
-        <ul className={styles.box}>
-          {searchingNewsData.map(({ _id, title, description, date, url }) => {
-            return (
-              <li key={_id} className={styles.newsItem}>
-                <article>
-                  <h2 className={styles.articleName}>
-                    {shortenText(title, 50)}
-                  </h2>
-                  <p className={styles.text}>{shortenText(description, 225)}</p>
-                  <div className={styles.additional}>
-                    <span className={styles.date}>
-                      {format(new Date(date), 'dd/MM/yyyy')}
-                    </span>
-                    <a
-                      href={url}
-                      className={styles.readMore}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Read more
-                    </a>
-                  </div>
-                </article>
-              </li>
-            );
-          })}
-        </ul>
-      ) : (
-        <InfiniteScroll
-          className={styles.box}
-          dataLength={items.length}
-          next={handleShowMore}
-          hasMore={hasMore}
-          scrollThreshold={1}
-        >
-          {items.map(({ _id, title, description, date, url }) => {
-            return (
-              <li key={_id} className={styles.newsItem}>
-                <article>
-                  <h2 className={styles.articleName}>
-                    {shortenText(title, 50)}
-                  </h2>
-                  <p className={styles.text}>{shortenText(description, 225)}</p>
-                  <div className={styles.additional}>
-                    <span className={styles.date}>
-                      {format(new Date(date), 'dd/MM/yyyy')}
-                    </span>
-                    <a
-                      href={url}
-                      className={styles.readMore}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Read more
-                    </a>
-                  </div>
-                </article>
-              </li>
-            );
-          })}
-        </InfiniteScroll>
-      )}
-      <ScrollToTop
-        smooth
-        component={<ScrollToTopBtn />}
-        style={{ boxShadow: 'none' }}
-      />
+      <Container>
+        <h1 className={styles.title}>{t('news.title')}</h1>
+        <FilterInput onSubmit={searchNews} onChange={handleInputChange} />
+        {searchingNewsData ? (
+          <ul className={styles.box}>
+            {searchingNewsData.map(({ _id, title, description, date, url }) => {
+              return (
+                <li key={_id} className={styles.newsItem}>
+                  <article>
+                    <h2 className={styles.articleName}>
+                      {shortenText(title, 50)}
+                    </h2>
+                    <p className={styles.text}>
+                      {shortenText(description, 225)}
+                    </p>
+                    <div className={styles.additional}>
+                      <span className={styles.date}>
+                        {format(new Date(date), 'dd/MM/yyyy')}
+                      </span>
+                      <a
+                        href={url}
+                        className={styles.readMore}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Read more
+                      </a>
+                    </div>
+                  </article>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <InfiniteScroll
+            className={styles.box}
+            dataLength={items.length}
+            next={handleShowMore}
+            hasMore={hasMore}
+            scrollThreshold={1}
+          >
+            {items.map(({ _id, title, description, date, url }) => {
+              return (
+                <li key={_id} className={styles.newsItem}>
+                  <article>
+                    <h2 className={styles.articleName}>
+                      {shortenText(title, 50)}
+                    </h2>
+                    <p className={styles.text}>
+                      {shortenText(description, 225)}
+                    </p>
+                    <div className={styles.additional}>
+                      <span className={styles.date}>
+                        {format(new Date(date), 'dd/MM/yyyy')}
+                      </span>
+                      <a
+                        href={url}
+                        className={styles.readMore}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Read more
+                      </a>
+                    </div>
+                  </article>
+                </li>
+              );
+            })}
+          </InfiniteScroll>
+        )}
+        <ScrollToTop
+          smooth
+          component={<ScrollToTopBtn />}
+          style={{ boxShadow: 'none' }}
+        />
+      </Container>
     </div>
   );
 };

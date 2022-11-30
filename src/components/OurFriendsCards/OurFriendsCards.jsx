@@ -10,8 +10,8 @@ const OurFriends = ({ data }) => {
     return `${from} : ${to}`;
   };
   return (
-    <Container>
-      <section className={styles.ourFriendsSection}>
+    <section className={styles.ourFriendsSection}>
+      <Container>
         <h2 className={styles.Title}>{t('ourFriends.title')}</h2>
         <div className={styles.FriendsThumb}>
           {data.map(
@@ -106,8 +106,8 @@ const OurFriends = ({ data }) => {
             )
           )}
         </div>
-      </section>
-    </Container>
+      </Container>
+    </section>
   );
 };
 

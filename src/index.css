@@ -75,3 +75,25 @@ img {
   border-radius: 10px;
   color: #111111;
 }
+/* .hidscroll::-webkit-scrollbar {
+  display: none;
+} */
+
+::-webkit-scrollbar {
+  position: fixed;
+  /* chrome based */
+  width: 10px;
+  /* ширина scrollbar'a */
+  background: transparent;
+  /* опционально */
+}
+::-webkit-scrollbar-thumb {
+  background-color: #f1b28b;
+ 
+  border-radius: 10px;
+}
+
+html {
+  scroll-behavior: smooth;
+ 
+}

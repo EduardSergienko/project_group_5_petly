@@ -1,21 +1,15 @@
 @import '../../variables/variables.scss';
 
-.container {
-  width: 320px;
-  padding: 40px 20px;
-  margin: 0 auto;
+.notiesSection {
   position: relative;
-  
+  padding-top: 45px;
   @media screen and (min-width: 768px) {
+    padding-top: 95px;
     display: flex;
     flex-direction: column;
-    width: 768px;
-    padding: 0 32px 100px;
   }
-
   @media screen and (min-width: 1280px) {
-    width: 1280px;
-    padding: 0 16px 200px;
+    padding-top: 60px;
   }
 }
 
@@ -24,11 +18,12 @@
   font-size: 24px;
   line-height: 33px;
   text-align: center;
+  margin-bottom: 28px;
 
   color: $mainTextColor;
 
   @media screen and (min-width: 768px) {
-    margin: 90px 0px 40px;
+    margin-bottom: 40px;
     font-size: 48px;
     line-height: 66px;
   }
@@ -81,10 +76,10 @@
 }
 
 .stickyBtnWrapper {
-    position: sticky;
-    z-index: 4;
-    display: flex;
-    justify-content: flex-end;
+  position: sticky;
+  z-index: 4;
+  display: flex;
+  justify-content: flex-end;
 
   @media screen and (min-width: 768px) {
     display: none;
@@ -104,11 +99,10 @@
   }
 }
 
-.noticesInput{
+.noticesInput {
   margin-bottom: 28px;
 
   @media screen and (min-width: 768px) {
     margin-bottom: 40px;
   }
 }
-

@@ -12,7 +12,7 @@ import FilterInput from '../../helpers/FilterInput';
 import { noticesSelectors } from '../../redux/notices';
 import notices from 'helpers/Notification/Notification';
 import { noticesOperations } from '../../redux/notices';
-
+import Container from 'components/Container';
 import styles from './NoticesPage.module.scss';
 
 function NoticesPage({ onFilter = () => {} }) {
@@ -165,46 +165,48 @@ function NoticesPage({ onFilter = () => {} }) {
   };
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>{t('findpet.title')}</h2>
-      {handleNoticeCategory() && (
-        <FilterInput
-          onSubmit={searchNews}
-          onChange={handleSearchInputChange}
-          cssClass={styles.noticesInput}
-        />
-      )}
-      {!handleNoticeCategory() && <NoticesSearch onChange={onFilter} />}
-      <div className={styles.navWarpper}>
-        <NoticesCategoriesNav />
-        <div className={styles.buttonWrapper}>
-          <p className={styles.buttonText}>{t('pet.addPet')}</p>
-          <AddNoticeButton handleOpenModal={handleOpenModal} />
+    <div className={styles.notiesSection}>
+      <Container>
+        <h2 className={styles.title}>{t('findpet.title')}</h2>
+        {handleNoticeCategory() && (
+          <FilterInput
+            onSubmit={searchNews}
+            onChange={handleSearchInputChange}
+            cssClass={styles.noticesInput}
+          />
+        )}
+        {!handleNoticeCategory() && <NoticesSearch onChange={onFilter} />}
+        <div className={styles.navWarpper}>
+          <NoticesCategoriesNav />
+          <div className={styles.buttonWrapper}>
+            <p className={styles.buttonText}>{t('pet.addPet')}</p>
+            <AddNoticeButton handleOpenModal={handleOpenModal} />
+          </div>
         </div>
-      </div>
-      {!filteredItems.length && (
-        <p className={styles.notification}>{t('findpet.noAds')}</p>
-      )}
-      <div
-        className={`${
-          isLoggedIn ? styles.stickyLoginBtnWrapper : styles.stickyBtnWrapper
-        }`}
-      >
-        <AddNoticeButton
-          handleOpenModal={handleOpenModal}
-          isLoggedIn={isLoggedIn}
-        />
-      </div>
-      {!loading && (
-        <NoticesCategoriesList
-          items={filteredItems}
-          setActive={setModalActive}
-          categoryName={categoryName}
-          setIsModalOpen={setIsModalOpen}
-        />
-      )}
-      {isModalOpen && <ModalAddNotice setIsModalOpen={setIsModalOpen} />}
-      <ModalNotice active={modalActive} setActive={setModalActive} />
+        {!filteredItems.length && (
+          <p className={styles.notification}>{t('findpet.noAds')}</p>
+        )}
+        <div
+          className={`${
+            isLoggedIn ? styles.stickyLoginBtnWrapper : styles.stickyBtnWrapper
+          }`}
+        >
+          <AddNoticeButton
+            handleOpenModal={handleOpenModal}
+            isLoggedIn={isLoggedIn}
+          />
+        </div>
+        {!loading && (
+          <NoticesCategoriesList
+            items={filteredItems}
+            setActive={setModalActive}
+            categoryName={categoryName}
+            setIsModalOpen={setIsModalOpen}
+          />
+        )}
+        {isModalOpen && <ModalAddNotice setIsModalOpen={setIsModalOpen} />}
+        <ModalNotice active={modalActive} setActive={setModalActive} />
+      </Container>
     </div>
   );
 }

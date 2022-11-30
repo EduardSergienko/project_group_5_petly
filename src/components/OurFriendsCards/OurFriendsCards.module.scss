@@ -53,8 +53,15 @@
   }
 }
 
-.ourFriendsSection{
-  padding-top: 47px;
+.ourFriendsSection {
+  padding-top: 45px;
+  @media screen and (min-width: 768px) {
+    padding-top: 95px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding-top: 60px;
+  }
 }
 
 .Title {
@@ -73,7 +80,6 @@
 
   @media screen and (min-width: 1280px) {
     margin-bottom: 60px;
-
   }
 }
 
@@ -88,7 +94,6 @@
     justify-content: space-between;
     margin-top: 16px;
   }
-  
 }
 
 .MainThumb {
