@@ -21,7 +21,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -29,16 +28,17 @@
   letter-spacing: 0.04em;
   color: $mainTextColor;
   background-color: $secondaryTextColor;
-  // padding: 6px 26px;
   border: 2px solid $orangeColor;
   border-radius: 40px;
   margin-right: 12px;
+  transition: 250ms;
   &:last-child {
     margin-right: 0;
   }
   &:hover {
     color: $secondaryTextColor;
     background-color: $orangeColor;
+    transform: color, background-color;
   }
   @media screen and (min-width: 768px) {
     font-size: 20px;

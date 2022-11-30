@@ -123,10 +123,12 @@
   font-weight: 500;
   color: #000;
   font-size: 12px;
+  transition: 250ms;
   &:first-child {
     cursor: pointer;
     &:hover {
       color: $orangeColor;
+      transform: color;
     }
   }
   &:not(:last-child) {
@@ -171,6 +173,7 @@
   position: absolute;
   background-color: white;
   display: none;
+
   width: 120px;
   padding: 12px;
   border: 1px solid #f59256;

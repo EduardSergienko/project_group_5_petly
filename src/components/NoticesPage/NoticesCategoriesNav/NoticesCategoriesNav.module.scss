@@ -39,9 +39,11 @@
   line-height: 19px;
   letter-spacing: 0.04em;
   color: $mainTextColor;
+  transition: 250ms;
   &:hover {
     background-color: $orangeColor;
     color: $secondaryTextColor;
+    transform: color background-color;
   }
 
   @media screen and (min-width: 768px) {

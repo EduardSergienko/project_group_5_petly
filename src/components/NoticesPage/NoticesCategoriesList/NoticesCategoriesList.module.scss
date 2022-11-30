@@ -65,6 +65,7 @@
   position: absolute;
   right: 12px;
   top: 12px;
+
   cursor: pointer;
   &:hover,
   &:focus {
@@ -119,10 +120,9 @@
   margin-bottom: 50px;
 }
 
-.priceItemDescriptionWrapper{
+.priceItemDescriptionWrapper {
   margin-bottom: 20px;
 }
-
 
 .itemButton {
   border: 2px solid $orangeColor;
@@ -136,10 +136,11 @@
   letter-spacing: 0.04em;
   color: $orangeColor;
   cursor: pointer;
-
+  transition: 250ms;
   &:hover {
     background-color: $orangeColor;
     color: $secondaryTextColor;
+    transform: color background-color;
   }
 
   @media screen and (min-width: 768px) {
@@ -164,7 +165,7 @@
 
   @media screen and (min-width: 768px) {
     padding-left: 20px;
-  padding-right: 20px;
+    padding-right: 20px;
   }
 }
 
