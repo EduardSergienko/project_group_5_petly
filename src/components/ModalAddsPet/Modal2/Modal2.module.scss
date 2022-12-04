@@ -269,6 +269,10 @@
   }
 }
 
+.center {
+  align-items: unset;
+}
+
 .pointer {
   &:hover {
     opacity: 1;
