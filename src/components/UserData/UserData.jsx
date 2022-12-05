@@ -97,7 +97,7 @@ function UserData() {
           <div
             className={`${styles.field__fake} ${
               !active && (!picture || !selectPicture) ? styles.pointer : ''
-            }`}
+            } ${!picture && !selectPicture ? styles.center : ''}`}
           >
             {picture || selectPicture ? (
               <img
