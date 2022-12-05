@@ -1,4 +1,4 @@
-@import '../../../variables/variables.scss';
+@import 'sassStyles/_variables';
 
 .list {
   display: flex;
@@ -33,16 +33,16 @@
   border: 2px solid $orangeColor;
   border-radius: 40px;
   padding: 8px 28px;
-  background-color: $secondaryTextColor;
+  background-color: $secondaryLightColor;
   font-weight: 500;
   font-size: 14px;
   line-height: 19px;
   letter-spacing: 0.04em;
-  color: $mainTextColor;
+  color: $textColor;
   transition: 250ms;
   &:hover {
     background-color: $orangeColor;
-    color: $secondaryTextColor;
+    color: $secondaryLightColor;
     transform: color background-color;
   }
 
@@ -74,5 +74,5 @@
     display: flex;
   }
   background-color: $orangeColor;
-  color: $secondaryTextColor;
+  color: $secondaryLightColor;
 }

@@ -1,4 +1,4 @@
-@import '../../variables/variables.scss';
+@import 'sassStyles/_variables';
 
 .container {
   display: flex;
@@ -142,7 +142,7 @@
   line-height: 16px;
   letter-spacing: 0.04em;
 
-  color: $mainTextColor;
+  color: $textColor;
 }
 
 .containerInformationPets {
@@ -154,7 +154,6 @@
 }
 
 .title {
-  font-weight: 700;
   font-size: 28px;
   line-height: 38px;
   letter-spacing: -0.01em;
@@ -162,7 +161,7 @@
   width: 300px;
   margin-bottom: 20px;
 
-  color: $mainTextColor;
+  color: $textColor;
 
   @media screen and (max-width: 767px) {
     margin-bottom: 16px;
@@ -183,7 +182,7 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 22px;
-  color: $mainTextColor;
+  color: $textColor;
 
   @media screen and (max-width: 767px) {
     width: 100px;
@@ -194,7 +193,7 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
-  color: $mainTextColor;
+  color: $textColor;
 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -212,13 +211,13 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 22px;
-  color: $mainTextColor;
+  color: $textColor;
 }
 .spanComments {
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
-  color: $mainTextColor;
+  color: $textColor;
   margin-left: 10px;
 }
 
@@ -246,7 +245,7 @@
   font-size: 16px;
   line-height: 22px;
   letter-spacing: 0.04em;
-  color: $mainTextColor;
+  color: $textColor;
 
   cursor: pointer;
 
@@ -272,7 +271,7 @@
   font-size: 16px;
   line-height: 22px;
   letter-spacing: 0.04em;
-  color: $mainTextColor;
+  color: $textColor;
 
   cursor: pointer;
 

@@ -1,8 +1,8 @@
-@import '../../variables/variables.scss';
+@import 'sassStyles/_variables';
 
 .mainNav {
   @media screen and (max-width: 1279px) {
-    background-color: $backgroundColor;
+    background-color: $primaryLightColor;
     position: absolute;
     right: 0;
     width: 100%;
@@ -17,12 +17,12 @@
   }
 
   @media screen and (max-width: 767px) {
-    top: $mobileHeaderHeight;
+    top: $smallHeaderHeight;
     padding-top: 46px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    top: $tabletHeaderHeight;
+    top: $mediumHeaderHeight;
     padding-top: 88px;
   }
 
@@ -40,10 +40,10 @@
 }
 .responsiveNav {
   transform: none;
-  height: calc(100vh - $mobileHeaderHeight);
+  height: calc(100vh - $smallHeaderHeight);
   z-index: 100;
 
   @media screen and (min-width: 768px) {
-    height: calc(100vh - $tabletHeaderHeight);
+    height: calc(100vh - $mediumHeaderHeight);
   }
 }

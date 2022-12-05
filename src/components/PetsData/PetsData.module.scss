@@ -1,4 +1,4 @@
-@import '../../variables/variables.scss';
+@import 'sassStyles/_variables';
 
 .container {
   display: flex;
@@ -36,7 +36,7 @@
   line-height: 38px;
 
   // margin: 0 0 24px 17px;
-  color: $mainTextColor;
+  color: $textColor;
 
   @media screen and (max-width: 767px) {
     font-size: 20px;

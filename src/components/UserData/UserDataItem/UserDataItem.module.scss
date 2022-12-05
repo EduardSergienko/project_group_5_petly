@@ -1,4 +1,4 @@
-@import '../../../variables/variables.scss';
+@import 'sassStyles/_variables';
 .container {
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@
   line-height: 25px;
   letter-spacing: 0.04em;
 
-  color: $mainTextColor;
+  color: $textColor;
 
   @media screen and (max-width: 767px) {
     font-size: 12px;
@@ -35,7 +35,7 @@
   }
 }
 
-.lable {
+.label {
   position: relative;
 
   @media screen and (max-width: 767px) {
@@ -58,9 +58,9 @@
   line-height: 25px;
   letter-spacing: 0.04em;
 
-  color: $mainTextColor;
+  color: $textColor;
 
-  background: $activeInputColor;
+  background: $primaryLightColor;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
 
@@ -110,7 +110,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $activeInputColor;
+  background-color: $primaryLightColor;
   border-radius: 50%;
   width: 32px;
   height: 32px;
@@ -154,7 +154,7 @@
 
   border: 1px solid transparent;
 
-  color: $mainTextColor;
+  color: $textColor;
 
   @media screen and (max-width: 767px) {
     font-size: 12px;
@@ -185,9 +185,9 @@
   font-size: 18px;
   line-height: 25px;
   letter-spacing: 0.04em;
-  color: $mainTextColor;
+  color: $textColor;
 
-  background: $activeInputColor;
+  background: $primaryLightColor;
   border-bottom: 1px solid rgba(245, 146, 86, 0.5);
 
   &:focus {

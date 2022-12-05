@@ -1,4 +1,4 @@
-@import '../../variables/variables.scss';
+@import 'sassStyles/_variables';
 
 .userNavWrap {
   display: flex;
@@ -29,13 +29,13 @@
   font-size: 14px;
   line-height: 19px;
   letter-spacing: 0.04em;
-  color: $secondaryTextColor;
+  color: $secondaryLightColor;
   padding: 8px 36px;
   // border: 2px solid $orangeColor;
   border-radius: 40px;
 
   // &:hover {
-  //   color: $secondaryTextColor;
+  //   color: $secondaryLightColor;
   //   background-color: $orangeColor;
   // }
 }

@@ -1,4 +1,4 @@
-@import '../../variables/variables.scss';
+@import 'sassStyles/_variables';
 
 .container {
   width: 100%;
@@ -18,7 +18,7 @@
   line-height: 22px;
   letter-spacing: 0.04em;
 
-  background-color: $secondaryTextColor;
+  background-color: $secondaryLightColor;
   color: rgba(17, 17, 17, 0.6);
   border: none;
 

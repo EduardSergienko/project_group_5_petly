@@ -1,70 +1,61 @@
-@import 'variables/variables.scss';
+@import 'sassStyles/_variables';
+@import 'sassStyles/_mixins';
 
 .formWrap {
-  background-color: $secondaryTextColor;
+  background-color: $secondaryLightColor;
   border-radius: 20px;
   padding: 40px 20px;
 
   @media screen and (min-width: 768px) {
-    padding: 40px 80px ;
+    padding: 40px 80px;
     border-radius: 40px;
   }
 }
 
-.addForm{
-    display: block;
-     width: 240px;
+.addForm {
+  display: block;
+  width: 240px;
 
-    @media screen and (min-width: 768px) {
-      width: 448px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 448px;
+  }
 }
 
 .title {
   margin-bottom: 20px;
+
   text-align: center;
-  font-family: 'Manrope';  
-  font-size: 24px;
-  line-height: 1.37;
-  font-weight: 500;
-  color: $mainTextColor;
 
-@media screen and (min-width: 768px) {
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 1.36em;
-  }
-
-  @media screen and (min-width: 1280px) {
-    font-size: 36px;
+  @include mediumMinBreakPoint {
+    font-weight: 600;
+    color: $secondaryTextColor;
   }
 }
 
-.secStepTitle{
+.secStepTitle {
   margin-bottom: 40px;
 }
 
+.text {
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.37;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: -0.01em;
+  color: $textColor;
 
-.text{
-    font-family: 'Manrope';
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.37;
-    margin-bottom: 20px;
-    text-align: center;
-    letter-spacing: -0.01em;
-    color: $mainTextColor;
-
-    @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 18px;
     letter-spacing: -0.01em;
     margin-bottom: 20px;
-   }
+  }
 
-   @media screen and (min-width: 1280px) {
+  @media screen and (min-width: 1280px) {
     font-size: 20px;
     margin-bottom: 28px;
-   }
+  }
 }
 
 .container {
@@ -84,22 +75,22 @@
   overflow: scroll;
 }
 
-.modalWrapper{
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translate(-50%);
-    z-index: 99;
-    padding-bottom: 20px;
-    height: max-content;
+.modalWrapper {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 99;
+  padding-bottom: 20px;
+  height: max-content;
 }
 
-.fieldsetWrap{
- position: relative;
- width: 240px;
+.fieldsetWrap {
+  position: relative;
+  width: 240px;
   border: none;
-  padding: 0px;  
-  display: flex;  
+  padding: 0px;
+  display: flex;
   flex-wrap: wrap;
   margin-bottom: 32px;
 
@@ -113,7 +104,7 @@
   }
 }
 
-.secPagefieldsetWrap{
+.secPagefieldsetWrap {
   @media screen and (min-width: 768px) {
     margin-bottom: 16px;
   }
@@ -123,7 +114,7 @@
   }
 }
 
-.fieldsetWrap legend{
+.fieldsetWrap legend {
   margin-bottom: 18px;
 
   @media (min-width: 768px) and (max-width: 1279px) {
@@ -133,10 +124,10 @@
 
 .categorySell,
 .categoryForFree,
-.categoryLostFound{
+.categoryLostFound {
   top: 0;
   left: 0;
-  background-color: $secondaryTextColor;
+  background-color: $secondaryLightColor;
   display: flex;
   justify-content: center;
   padding: 6px 24px;
@@ -144,25 +135,25 @@
   border-radius: 40px;
 
   &:hover,
-  &:focus{
+  &:focus {
     -webkit-transform: scale(1.03);
     transform: scale(1.03);
   }
 
   &::after {
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.37;
-  display: flex;
-  align-items: center;
-  letter-spacing: 0.04em;
-  color: $prymaryTextColor;
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.37;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+    color: $secondaryTextColor;
 
-  flex: none;
-  order: 0;
-  flex-grow: 0;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 
     @media screen and (min-width: 768px) {
       font-size: 20px;
@@ -174,49 +165,48 @@
     padding: 8px 28px;
     margin-right: 12px;
   }
-} 
+}
 
-.categorySell{
+.categorySell {
   margin-left: 8px;
   &::after {
-  content: "Sell";
+    content: 'Sell';
   }
 
   @media screen and (min-width: 768px) {
     margin: 0px;
   }
-} 
+}
 
-.categoryForFree{
+.categoryForFree {
   &::after {
-  content: "In good hands";
+    content: 'In good hands';
   }
-} 
+}
 
-.categoryLostFound{
+.categoryLostFound {
   margin-bottom: 12px;
 
   &::after {
-  content: "Lost/found";
+    content: 'Lost/found';
   }
 
   @media screen and (min-width: 768px) {
     margin-bottom: 18px;
   }
-} 
+}
 
-.labelContainer{
+.labelContainer {
   display: flex;
   position: relative;
   cursor: pointer;
 
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     display: block;
   }
-
 }
 
-.radio{
+.radio {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -226,26 +216,25 @@
 
 .labelContainer input:checked ~ .categoryForFree,
 .labelContainer input:checked ~ .categoryLostFound,
-.labelContainer input:checked ~ .categorySell
- {
- background: $orangeColor;
+.labelContainer input:checked ~ .categorySell {
+  background: $orangeColor;
 }
 .labelContainer input:checked ~ .categoryForFree:after,
 .labelContainer input:checked ~ .categoryLostFound:after,
-.labelContainer input:checked ~ .categorySell:after  {
- color: $secondaryTextColor;
+.labelContainer input:checked ~ .categorySell:after {
+  color: $secondaryLightColor;
 }
 
-.labelTitle{
+.labelTitle {
   position: relative;
   font-family: 'Manrope';
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.44;
-  color: $mainTextColor;
+  color: $textColor;
 
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     font-size: 22px;
     line-height: 1.1;
   }
@@ -254,10 +243,9 @@
     font-size: 24px;
     line-height: 1.1;
   }
-
 }
 
-.require{
+.require {
   color: $orangeColor;
 }
 
@@ -265,10 +253,10 @@
   width: 240px;
   height: 40px;
   padding: 11px 60px 12px 14px;
-  margin: 8px  0px 16px 0px;
+  margin: 8px 0px 16px 0px;
 
-  color: $mainTextColor;
-  background-color: $backgroundColor;
+  color: $textColor;
+  background-color: $primaryLightColor;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
   font-family: 'Manrope';
@@ -293,39 +281,39 @@
     width: 448px;
     height: 48px;
     padding: 14px 70px 13px 16px;
-    margin: 10px  0px 16px 0px;
+    margin: 10px 0px 16px 0px;
 
     font-size: 16px;
     line-height: 1.62;
   }
 
   @media screen and (min-width: 1280px) {
-    margin: 10px  0px 18px 0px;
+    margin: 10px 0px 18px 0px;
   }
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0; 
+  -webkit-appearance: none;
+  margin: 0;
 }
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
-.secStepInput{
+.secStepInput {
   margin-bottom: 20px;
 }
 
-.buttonWrap{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column-reverse;
-    @media screen and (min-width: 768px) {
-      flex-wrap: nowrap;
-      justify-content: center;
-      flex-direction: row;
-    }
+.buttonWrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  @media screen and (min-width: 768px) {
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: row;
+  }
 }
 
 .button {
@@ -338,8 +326,8 @@ input[type=number] {
   line-height: 1.36;
   letter-spacing: 0.04em;
   background-color: #fff;
-  color: $mainTextColor;
-  border: 2px solid #F59256;
+  color: $textColor;
+  border: 2px solid #f59256;
   cursor: pointer;
 
   transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -348,9 +336,8 @@ input[type=number] {
     margin-top: 16px;
   }
 
-
   &:last-of-type {
-    color: $secondaryTextColor;
+    color: $secondaryLightColor;
     border: none;
     background-color: $orangeColor;
 
@@ -374,7 +361,7 @@ input[type=number] {
 }
 
 .genderMale,
-.genderFemale{
+.genderFemale {
   width: 40px;
   height: 40px;
   margin-bottom: 12px;
@@ -386,9 +373,9 @@ input[type=number] {
   }
 }
 
-.genderMale{
+.genderMale {
   &::after {
-  content: url('/image/svg/male-mob.svg');
+    content: url('/image/svg/male-mob.svg');
   }
 
   @media screen and (min-width: 768px) {
@@ -398,9 +385,9 @@ input[type=number] {
   }
 }
 
-.genderFemale{
-   &::after {
-  content: url('/image/svg/female-mob.svg');
+.genderFemale {
+  &::after {
+    content: url('/image/svg/female-mob.svg');
   }
 
   @media screen and (min-width: 768px) {
@@ -410,7 +397,7 @@ input[type=number] {
   }
 }
 
-.genderLabel{
+.genderLabel {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -418,7 +405,7 @@ input[type=number] {
   font-weight: 500;
   font-size: 18px;
   line-height: 1.44;
-  color: $prymaryTextColor;
+  color: $secondaryTextColor;
   cursor: pointer;
 
   &:not(:last-of-type) {
@@ -436,22 +423,22 @@ input[type=number] {
 
     &:not(:last-of-type) {
       margin-right: 80px;
-      align-items: flex-start
-    } 
+      align-items: flex-start;
+    }
   }
 }
 
-.genderLabel input:checked ~ span{
-    color: $orangeColor;
+.genderLabel input:checked ~ span {
+  color: $orangeColor;
 }
-.inputFile{
+.inputFile {
   display: none;
 }
 
-.addImage{
+.addImage {
   width: 116px;
   height: 116px;
-  background: #FDF7F2;
+  background: #fdf7f2;
   border-radius: 20px;
   display: flex;
   justify-content: center;
@@ -464,33 +451,33 @@ input[type=number] {
   }
 }
 
-form label:last-of-type .input{
-   margin-bottom: 40px;
+form label:last-of-type .input {
+  margin-bottom: 40px;
 }
 
-form label:last-of-type .textArea{
-   margin-bottom: 40px;
+form label:last-of-type .textArea {
+  margin-bottom: 40px;
 }
 
-.avatarLabel{
+.avatarLabel {
   position: relative;
-    margin: 8px 0px 28px 0px;
-    width: 116px;
-    height: 116px;
-    display: flex;
+  margin: 8px 0px 28px 0px;
+  width: 116px;
+  height: 116px;
+  display: flex;
 
-    @media screen and (min-width: 768px) {
-      width: 140px;
-      height: 140px;
-      margin: 8px 0px 16px 0px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 140px;
+    height: 140px;
+    margin: 8px 0px 16px 0px;
+  }
 
-    @media screen and (min-width: 1280px) {
-      margin: 8px 0px 18px 0px;
-    }
+  @media screen and (min-width: 1280px) {
+    margin: 8px 0px 18px 0px;
+  }
 }
 
-.closeBtn{
+.closeBtn {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -523,16 +510,16 @@ form label:last-of-type .textArea{
   width: 36px;
 }
 
-.textArea{
+.textArea {
   display: flex;
   align-items: center;
   width: 240px;
   min-height: 100px;
   padding: 12px 14px;
-  margin: 8px  0px 16px 0px;
+  margin: 8px 0px 16px 0px;
 
-  color: $mainTextColor;
-  background-color: $backgroundColor;
+  color: $textColor;
+  background-color: $primaryLightColor;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 20px;
   font-family: 'Manrope';
@@ -541,7 +528,7 @@ form label:last-of-type .textArea{
   letter-spacing: 0.04em;
 
   transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-  box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   resize: none;
   overflow: hidden;
 
@@ -560,14 +547,14 @@ form label:last-of-type .textArea{
     width: 448px;
     height: 113px;
     padding: 16px 18px;
-    margin: 8px  0px 28px 0px;
+    margin: 8px 0px 28px 0px;
 
     font-size: 18px;
     line-height: 1.39em;
   }
 }
 
-.selectedAvatar{
+.selectedAvatar {
   width: 116px;
   height: 116px;
   background: #fff;
@@ -580,7 +567,7 @@ form label:last-of-type .textArea{
 
 // error messages
 
-.errorMsg{
+.errorMsg {
   position: absolute;
   top: 115%;
   margin-left: 8px;
@@ -596,7 +583,7 @@ form label:last-of-type .textArea{
   }
 }
 
-.secStepError{
+.secStepError {
   position: absolute;
   top: 115%;
   margin-left: 8px;
@@ -604,26 +591,24 @@ form label:last-of-type .textArea{
   color: $errorColor;
 }
 
-form label:last-of-type .secStepError{
-    top: 100%;
-
+form label:last-of-type .secStepError {
+  top: 100%;
 }
 
-form fieldset:first-child .secStepError{
-    top: 96%;
+form fieldset:first-child .secStepError {
+  top: 96%;
 }
 
-.avatarLabel .secStepError{
+.avatarLabel .secStepError {
   top: 102%;
   width: 152px;
-} 
+}
 
-.avatarErrorType{
+.avatarErrorType {
   border: 1px solid rgb(255, 77, 77);
   border-radius: 20px;
-} 
+}
 
-
-.errorInput{
+.errorInput {
   border: 1px solid rgb(255, 77, 77, 1);
 }

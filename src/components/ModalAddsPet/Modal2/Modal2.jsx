@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 
-import fotoSelect from '../../../image/svg/fotoSelect.svg';
-
-import styles from './Modal2.module.scss';
+import fotoSelect from 'image/svg/fotoSelect.svg';
+import styles from '../Modal1/Modal1.module.scss';
 
 function Modal2({
   setPage,
@@ -112,12 +111,12 @@ function Modal2({
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>{t('pet.addPet')}</h2>
-      <p className={styles.text}>{t('pet.addPhotoComments')}</p>
+      <h2 className={styles.title2Step}>{t('pet.addPet')}</h2>
+      <p className={styles.text2Step}>{t('pet.addPhotoComments')}</p>
 
       <form className={styles.form}>
         <div className={styles.field__wrapper}>
-          <label className={styles.field__lable}>
+          <label className={styles.field__label}>
             <input
               className={styles.field__file}
               type="file"
@@ -157,10 +156,10 @@ function Modal2({
           </label>
         </div>
 
-        <label className={styles.lable}>
+        <label className={styles.label2Step}>
           <span className={styles.span}>{t('pet.comments')}</span>
           <textarea
-            className={`${styles.input} ${
+            className={`${styles.input2Step} ${
               !inputActiveComments &&
               commentsValue.length !== 0 &&
               commentsValue.length < 8

@@ -1,4 +1,4 @@
-@import 'variables/variables.scss';
+@import 'sassStyles/_variables';
 
 .search {
   display: flex;
@@ -21,7 +21,7 @@
   padding: 9px 45px 9px 12px;
 
   color: $primaryGrayColor;
-  background-color: $secondaryTextColor;
+  background-color: $secondaryLightColor;
   border: $inputBorder;
   border-radius: 20px;
   font-family: 'Manrope';
@@ -59,7 +59,7 @@
 }
 
 .noValidate {
-  border-color: rgb(255, 77, 77, 1);
+  border-color: $errorColor;
 }
 
 .searchIcon {

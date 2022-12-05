@@ -1,4 +1,4 @@
-@import '../../variables/variables.scss';
+@import 'sassStyles/_variables';
 
 .navList {
   @media screen and (max-width: 1279px) {
@@ -18,7 +18,7 @@
   font-size: 20px;
   line-height: 27px;
   letter-spacing: 0.04em;
-  color: $mainTextColor;
+  color: $textColor;
   margin-bottom: 40px;
   transition: 200ms;
   &:last-child {

@@ -1,4 +1,4 @@
-@import 'variables/variables.scss';
+@import 'sassStyles/_variables';
 
 .addNoticeImage {
   width: 22px;
@@ -29,16 +29,15 @@
   bottom: 2%;
   z-index: 5;
   border-radius: 50%;
-  color: $secondaryTextColor;
+  color: $secondaryLightColor;
   border: none;
   cursor: pointer;
   background: $orangeColor;
 
   &:hover,
-  &:focus{
+  &:focus {
     background-color: #e7884d;
   }
-
 
   @media screen and (min-width: 340px) {
     bottom: unset;
@@ -56,10 +55,10 @@
   }
 }
 
-.noAuthBtnPosition{
-    top: 390px;
+.noAuthBtnPosition {
+  top: 390px;
 
-    @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     top: 0px;
   }
 }

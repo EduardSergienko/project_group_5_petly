@@ -162,7 +162,7 @@ function Modal1({
       <h2 className={styles.title}>{t('pet.addPet')}</h2>
 
       <form className={styles.form}>
-        <label className={styles.lable}>
+        <label className={styles.label}>
           <span className={styles.span}>{t('pet.namePet')}</span>
           <input
             className={`${styles.input} ${
@@ -197,7 +197,7 @@ function Modal1({
           )}
         </label>
 
-        <label className={styles.lable}>
+        <label className={styles.label}>
           <span className={styles.span}>{t('pet.birthDatePet')}</span>
           <InputMask
             className={`${styles.input} ${
@@ -223,7 +223,7 @@ function Modal1({
           )}
         </label>
 
-        <label className={styles.lable}>
+        <label className={styles.label}>
           <span className={styles.span}>{t('pet.breed')}</span>
           <input
             className={`${styles.input} ${
@@ -259,9 +259,6 @@ function Modal1({
         </label>
 
         <div className={styles.buttonContainer}>
-          <button className={styles.cancel} onClick={onClickCancelBtn}>
-            {t('pet.cancel')}
-          </button>
           <button
             className={`${styles.next} ${
               inputActiveName &&
@@ -277,6 +274,9 @@ function Modal1({
             onClick={onClickNextBtn}
           >
             {t('pet.next')}
+          </button>
+          <button className={styles.cancel} onClick={onClickCancelBtn}>
+            {t('pet.cancel')}
           </button>
         </div>
       </form>

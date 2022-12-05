@@ -1,9 +1,10 @@
-@import 'variables/variables.scss';
+@import 'sassStyles/_variables';
+@import 'sassStyles/_mixins.scss';
 
 .formWrap {
   padding-top: 42px;
 
-  @media screen and (min-width: 768px) {
+  @include mediumMinBreakPoint {
     top: 18%;
     left: 50%;
     position: absolute;
@@ -11,7 +12,7 @@
 
     padding: 60px 80px 40px 80px;
 
-    background-color: $secondaryTextColor;
+    background-color: $secondaryLightColor;
     box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
     border-radius: 40px;
 
@@ -20,7 +21,7 @@
     }
   }
 
-  @media screen and (min-width: 1280px) {
+  @include largeMinBreakPoint {
     top: 17%;
     left: 50%;
 
@@ -37,9 +38,9 @@
   line-height: 1.37em;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: $mainTextColor;
+  color: $textColor;
 
-  @media screen and (min-width: 768px) {
+  @include mediumMinBreakPoint {
     font-weight: 500;
     font-size: 36px;
     line-height: 1.36em;
@@ -67,8 +68,8 @@
   height: 40px;
   padding: 11px 60px 12px 14px;
 
-  color: $mainTextColor;
-  background-color: $backgroundColor;
+  color: $textColor;
+  background-color: $primaryLightColor;
   border: $inputBorder;
   border-radius: 40px;
   font-family: 'Manrope';
@@ -89,7 +90,7 @@
     color: $primaryGrayColor;
   }
 
-  @media screen and (min-width: 768px) {
+  @include mediumMinBreakPoint {
     width: 448px;
     height: 52px;
     padding: 14px 70px 13px 32px;
@@ -98,7 +99,7 @@
     line-height: 1.39em;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include largeMinBreakPoint {
     width: 458px;
   }
 }
@@ -113,7 +114,7 @@
 
   transform: translate(0, -50%);
 
-  @media screen and (min-width: 768px) {
+  @include mediumMinBreakPoint {
     right: 32px;
     font-size: 28px;
   }
@@ -131,7 +132,7 @@
   font-size: 20px;
   line-height: 1.36em;
   letter-spacing: 0.04em;
-  color: $secondaryTextColor;
+  color: $secondaryLightColor;
   cursor: pointer;
 
   transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -144,12 +145,12 @@
     margin-bottom: 16px;
   }
 
-  @media screen and (min-width: 768px) {
+  @include mediumMinBreakPoint {
     width: 448px;
     height: 48px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include largeMinBreakPoint {
     width: 458px;
   }
 }
@@ -157,18 +158,17 @@
 .backButton {
   @extend .button;
 
-  background-color: $secondaryTextColor;
+  background-color: $secondaryLightColor;
   border: 2px solid $orangeColor;
-  color: $prymaryTextColor;
+  color: $secondaryTextColor;
 
   &:hover {
-    color: $secondaryTextColor;
+    color: $secondaryLightColor;
   }
 }
 
 .textHint {
   text-align: center;
-  font-family: 'Manrope';
   font-size: 12px;
   line-height: 1.33em;
   letter-spacing: 0.04em;
@@ -194,7 +194,7 @@
   font-size: 11px;
   color: $errorColor;
 
-  @media screen and (min-width: 768px) {
+  @include mediumMinBreakPoint {
     margin-left: 32px;
   }
 }

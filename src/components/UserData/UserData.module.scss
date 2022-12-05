@@ -1,4 +1,4 @@
-@import '../../variables/variables.scss';
+@import 'sassStyles/_variables';
 
 .form {
   width: 100%;
@@ -39,7 +39,7 @@
   position: absolute;
 }
 
-.field__lable {
+.field__label {
   position: relative;
   width: 100%;
   display: -webkit-box;
@@ -157,8 +157,8 @@
   letter-spacing: 0.04em;
 
   border: none;
-  background-color: $secondaryTextColor;
-  color: $mainTextColor;
+  background-color: $secondaryLightColor;
+  color: $textColor;
   cursor: pointer;
 
   @media screen and (max-width: 1279px) {
@@ -171,7 +171,7 @@
 }
 
 .buttonDone {
-  background-color: $activeInputColor;
+  background-color: $primaryLightColor;
   border-radius: 50%;
   width: 32px;
   height: 32px;

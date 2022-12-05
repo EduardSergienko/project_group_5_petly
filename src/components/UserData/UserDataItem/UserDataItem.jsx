@@ -71,7 +71,7 @@ function UserDataItem({
     <li className={styles.container}>
       <p className={styles.title}>{title}:</p>
       {active ? (
-        <label className={styles.lable}>
+        <label className={styles.label}>
           {name === 'location' ? (
             <PlacesAutocomplete
               style={styles.input}

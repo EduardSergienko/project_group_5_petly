@@ -1,7 +1,7 @@
-@import 'variables/variables.scss';
+@import 'sassStyles/_variables';
 
 .background {
-  height: calc(100vh - $mobileHeaderHeight);
+  height: calc(100vh - $smallHeaderHeight);
   background-image: url('../../../image/formsPictures/formImg.png');
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -16,7 +16,7 @@
   }
 
   @media screen and (min-width: 768px) {
-    height: calc(100vh - $tabletHeaderHeight);
+    height: calc(100vh - $mediumHeaderHeight);
     background-image: url('../../../image/formsPictures/groupMedium.png');
   }
 

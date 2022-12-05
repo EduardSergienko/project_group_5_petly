@@ -1,7 +1,8 @@
-import Logo from 'components/Logo/Logo';
 import Container from 'components/Container/Container';
+import Logo from 'components/Logo/Logo';
+import Navigation from 'components/Navigation';
 import styles from './Header.module.scss';
-import Navigation from 'components/Navigation/Navigation';
+
 export default function Header() {
   return (
     <header>

@@ -1,129 +1,122 @@
-@import '../../variables/variables.scss';
+@import 'sassStyles/_variables';
+@import 'sassStyles/_mixins.scss';
 
-.ContainerFriendsCards {
-  padding: 12px 4px;
-  border-radius: 20px;
-  background-color: white;
-  box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+.section {
+  padding-top: 45px;
+
+  @include mediumMinBreakPoint {
+    padding-top: 95px;
+  }
+
+  @include largeMinBreakPoint {
+    padding-top: 60px;
+  }
+}
+
+.title {
+  margin-bottom: 40px;
+  color: $secondaryTextColor;
+  text-align: center;
+
+  @include mediumMinBreakPoint {
+    margin-bottom: 45px;
+  }
+
+  @include largeMinBreakPoint {
+    margin-bottom: 60px;
+  }
+}
+
+.cardsWrap {
+  @include mediumMinBreakPoint {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.innerCard {
   width: 280px;
   min-height: 192px;
   height: auto;
   margin-bottom: 15px;
+  padding: 12px 4px;
 
-  display: flex;
-  flex-direction: column;
+  border-radius: 20px;
+  background-color: $secondaryLightColor;
+  box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
 
-  @media screen and (min-width: 768px) {
+  @include mediumMinBreakPoint {
     width: 336px;
     min-height: 246px;
     margin-bottom: 32px;
     padding: 12px 10px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include largeMinBreakPoint {
     width: 395px;
     min-height: 287px;
     padding: 16px;
   }
 }
 
-.FriendsThumb {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-}
-
-.NameFriends {
+.nameFriend {
   text-align: center;
-  color: #f59256;
-  display: block;
-  font-size: 12px;
+  color: $orangeColor;
   text-decoration: underline;
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-  }
 }
 
-.ourFriendsSection {
-  padding-top: 45px;
-  @media screen and (min-width: 768px) {
-    padding-top: 95px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    padding-top: 60px;
-  }
-}
-
-.Title {
-  display: block;
-  margin-bottom: 40px;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.37em;
-  color: black;
-  text-align: center;
-
-  @media screen and (min-width: 768px) {
-    font-size: 48px;
-    margin-bottom: 45px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    margin-bottom: 60px;
-  }
-}
-
-.CardsThumb {
+.cardBox {
   display: flex;
-  margin-top: 12px;
-
   align-items: flex-start;
   justify-content: space-between;
+  margin-top: 12px;
 
-  @media screen and (min-width: 768px) {
-    justify-content: space-between;
+  @include mediumMinBreakPoint {
     margin-top: 16px;
   }
 }
 
-.MainThumb {
+.leftCard {
   width: 110px;
 
-  @media screen and (min-width: 1280px) {
+  @include largeMinBreakPoint {
     width: auto;
   }
 }
 
-.SecThumb {
+.picture {
+  display: block;
+  width: 110px;
+  height: 78px;
+
+  @include largeMinBreakPoint {
+    width: 158px;
+    height: 112px;
+  }
+}
+
+.rightCard {
   width: 150px;
-  color: black;
-  @media screen and (min-width: 768px) {
+
+  @include mediumMinBreakPoint {
     width: 170px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include largeMinBreakPoint {
     width: 190px;
   }
 }
 
-.CardItem {
-  font-family: 'Manrope';
-  font-style: normal;
-  line-height: 16px;
+.cardItem {
   font-weight: 500;
-  color: #000;
   font-size: 12px;
-  transition: 250ms;
+  line-height: 1.375em;
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:first-child {
     cursor: pointer;
     &:hover {
@@ -137,59 +130,52 @@
   &:first-child:hover .subMenu {
     display: block;
   }
-  @media screen and (min-width: 768px) {
+
+  @include mediumMinBreakPoint {
     font-size: 14px;
+    line-height: 1.357em;
     &:not(:last-child) {
       margin-bottom: 8px;
     }
   }
-  @media screen and (min-width: 1280px) {
+
+  @include largeMinBreakPoint {
     font-size: 16px;
-    line-height: 18px;
+    line-height: 1.375em;
   }
 }
 
-.CardsImg {
-  display: block;
-  width: 110px;
-  height: 78px;
-  @media screen and (min-width: 1280px) {
-    width: 158px;
-    height: 112px;
-  }
-}
-
-.CardLink {
+.cardLink {
   color: inherit;
   text-decoration: underline;
 }
 
-.CardAddress {
-  color: #000000;
+.cardAddress {
+  color: $secondaryTextColor;
   text-decoration: underline;
 }
 
 .subMenu {
   position: absolute;
-  background-color: white;
+  background-color: $secondaryLightColor;
   display: none;
 
   width: 120px;
   padding: 12px;
-  border: 1px solid #f59256;
+  border: 1px solid $orangeColor;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
 }
+
 .subMenuItem {
   display: flex;
   justify-content: space-between;
-  font-family: 'Manrope';
-  font-style: normal;
-  font-weight: 500;
+
   font-size: 12px;
-  line-height: 16px;
+  line-height: 1.33em;
   margin-bottom: 4px;
-  color: $prymaryTextColor;
+  color: $secondaryTextColor;
+
   &:last-child {
     margin-bottom: 0;
   }
