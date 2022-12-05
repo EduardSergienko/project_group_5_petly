@@ -199,6 +199,10 @@
   position: relative;
   margin-bottom: 40px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   @media screen and (max-width: 767px) {
     margin-bottom: 20px;
   }
@@ -212,7 +216,7 @@
 
 .field__lable {
   position: relative;
-  width: 100%;
+  width: 182px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -225,6 +229,10 @@
 
   &:hover .field__button {
     background-color: #c4c4c4a1;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 208px;
   }
 }
 
@@ -261,6 +269,10 @@
   }
 }
 
+.center {
+  align-items: unset;
+}
+
 .pointer {
   &:hover {
     opacity: 1;
@@ -274,7 +286,7 @@
   opacity: 0;
   position: absolute;
   top: 0;
-  left: 29%;
+  // left: 29%;
 
   display: flex;
   align-items: center;
@@ -285,7 +297,7 @@
   line-height: 26px;
   color: #000;
 
-  width: 42%;
+  width: 100%;
   height: 100%;
   border-radius: 40px;
   background-color: rgb(255, 255, 255, 0.8);
