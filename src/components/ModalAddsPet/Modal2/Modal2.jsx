@@ -87,7 +87,7 @@ function Modal2({
 
   const handleChange = e => {
     if (e.target.size < e.target.files[0].size) {
-      alert('Photo should not be larger than 15 KB');
+      alert('Photo should not be larger than 15 MB');
       return;
     }
 
