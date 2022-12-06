@@ -205,6 +205,10 @@
   position: relative;
   margin-bottom: 20px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   @include breakpoint-min($tablet) {
     margin-bottom: 40px;
   }
@@ -212,7 +216,7 @@
 
 .field__label {
   position: relative;
-  width: 100%;
+  width: 182px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -225,6 +229,10 @@
 
   &:hover .field__button {
     background-color: #c4c4c4a1;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 208px;
   }
 }
 
@@ -258,6 +266,10 @@
   }
 }
 
+.center {
+  align-items: unset;
+}
+
 .pointer {
   &:hover {
     opacity: 1;
@@ -278,7 +290,7 @@
   font-weight: 500;
   color: $secondaryTextColor;
 
-  width: 42%;
+  width: 100%;
   height: 100%;
   border-radius: 40px;
   background-color: rgb(255, 255, 255, 0.8);
