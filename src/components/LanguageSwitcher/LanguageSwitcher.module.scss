@@ -1,10 +1,9 @@
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins.scss';
+
 // language variables
 $language-width: 55px;
 $language-height: 30px;
-$language-focus: rgba(245, 146, 86, 0.5);
-$language-border: rgba(245, 146, 86, 0.5);
-$language-hover: #fdf7f2;
-$language-checked: #fdf7f2;
 
 // language styles
 .languageWrap {
@@ -15,7 +14,7 @@ $language-checked: #fdf7f2;
   font-size: 14px;
   line-height: 1;
 
-  @media screen and (min-width: 1280px) {
+  @include breakpoint-min($desktop) {
     position: absolute;
     right: 335px;
   }
@@ -37,15 +36,15 @@ $language-checked: #fdf7f2;
   height: $language-height;
   padding: 7px 8px 5px 0;
 
-  border: 1px solid $language-border;
-  background-color: #fff;
+  border: $inputBorder;
+  background-color: $lightColor;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 24px;
   text-align: right;
   text-transform: uppercase;
 
-  @media screen and (min-width: 1280px) {
+  @include breakpoint-min($desktop) {
     background-size: 14px;
     background-position: 7px 7px;
   }
@@ -64,11 +63,11 @@ $language-checked: #fdf7f2;
 
 .languageControl:hover + .languageLabel,
 .languageControl:focus + .languageLabel {
-  background-color: $language-hover;
+  background-color: $bakgroundColor;
 }
 
 .languageControl:checked + .languageLabel {
-  background-color: $language-checked;
+  background-color: $bakgroundColor;
 }
 
 .languageControl:focus + .languageLabel,
@@ -80,7 +79,7 @@ $language-checked: #fdf7f2;
 .languageRight .languageLabel {
   background-image: url('../../image/flags/UA_flag_album.jpg');
 
-  @media screen and (min-width: 1280px) {
+  @include breakpoint-min($desktop) {
     background-image: url('../../image/flags/UA_flag.jpg');
   }
 }
@@ -88,7 +87,7 @@ $language-checked: #fdf7f2;
 .languageLeft .languageLabel {
   background-image: url('../../image/flags/UK_flag_album.jpg');
 
-  @media screen and (min-width: 1280px) {
+  @include breakpoint-min($desktop) {
     background-image: url('../../image/flags/UK_flag.jpg');
   }
 }

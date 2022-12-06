@@ -1,8 +1,9 @@
-@import '../../variables/variables.scss';
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins.scss';
 
 .mainNav {
   @media screen and (max-width: 1279px) {
-    background-color: $backgroundColor;
+    background-color: $bakgroundColor;
     position: absolute;
     right: 0;
     width: 100%;
@@ -17,12 +18,12 @@
   }
 
   @media screen and (max-width: 767px) {
-    top: $mobileHeaderHeight;
+    top: $smallHeaderHeight;
     padding-top: 46px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1279px) {
-    top: $tabletHeaderHeight;
+    top: $mediumHeaderHeight;
     padding-top: 88px;
   }
 
@@ -34,16 +35,11 @@
     flex-grow: 1;
   }
 
-  @media screen and (max-width: 1023px) and (orientation: landscape) {
+  @include breakpoint-max-landscape(1023px) {
     padding-top: 40px;
   }
 }
 .responsiveNav {
   transform: none;
-  height: calc(100vh - $mobileHeaderHeight);
   z-index: 100;
-
-  @media screen and (min-width: 768px) {
-    height: calc(100vh - $tabletHeaderHeight);
-  }
 }

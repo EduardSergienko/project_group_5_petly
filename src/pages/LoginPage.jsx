@@ -1,4 +1,4 @@
-import LoginForm from 'components/LoginForm';
+import LoginForm from 'components/AuthForm/LoginForm';
 import FormSection from 'components/AuthForm/FormSection';
 import Container from 'components/Container/Container';
 

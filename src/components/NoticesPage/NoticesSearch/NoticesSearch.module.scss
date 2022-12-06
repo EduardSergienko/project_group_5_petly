@@ -1,59 +1,59 @@
-@import '../../../variables/variables.scss';
+@import 'scss-utils/_variables';
 
 .input {
-    font-family: 'Manrope';
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.37em;
+  letter-spacing: 0.04em;
+  color: $primaryGrayColor;
+
+  width: 280px;
+  height: 40px;
+  border-radius: 20px;
+  border: $inputBorder;
+
+  margin: 0px auto 28px;
+  padding: 9px 45px 9px 12px;
+
+  box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+
+  background: url('../../../image/search.png') no-repeat right;
+  background-position: 249px 11px;
+  background-color: $lightColor;
+  background-size: 15px;
+  &::placeholder {
     font-weight: 500;
     font-size: 16px;
-    line-height: 1.37em;
+    line-height: 22px;
     letter-spacing: 0.04em;
-    color: $primaryGrayColor;
+  }
 
-    width: 280px;
-    height: 40px;
-    border-radius: 20px;
-    border: $inputBorder;
+  @media screen and (min-width: 768px) {
+    width: 608px;
+    height: 44px;
 
-    margin: 0px auto 28px;
-    padding: 9px 45px 9px 12px;
-   
-    box-shadow: 7px 4px 14px rgba(49, 21, 4, 0.07);
+    margin: 0px auto 40px;
+    padding: 8px 45px 9px 20px;
 
-    background: url('../../../image/search.png') no-repeat right ;
-    background-position: 249px 11px;
-    background-color: $secondaryTextColor;
-    background-size: 15px;
+    background-size: 19px;
+    background-position: 574px 12px;
+
+    font-size: 20px;
+    line-height: 27px;
+
     &::placeholder {
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 22px;
-            letter-spacing: 0.04em;
-        }
-
-    @media screen and (min-width: 768px) {
-        width: 608px;
-        height: 44px;
-
-        margin: 0px auto 40px;
-        padding: 8px 45px 9px 20px;
-
-        background-size: 19px;
-        background-position: 574px 12px;
-
-        font-size: 20px;
-        line-height: 27px;
-
-        &::placeholder {
-                font-size: 20px;
-                line-height: 27px;
-            }
+      font-size: 20px;
+      line-height: 27px;
     }
+  }
 }
 
 .input:focus {
-    background-color: rgba(0, 0, 0, 0.02);
-    outline: 0;
-    box-shadow: $focusInputShadow;
-    &::placeholder {
-            display: none;
-        }
+  background-color: rgba(0, 0, 0, 0.02);
+  outline: 0;
+  box-shadow: $focusInputShadow;
+  &::placeholder {
+    display: none;
+  }
 }

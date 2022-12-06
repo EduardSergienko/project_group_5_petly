@@ -1,9 +1,10 @@
-@import 'variables/variables.scss';
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins.scss';
 
 .background {
-  height: calc(100vh - $mobileHeaderHeight);
+  height: calc(100vh - $smallHeaderHeight);
   background-image: url('../../../image/formsPictures/formImg.png');
-  background-position: center bottom;
+  background-position: bottom;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100%;
@@ -15,30 +16,35 @@
     background-image: url('../../../image/formsPictures/formImg@2x.png');
   }
 
-  @media screen and (min-width: 768px) {
-    height: calc(100vh - $tabletHeaderHeight);
+  @include breakpoint-min($tablet) {
+    height: calc(100vh - $mediumHeaderHeight);
     background-image: url('../../../image/formsPictures/groupMedium.png');
   }
 
-  @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
-    screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-    screen and (min-width: 768px) and (min-resolution: 192dpi),
-    screen and (min-width: 768px) and (min-resolution: 2dppx) {
+  @media screen and (min-width: $tablet) and (min-device-pixel-ratio: 2),
+    screen and (min-width: $tablet) and (-webkit-min-device-pixel-ratio: 2),
+    screen and (min-width: $tablet) and (min-resolution: 192dpi),
+    screen and (min-width: $tablet) and (min-resolution: 2dppx) {
     background-image: url('../../../image/formsPictures/groupMedium@2x.png');
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpoint-min($desktop) {
     background-image: url('../../../image/formsPictures/groupLarge.png');
   }
 
-  @media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
-    screen and (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 2),
-    screen and (min-width: 1280px) and (min-resolution: 192dpi),
-    screen and (min-width: 1280px) and (min-resolution: 2dppx) {
+  @media screen and (min-width: $desktop) and (min-device-pixel-ratio: 2),
+    screen and (min-width: $desktop) and (-webkit-min-device-pixel-ratio: 2),
+    screen and (min-width: $desktop) and (min-resolution: 192dpi),
+    screen and (min-width: $desktop) and (min-resolution: 2dppx) {
     background-image: url('../../../image/formsPictures/groupLarge@2x.png');
   }
 
-  @media screen and (max-width: 1023px) and (orientation: landscape) {
-    height: calc(100vh + 160px);
+  // for landscape mobile
+  @include breakpoint-max-landscape(767px) {
+    height: calc(100vh + $smallHeaderHeight);
+  }
+
+  @include breakpoint-min-max-landscape($tablet, 1023px) {
+    height: calc(100vh + 200px);
   }
 }

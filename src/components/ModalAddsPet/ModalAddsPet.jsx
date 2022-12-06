@@ -106,7 +106,7 @@ function ModalAddsPet({ active, setActive, setmodalActivefForTablet }) {
             setmodalActivefForTablet(false);
           }}
         >
-          <img className={styles.imgB} src={close} alt="close" />
+          <img className={styles.imgClose} src={close} alt="close" />
         </button>
       </div>
     </div>

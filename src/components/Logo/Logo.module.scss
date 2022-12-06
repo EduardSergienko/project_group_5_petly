@@ -1,25 +1,24 @@
-@import '../../variables/variables.scss';
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins';
 
 .logo {
-  display: inline;
-  color: $mainTextColor;
   font-family: 'Poppins';
-  font-style: normal;
   font-weight: 700;
   font-size: 28px;
-  line-height: 42px;
+  line-height: 1.5em;
   letter-spacing: 0.07em;
-  // margin-right: 130px;
+
   & span {
     color: $orangeColor;
   }
-  @media screen and (min-width: 768px) {
-    font-size: 32px;
-    line-height: 48px;
 
+  @include breakpoint-min($tablet) {
     margin-right: 0px;
+
+    font-size: 32px;
   }
-  @media screen and (min-width: 1280px) {
+
+  @include breakpoint-min($desktop) {
     margin-right: 80px;
   }
 }

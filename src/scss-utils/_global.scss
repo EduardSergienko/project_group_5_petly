@@ -1,25 +1,48 @@
-@import-normalize; /* bring in normalize.css styles */
+@import './variables';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Manrope',
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Manrope', 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fdf7f2;
+  background-color: $bakgroundColor;
+  color: $textColor;
+
   overflow: overlay;
+}
+
+body::-webkit-scrollbar {
+  width: 7px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #f1b28b;
+  border-radius: 10px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-ul {
+
+ul,
+li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+
 p,
 h1,
 h2,
@@ -27,15 +50,14 @@ h3,
 button {
   margin: 0;
   padding: 0;
-  font-family: 'Manrope';
+}
+
+img {
+  display: block;
 }
 
 a {
   text-decoration: none;
-  font-family: 'Manrope';
-}
-* {
-  box-sizing: border-box;
 }
 
 /* Removing input background colour for Chrome autocomplete */
@@ -44,7 +66,7 @@ input:-webkit-autofill:focus {
   transition: background-color 600000s 0s, color 600000s 0s;
 }
 
-/* clears the ‘X’ from Internet Explorer */
+/* clears the ‘X’ in input from Internet Explorer */
 input[type='search']::-ms-clear {
   display: none;
   width: 0;
@@ -55,40 +77,10 @@ input[type='search']::-ms-reveal {
   width: 0;
   height: 0;
 }
-/* clears the ‘X’ from Chrome */
+/* clears the ‘X’ in input from Chrome */
 input[type='search']::-webkit-search-decoration,
 input[type='search']::-webkit-search-cancel-button,
 input[type='search']::-webkit-search-results-button,
 input[type='search']::-webkit-search-results-decoration {
   display: none;
-}
-img {
-  display: block;
-}
-.blackBackground {
-  background-color: aquamarine;
-  width: 500px;
-}
-
-/* for notification by Toastify */
-.Toastify__toast-theme--light {
-  background-color: #fdf7f2;
-  border-radius: 10px;
-  color: #111111;
-}
-
-
-body::-webkit-scrollbar {
-  width: 7px;
-  background: transparent;
-  
-}
-::-webkit-scrollbar-thumb {
-  background-color: #f1b28b;
-  border-radius: 10px;
-}
-
-html {
-  scroll-behavior: smooth;
- 
 }

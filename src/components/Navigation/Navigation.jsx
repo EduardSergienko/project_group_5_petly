@@ -1,13 +1,14 @@
-import Nav from 'components/Nav/Nav';
-import AuthNav from 'components/AuthNav/AuthNav';
-import UserNav from 'components/UserNav/UserNav';
-import styles from './Navigation.module.scss';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+
 import { authSelectors } from 'redux/auth';
+import Nav from 'components/Nav';
+import AuthNav from 'components/AuthNav';
+import UserNav from 'components/UserNav';
 import BurgerBtn from 'components/BurgerBtn/BurgerBtn';
 import CloseMenuBtn from 'components/CloseMenuBtn/CloseMenuBtn';
 import LanguageSwitcher from 'components/LanguageSwitcher';
+import styles from './Navigation.module.scss';
 
 export default function Navigation() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -16,7 +17,7 @@ export default function Navigation() {
   const [width, setWidth] = useState(window.innerWidth);
   const mobileWidth = width < 768;
   const tabletWidth = width > 767 && width < 1279;
-  const descktopWidth = width > 1279;
+  const desktopWidth = width > 1279;
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -70,7 +71,7 @@ export default function Navigation() {
           </nav>
         </>
       )}
-      {descktopWidth && (
+      {desktopWidth && (
         <nav className={styles.mainNav}>
           <Nav />
           <LanguageSwitcher />

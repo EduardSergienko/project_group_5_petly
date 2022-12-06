@@ -10,10 +10,10 @@ const OurFriends = ({ data }) => {
     return `${from} : ${to}`;
   };
   return (
-    <section className={styles.ourFriendsSection}>
+    <section className={styles.section}>
       <Container>
-        <h2 className={styles.Title}>{t('ourFriends.title')}</h2>
-        <div className={styles.FriendsThumb}>
+        <h1 className={styles.title}>{t('ourFriends.title')}</h1>
+        <div className={styles.cardsWrap}>
           {data.map(
             ({
               _id,
@@ -26,81 +26,76 @@ const OurFriends = ({ data }) => {
               phone,
               workDays,
             }) => (
-              <div className={styles.ContainerFriendsCards} key={_id}>
+              <div className={styles.innerCard} key={_id}>
                 <a href={url} target="blank">
-                  <h3 className={styles.NameFriends}>{title}</h3>
+                  <h3 className={styles.nameFriend}>{title}</h3>
                 </a>
 
-                <div className={styles.CardsThumb}>
-                  <div className={styles.MainThumb}>
+                <div className={styles.cardBox}>
+                  <div className={styles.leftCard}>
                     <img
-                      className={styles.CardsImg}
+                      className={styles.picture}
                       src={imageUrl}
                       alt={`${title} img`}
                     />
                   </div>
 
-                  <div className={styles.SecThumb}>
-                    <ul>
-                      <li className={styles.CardItem}>
-                        Work Hours: <br />
-                        {workDays ? (
-                          <p>{getWorkDays(workDays)}</p>
-                        ) : (
-                          <span>-------------</span>
-                        )}
-                        {workDays && (
-                          <ul className={styles.subMenu}>
-                            {workDays.map(({ day, from, to, id }) => (
-                              <li
-                                key={id.toString()}
-                                className={styles.subMenuItem}
-                              >
-                                <p>{day}</p>
-                                <p>
-                                  {from}-{to}
-                                </p>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </li>
-                      <li className={styles.CardItem}>
-                        Address: <br />
-                        {address ? (
-                          <a href={addressUrl} className={styles.CardAddress}>
-                            <span>{address}</span>
-                          </a>
-                        ) : (
-                          <span>----------</span>
-                        )}
-                      </li>
-                      <li className={styles.CardItem}>
-                        Email: <br />
-                        {email ? (
-                          <a
-                            className={styles.CardLink}
-                            href={`mailto:${email}`}
-                          >
-                            {email}
-                          </a>
-                        ) : (
-                          <span>----------</span>
-                        )}
-                      </li>
-                      <li className={styles.CardItem}>
-                        Phone:
-                        <br />
-                        {phone ? (
-                          <a className={styles.CardLink} href={`tel:${phone}`}>
-                            {phone}
-                          </a>
-                        ) : (
-                          <span>----------</span>
-                        )}
-                      </li>
-                    </ul>
-                  </div>
+                  <ul className={styles.rightCard}>
+                    <li className={styles.cardItem}>
+                      Work Hours: <br />
+                      {workDays ? (
+                        <p>{getWorkDays(workDays)}</p>
+                      ) : (
+                        <span>-------------</span>
+                      )}
+                      {workDays && (
+                        <ul className={styles.subMenu}>
+                          {workDays.map(({ day, from, to, id }) => (
+                            <li
+                              key={id.toString()}
+                              className={styles.subMenuItem}
+                            >
+                              <p>{day}</p>
+                              <p>
+                                {from}-{to}
+                              </p>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                    <li className={styles.cardItem}>
+                      Address: <br />
+                      {address ? (
+                        <a href={addressUrl} className={styles.cardAddress}>
+                          <span>{address}</span>
+                        </a>
+                      ) : (
+                        <span>----------</span>
+                      )}
+                    </li>
+                    <li className={styles.cardItem}>
+                      Email: <br />
+                      {email ? (
+                        <a className={styles.cardLink} href={`mailto:${email}`}>
+                          {email}
+                        </a>
+                      ) : (
+                        <span>----------</span>
+                      )}
+                    </li>
+                    <li className={styles.cardItem}>
+                      Phone:
+                      <br />
+                      {phone ? (
+                        <a className={styles.cardLink} href={`tel:${phone}`}>
+                          {phone}
+                        </a>
+                      ) : (
+                        <span>----------</span>
+                      )}
+                    </li>
+                  </ul>
                 </div>
               </div>
             )

@@ -1,4 +1,4 @@
-@import '../../../variables/variables.scss';
+@import 'scss-utils/_variables';
 
 .list {
   margin: 30px 0px 0px;
@@ -14,7 +14,7 @@
 
 .item {
   position: relative;
-  background-color: $secondaryTextColor;
+  background-color: $lightColor;
 
   margin: 0px 0px 32px;
 
@@ -82,7 +82,7 @@
 }
 
 .itemHeader {
-  color: $mainTextColor;
+  color: $textColor;
 
   font-family: 'Manrope';
   font-weight: 700;
@@ -100,7 +100,7 @@
   font-size: 16px;
   line-height: 22px;
 
-  color: $mainTextColor;
+  color: $textColor;
 
   &:not(:last-child) {
     margin: 0px 0px 8px 0px;
@@ -129,7 +129,7 @@
   border-radius: 40px;
   width: 248px;
   height: 35px;
-  background-color: $secondaryTextColor;
+  background-color: $lightColor;
   font-weight: 500;
   font-size: 14px;
   line-height: 19px;
@@ -139,7 +139,7 @@
   transition: 250ms;
   &:hover {
     background-color: $orangeColor;
-    color: $secondaryTextColor;
+    color: $lightColor;
     transform: color background-color;
   }
 

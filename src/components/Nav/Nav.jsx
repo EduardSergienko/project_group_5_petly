@@ -1,8 +1,7 @@
+import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styles from './Nav.module.scss';
-import { useEffect } from 'react';
-import { useState } from 'react';
 
 export default function Nav({ toggleMenu }) {
   const { t } = useTranslation();

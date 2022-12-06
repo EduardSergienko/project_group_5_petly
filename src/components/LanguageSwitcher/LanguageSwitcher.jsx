@@ -10,7 +10,7 @@ const lngs = {
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
   const [width, setWidth] = useState(window.innerWidth);
-  const descktopWidth = width > 1279;
+  const desktopWidth = width > 1279;
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,7 +55,7 @@ const LanguageSwitcher = () => {
               backgroundColor: i18n.resolvedLanguage === lng ? '#fdf7f2' : '',
             }}
           >
-            {descktopWidth && <>{lng}</>}
+            {desktopWidth && <>{lng}</>}
           </label>
         </section>
       ))}

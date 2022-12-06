@@ -1,18 +1,16 @@
-@import '../../variables/variables.scss';
+@import 'scss-utils/_variables';
 
 .authNavWrap {
   display: flex;
   justify-content: center;
   margin-bottom: 60px;
+
   @media screen and (min-width: 768px) {
     margin-bottom: 0;
-    // margin-right: 20px;
-    // margin-left: 246px;
   }
   @media screen and (min-width: 1280px) {
     margin-bottom: 0;
     margin-right: 0px;
-    // margin-left: 340px;
   }
 }
 .authNavLink {
@@ -26,8 +24,8 @@
   font-size: 14px;
   line-height: 19px;
   letter-spacing: 0.04em;
-  color: $mainTextColor;
-  background-color: $secondaryTextColor;
+  color: $textColor;
+  background-color: $lightColor;
   border: 2px solid $orangeColor;
   border-radius: 40px;
   margin-right: 12px;
@@ -36,7 +34,7 @@
     margin-right: 0;
   }
   &:hover {
-    color: $secondaryTextColor;
+    color: $lightColor;
     background-color: $orangeColor;
     transform: color, background-color;
   }

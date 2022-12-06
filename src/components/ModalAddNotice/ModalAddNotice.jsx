@@ -116,37 +116,35 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
   };
 
   return (
-    <>
-      <div className={styles.container} onClick={handleModalClose}>
-        <div className={styles.modalWrapper}>
-          <div className={styles.formWrap}>
-            <h1 className={`${styles.title}`}>Add pet</h1>
-            {page === 0 ? (
-              <FirstStep
-                handleFirstStepSubmit={handleFirstStepSubmit}
-                firstStepValues={firstStepValues}
-                setFirstStepValues={setFirstStepValues}
-                handleModalClose={handleModalClose}
-                handleDateValidation={handleDateValidation}
-              />
-            ) : (
-              <SecondStep
-                handleBackToFirst={handleBackToFirst}
-                secondStepValues={secondStepValues}
-                handleAddAvatar={handleAddAvatar}
-                file={fileValue}
-                handleSecondStepSubmit={handleSecondStepSubmit}
-                checkCategory={checkCategory}
-              />
-            )}
-            <button
-              className={styles.closeBtn}
-              onClick={handleModalClose}
-            ></button>
-          </div>
+    <div className={styles.container} onClick={handleModalClose}>
+      <div className={styles.modalWrapper}>
+        <div className={styles.formWrap}>
+          <h2 className={`${styles.title}`}>Add pet</h2>
+          {page === 0 ? (
+            <FirstStep
+              handleFirstStepSubmit={handleFirstStepSubmit}
+              firstStepValues={firstStepValues}
+              setFirstStepValues={setFirstStepValues}
+              handleModalClose={handleModalClose}
+              handleDateValidation={handleDateValidation}
+            />
+          ) : (
+            <SecondStep
+              handleBackToFirst={handleBackToFirst}
+              secondStepValues={secondStepValues}
+              handleAddAvatar={handleAddAvatar}
+              file={fileValue}
+              handleSecondStepSubmit={handleSecondStepSubmit}
+              checkCategory={checkCategory}
+            />
+          )}
+          <button
+            className={styles.closeBtn}
+            onClick={handleModalClose}
+          ></button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

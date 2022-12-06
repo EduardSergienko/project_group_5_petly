@@ -2,16 +2,17 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+
 import NoticesSearch from './NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from './NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
 import AddNoticeButton from './AddNoticeButton/AddNoticeButton';
-import ModalNotice from '../ModalNotice/ModalNotice';
+import ModalNotice from 'components/ModalNotice/ModalNotice';
 import ModalAddNotice from 'components/ModalAddNotice/ModalAddNotice';
-import FilterInput from '../../helpers/FilterInput';
-import { noticesSelectors } from '../../redux/notices';
+import FilterInput from 'helpers/FilterInput';
+import { noticesSelectors } from 'redux/notices';
 import notices from 'helpers/Notification/Notification';
-import { noticesOperations } from '../../redux/notices';
+import { noticesOperations } from 'redux/notices';
 import Container from 'components/Container';
 import styles from './NoticesPage.module.scss';
 
@@ -167,7 +168,7 @@ function NoticesPage({ onFilter = () => {} }) {
   return (
     <div className={styles.notiesSection}>
       <Container>
-        <h2 className={styles.title}>{t('findpet.title')}</h2>
+        <h1 className={styles.title}>{t('findpet.title')}</h1>
         {handleNoticeCategory() && (
           <FilterInput
             onSubmit={searchNews}

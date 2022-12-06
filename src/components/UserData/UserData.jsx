@@ -82,7 +82,7 @@ function UserData() {
   return (
     <form id="form" encType="multipart/form-data" className={styles.form}>
       <div className={styles.field__wrapper}>
-        <label className={styles.field__lable}>
+        <label className={styles.field__label}>
           <input
             className={styles.field__file}
             type="file"
