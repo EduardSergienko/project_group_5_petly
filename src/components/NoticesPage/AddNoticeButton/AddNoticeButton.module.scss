@@ -1,4 +1,4 @@
-@import 'sassStyles/_variables';
+@import 'scss-utils/_variables';
 
 .addNoticeImage {
   width: 22px;
@@ -29,7 +29,7 @@
   bottom: 2%;
   z-index: 5;
   border-radius: 50%;
-  color: $secondaryLightColor;
+  color: $lightColor;
   border: none;
   cursor: pointer;
   background: $orangeColor;

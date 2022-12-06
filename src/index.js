@@ -6,9 +6,9 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { App } from 'components/App';
 import store, { persistor } from './redux/store';
 
-import './sassStyles/_vendors.scss';
-import './sassStyles/_global.scss';
-import './sassStyles/_typography.scss';
+import './scss-utils/_vendors.scss';
+import './scss-utils/_global.scss';
+import './scss-utils/_typography.scss';
 import './services/i18n';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

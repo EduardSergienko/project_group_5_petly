@@ -1,0 +1,46 @@
+@import './variables';
+
+// Breakpoints
+@mixin breakpoint-min($bp) {
+  @media screen and (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin breakpoint-max($bp) {
+  @media screen and (max-width: $bp) {
+    @content;
+  }
+}
+
+@mixin breakpoint-min-max($bp1, $bp2) {
+  @media screen and (min-width: $bp1) and (max-width: $bp2) {
+    @content;
+  }
+}
+
+@mixin breakpoint-min-landscape($bp) {
+  @media screen and (min-width: $bp) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin breakpoint-max-landscape($bp) {
+  @media screen and (max-width: $bp) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin breakpoint-min-max-landscape($bp1, $bp2) {
+  @media screen and (min-width: $bp1) and (max-width: $bp2) and (orientation: landscape) {
+    @content;
+  }
+}
+
+// Transition with default value
+@mixin transition($properties...) {
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  @if length($properties) > 0 {
+    transition-property: $properties;
+  }
+}

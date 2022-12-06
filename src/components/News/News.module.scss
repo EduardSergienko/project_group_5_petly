@@ -1,15 +1,15 @@
-@import 'sassStyles/_variables';
-@import 'sassStyles/_mixins.scss';
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins.scss';
 
 .newsWrap {
   padding-top: 45px;
   padding-bottom: 100px;
 
-  @media screen and (min-width: 768px) {
+  @include breakpoint-min($tablet) {
     padding-top: 95px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpoint-min($desktop) {
     padding-top: 60px;
     padding-bottom: 200px;
   }
@@ -19,27 +19,26 @@
   margin-bottom: 28px;
   text-align: center;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     margin-bottom: 40px;
   }
 }
 
 .box {
-  list-style: none;
-  @media screen and (min-width: 768px) {
+  @include breakpoint-min($tablet) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 34px;
     grid-row-gap: 60px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpoint-min($desktop) {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
 .newsItem:not(:last-child) {
-  @media screen and (max-width: 767px) {
+  @include breakpoint-max($tablet - 1px) {
     margin-bottom: 40px;
   }
 }
@@ -54,12 +53,12 @@
   background: linear-gradient(90deg, #ff634e 0%, #ffdf48 105.44%);
   border-radius: 40px;
 
-  @media screen and (min-width: 768px) {
+  @include breakpoint-min($tablet) {
     width: 280px;
     height: 8px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include breakpoint-min($desktop) {
     width: 340px;
   }
 }
@@ -69,7 +68,7 @@
 
   font-weight: 700;
   font-size: 24px;
-  line-height: 1.37em;
+  line-height: 1.375em;
   letter-spacing: -0.01em;
   color: $textColor;
 }
@@ -77,7 +76,7 @@
   margin-bottom: 20px;
 
   font-size: 16px;
-  line-height: 1.37em;
+  line-height: 1.375em;
   color: #111321;
 }
 
@@ -87,7 +86,6 @@
 }
 
 .date {
-  font-family: 'Manrope';
   font-size: 16px;
   line-height: 1.37em;
   color: $primaryGrayColor;
@@ -96,7 +94,7 @@
 .readMore {
   font-weight: 500;
   font-size: 16px;
-  line-height: 1.37em;
+  line-height: 1.375em;
   text-decoration-line: underline;
   color: $orangeColor;
 

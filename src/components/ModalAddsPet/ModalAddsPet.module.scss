@@ -1,5 +1,5 @@
-@import 'sassStyles/_variables';
-@import 'sassStyles/_mixins';
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins';
 
 .bodyScroll {
   overflow: hidden;
@@ -34,10 +34,10 @@
   padding: 40px 20px;
 
   border-radius: 20px;
-  background-color: $secondaryLightColor;
+  background-color: $lightColor;
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     padding: 40px 80px;
 
     border-radius: 40px;
@@ -53,10 +53,10 @@
 
   border: none;
   border-radius: 50%;
-  background-color: $primaryLightColor;
+  background-color: $bakgroundColor;
   cursor: pointer;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     top: 28px;
     right: 28px;
   }

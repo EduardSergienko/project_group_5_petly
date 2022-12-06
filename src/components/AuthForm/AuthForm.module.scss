@@ -1,10 +1,10 @@
-@import 'sassStyles/_variables';
-@import 'sassStyles/_mixins.scss';
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins.scss';
 
 .formWrap {
   padding-top: 42px;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     top: 18%;
     left: 50%;
     position: absolute;
@@ -12,16 +12,16 @@
 
     padding: 60px 80px 40px 80px;
 
-    background-color: $secondaryLightColor;
-    box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
+    background-color: $lightColor;
+    box-shadow: $primaryShadow;
     border-radius: 40px;
-
-    @media screen and (orientation: landscape) {
-      margin-top: 25px;
-    }
   }
 
-  @include largeMinBreakPoint {
+  @include breakpoint-min-landscape($tablet) {
+    top: 22%;
+  }
+
+  @include breakpoint-min($desktop) {
     top: 17%;
     left: 50%;
 
@@ -34,13 +34,9 @@
   margin-bottom: 40px;
   text-align: center;
 
-  font-size: 24px;
-  line-height: 1.37em;
-  font-weight: 700;
   letter-spacing: 0.04em;
-  color: $textColor;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     font-weight: 500;
     font-size: 36px;
     line-height: 1.36em;
@@ -69,7 +65,7 @@
   padding: 11px 60px 12px 14px;
 
   color: $textColor;
-  background-color: $primaryLightColor;
+  background-color: $bakgroundColor;
   border: $inputBorder;
   border-radius: 40px;
   font-family: 'Manrope';
@@ -77,8 +73,7 @@
   line-height: 1.36em;
   letter-spacing: 0.04em;
 
-  transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  @include transition();
 
   &:focus {
     background-color: rgba(0, 0, 0, 0.02);
@@ -90,7 +85,7 @@
     color: $primaryGrayColor;
   }
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     width: 448px;
     height: 52px;
     padding: 14px 70px 13px 32px;
@@ -99,7 +94,7 @@
     line-height: 1.39em;
   }
 
-  @include largeMinBreakPoint {
+  @include breakpoint-min($desktop) {
     width: 458px;
   }
 }
@@ -114,7 +109,7 @@
 
   transform: translate(0, -50%);
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     right: 32px;
     font-size: 28px;
   }
@@ -132,10 +127,10 @@
   font-size: 20px;
   line-height: 1.36em;
   letter-spacing: 0.04em;
-  color: $secondaryLightColor;
+  color: $lightColor;
   cursor: pointer;
 
-  transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  @include transition();
 
   &:hover {
     background-color: $hoverOrangeColor;
@@ -145,12 +140,12 @@
     margin-bottom: 16px;
   }
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     width: 448px;
     height: 48px;
   }
 
-  @include largeMinBreakPoint {
+  @include breakpoint-min($desktop) {
     width: 458px;
   }
 }
@@ -158,12 +153,12 @@
 .backButton {
   @extend .button;
 
-  background-color: $secondaryLightColor;
+  background-color: $lightColor;
   border: 2px solid $orangeColor;
   color: $secondaryTextColor;
 
   &:hover {
-    color: $secondaryLightColor;
+    color: $lightColor;
   }
 }
 
@@ -177,7 +172,7 @@
 .link {
   color: #3091eb;
 
-  transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  @include transition();
 
   &:hover {
     text-decoration: underline;
@@ -194,7 +189,7 @@
   font-size: 11px;
   color: $errorColor;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     margin-left: 32px;
   }
 }

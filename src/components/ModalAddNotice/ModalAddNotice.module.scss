@@ -1,8 +1,8 @@
-@import 'sassStyles/_variables';
-@import 'sassStyles/_mixins';
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins';
 
 .formWrap {
-  background-color: $secondaryLightColor;
+  background-color: $lightColor;
   border-radius: 20px;
   padding: 40px 20px;
 
@@ -24,10 +24,15 @@
 .title {
   margin-bottom: 20px;
 
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.375em;
   text-align: center;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     font-weight: 600;
+    font-size: 36px;
+    line-height: 1.36em;
     color: $secondaryTextColor;
   }
 }
@@ -127,7 +132,7 @@
 .categoryLostFound {
   top: 0;
   left: 0;
-  background-color: $secondaryLightColor;
+  background-color: $lightColor;
   display: flex;
   justify-content: center;
   padding: 6px 24px;
@@ -222,7 +227,7 @@
 .labelContainer input:checked ~ .categoryForFree:after,
 .labelContainer input:checked ~ .categoryLostFound:after,
 .labelContainer input:checked ~ .categorySell:after {
-  color: $secondaryLightColor;
+  color: $lightColor;
 }
 
 .labelTitle {
@@ -256,7 +261,7 @@
   margin: 8px 0px 16px 0px;
 
   color: $textColor;
-  background-color: $primaryLightColor;
+  background-color: $bakgroundColor;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 40px;
   font-family: 'Manrope';
@@ -337,7 +342,7 @@ input[type='number'] {
   }
 
   &:last-of-type {
-    color: $secondaryLightColor;
+    color: $lightColor;
     border: none;
     background-color: $orangeColor;
 
@@ -519,7 +524,7 @@ form label:last-of-type .textArea {
   margin: 8px 0px 16px 0px;
 
   color: $textColor;
-  background-color: $primaryLightColor;
+  background-color: $bakgroundColor;
   border: 1px solid rgba(245, 146, 86, 0.5);
   border-radius: 20px;
   font-family: 'Manrope';

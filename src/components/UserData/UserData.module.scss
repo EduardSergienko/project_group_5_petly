@@ -1,4 +1,4 @@
-@import 'sassStyles/_variables';
+@import 'scss-utils/_variables';
 
 .form {
   width: 100%;
@@ -157,7 +157,7 @@
   letter-spacing: 0.04em;
 
   border: none;
-  background-color: $secondaryLightColor;
+  background-color: $lightColor;
   color: $textColor;
   cursor: pointer;
 
@@ -171,7 +171,7 @@
 }
 
 .buttonDone {
-  background-color: $primaryLightColor;
+  background-color: $bakgroundColor;
   border-radius: 50%;
   width: 32px;
   height: 32px;

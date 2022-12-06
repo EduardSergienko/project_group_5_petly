@@ -1,4 +1,4 @@
-@import 'sassStyles/_variables';
+@import 'scss-utils/_variables';
 
 .container {
   position: relative;
@@ -7,7 +7,7 @@
   width: 100%;
   padding: 20px;
 
-  background: $secondaryLightColor;
+  background: $lightColor;
   box-shadow: 7px 4px 14px rgba(0, 0, 0, 0.11);
   border-radius: 40px;
 

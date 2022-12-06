@@ -1,5 +1,5 @@
-@import 'sassStyles/_variables';
-@import 'sassStyles/_mixins';
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins';
 
 .container {
   display: flex;
@@ -11,8 +11,15 @@
 .title {
   margin-bottom: 28px;
 
-  @include mediumMinBreakPoint {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.375em;
+
+  @include breakpoint-min($tablet) {
     margin-bottom: 40px;
+
+    font-size: 36px;
+    line-height: 1.36em;
   }
 }
 
@@ -34,7 +41,7 @@
   & + & {
     margin-top: 16px;
 
-    @include mediumMinBreakPoint {
+    @include breakpoint-min($tablet) {
       margin-top: 28px;
     }
   }
@@ -47,7 +54,7 @@
   line-height: 1.444em;
   font-weight: 500;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     margin-bottom: 12px;
 
     font-size: 24px;
@@ -64,7 +71,7 @@
 
   color: $textColor;
 
-  background: $primaryLightColor;
+  background: $bakgroundColor;
   border: $inputBorder;
   border-radius: 40px;
 
@@ -72,7 +79,7 @@
     outline: none;
   }
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     width: 448px;
 
     font-size: 16px;
@@ -87,7 +94,7 @@
   line-height: 1.857em;
   border-radius: 20px;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     min-height: 116px;
   }
 }
@@ -116,7 +123,7 @@
   justify-content: center;
   margin-top: 40px;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     flex-direction: row;
   }
 }
@@ -133,14 +140,14 @@
   line-height: 1.375em;
   letter-spacing: 0.04em;
   color: $textColor;
-  background-color: $secondaryLightColor;
+  background-color: $lightColor;
   border: 2px solid $orangeColor;
   border-radius: 40px;
   cursor: pointer;
 
   transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     order: 2;
     width: 180px;
     margin-left: 24px;
@@ -157,13 +164,13 @@
   order: 2;
   margin-bottom: 0px;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     order: 1;
   }
 }
 
 .valueTrue {
-  color: $secondaryLightColor;
+  color: $lightColor;
   background-color: $orangeColor;
 
   &:hover {
@@ -180,7 +187,7 @@
   letter-spacing: -0.01em;
   color: $textColor;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     font-family: 'Inter';
     color: $secondaryTextColor;
     font-size: 20px;
@@ -198,7 +205,7 @@
   position: relative;
   margin-bottom: 20px;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     margin-bottom: 40px;
   }
 }
@@ -238,14 +245,14 @@
   font-size: 18px;
   line-height: 1.44em;
   color: #7e7e7e;
-  background: $primaryLightColor;
+  background: $bakgroundColor;
   border-radius: 40px;
 
   transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   overflow: hidden;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     height: 182px;
     width: 182px;
   }
@@ -284,7 +291,7 @@
     box-shadow: (0px 1px 8px $orangeColor);
   }
 
-  @include maxBreakPoint(1279) {
+  @include breakpoint-max($desktop - 1px) {
     display: none;
   }
 }

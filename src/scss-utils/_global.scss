@@ -16,7 +16,7 @@ body {
     'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $primaryLightColor;
+  background-color: $bakgroundColor;
   color: $textColor;
 
   overflow: overlay;
@@ -36,7 +36,8 @@ code {
     monospace;
 }
 
-ul {
+ul,
+li {
   margin: 0;
   padding: 0;
   list-style: none;

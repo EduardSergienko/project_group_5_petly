@@ -1,4 +1,4 @@
-@import 'sassStyles/_variables';
+@import 'scss-utils/_variables';
 
 .search {
   display: flex;
@@ -21,7 +21,7 @@
   padding: 9px 45px 9px 12px;
 
   color: $primaryGrayColor;
-  background-color: $secondaryLightColor;
+  background-color: $lightColor;
   border: $inputBorder;
   border-radius: 20px;
   font-family: 'Manrope';

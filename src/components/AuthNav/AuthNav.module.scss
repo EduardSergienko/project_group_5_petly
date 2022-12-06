@@ -1,4 +1,4 @@
-@import 'sassStyles/_variables';
+@import 'scss-utils/_variables';
 
 .authNavWrap {
   display: flex;
@@ -25,7 +25,7 @@
   line-height: 19px;
   letter-spacing: 0.04em;
   color: $textColor;
-  background-color: $secondaryLightColor;
+  background-color: $lightColor;
   border: 2px solid $orangeColor;
   border-radius: 40px;
   margin-right: 12px;
@@ -34,7 +34,7 @@
     margin-right: 0;
   }
   &:hover {
-    color: $secondaryLightColor;
+    color: $lightColor;
     background-color: $orangeColor;
     transform: color, background-color;
   }

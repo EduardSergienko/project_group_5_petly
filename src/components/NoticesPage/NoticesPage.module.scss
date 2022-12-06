@@ -1,5 +1,5 @@
-@import 'sassStyles/_variables';
-@import 'sassStyles/_mixins.scss';
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins.scss';
 
 .notiesSection {
   position: relative;
@@ -18,7 +18,7 @@
   text-align: center;
   margin-bottom: 28px;
 
-  @include mediumMinBreakPoint {
+  @include breakpoint-min($tablet) {
     margin-bottom: 40px;
   }
 }

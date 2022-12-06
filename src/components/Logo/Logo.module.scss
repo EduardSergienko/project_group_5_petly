@@ -1,5 +1,5 @@
-@import 'sassStyles/_variables';
-@import 'sassStyles/_mixins';
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins';
 
 .logo {
   font-family: 'Poppins';
@@ -8,17 +8,17 @@
   line-height: 1.5em;
   letter-spacing: 0.07em;
 
-  @include mediumMinBreakPoint {
+  & span {
+    color: $orangeColor;
+  }
+
+  @include breakpoint-min($tablet) {
     margin-right: 0px;
 
     font-size: 32px;
   }
 
-  @include largeMinBreakPoint {
+  @include breakpoint-min($desktop) {
     margin-right: 80px;
   }
-}
-
-.highlight {
-  color: $orangeColor;
 }

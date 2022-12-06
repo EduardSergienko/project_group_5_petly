@@ -1,8 +1,9 @@
-@import 'sassStyles/_variables';
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins.scss';
 
 .mainNav {
   @media screen and (max-width: 1279px) {
-    background-color: $primaryLightColor;
+    background-color: $bakgroundColor;
     position: absolute;
     right: 0;
     width: 100%;
@@ -34,16 +35,11 @@
     flex-grow: 1;
   }
 
-  @media screen and (max-width: 1023px) and (orientation: landscape) {
+  @include breakpoint-max-landscape(1023px) {
     padding-top: 40px;
   }
 }
 .responsiveNav {
   transform: none;
-  height: calc(100vh - $smallHeaderHeight);
   z-index: 100;
-
-  @media screen and (min-width: 768px) {
-    height: calc(100vh - $mediumHeaderHeight);
-  }
 }

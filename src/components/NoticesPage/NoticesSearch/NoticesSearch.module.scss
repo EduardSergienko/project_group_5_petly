@@ -1,4 +1,4 @@
-@import 'sassStyles/_variables';
+@import 'scss-utils/_variables';
 
 .input {
   font-family: 'Manrope';
@@ -20,7 +20,7 @@
 
   background: url('../../../image/search.png') no-repeat right;
   background-position: 249px 11px;
-  background-color: $secondaryLightColor;
+  background-color: $lightColor;
   background-size: 15px;
   &::placeholder {
     font-weight: 500;
