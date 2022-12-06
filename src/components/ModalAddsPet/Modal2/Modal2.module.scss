@@ -1,4 +1,5 @@
-@import '../../../variables/variables.scss';
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins';
 
 .container {
   display: flex;
