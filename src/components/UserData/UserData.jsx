@@ -34,6 +34,12 @@ function UserData() {
 
   const handleChange = e => {
     const reader = new FileReader();
+
+    if (e.target.size < e.target.files[0].size) {
+      alert('Photo should not be larger than 15 MB');
+      return;
+    }
+
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
       reader.onloadend = () => {
@@ -82,6 +88,7 @@ function UserData() {
             type="file"
             name="file"
             accept=".jpg, .jpeg, .png"
+            size={15000}
             required
             multiple
             onChange={handleChange}
@@ -90,7 +97,7 @@ function UserData() {
           <div
             className={`${styles.field__fake} ${
               !active && (!picture || !selectPicture) ? styles.pointer : ''
-            }`}
+            } ${!picture && !selectPicture ? styles.center : ''}`}
           >
             {picture || selectPicture ? (
               <img

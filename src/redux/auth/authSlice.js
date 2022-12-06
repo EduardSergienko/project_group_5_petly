@@ -7,6 +7,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   error: null,
+  createAnimalLoading: false,
 };
 
 const authSlice = createSlice({
@@ -92,7 +93,11 @@ const authSlice = createSlice({
     },
 
     [userOperations.createUserPost.fulfilled](state, { payload }) {
-      state.user.myAnimal = [...state.user.myAnimal, payload];
+      state.user.myAnimal = [payload, ...state.user.myAnimal];
+      state.createAnimalLoading = false;
+    },
+    [userOperations.createUserPost.pending](state, { payload }) {
+      state.createAnimalLoading = true;
     },
     [userOperations.deleteUserPost.fulfilled]: (state, { payload }) => {
       state.user.myAnimal = state.user.myAnimal.filter(

@@ -85,6 +85,11 @@ function Modal2({
   };
 
   const handleChange = e => {
+    if (e.target.size < e.target.files[0].size) {
+      alert('Photo should not be larger than 15 MB');
+      return;
+    }
+
     setFileValue(e.target.files[0]);
 
     const reader = new FileReader();
@@ -122,6 +127,7 @@ function Modal2({
               type="file"
               name="file"
               accept=".jpg, .jpeg, .png"
+              size={15000}
               required
               multiple
               onChange={handleChange}
@@ -129,7 +135,7 @@ function Modal2({
             <div
               className={`${styles.field__fake} ${
                 !picture ? styles.pointer : ''
-              }`}
+              } ${picture ? styles.center : ''}`}
             >
               {picture ? (
                 <img
