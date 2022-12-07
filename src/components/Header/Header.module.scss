@@ -3,11 +3,14 @@
 
 .headerContentWrap {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 12px;
+  padding-top: 20px;
 
-  @include breakpoint-min($tablet) {
-    padding-top: 20px;
+  @include breakpoint-max($tablet - 1px) {
+    padding-top: 12px;
+  }
+
+  @include breakpoint-max($desktop - 1px) {
+    align-items: center;
+    justify-content: space-between;
   }
 }

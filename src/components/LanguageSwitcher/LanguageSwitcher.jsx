@@ -55,7 +55,7 @@ const LanguageSwitcher = () => {
               backgroundColor: i18n.resolvedLanguage === lng ? '#fdf7f2' : '',
             }}
           >
-            {desktopWidth && <>{lng}</>}
+            {/* {desktopWidth && <>{lng}</>} */}
           </label>
         </section>
       ))}
