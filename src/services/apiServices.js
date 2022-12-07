@@ -1,5 +1,6 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'https://fetch-friends.onrender.com/api';
+axios.defaults.baseURL =
+  'https://project-group-5-petly-back-end.vercel.app/api';
 
 const getAllFriends = async () => {
   return await axios.get('/friends');

@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://fetch-friends.onrender.com/api';
+axios.defaults.baseURL =
+  'https://project-group-5-petly-back-end.vercel.app/api';
 
 const token = {
   set(token) {
