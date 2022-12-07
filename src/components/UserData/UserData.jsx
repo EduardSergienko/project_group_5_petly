@@ -36,7 +36,7 @@ function UserData() {
     const reader = new FileReader();
 
     if (e.target.size < e.target.files[0].size) {
-      alert('Photo should not be larger than 1.0 MB');
+      alert('Photo should not be larger than 3.0 MB');
       return;
     }
 
