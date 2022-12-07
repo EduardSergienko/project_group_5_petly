@@ -1,12 +1,15 @@
 @import 'scss-utils/_variables';
+@import 'scss-utils/_mixins.scss';
 
 .headerContentWrap {
   display: flex;
   padding-top: 20px;
-  @media screen and (max-width: 767px) {
+
+  @include breakpoint-max($tablet - 1px) {
     padding-top: 12px;
   }
-  @media screen and (max-width: 1279px) {
+
+  @include breakpoint-max($desktop - 1px) {
     align-items: center;
     justify-content: space-between;
   }

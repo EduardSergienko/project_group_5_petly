@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './LanguageSwitcher.module.scss';
 
@@ -9,15 +8,6 @@ const lngs = {
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
-  const [width, setWidth] = useState(window.innerWidth);
-  const desktopWidth = width > 1279;
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-  }, []);
 
   const onOptionChange = e => {
     i18n.changeLanguage(e.target.value);
@@ -54,9 +44,7 @@ const LanguageSwitcher = () => {
             style={{
               backgroundColor: i18n.resolvedLanguage === lng ? '#fdf7f2' : '',
             }}
-          >
-            {desktopWidth && <>{lng}</>}
-          </label>
+          ></label>
         </section>
       ))}
     </form>

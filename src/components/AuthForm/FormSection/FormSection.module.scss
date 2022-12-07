@@ -40,11 +40,11 @@
   }
 
   // for landscape mobile
-  @include breakpoint-max-landscape(767px) {
+  @include breakpoint-max-landscape($tablet - 1px) {
     height: calc(100vh + $smallHeaderHeight);
   }
 
-  @include breakpoint-min-max-landscape($tablet, 1023px) {
+  @include breakpoint-min-max-landscape($tablet, $mobileLandscape) {
     height: calc(100vh + 200px);
   }
 }

@@ -1,14 +1,16 @@
 @import 'scss-utils/_variables';
+@import 'scss-utils/_mixins';
 
 .authNavWrap {
   display: flex;
   justify-content: center;
   margin-bottom: 60px;
 
-  @media screen and (min-width: 768px) {
+  @include breakpoint-min($tablet) {
     margin-bottom: 0;
   }
-  @media screen and (min-width: 1280px) {
+
+  @include breakpoint-min($desktop) {
     margin-bottom: 0;
     margin-right: 0px;
   }
@@ -29,7 +31,9 @@
   border: 2px solid $orangeColor;
   border-radius: 40px;
   margin-right: 12px;
-  transition: 250ms;
+
+  @include transition();
+
   &:last-child {
     margin-right: 0;
   }
@@ -38,11 +42,12 @@
     background-color: $orangeColor;
     transform: color, background-color;
   }
-  @media screen and (min-width: 768px) {
+
+  @include breakpoint-min($tablet) {
     font-size: 20px;
     line-height: 27px;
   }
-  @media screen and (min-width: 1280px) {
+  @include breakpoint-min($desktop) {
     padding: 8px 26px;
     margin-right: 20px;
     &:last-child {

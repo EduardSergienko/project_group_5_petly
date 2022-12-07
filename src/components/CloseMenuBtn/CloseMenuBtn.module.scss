@@ -1,10 +1,15 @@
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins.scss';
+
 .closeMenuBtn {
+  height: 40px;
+  padding: 0;
+
   cursor: pointer;
   background-color: transparent;
   border: none;
-  padding: 0;
-  height: 40px;
-  @media screen and (min-width: 1280px) {
+
+  @include breakpoint-min($desktop) {
     display: none;
   }
 }

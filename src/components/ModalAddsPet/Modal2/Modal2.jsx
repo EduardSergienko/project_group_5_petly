@@ -86,7 +86,7 @@ function Modal2({
 
   const handleChange = e => {
     if (e.target.size < e.target.files[0].size) {
-      alert('Photo should not be larger than 15 MB');
+      alert('Photo should not be larger than 1.0 MB');
       return;
     }
 
@@ -127,7 +127,7 @@ function Modal2({
               type="file"
               name="file"
               accept=".jpg, .jpeg, .png"
-              size={15000}
+              size={3000000}
               required
               multiple
               onChange={handleChange}

@@ -1,13 +1,18 @@
+@import 'scss-utils/_variables';
+@import 'scss-utils/_mixins';
+
 .container {
-  width: 320px;
+  width: $mobile;
   padding: 0 20px;
   margin: 0 auto;
-  @media screen and (min-width: 768px) {
-    width: 768px;
+
+  @include breakpoint-min($tablet) {
+    width: $tablet;
     padding: 0 32px;
   }
-  @media screen and (min-width: 1280px) {
-    width: 1280px;
+
+  @include breakpoint-min($desktop) {
+    width: $desktop;
     padding: 0 16px;
   }
 }

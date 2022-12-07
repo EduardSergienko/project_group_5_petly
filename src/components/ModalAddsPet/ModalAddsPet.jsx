@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { userOperations } from '../../redux/user';
-
+import { userOperations } from 'redux/user';
 import { Modal1, Modal2 } from '.';
 
-import close from '../../image/svg/closeLine.svg';
+import close from 'image/svg/closeLine.svg';
 
 import styles from './ModalAddsPet.module.scss';
 
@@ -64,11 +63,8 @@ function ModalAddsPet({ active, setActive, setmodalActivefForTablet }) {
   };
 
   useEffect(() => {
-    if (active) {
-      document.body.classList.add(styles.bodyScroll);
-      return;
-    }
-    document.body.classList.remove(styles.bodyScroll);
+    if (active) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'visible';
   }, [active]);
 
   return (
