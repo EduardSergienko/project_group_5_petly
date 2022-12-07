@@ -127,7 +127,7 @@ function Modal2({
               type="file"
               name="file"
               accept=".jpg, .jpeg, .png"
-              size={1000000}
+              size={3000000}
               required
               multiple
               onChange={handleChange}
