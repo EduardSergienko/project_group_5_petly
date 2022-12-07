@@ -4,12 +4,12 @@ import { useTranslation } from 'react-i18next';
 
 import UserDataItem from './UserDataItem/UserDataItem';
 
-import { authSelectors } from '../../redux/auth';
-import { userOperations } from '../../redux/user';
+import { authSelectors } from 'redux/auth';
+import { userOperations } from 'redux/user';
 
-import camera from '../../image/camera.png';
-import doneVector from '../../image/doneVector.png';
-import noUser from '../../image/noUser.png';
+import camera from 'image/camera.png';
+import doneVector from 'image/doneVector.png';
+import noUser from 'image/noUser.png';
 
 import styles from './UserData.module.scss';
 
@@ -36,7 +36,7 @@ function UserData() {
     const reader = new FileReader();
 
     if (e.target.size < e.target.files[0].size) {
-      alert('Photo should not be larger than 15 MB');
+      alert('Photo should not be larger than 1.0 MB');
       return;
     }
 
@@ -88,7 +88,7 @@ function UserData() {
             type="file"
             name="file"
             accept=".jpg, .jpeg, .png"
-            size={15000}
+            size={1000000}
             required
             multiple
             onChange={handleChange}

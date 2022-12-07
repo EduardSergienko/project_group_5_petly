@@ -2,7 +2,12 @@ import styles from './CloseMenuBtn.module.scss';
 
 export default function CloseMenuBtn({ toggleNav }) {
   return (
-    <button onClick={toggleNav} className={styles.closeMenuBtn} type="button">
+    <button
+      onClick={toggleNav}
+      className={styles.closeMenuBtn}
+      type="button"
+      aria-label="close-menu-button"
+    >
       <svg
         height="40"
         viewBox="0 0 48 48"

@@ -35,7 +35,7 @@
     flex-grow: 1;
   }
 
-  @include breakpoint-max-landscape(1023px) {
+  @include breakpoint-max-landscape($mobileLandscape) {
     padding-top: 40px;
   }
 }
