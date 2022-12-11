@@ -1,16 +1,14 @@
-import axios from 'axios';
-axios.defaults.baseURL =
-  'https://project-group-5-petly-back-end.vercel.app/api';
+import { axiosInstance } from './instance';
 
 const getAllFriends = async () => {
-  return await axios.get('/friends');
+  return await axiosInstance.get('/friends');
 };
 
 const getNews = async page => {
-  return await axios.get(`/news?page=${page}`);
+  return await axiosInstance.get(`/news?page=${page}`);
 };
 const searchNews = async query => {
-  return await axios.get(`/news/search?title=${query}`);
+  return await axiosInstance.get(`/news/search?title=${query}`);
 };
 const apiServices = {
   getAllFriends,
