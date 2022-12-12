@@ -1,15 +1,13 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-axios.defaults.baseURL =
-  'https://project-group-5-petly-back-end.vercel.app/api';
+import isTokenExpired from '../../services/jwt';
+import { axiosInstance } from '../../services/instance';
 
 const token = {
   set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = '';
+    axiosInstance.defaults.headers.common.Authorization = '';
   },
 };
 
@@ -17,8 +15,9 @@ const register = createAsyncThunk(
   'auth/register',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/auth/register', credentials);
-      token.set(data.result.token);
+      const { data } = await axiosInstance.post('/auth/register', credentials);
+      token.set(data.token);
+
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -30,8 +29,9 @@ const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post('/auth/login', credentials);
-      token.set(data.result.token);
+      const { data } = await axiosInstance.post('/auth/login', credentials);
+      token.set(data.token);
+
       return data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -43,7 +43,7 @@ const logOutUser = createAsyncThunk(
   'user/logOutUser',
   async (_, { rejectWithValue }) => {
     try {
-      await axios.get('/auth/logout');
+      await axiosInstance.get('/auth/logout');
       token.unset();
     } catch (error) {
       return rejectWithValue(error);
@@ -64,10 +64,37 @@ const getCurrentUser = createAsyncThunk(
     token.set(persistedToken);
 
     try {
-      const { data } = await axios.get(`/user/current`, persistedToken);
+      const { data } = await axiosInstance.get(`/user/current`);
+
       return data;
     } catch (error) {
       console.log(error);
+    }
+  }
+);
+
+let refreshTokenRequest = null;
+
+const getAccessToken = createAsyncThunk(
+  'auth/getAccessToken',
+  async (_, thunkAPI) => {
+    try {
+      const accessToken = thunkAPI.getState().auth.token;
+
+      if (!accessToken || isTokenExpired(accessToken)) {
+        if (refreshTokenRequest === null) {
+          refreshTokenRequest = axiosInstance.get(`/auth/refresh`);
+        }
+
+        const { data } = await refreshTokenRequest;
+        refreshTokenRequest = null;
+
+        return data.accessToken;
+      }
+
+      return accessToken;
+    } catch (error) {
+      return null;
     }
   }
 );
@@ -77,5 +104,6 @@ const operations = {
   logIn,
   logOutUser,
   getCurrentUser,
+  getAccessToken,
 };
 export default operations;

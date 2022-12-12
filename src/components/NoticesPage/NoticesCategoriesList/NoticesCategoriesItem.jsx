@@ -87,6 +87,7 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
       return title;
     }
   };
+
   return (
     <div className={styles.item} key={item?._id}>
       <div className={styles.imgWrapper}>

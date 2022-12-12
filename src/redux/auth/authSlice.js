@@ -18,7 +18,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
     },
     [authOperations.register.fulfilled](state, action) {
-      state.token = action.payload.result.token;
+      state.token = action.payload.token;
       state.error = null;
       state.isLoggedIn = true;
       const {
@@ -52,7 +52,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
     },
     [authOperations.logIn.fulfilled](state, action) {
-      state.token = action.payload.result.token;
+      state.token = action.payload.token;
       state.error = null;
       state.isLoggedIn = true;
       const {
@@ -136,6 +136,12 @@ const authSlice = createSlice({
       };
       state.error = null;
       state.isLoggedIn = true;
+    },
+    [authOperations.getAccessToken.fulfilled]: (state, { payload }) => {
+      state.token = payload;
+    },
+    [authOperations.getAccessToken.rejected]: (state, { payload }) => {
+      state.token = null;
     },
   },
 });
