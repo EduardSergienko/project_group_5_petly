@@ -42,7 +42,7 @@ axiosInstance.interceptors.response.use(
   response => response,
   error => {
     const isLoggedIn = !!store.getState().auth.token;
-    console.log(error);
+
     if (
       error.response?.status === 401 &&
       isLoggedIn &&
@@ -51,7 +51,7 @@ axiosInstance.interceptors.response.use(
     ) {
       store.dispatch(authOperations.logOutUser());
     }
-    console.log(error);
+
     throw error;
   }
 );
