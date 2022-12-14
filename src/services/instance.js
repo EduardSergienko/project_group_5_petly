@@ -47,7 +47,7 @@ axiosInstance.interceptors.response.use(
       error.response?.status === 401 &&
       isLoggedIn &&
       error.request.url !==
-        'https://project-group-5-petly-back-end.vercel.app/api/auth/logout'
+        'https://petly-back-end.onrender.com/api/auth/logout'
     ) {
       store.dispatch(authOperations.logOutUser());
     }
