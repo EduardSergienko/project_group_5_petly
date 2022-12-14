@@ -15,7 +15,7 @@ export const injectStore = _store => {
 };
 
 export const axiosInstance = axios.create({
-  baseURL: 'https://project-group-5-petly-back-end.vercel.app/api',
+  baseURL: 'https://petly-back-end.onrender.com/api',
   withCredentials: true,
 });
 
