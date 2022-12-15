@@ -142,6 +142,8 @@ const authSlice = createSlice({
     },
     [authOperations.getAccessToken.rejected]: (state, { payload }) => {
       state.token = null;
+      state.isLoggedIn = false;
+      state.user = { name: null, email: null, myAnimal: [], myFavorite: [] };
     },
   },
 });
