@@ -15,7 +15,7 @@ export const injectStore = _store => {
 };
 
 export const axiosInstance = axios.create({
-  baseURL: 'https://petly-back-end.cyclic.app/api',
+  baseURL: 'https://project-group-5-petly-back-end.vercel.app/api',
   withCredentials: true,
 });
 
@@ -46,7 +46,8 @@ axiosInstance.interceptors.response.use(
     if (
       error.response?.status === 401 &&
       isLoggedIn &&
-      error.request.url !== 'https://petly-back-end.cyclic.app/api'
+      error.request.url !==
+        'https://project-group-5-petly-back-end.vercel.app/api'
     ) {
       store.dispatch(authOperations.logOutUser());
     }
