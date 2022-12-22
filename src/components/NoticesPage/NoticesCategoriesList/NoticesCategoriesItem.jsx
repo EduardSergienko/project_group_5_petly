@@ -144,9 +144,15 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
             {item?.price && <p className={styles.itemDescription}>Price:</p>}
           </div>
           <div className={styles.itemDescriptionConteiner}>
-            <p className={styles.itemDescription}>{cutTitle(item?.breed)}</p>
+            {item?.breed && (
+              <p className={styles.itemDescription}>{cutTitle(item?.breed)}</p>
+            )}
+
             <p className={styles.itemDescription}>{cutTitle(item?.location)}</p>
-            <p className={styles.itemDescription}>{item?.birthDate}</p>
+            {item?.birthDate && (
+              <p className={styles.itemDescription}>{item?.birthDate}</p>
+            )}
+
             {item?.price && (
               <p className={styles.itemDescription}>{`${item?.price}$`}</p>
             )}
