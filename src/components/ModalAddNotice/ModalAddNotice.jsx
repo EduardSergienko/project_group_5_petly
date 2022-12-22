@@ -15,6 +15,7 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
     birthDate: '',
     breed: '',
   });
+  console.log(firstStepValues);
   const [secondStepValues, setSecondStepValues] = useState({
     sex: '',
     location: '',
@@ -48,15 +49,17 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
     formData.append('category', firstStepValues.category);
     formData.append('title', firstStepValues.title);
     formData.append('petName', firstStepValues.name);
-    formData.append('birthDate', firstStepValues.birthDate);
-    formData.append('breed', firstStepValues.breed);
+    formData.append('breed', firstStepValues.breed || '-');
     formData.append('sex', sex);
     formData.append('location', location);
     formData.append('avatar', avatar);
     formData.append('comments', comments);
-
-    firstStepValues.category === 'sell' &&
+    if (firstStepValues.category === 'sell') {
       formData.append('price', Number(price));
+      formData.append('birthDate', firstStepValues.birthDate);
+    } else if (firstStepValues.category === 'for-free') {
+      formData.append('birthDate', firstStepValues.birthDate);
+    }
 
     dispatch(noticesOperations.addNotice(formData));
   };
@@ -64,10 +67,6 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
   const handleBackToFirst = values => {
     setSecondStepValues(values);
     setPage(prevPage => prevPage - 1);
-  };
-
-  const checkCategory = () => {
-    return firstStepValues.category === 'sell';
   };
 
   const handleAddAvatar = (evt, setFieldValue) => {
@@ -114,7 +113,9 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
     }
     return result;
   };
-
+  const verifyCategoty = value => {
+    return value === 'sell' || value === 'for-free';
+  };
   return (
     <div className={styles.container} onClick={handleModalClose}>
       <div className={styles.modalWrapper}>
@@ -127,6 +128,7 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
               setFirstStepValues={setFirstStepValues}
               handleModalClose={handleModalClose}
               handleDateValidation={handleDateValidation}
+              verifyCategoty={verifyCategoty}
             />
           ) : (
             <SecondStep
@@ -135,7 +137,8 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
               handleAddAvatar={handleAddAvatar}
               file={fileValue}
               handleSecondStepSubmit={handleSecondStepSubmit}
-              checkCategory={checkCategory}
+              checkCategory={firstStepValues.category}
+              verifyCategoty={verifyCategoty}
             />
           )}
           <button
