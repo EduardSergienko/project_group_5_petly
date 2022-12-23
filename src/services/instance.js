@@ -19,39 +19,41 @@ export const axiosInstance = axios.create({
   withCredentials: true,
 });
 
-axiosInstance.interceptors.request.use(async config => {
-  if (config.url && urlsSkipAuth.includes(config.url)) {
-    return config;
-  }
+// TODO
 
-  const accessToken = await store.dispatch(authOperations.getAccessToken());
+// axiosInstance.interceptors.request.use(async config => {
+//   if (config.url && urlsSkipAuth.includes(config.url)) {
+//     return config;
+//   }
 
-  if (accessToken) {
-    const autharization = `Bearer ${accessToken.payload}`;
+//   const accessToken = await store.dispatch(authOperations.getAccessToken());
 
-    config.headers = {
-      ...config.headers,
-      authorization: autharization,
-    };
-  }
+//   if (accessToken) {
+//     const autharization = `Bearer ${accessToken.payload}`;
 
-  return config;
-});
+//     config.headers = {
+//       ...config.headers,
+//       authorization: autharization,
+//     };
+//   }
 
-axiosInstance.interceptors.response.use(
-  response => response,
-  error => {
-    const isLoggedIn = !!store.getState().auth.token;
+//   return config;
+// });
 
-    if (
-      error.response?.status === 401 &&
-      isLoggedIn &&
-      error.request.url !==
-        'https://project-group-5-petly-back-end.vercel.app/api'
-    ) {
-      store.dispatch(authOperations.logOutUser());
-    }
+// axiosInstance.interceptors.response.use(
+//   response => response,
+//   error => {
+//     const isLoggedIn = !!store.getState().auth.token;
 
-    throw error;
-  }
-);
+//     if (
+//       error.response?.status === 401 &&
+//       isLoggedIn &&
+//       error.request.url !==
+//         'https://project-group-5-petly-back-end.vercel.app/api'
+//     ) {
+//       store.dispatch(authOperations.logOutUser());
+//     }
+
+//     throw error;
+//   }
+// );
