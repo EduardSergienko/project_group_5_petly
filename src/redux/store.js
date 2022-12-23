@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { authReducer } from './auth';
-import { noticesReducer } from './notices';
-import { filterReducer } from './filter';
+import { noticesReducer, filterReducer } from './notices';
 import {
   persistStore,
   persistReducer,

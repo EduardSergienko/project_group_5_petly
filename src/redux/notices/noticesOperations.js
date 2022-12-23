@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { axiosInstance } from '../../services/instance';
+import { axiosInstance } from '../../services/axios-instance';
 
 const token = {
   set(token) {
@@ -42,11 +42,10 @@ const getNotices = createAsyncThunk(
 
 const addToFavorite = createAsyncThunk(
   'notices/addToFavorite',
-  async (credentials, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      await axiosInstance.patch(`/notices/${credentials}/favorite`);
-      const { data } = await axiosInstance.get(`/notices/user/favorite`);
-      return data;
+      await axiosInstance.patch(`/notices/${id}/favorite`);
+      return id;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -55,12 +54,12 @@ const addToFavorite = createAsyncThunk(
 
 const removeFavorite = createAsyncThunk(
   'notices/removeFavorite',
-  async (credentials, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      await axiosInstance.delete(`/notices/${credentials}/favorite`);
-      const { data } = await axiosInstance.get(`/notices/user/favorite`);
-      return data;
+      await axiosInstance.delete(`/notices/${id}/favorite`);
+      return id;
     } catch (error) {
+      console.log(error);
       return rejectWithValue(error.response.data);
     }
   }

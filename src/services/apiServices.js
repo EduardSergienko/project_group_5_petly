@@ -1,4 +1,4 @@
-import { axiosInstance } from './instance';
+import { axiosInstance } from './axios-instance';
 
 const getAllFriends = async () => {
   return await axiosInstance.get('/friends');
