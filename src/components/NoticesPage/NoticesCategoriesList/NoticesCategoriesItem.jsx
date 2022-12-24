@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { noticesOperations } from 'redux/notices';
 import { useTranslation } from 'react-i18next';
-import { noticesSelectors } from '../../../redux/notices';
-import { authOperations, authSelectors } from '../../../redux/auth';
+import { authSelectors } from '../../../redux/auth';
 import notices from 'helpers/Notification/Notification';
 import { DeleteButton } from '../../../helpers';
 
@@ -16,22 +15,18 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const myFavorite = useSelector(noticesSelectors.getMyFavoriteNotice);
   const myFavoriteIds = useSelector(authSelectors.getUserFavorite);
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      if (myFavorite.length > 0) {
-        setIsFavorite(myFavorite.some(i => i?._id === item?._id));
-      } else {
-        setIsFavorite(myFavoriteIds.some(i => i === item?._id));
-      }
-    }
-  }, [myFavorite, item, isFavorite, myFavoriteIds, isLoggedIn]);
+    isLoggedIn && setIsFavorite(myFavoriteIds.some(i => i === item?._id));
+  }, [item, myFavoriteIds, isLoggedIn]);
+
+  useEffect(() => {
+    categoryName === 'favorite' && setIsFavorite(true);
+  }, [categoryName]);
 
   const addFavorite = e => {
-    e.preventDefault();
     if (!isLoggedIn) {
       return notices.showError(
         'You need to authorize before adding notices to favorite.'
@@ -45,8 +40,6 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
   };
 
   const removeFavorite = e => {
-    e.preventDefault();
-
     if (!isLoggedIn) {
       return notices.showError(
         'You need to authorize before remove notices from favorite.'
@@ -54,9 +47,6 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
     }
     e.currentTarget.style.fill = 'none';
     dispatch(noticesOperations.removeFavorite(item?._id));
-    setTimeout(() => {
-      dispatch(authOperations.getCurrentUser());
-    }, 300);
     setIsFavorite(false);
 
     notices.showSuccess('Notice removed from favorite adds.');
@@ -65,12 +55,18 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
   const normalizeCategoryName = name => {
     let category;
 
-    if (name === 'sell') {
-      category = 'Sell';
-    } else if (name === 'for-free') {
-      category = 'In good hands';
-    } else {
-      category = 'Lost/found';
+    switch (name) {
+      case 'sell':
+        category = 'Sell';
+        break;
+      case 'for-free':
+        category = 'In good hands';
+        break;
+      case 'lost-found':
+        category = 'Lost/found';
+        break;
+      default:
+        category = '';
     }
 
     return category;

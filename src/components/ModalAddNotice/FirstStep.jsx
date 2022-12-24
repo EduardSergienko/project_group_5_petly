@@ -9,11 +9,9 @@ const FirstStep = ({
   firstStepValues,
   handleModalClose,
   handleDateValidation,
-  verifyCategoty,
+  verifyCategory,
 }) => {
-  const [categoryValue, setCategoryValue] = useState(
-    firstStepValues.category || 'sell'
-  );
+  const [categoryValue, setCategoryValue] = useState(firstStepValues.category);
 
   const firstStepSchema = Yup.object({
     category: Yup.string().required('Required'),
@@ -26,7 +24,7 @@ const FirstStep = ({
       .max(16, 'Name is too long')
       .required('Required'),
     birthDate: Yup.string().when(categoryValue, {
-      is: () => verifyCategoty(categoryValue),
+      is: () => verifyCategory(categoryValue),
       then: Yup.string()
         .matches(
           /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:20)\d{2})\s*$/,
@@ -41,18 +39,16 @@ const FirstStep = ({
       otherwise: Yup.string(),
     }),
 
-    breed: Yup.string().when(categoryValue, {
-      is: () => verifyCategoty(categoryValue),
-      then: Yup.string()
-        .min(1, 'Breed is too short')
-        .max(24, 'Breed is too long')
-        .required('Required'),
-      otherwise: Yup.string(),
-    }),
+    breed: Yup.string()
+      .min(1, 'Breed is too short')
+      .max(24, 'Breed is too long')
+      .required('Required'),
   });
+
   const handleCategoryClick = e => {
     setCategoryValue(e.currentTarget.value);
   };
+
   return (
     <>
       <Formik
@@ -103,128 +99,75 @@ const FirstStep = ({
                 <span className={styles.categorySell}></span>
               </label>
             </fieldset>
-            {categoryValue === 'sell' || categoryValue === 'for-free' ? (
-              <>
-                <label className={styles.labelTitle} htmlFor="title">
-                  Tittle of ad<span className={styles.require}>*</span>
-                  <Field
-                    className={`${styles.input} ${
-                      errors.title && touched.title ? styles.errorInput : ''
-                    }`}
-                    type="text"
-                    id="title"
-                    name="title"
-                    placeholder="Type title"
-                  />
-                  <ErrorMessage
-                    name="title"
-                    render={msg => <div className={styles.errorMsg}>{msg}</div>}
-                  />
-                </label>
-                <label className={styles.labelTitle} htmlFor="name">
-                  Name<span className={styles.require}>*</span>
-                  <Field
-                    className={`${styles.input} ${
-                      errors.name && touched.name ? styles.errorInput : ''
-                    }`}
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Type name"
-                  />
-                  <ErrorMessage
-                    name="name"
-                    render={msg => <div className={styles.errorMsg}>{msg}</div>}
-                  />
-                </label>
-                <label className={styles.labelTitle} htmlFor="birthDate">
-                  Date of birth<span className={styles.require}>*</span>
-                  <Field
-                    className={`${styles.input} ${
-                      errors.birthDate && touched.birthDate
-                        ? styles.errorInput
-                        : ''
-                    }`}
-                    type="text"
-                    id="birthDate"
-                    name="birthDate"
-                    placeholder="Type date of birth"
-                  />
-                  <ErrorMessage
-                    name="birthDate"
-                    render={msg => <div className={styles.errorMsg}>{msg}</div>}
-                  />
-                </label>
-                <label className={styles.labelTitle} htmlFor="breed">
-                  Breed<span className={styles.require}>*</span>
-                  <Field
-                    className={`${styles.input} ${
-                      errors.breed && touched.breed ? styles.errorInput : ''
-                    }`}
-                    type="text"
-                    id="breed"
-                    name="breed"
-                    placeholder="Type breed"
-                  />
-                  <ErrorMessage
-                    name="breed"
-                    render={msg => <div className={styles.errorMsg}>{msg}</div>}
-                  />
-                </label>
-              </>
-            ) : (
-              <>
-                <label className={styles.labelTitle} htmlFor="title">
-                  Tittle of ad<span className={styles.require}>*</span>
-                  <Field
-                    className={`${styles.input} ${
-                      errors.title && touched.title ? styles.errorInput : ''
-                    }`}
-                    type="text"
-                    id="title"
-                    name="title"
-                    placeholder="Type title"
-                  />
-                  <ErrorMessage
-                    name="title"
-                    render={msg => <div className={styles.errorMsg}>{msg}</div>}
-                  />
-                </label>
-                <label className={styles.labelTitle} htmlFor="name">
-                  Name<span className={styles.require}>*</span>
-                  <Field
-                    className={`${styles.input} ${
-                      errors.name && touched.name ? styles.errorInput : ''
-                    }`}
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Type name"
-                  />
-                  <ErrorMessage
-                    name="name"
-                    render={msg => <div className={styles.errorMsg}>{msg}</div>}
-                  />
-                </label>
 
-                <label className={styles.labelTitle} htmlFor="breed">
-                  Breed<span className={styles.require}>*</span>
-                  <Field
-                    className={`${styles.input} ${
-                      errors.breed && touched.breed ? styles.errorInput : ''
-                    }`}
-                    type="text"
-                    id="breed"
-                    name="breed"
-                    placeholder="Type breed"
-                  />
-                  <ErrorMessage
-                    name="breed"
-                    render={msg => <div className={styles.errorMsg}>{msg}</div>}
-                  />
-                </label>
-              </>
+            <label className={styles.labelTitle} htmlFor="title">
+              Tittle of ad<span className={styles.require}>*</span>
+              <Field
+                className={`${styles.input} ${
+                  errors.title && touched.title ? styles.errorInput : ''
+                }`}
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Type title"
+              />
+              <ErrorMessage
+                name="title"
+                render={msg => <div className={styles.errorMsg}>{msg}</div>}
+              />
+            </label>
+            <label className={styles.labelTitle} htmlFor="name">
+              Name<span className={styles.require}>*</span>
+              <Field
+                className={`${styles.input} ${
+                  errors.name && touched.name ? styles.errorInput : ''
+                }`}
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Type name"
+              />
+              <ErrorMessage
+                name="name"
+                render={msg => <div className={styles.errorMsg}>{msg}</div>}
+              />
+            </label>
+            {categoryValue !== 'lost-found' && (
+              <label className={styles.labelTitle} htmlFor="birthDate">
+                Date of birth<span className={styles.require}>*</span>
+                <Field
+                  className={`${styles.input} ${
+                    errors.birthDate && touched.birthDate
+                      ? styles.errorInput
+                      : ''
+                  }`}
+                  type="text"
+                  id="birthDate"
+                  name="birthDate"
+                  placeholder="Type date of birth"
+                />
+                <ErrorMessage
+                  name="birthDate"
+                  render={msg => <div className={styles.errorMsg}>{msg}</div>}
+                />
+              </label>
             )}
+            <label className={styles.labelTitle} htmlFor="breed">
+              Breed<span className={styles.require}>*</span>
+              <Field
+                className={`${styles.input} ${
+                  errors.breed && touched.breed ? styles.errorInput : ''
+                }`}
+                type="text"
+                id="breed"
+                name="breed"
+                placeholder="Type breed"
+              />
+              <ErrorMessage
+                name="breed"
+                render={msg => <div className={styles.errorMsg}>{msg}</div>}
+              />
+            </label>
 
             <div className={styles.buttonWrap}>
               <button

@@ -68,25 +68,6 @@ const noticesSlice = createSlice({
       state.notices = [];
       Loading.remove();
     },
-    [noticesOperations.addToFavorite.pending](state, _) {
-      state.error = null;
-      state.noticeRemoved = false;
-      state.noticeAddError = null;
-      state.noticeRemovedError = false;
-      state.noticeAdded = false;
-      Loading.arrows({
-        svgColor: '#f59256',
-        backgroundColor: 'rgba(0,0,0,0.1)',
-      });
-    },
-    [noticesOperations.addToFavorite.fulfilled](state, action) {
-      state.myFavorite = action.payload.myFavorite;
-      Loading.remove();
-    },
-    [noticesOperations.addToFavorite.rejected](state, action) {
-      state.error = action.payload;
-      Loading.remove();
-    },
     [noticesOperations.getFavorite.pending](state, _) {
       state.error = null;
       state.loading = true;
@@ -106,6 +87,7 @@ const noticesSlice = createSlice({
     },
     [noticesOperations.getFavorite.rejected](state, action) {
       state.error = action.payload;
+      state.myFavorite = [];
       state.loading = false;
       Loading.remove();
     },
@@ -121,11 +103,15 @@ const noticesSlice = createSlice({
       });
     },
     [noticesOperations.removeFavorite.fulfilled](state, action) {
-      state.myFavorite = action.payload.myFavorite;
+      state.myFavorite = state.myFavorite.filter(
+        item => item._id !== action.payload
+      );
+      state.loading = false;
       Loading.remove();
     },
     [noticesOperations.removeFavorite.rejected](state, action) {
       state.error = action.payload;
+      state.loading = false;
       Loading.remove();
     },
     [noticesOperations.getOwn.pending](state, _) {
@@ -156,6 +142,7 @@ const noticesSlice = createSlice({
       Loading.remove();
     },
     [noticesOperations.getOneNotice.pending](state, { payload }) {
+      state.error = null;
       state.onOpenLoading = true;
       state.noticeRemoved = false;
       state.noticeAddError = null;
@@ -167,6 +154,7 @@ const noticesSlice = createSlice({
       });
     },
     [noticesOperations.deleteUserNotice.pending](state, _) {
+      state.error = null;
       state.noticeRemoved = false;
       state.loading = true;
       state.noticeAddError = null;
@@ -203,16 +191,40 @@ const noticesSlice = createSlice({
       });
     },
     [noticesOperations.searchNotice.fulfilled]: (state, { payload }) => {
+      switch (payload.category) {
+        case 'own':
+          state.ownAdds = payload.data;
+          break;
+        case 'favorite':
+          state.myFavorite = payload.data;
+          break;
+        default:
+          state.notices = payload.data;
+      }
       state.loading = false;
-      state.notices = payload;
       Loading.remove();
     },
     [noticesOperations.searchNotice.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
       state.notices = [];
+      state.myFavorite = [];
+      state.ownAdds = [];
       Loading.remove();
     },
   },
 });
+
+export const categoryFilter = createSlice({
+  name: 'filter',
+  initialState: '',
+  reducers: {
+    filterNotices(state, action) {
+      return (state = action.payload);
+    },
+  },
+});
+
 export default noticesSlice.reducer;
+export const filterReducer = categoryFilter.reducer;
+export const { filterNotices } = categoryFilter.actions;

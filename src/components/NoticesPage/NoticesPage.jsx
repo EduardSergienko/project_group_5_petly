@@ -3,90 +3,55 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import NoticesSearch from './NoticesSearch/NoticesSearch';
 import NoticesCategoriesNav from './NoticesCategoriesNav/NoticesCategoriesNav';
 import NoticesCategoriesList from './NoticesCategoriesList/NoticesCategoriesList';
 import AddNoticeButton from './AddNoticeButton/AddNoticeButton';
 import ModalNotice from 'components/ModalNotice/ModalNotice';
 import ModalAddNotice from 'components/ModalAddNotice/ModalAddNotice';
 import FilterInput from 'helpers/FilterInput';
-import { noticesSelectors } from 'redux/notices';
+import { noticesSelectors, filterNotices } from 'redux/notices';
 import notices from 'helpers/Notification/Notification';
 import { noticesOperations } from 'redux/notices';
 import Container from 'components/Container';
 import styles from './NoticesPage.module.scss';
 
-function NoticesPage({ onFilter = () => {} }) {
+function NoticesPage() {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { categoryName } = useParams();
-  const items = useSelector(noticesSelectors.getNotices);
-  const ownAdds = useSelector(noticesSelectors.getOwnAdds);
-  const filter = useSelector(state => state.filter.value);
-  const myFavorite = useSelector(noticesSelectors.myFavorite);
-  const isLoggedIn = useSelector(noticesSelectors.getIsLoggedIn);
-  const loading = useSelector(noticesSelectors.noticeLoading);
-  const [filteredItems, setFilteredItems] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalActive, setModalActive] = useState(false);
+  const [noticesCategory] = useState(['sell', 'for-free', 'lost-found']);
   const isNoticeAdded = useSelector(noticesSelectors.getNoticeAdded);
   const isNoticeAddedError = useSelector(noticesSelectors.getNoticeAddError);
+  const isLoggedIn = useSelector(noticesSelectors.getIsLoggedIn);
+  const loading = useSelector(noticesSelectors.noticeLoading);
+  const getNoticeError = useSelector(noticesSelectors.getNoticeError);
   const noticeRemoved = useSelector(noticesSelectors.getNoticeRemoved);
   const removeError = useSelector(noticesSelectors.getNoticeRemoveError);
+  const filteredNotices = useSelector(noticesSelectors.getFilteredNotices);
 
   useEffect(() => {
-    const filterItems = arr => {
-      return filter
-        ? arr?.filter(({ title }) => title?.toLowerCase().includes(filter))
-        : arr;
-    };
-    if (categoryName === 'sell' || 'for-free' || 'lost-found') {
-      setFilteredItems(filterItems(items));
+    switch (categoryName) {
+      case 'sell':
+      case 'for-free':
+      case 'lost-found':
+        dispatch(noticesOperations.getNotices(categoryName));
+        break;
+      case 'own':
+        isLoggedIn && dispatch(noticesOperations.getOwn());
+        break;
+      case 'favorite':
+        isLoggedIn && dispatch(noticesOperations.getFavorite());
+        break;
+      default:
+        console.log('Invalid category');
     }
-    if (categoryName === 'favorite') {
-      setFilteredItems(filterItems(myFavorite));
-    }
-    if (categoryName === 'own') {
-      setFilteredItems(filterItems(ownAdds));
-    }
-  }, [categoryName, filter, items, setFilteredItems, myFavorite, ownAdds]);
+  }, [categoryName, isLoggedIn, noticesCategory, dispatch]);
 
   useEffect(() => {
-    const handleAddItems = (arr, category) => {
-      return arr?.filter(item => item.category === category && item);
-    };
-
-    categoryName === 'sell' &&
-      setFilteredItems(handleAddItems(items, categoryName));
-    categoryName === 'for-free' &&
-      setFilteredItems(handleAddItems(items, categoryName));
-    categoryName === 'lost-found' &&
-      setFilteredItems(handleAddItems(items, categoryName));
-  }, [categoryName, filter, items]);
-
-  useEffect(() => {
-    categoryName === 'sell' &&
-      dispatch(noticesOperations.getNotices(categoryName));
-    categoryName === 'for-free' &&
-      dispatch(noticesOperations.getNotices(categoryName));
-    categoryName === 'lost-found' &&
-      dispatch(noticesOperations.getNotices(categoryName));
-    categoryName === 'own' &&
-      isLoggedIn &&
-      dispatch(noticesOperations.getOwn());
-    categoryName === 'favorite' &&
-      isLoggedIn &&
-      dispatch(noticesOperations.getFavorite());
-  }, [categoryName, isLoggedIn, dispatch]);
-
-  useEffect(() => {
-    if (isNoticeAdded) {
-      notices.showSuccess('Notice successfully added');
-      setIsModalOpen(false);
-    }
-
-    isNoticeAddedError && notices.showError('Something went wrong, try again');
-  }, [isNoticeAdded, isNoticeAddedError]);
+    dispatch(filterNotices(categoryName));
+  }, [dispatch, categoryName]);
 
   useEffect(() => {
     const handleBodyOverflow = () => {
@@ -97,6 +62,15 @@ function NoticesPage({ onFilter = () => {} }) {
     };
     handleBodyOverflow();
   }, [isModalOpen]);
+
+  useEffect(() => {
+    if (isNoticeAdded) {
+      notices.showSuccess('Notice successfully added');
+      setIsModalOpen(false);
+    }
+
+    isNoticeAddedError && notices.showError('Something went wrong, try again');
+  }, [isNoticeAdded, isNoticeAddedError]);
 
   useEffect(() => {
     noticeRemoved && notices.showSuccess('Notice removed');
@@ -111,21 +85,24 @@ function NoticesPage({ onFilter = () => {} }) {
   };
 
   const handleNoticeCategoryItems = () => {
-    categoryName === 'sell' &&
-      dispatch(noticesOperations.getNotices(categoryName));
-    categoryName === 'for-free' &&
-      dispatch(noticesOperations.getNotices(categoryName));
-    categoryName === 'lost-found' &&
-      dispatch(noticesOperations.getNotices(categoryName));
-    categoryName === 'own' &&
-      isLoggedIn &&
-      dispatch(noticesOperations.getOwn());
-    categoryName === 'favorite' &&
-      isLoggedIn &&
-      dispatch(noticesOperations.getFavorite());
+    switch (categoryName) {
+      case 'sell':
+      case 'for-free':
+      case 'lost-found':
+        dispatch(noticesOperations.getNotices(categoryName));
+        break;
+      case 'own':
+        isLoggedIn && dispatch(noticesOperations.getOwn());
+        break;
+      case 'favorite':
+        isLoggedIn && dispatch(noticesOperations.getFavorite());
+        break;
+      default:
+        console.log('Invalid category');
+    }
   };
 
-  const searchNews = evt => {
+  const searchNotice = evt => {
     evt.preventDefault();
     const { search } = evt.target.elements;
 
@@ -133,29 +110,12 @@ function NoticesPage({ onFilter = () => {} }) {
       return;
     }
 
-    if (
-      categoryName === 'sell' ||
-      categoryName === 'for-free' ||
-      categoryName === 'lost-found'
-    ) {
-      dispatch(
-        noticesOperations.searchNotice({
-          category: categoryName,
-          title: search.value,
-        })
-      );
-    }
-  };
-
-  const handleNoticeCategory = () => {
-    if (
-      categoryName === 'sell' ||
-      categoryName === 'for-free' ||
-      categoryName === 'lost-found'
-    ) {
-      return true;
-    }
-    return false;
+    dispatch(
+      noticesOperations.searchNotice({
+        category: categoryName,
+        title: search.value,
+      })
+    );
   };
 
   const handleSearchInputChange = evt => {
@@ -169,14 +129,11 @@ function NoticesPage({ onFilter = () => {} }) {
     <div className={styles.notiesSection}>
       <Container>
         <h1 className={styles.title}>{t('findpet.title')}</h1>
-        {handleNoticeCategory() && (
-          <FilterInput
-            onSubmit={searchNews}
-            onChange={handleSearchInputChange}
-            cssClass={styles.noticesInput}
-          />
-        )}
-        {!handleNoticeCategory() && <NoticesSearch onChange={onFilter} />}
+        <FilterInput
+          onSubmit={searchNotice}
+          onChange={handleSearchInputChange}
+          cssClass={styles.noticesInput}
+        />
         <div className={styles.navWarpper}>
           <NoticesCategoriesNav />
           <div className={styles.buttonWrapper}>
@@ -184,7 +141,7 @@ function NoticesPage({ onFilter = () => {} }) {
             <AddNoticeButton handleOpenModal={handleOpenModal} />
           </div>
         </div>
-        {!filteredItems.length && (
+        {!filteredNotices.length && getNoticeError && (
           <p className={styles.notification}>{t('findpet.noAds')}</p>
         )}
         <div
@@ -199,7 +156,7 @@ function NoticesPage({ onFilter = () => {} }) {
         </div>
         {!loading && (
           <NoticesCategoriesList
-            items={filteredItems}
+            items={filteredNotices}
             setActive={setModalActive}
             categoryName={categoryName}
             setIsModalOpen={setIsModalOpen}

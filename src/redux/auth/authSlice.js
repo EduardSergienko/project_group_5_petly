@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './authOperations';
 import { userOperations } from '../user';
+import noticesOperations from '../notices/noticesOperations';
 
 const initialState = {
   user: { name: null, email: null, myAnimal: [], myFavorite: [] },
@@ -144,6 +145,23 @@ const authSlice = createSlice({
       state.token = null;
       state.isLoggedIn = false;
       state.user = { name: null, email: null, myAnimal: [], myFavorite: [] };
+    },
+    [noticesOperations.removeFavorite.fulfilled](state, action) {
+      state.user.myFavorite = state.user.myFavorite.filter(
+        item => item !== action.payload
+      );
+    },
+    [noticesOperations.removeFavorite.rejected](state, action) {
+      state.error = action.payload;
+    },
+    [noticesOperations.addToFavorite.pending](state, _) {
+      state.error = null;
+    },
+    [noticesOperations.addToFavorite.fulfilled](state, action) {
+      state.user.myFavorite = [action.payload, ...state.user.myFavorite];
+    },
+    [noticesOperations.addToFavorite.rejected](state, action) {
+      state.error = action.payload;
     },
   },
 });

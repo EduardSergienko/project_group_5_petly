@@ -42,11 +42,10 @@ const getNotices = createAsyncThunk(
 
 const addToFavorite = createAsyncThunk(
   'notices/addToFavorite',
-  async (credentials, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      await axiosInstance.patch(`/notices/${credentials}/favorite`);
-      const { data } = await axiosInstance.get(`/notices/user/favorite`);
-      return data;
+      await axiosInstance.patch(`/notices/${id}/favorite`);
+      return id;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -55,11 +54,10 @@ const addToFavorite = createAsyncThunk(
 
 const removeFavorite = createAsyncThunk(
   'notices/removeFavorite',
-  async (credentials, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      await axiosInstance.delete(`/notices/${credentials}/favorite`);
-      const { data } = await axiosInstance.get(`/notices/user/favorite`);
-      return data;
+      await axiosInstance.delete(`/notices/${id}/favorite`);
+      return id;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -122,7 +120,7 @@ const searchNotice = createAsyncThunk(
         `/notices/category/search?category=${category}&title=${title}`
       );
 
-      return data;
+      return { category, data };
     } catch (error) {
       return rejectWithValue(error.message);
     }
