@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { axiosInstance } from '../../services/axios-instance';
+import { axiosInstance } from '../../services/instance';
 
 const token = {
   set(token) {
@@ -59,7 +59,6 @@ const removeFavorite = createAsyncThunk(
       await axiosInstance.delete(`/notices/${id}/favorite`);
       return id;
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error.response.data);
     }
   }
@@ -121,7 +120,7 @@ const searchNotice = createAsyncThunk(
         `/notices/category/search?category=${category}&title=${title}`
       );
 
-      return data;
+      return { category, data };
     } catch (error) {
       return rejectWithValue(error.message);
     }

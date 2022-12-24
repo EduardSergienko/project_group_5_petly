@@ -28,17 +28,18 @@ const getFilter = state => state.filter;
 const getFilteredNotices = createSelector(
   [getNotices, getOwnAdds, myFavorite, getFilter],
   (notices, ownAdds, favorite, filter) => {
-    if (filter === 'sell' || filter === 'for-free' || filter === 'lost-found') {
-      return notices.filter(notice => notice.category === filter);
+    switch (filter) {
+      case 'sell':
+      case 'for-free':
+      case 'lost-found':
+        return notices.filter(notice => notice.category === filter);
+      case 'own':
+        return ownAdds;
+      case 'favorite':
+        return favorite;
+      default:
+        return [];
     }
-
-    if (filter === 'own') {
-      return ownAdds;
-    }
-    if (filter === 'favorite') {
-      return favorite;
-    }
-    return [];
   }
 );
 

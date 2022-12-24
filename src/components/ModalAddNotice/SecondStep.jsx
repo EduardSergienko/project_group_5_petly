@@ -14,7 +14,7 @@ const SecondStep = ({
   handleAddAvatar,
   file,
   handleSecondStepSubmit,
-  checkCategory,
+  category,
 }) => {
   const loading = useSelector(noticesSelectors.noticeLoading);
 
@@ -36,8 +36,8 @@ const SecondStep = ({
         cityInputValidation
       )
       .required('Required'),
-    price: Yup.number().when([], {
-      is: () => checkCategory(),
+    price: Yup.number().when(category, {
+      is: () => category === 'sell',
       then: Yup.number().min(1).required('Required'),
       otherwise: Yup.number().notRequired(),
     }),
@@ -119,7 +119,7 @@ const SecondStep = ({
                 render={msg => <div className={styles.secStepError}>{msg}</div>}
               />
             </label>
-            {checkCategory() && (
+            {category === 'sell' && (
               <label className={styles.labelTitle} htmlFor="price">
                 Price<span className={styles.require}>*</span>
                 <Field
@@ -230,7 +230,7 @@ SecondStep.propTypes = {
   file: PropTypes.string,
   handleAddAvatar: PropTypes.func.isRequired,
   handleSecondStepSubmit: PropTypes.func.isRequired,
-  checkCategory: PropTypes.func.isRequired,
+  category: PropTypes.string.isRequired,
 };
 
 export default SecondStep;

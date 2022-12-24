@@ -191,14 +191,25 @@ const noticesSlice = createSlice({
       });
     },
     [noticesOperations.searchNotice.fulfilled]: (state, { payload }) => {
+      switch (payload.category) {
+        case 'own':
+          state.ownAdds = payload.data;
+          break;
+        case 'favorite':
+          state.myFavorite = payload.data;
+          break;
+        default:
+          state.notices = payload.data;
+      }
       state.loading = false;
-      state.notices = payload;
       Loading.remove();
     },
     [noticesOperations.searchNotice.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
       state.notices = [];
+      state.myFavorite = [];
+      state.ownAdds = [];
       Loading.remove();
     },
   },

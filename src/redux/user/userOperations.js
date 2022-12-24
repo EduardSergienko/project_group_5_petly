@@ -1,4 +1,4 @@
-import { axiosInstance } from '../../services/axios-instance';
+import { axiosInstance } from '../../services/instance';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const createUserPost = createAsyncThunk(

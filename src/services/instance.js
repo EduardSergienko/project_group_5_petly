@@ -1,23 +1,24 @@
 import axios from 'axios';
 // import { authOperations } from '../redux/auth';
+export const axiosInstance = axios.create({
+  baseURL: 'https://project-group-5-petly-back-end.vercel.app/api',
+  withCredentials: true,
+});
 
-const urlsSkipAuth = [
-  '/auth/register',
-  '/auth/login',
-  '/auth/logout',
-  '/auth/refresh',
-];
+// TODO:
+
+// const urlsSkipAuth = [
+//   '/auth/register',
+//   '/auth/login',
+//   '/auth/logout',
+//   '/auth/refresh',
+// ];
 
 // let store;
 
 // export const injectStore = _store => {
 //   store = _store;
 // };
-
-export const axiosInstance = axios.create({
-  baseURL: 'https://project-group-5-petly-back-end.vercel.app/api',
-  withCredentials: true,
-});
 
 // axiosInstance.interceptors.request.use(async config => {
 //   if (config.url && urlsSkipAuth.includes(config.url)) {

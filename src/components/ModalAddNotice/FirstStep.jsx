@@ -1,6 +1,7 @@
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import styles from './ModalAddNotice.module.scss';
 
 const FirstStep = ({
@@ -8,7 +9,10 @@ const FirstStep = ({
   firstStepValues,
   handleModalClose,
   handleDateValidation,
+  verifyCategory,
 }) => {
+  const [categoryValue, setCategoryValue] = useState(firstStepValues.category);
+
   const firstStepSchema = Yup.object({
     category: Yup.string().required('Required'),
     title: Yup.string()
@@ -19,18 +23,31 @@ const FirstStep = ({
       .min(2, 'Name is too short')
       .max(16, 'Name is too long')
       .required('Required'),
-    birthDate: Yup.string()
-      .matches(
-        /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:20)\d{2})\s*$/,
-        'Date format should be DD.MM.YYYY'
-      )
-      .test('dateFormat', 'Provide a valid date of birth', handleDateValidation)
-      .required('Required'),
+    birthDate: Yup.string().when(categoryValue, {
+      is: () => verifyCategory(categoryValue),
+      then: Yup.string()
+        .matches(
+          /^\s*(3[01]|[12][0-9]|0?[1-9])\.(1[012]|0?[1-9])\.((?:20)\d{2})\s*$/,
+          'Date format should be DD.MM.YYYY'
+        )
+        .test(
+          'dateFormat',
+          'Provide a valid date of birth',
+          handleDateValidation
+        )
+        .required('Required'),
+      otherwise: Yup.string(),
+    }),
+
     breed: Yup.string()
-      .min(2, 'Breed is too short')
+      .min(1, 'Breed is too short')
       .max(24, 'Breed is too long')
       .required('Required'),
   });
+
+  const handleCategoryClick = e => {
+    setCategoryValue(e.currentTarget.value);
+  };
 
   return (
     <>
@@ -45,7 +62,6 @@ const FirstStep = ({
               Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor sit
               amet, consectetur
             </p>
-
             <fieldset className={styles.fieldsetWrap}>
               <label className={styles.labelContainer} htmlFor="lost-found">
                 <Field
@@ -54,6 +70,7 @@ const FirstStep = ({
                   name="category"
                   id="lost-found"
                   value="lost-found"
+                  onClick={handleCategoryClick}
                 />
                 <span className={styles.categoryLostFound}></span>
               </label>
@@ -65,6 +82,7 @@ const FirstStep = ({
                   name="category"
                   id="for-free"
                   value="for-free"
+                  onClick={handleCategoryClick}
                 />
                 <span className={styles.categoryForFree}></span>
               </label>
@@ -76,10 +94,12 @@ const FirstStep = ({
                   name="category"
                   id="sell"
                   value="sell"
+                  onClick={handleCategoryClick}
                 />
                 <span className={styles.categorySell}></span>
               </label>
             </fieldset>
+
             <label className={styles.labelTitle} htmlFor="title">
               Tittle of ad<span className={styles.require}>*</span>
               <Field
@@ -96,7 +116,6 @@ const FirstStep = ({
                 render={msg => <div className={styles.errorMsg}>{msg}</div>}
               />
             </label>
-
             <label className={styles.labelTitle} htmlFor="name">
               Name<span className={styles.require}>*</span>
               <Field
@@ -113,24 +132,26 @@ const FirstStep = ({
                 render={msg => <div className={styles.errorMsg}>{msg}</div>}
               />
             </label>
-
-            <label className={styles.labelTitle} htmlFor="birthDate">
-              Date of birth<span className={styles.require}>*</span>
-              <Field
-                className={`${styles.input} ${
-                  errors.birthDate && touched.birthDate ? styles.errorInput : ''
-                }`}
-                type="text"
-                id="birthDate"
-                name="birthDate"
-                placeholder="Type date of birth"
-              />
-              <ErrorMessage
-                name="birthDate"
-                render={msg => <div className={styles.errorMsg}>{msg}</div>}
-              />
-            </label>
-
+            {categoryValue !== 'lost-found' && (
+              <label className={styles.labelTitle} htmlFor="birthDate">
+                Date of birth<span className={styles.require}>*</span>
+                <Field
+                  className={`${styles.input} ${
+                    errors.birthDate && touched.birthDate
+                      ? styles.errorInput
+                      : ''
+                  }`}
+                  type="text"
+                  id="birthDate"
+                  name="birthDate"
+                  placeholder="Type date of birth"
+                />
+                <ErrorMessage
+                  name="birthDate"
+                  render={msg => <div className={styles.errorMsg}>{msg}</div>}
+                />
+              </label>
+            )}
             <label className={styles.labelTitle} htmlFor="breed">
               Breed<span className={styles.require}>*</span>
               <Field

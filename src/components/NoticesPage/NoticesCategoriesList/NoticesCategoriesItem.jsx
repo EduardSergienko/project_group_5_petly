@@ -19,15 +19,11 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      setIsFavorite(myFavoriteIds.some(i => i === item?._id));
-    }
+    isLoggedIn && setIsFavorite(myFavoriteIds.some(i => i === item?._id));
   }, [item, myFavoriteIds, isLoggedIn]);
 
   useEffect(() => {
-    if (categoryName === 'favorite') {
-      setIsFavorite(true);
-    }
+    categoryName === 'favorite' && setIsFavorite(true);
   }, [categoryName]);
 
   const addFavorite = e => {
@@ -59,12 +55,18 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
   const normalizeCategoryName = name => {
     let category;
 
-    if (name === 'sell') {
-      category = 'Sell';
-    } else if (name === 'for-free') {
-      category = 'In good hands';
-    } else {
-      category = 'Lost/found';
+    switch (name) {
+      case 'sell':
+        category = 'Sell';
+        break;
+      case 'for-free':
+        category = 'In good hands';
+        break;
+      case 'lost-found':
+        category = 'Lost/found';
+        break;
+      default:
+        category = '';
     }
 
     return category;
@@ -138,9 +140,15 @@ function NoticesCategoriesItem({ item, setActive, categoryName }) {
             {item?.price && <p className={styles.itemDescription}>Price:</p>}
           </div>
           <div className={styles.itemDescriptionConteiner}>
-            <p className={styles.itemDescription}>{cutTitle(item?.breed)}</p>
+            {item?.breed && (
+              <p className={styles.itemDescription}>{cutTitle(item?.breed)}</p>
+            )}
+
             <p className={styles.itemDescription}>{cutTitle(item?.location)}</p>
-            <p className={styles.itemDescription}>{item?.birthDate}</p>
+            {item?.birthDate && (
+              <p className={styles.itemDescription}>{item?.birthDate}</p>
+            )}
+
             {item?.price && (
               <p className={styles.itemDescription}>{`${item?.price}$`}</p>
             )}

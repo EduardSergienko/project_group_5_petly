@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { noticesOperations } from 'redux/notices';
 import PropTypes from 'prop-types';
 import FirstStep from './FirstStep';
 import SecondStep from './SecondStep';
-import { noticesOperations } from 'redux/notices';
+
 import styles from './ModalAddNotice.module.scss';
 
 const ModalAddNotice = ({ setIsModalOpen }) => {
@@ -15,6 +16,7 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
     birthDate: '',
     breed: '',
   });
+
   const [secondStepValues, setSecondStepValues] = useState({
     sex: '',
     location: '',
@@ -48,15 +50,15 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
     formData.append('category', firstStepValues.category);
     formData.append('title', firstStepValues.title);
     formData.append('petName', firstStepValues.name);
-    formData.append('birthDate', firstStepValues.birthDate);
     formData.append('breed', firstStepValues.breed);
     formData.append('sex', sex);
     formData.append('location', location);
     formData.append('avatar', avatar);
     formData.append('comments', comments);
-
     firstStepValues.category === 'sell' &&
       formData.append('price', Number(price));
+    firstStepValues.category !== 'lost-found' &&
+      formData.append('birthDate', firstStepValues.birthDate);
 
     dispatch(noticesOperations.addNotice(formData));
   };
@@ -64,10 +66,6 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
   const handleBackToFirst = values => {
     setSecondStepValues(values);
     setPage(prevPage => prevPage - 1);
-  };
-
-  const checkCategory = () => {
-    return firstStepValues.category === 'sell';
   };
 
   const handleAddAvatar = (evt, setFieldValue) => {
@@ -115,6 +113,10 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
     return result;
   };
 
+  const verifyCategory = value => {
+    return value === 'sell' || value === 'for-free';
+  };
+
   return (
     <div className={styles.container} onClick={handleModalClose}>
       <div className={styles.modalWrapper}>
@@ -127,6 +129,7 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
               setFirstStepValues={setFirstStepValues}
               handleModalClose={handleModalClose}
               handleDateValidation={handleDateValidation}
+              verifyCategory={verifyCategory}
             />
           ) : (
             <SecondStep
@@ -135,7 +138,7 @@ const ModalAddNotice = ({ setIsModalOpen }) => {
               handleAddAvatar={handleAddAvatar}
               file={fileValue}
               handleSecondStepSubmit={handleSecondStepSubmit}
-              checkCategory={checkCategory}
+              category={firstStepValues.category}
             />
           )}
           <button

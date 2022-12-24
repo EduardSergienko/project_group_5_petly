@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import isTokenExpired from '../../services/jwt';
-import { axiosInstance } from '../../services/axios-instance';
+import { axiosInstance } from '../../services/instance';
 
 const token = {
   set(token) {

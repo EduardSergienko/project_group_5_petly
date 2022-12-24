@@ -22,38 +22,36 @@ function NoticesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [noticesCategory] = useState(['sell', 'for-free', 'lost-found']);
+  const isNoticeAdded = useSelector(noticesSelectors.getNoticeAdded);
+  const isNoticeAddedError = useSelector(noticesSelectors.getNoticeAddError);
   const isLoggedIn = useSelector(noticesSelectors.getIsLoggedIn);
   const loading = useSelector(noticesSelectors.noticeLoading);
   const getNoticeError = useSelector(noticesSelectors.getNoticeError);
-  const isNoticeAdded = useSelector(noticesSelectors.getNoticeAdded);
-  const isNoticeAddedError = useSelector(noticesSelectors.getNoticeAddError);
   const noticeRemoved = useSelector(noticesSelectors.getNoticeRemoved);
   const removeError = useSelector(noticesSelectors.getNoticeRemoveError);
   const filteredNotices = useSelector(noticesSelectors.getFilteredNotices);
 
   useEffect(() => {
-    noticesCategory.includes(categoryName) &&
-      dispatch(noticesOperations.getNotices(categoryName));
-    categoryName === 'own' &&
-      isLoggedIn &&
-      dispatch(noticesOperations.getOwn());
-    categoryName === 'favorite' &&
-      isLoggedIn &&
-      dispatch(noticesOperations.getFavorite());
+    switch (categoryName) {
+      case 'sell':
+      case 'for-free':
+      case 'lost-found':
+        dispatch(noticesOperations.getNotices(categoryName));
+        break;
+      case 'own':
+        isLoggedIn && dispatch(noticesOperations.getOwn());
+        break;
+      case 'favorite':
+        isLoggedIn && dispatch(noticesOperations.getFavorite());
+        break;
+      default:
+        console.log('Invalid category');
+    }
   }, [categoryName, isLoggedIn, noticesCategory, dispatch]);
 
   useEffect(() => {
     dispatch(filterNotices(categoryName));
   }, [dispatch, categoryName]);
-
-  useEffect(() => {
-    if (isNoticeAdded) {
-      notices.showSuccess('Notice successfully added');
-      setIsModalOpen(false);
-    }
-
-    isNoticeAddedError && notices.showError('Something went wrong, try again');
-  }, [isNoticeAdded, isNoticeAddedError]);
 
   useEffect(() => {
     const handleBodyOverflow = () => {
@@ -64,6 +62,15 @@ function NoticesPage() {
     };
     handleBodyOverflow();
   }, [isModalOpen]);
+
+  useEffect(() => {
+    if (isNoticeAdded) {
+      notices.showSuccess('Notice successfully added');
+      setIsModalOpen(false);
+    }
+
+    isNoticeAddedError && notices.showError('Something went wrong, try again');
+  }, [isNoticeAdded, isNoticeAddedError]);
 
   useEffect(() => {
     noticeRemoved && notices.showSuccess('Notice removed');
@@ -78,15 +85,21 @@ function NoticesPage() {
   };
 
   const handleNoticeCategoryItems = () => {
-    noticesCategory.includes(categoryName) &&
-      dispatch(noticesOperations.getNotices(categoryName));
-
-    categoryName === 'own' &&
-      isLoggedIn &&
-      dispatch(noticesOperations.getOwn());
-    categoryName === 'favorite' &&
-      isLoggedIn &&
-      dispatch(noticesOperations.getFavorite());
+    switch (categoryName) {
+      case 'sell':
+      case 'for-free':
+      case 'lost-found':
+        dispatch(noticesOperations.getNotices(categoryName));
+        break;
+      case 'own':
+        isLoggedIn && dispatch(noticesOperations.getOwn());
+        break;
+      case 'favorite':
+        isLoggedIn && dispatch(noticesOperations.getFavorite());
+        break;
+      default:
+        console.log('Invalid category');
+    }
   };
 
   const searchNotice = evt => {
@@ -97,13 +110,12 @@ function NoticesPage() {
       return;
     }
 
-    noticesCategory.includes(categoryName) &&
-      dispatch(
-        noticesOperations.searchNotice({
-          category: categoryName,
-          title: search.value,
-        })
-      );
+    dispatch(
+      noticesOperations.searchNotice({
+        category: categoryName,
+        title: search.value,
+      })
+    );
   };
 
   const handleSearchInputChange = evt => {
